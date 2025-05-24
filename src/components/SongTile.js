@@ -1,16 +1,27 @@
 import { useDispatch } from "react-redux";
-import { setCurrentSong, playPause } from "../reduxStore/playerSlice";
-export const SongTile = ({ song }) => {
+import { setCurrentSong, playPause, setQueue, setCurrentSongIndex } from "../reduxStore/playerSlice";
+export const SongTile = ({ trackList }) => {
   const dispatch = useDispatch();
 
-  const handlePlay = (song) => {
-    dispatch(setCurrentSong({ ...song }));
-    dispatch(playPause(true));
+  const handlePlay = (track) => {
+    // dispatch(setCurrentSong({ ...track }));
+    dispatch(setQueue(trackList));
+    const index = trackList.findIndex((t) => t.id === track.id);
+
+    // Update current song index and play
+    if (index !== -1) {
+      dispatch(setCurrentSongIndex(index));
+      dispatch(playPause(true));
+    }
+    // dispatch(playPause(true));
   };
+  if (!trackList) {
+    return null
+  }
 
   return (
     <div className="flex flex-col gap-2 w-full text-white">
-      {song.map((track) => (
+      {trackList.map((track) => (
         <div
           key={track.id}
           onClick={() => handlePlay(track)}

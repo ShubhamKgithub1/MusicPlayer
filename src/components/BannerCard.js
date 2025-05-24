@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
-import { setCurrentSong, playPause } from "../reduxStore/playerSlice";
+import { setCurrentSong, playPause, setQueue } from "../reduxStore/playerSlice";
 const BannerCard = ({topTracks})=>{
     const dispatch = useDispatch();
     const handlePlay =(song)=>{
-        dispatch(setCurrentSong({...song}));
+        dispatch(setQueue(topTracks));
         dispatch(playPause(true));
     };
 

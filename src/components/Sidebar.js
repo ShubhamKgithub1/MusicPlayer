@@ -2,7 +2,7 @@ import Playbar from "./Playbar";
 
 const Sidebar = () => {
   return (
-    <nav className="w-full h-screen p-4 flex flex-col gap-3 text-white">
+    <nav className="w-full h-full flex flex-col gap-3 text-white">
       <ul className="flex flex-col w-full items-start text-lg font-medium p-4 rounded-3xl bg-white/30 backdrop-blur-lg border border-white/40 gap-2">
         <li className="self-center text-xl font-bold">Music Player</li>
         <li className="w-full hover:bg-gradient-to-r from-white/30 rounded-lg px-2 py-1 transition-all duration-300">

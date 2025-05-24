@@ -2,13 +2,17 @@ import { useRef, useEffect, useState } from "react";
 import { Play, Pause } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { playPause } from "../reduxStore/playerSlice";
+import { playNext, playPause } from "../reduxStore/playerSlice";
 import { Volume1, Volume2, VolumeX } from "lucide-react";
 
 const Playbar = () => {
   const dispatch = useDispatch();
-
-  const currentSong = useSelector((state) => state.player.currentSong);
+  const queue = useSelector((state) => state.player.queue);
+  const currentSongIndex = useSelector(
+    (state) => state.player.currentSongIndex
+  );
+  const currentSong = queue[currentSongIndex];
+  // const currentSong = useSelector((state) => state.player.currentSong);
   const isPlaying = useSelector((state) => state.player.isPlaying);
 
   const [currentTime, setCurrentTime] = useState(0);
@@ -64,7 +68,18 @@ const Playbar = () => {
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
 
-    const handleEnded = () => dispatch(playPause(false));
+    const handleEnded = () => {
+      // dispatch(playPause(false))
+      const nextIndex = currentSongIndex + 1;
+      const queueLength = queue.length;
+       if (nextIndex < queueLength) {
+    // Play next song if available
+    dispatch(playNext(currentSongIndex));
+  } else {
+    // No more songs to play — stop playback
+    dispatch(playPause(false));
+  }
+    };
 
     audio.addEventListener("ended", handleEnded);
 
@@ -90,23 +105,6 @@ const Playbar = () => {
     }
     return <Volume2 size={20} />;
   };
-
-  // useEffect(() => {
-  //   const audio = audioRef.current;
-  //   if (!audio)
-  //     return;
-
-  //   // console.log("Song ended..");
-  //   const handleEnded = () => {
-  //     dispatch(playPause(false));
-  //     // console.log("Song ended..");
-  //   };
-  //   audio.addEventListener("ended", handleEnded);
-
-  //   return () => {
-  //     audio.removeEventListener("ended", handleEnded);
-  //   };
-  // }, [dispatch]);
 
   if (!currentSong) {
     return null;
