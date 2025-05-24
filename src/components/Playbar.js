@@ -31,6 +31,7 @@ const Playbar = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(true);
+  const [isExpand, setIsExpand] = useState(false);
 
   const audioRef = useRef(null);
   const seekBarRef = useRef();
@@ -125,56 +126,121 @@ const Playbar = () => {
   }
 
   return (
-    <div className="w-full relative p-4 pb-0 rounded-3xl bg-white/30 backdrop-blur-lg border border-white/30 flex gap-6 flex-col items-center">
+    <div
+      className={`w-full relative ${
+        isExpand ? "rounded-t-3xl overflow-hidden border border-white/30 " : "rounded-none"
+      } transition-all duration-300 bg-white/30 backdrop-blur-lg flex flex-col items-center`}
+    >
+      
       {/* Audio Element */}
       <audio ref={audioRef} src={currentSong.preview} />
-      <div className="flex flex-col items-center text-center space-y-1">
-        <img
-          src={currentSong?.album?.cover}
-          alt={currentSong?.title}
-          className="h-40 w-40 rounded-full border border-white/30"
-        />
-        <p className="text-lg font-semibold">{currentSong?.title}</p>
-        <p className="text-sm text-gray-600">{currentSong?.artist?.name}</p>
-      </div>
-      <div className="bg-white/30 rounded-t-3xl py-2 w-full relative">
-      {/* Controls */}
-      <div className={`flex items-center gap-2 relative w-full justify-center `}>
-        <button onClick={handleShuffleToggle} className={`p-[5px] rounded-full transition-all duration-300 active:scale-50 ${isShuffle ? "bg-gray-700":"bg-transparent"}`}>
-          <Shuffle size={20}/>
-        </button>
-        <button onClick={() => dispatch(playPrevious())}
-           className="active:scale-50 active:bg-slate-700 active:rounded-full p-2 transition-all duration-300">
-          <SkipBack size={28}/>
-        </button>
-        <button
-          onClick={togglePlay}
-          className="w-14 h-14 rounded-full text-black bg-white flex items-center justify-center shadow-md  active:scale-90 transition"
-        >
-          {isPlaying ? <Pause size={28} /> : <Play size={28} />}
-        </button>
-        <button onClick={() => dispatch(playNext())}
-          className="active:scale-50 active:bg-slate-700 active:rounded-full p-2 transition-all duration-300">
-          <SkipForward size={28}/>
-        </button>
-        <div className={`${volume ?"":"bg-gray-700"} cursor-pointer p-[5px] rounded-full transition-all duration-300 active:scale-50`} onClick={()=>{setVolume(!volume)}}>
-          {getVolumeIcon()}
-        </div>
-      </div>
-
-
-      {/*Seekbar*/}
       <div
-        className="absolute bottom-0 w-full h-2 bg-white/50 rounded-full cursor-pointer"
-        onClick={handleSeek}
-        ref={seekBarRef}
+        className={`flex ${
+          isExpand
+            ? "flex-col items-center text-center"
+            : "flex-row gap-2 justify-between"
+        } py-2 bg-black transition-all duration-700 items-center w-full px-2`}
       >
         <div
-          className="h-2 bg-black w-[30%] rounded-full"
-          style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
-        />
+          className={`flex ${
+            isExpand ? "flex-col" : "flex-row"
+          } items-center gap-2`}
+        >
+          <img
+            src={currentSong?.album?.cover}
+            alt={currentSong?.title}
+            className={`${
+              isExpand ? "h-32 w-32" : "h-16 w-16"
+            } transition-all duration-300 rounded-full border border-white/30`}
+          />
+          <div>
+            <p className="text-md font-semibold">{currentSong?.title}</p>
+            <p className={`text-sm text-white`}>{currentSong?.artist?.name}</p>
+          </div>
+        </div>
+
+        <button
+          onClick={togglePlay}
+          className={`rounded-full text-black bg-white flex items-center justify-center shadow-md hover:scale-110 active:scale-90 transition-all duration-300 ${
+            isExpand ? "h-0 w-0 opacity-0" : "w-12 h-12 opacity-100"
+          }`}
+        >
+          {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+        </button>
       </div>
+      <div
+        className={`${
+          isExpand
+            ? "min-h-20 opacity-100 bg-white/30 bg-opacity-100 py-2"
+            : "h-0 opacity-0"
+        } transition-all duration-300 w-full relative`}
+      >
+        {/* Controls */}
+        <div
+          className={`flex items-center justify-center gap-2 ${
+            isExpand ? "min-h-20 opacity-100" : "h-0 opacity-0"
+          }`}
+        >
+          <button
+            onClick={handleShuffleToggle}
+            className={`p-[5px] hover:scale-125 rounded-full transition-all duration-300 active:scale-50 ${
+              isShuffle ? "bg-gray-500" : "bg-transparent"
+            }`}
+          >
+            <Shuffle size={20} />
+          </button>
+          <button
+            onClick={() => dispatch(playPrevious())}
+            className="active:scale-50 bg-gray-700 rounded-full hover:scale-110 active:bg-slate-700 active:rounded-full p-2 transition-all duration-300"
+          >
+            <SkipBack size={28} />
+          </button>
+          <button
+            onClick={togglePlay}
+            className="w-16 h-16 rounded-full text-black bg-white flex items-center justify-center shadow-md hover:scale-110 active:scale-90 transition-all duration-300"
+          >
+            {isPlaying ? <Pause size={32} /> : <Play size={32} />}
+          </button>
+          <button
+            onClick={() => dispatch(playNext())}
+            className="active:scale-50 bg-gray-700 rounded-full hover:scale-110 active:bg-slate-700  p-2 transition-all duration-300"
+          >
+            <SkipForward size={28} />
+          </button>
+          <div
+            className={`${
+              volume ? "" : "bg-gray-500"
+            } cursor-pointer p-[5px] rounded-full transition-all duration-300 active:scale-50 hover:scale-125`}
+            onClick={() => {
+              setVolume(!volume);
+            }}
+          >
+            {getVolumeIcon()}
+          </div>
+        </div>
+
+        {/*Seekbar*/}
+        <div
+          className="absolute top-0 w-full h-2 bg-black cursor-pointer"
+          onClick={handleSeek}
+          ref={seekBarRef}
+        >
+          <div
+            className="h-2 bg-white w-[30%]"
+            style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
+          />
+        </div>
       </div>
+      <button
+        className={`${
+          isExpand ? "rotate-180" : "rotate-0"
+        } h-4 px-2 bg-white w-full text-black`}
+        onClick={() => {
+          setIsExpand(!isExpand);
+        }}
+      >
+        ^
+      </button>
     </div>
   );
 };
