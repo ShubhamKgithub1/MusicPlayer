@@ -5,6 +5,7 @@ const initialState = {
   isPlaying: false,
   queue: [],
   currentSongIndex: 0,
+  isShuffle: true,
 };
 
 const playerSlice = createSlice({
@@ -28,17 +29,39 @@ const playerSlice = createSlice({
       state.queue.push(action.payload);
     },
     playNext: (state) => {
-      if (
-        state.currentSongIndex !== null &&
-        state.currentSongIndex < state.queue.length - 1
-      ) {
-        state.currentSongIndex += 1;
+      if (!state.queue || state.queue.length === 0) return;
+
+      if (state.isShuffle) {
+        // Shuffle logic: pick a random index that's not the current one
+        let nextIndex;
+        do {
+          nextIndex = Math.floor(Math.random() * state.queue.length);
+        } while (
+          nextIndex === state.currentSongIndex &&
+          state.queue.length > 1
+        );
+
+        state.currentSongIndex = nextIndex;
+      } else {
+        // Normal next song logic
+        if (state.currentSongIndex < state.queue.length - 1) {
+          state.currentSongIndex += 1;
+        } else {
+          state.currentSongIndex = 0; // Loop to beginning (optional)
+        }
       }
+
+      state.isPlaying = true;
     },
+
     playPrevious: (state) => {
       if (state.currentSongIndex !== null && state.currentSongIndex > 0) {
         state.currentSongIndex -= 1;
+        state.isPlaying = true;
       }
+    },
+    toggleShuffle:(state)=>{
+      state.isShuffle = !state.isShuffle;
     },
   },
 });
@@ -51,6 +74,8 @@ export const {
   playNext,
   currentSongIndex,
   playPrevious,
-  setCurrentSongIndex
+  setCurrentSongIndex,
+  isShuffle,
+  toggleShuffle
 } = playerSlice.actions;
 export default playerSlice.reducer;

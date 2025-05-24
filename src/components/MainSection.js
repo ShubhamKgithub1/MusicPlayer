@@ -6,7 +6,7 @@ const MainSection = ({ hits, popular }) => {
   if (!hits || !popular) return null;
   return (
     <div className="flex h-full gap-4">
-      <div className="flex flex-col w-[40%] p-6 pb-0 bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl">
+      <div className="flex flex-col w-[40%] p-4 pb-0 bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl">
         <BannerCard topTracks={hits} />
         <div className="max-h-[60%] w-full flex flex-col">
           <h1 className="font-bold text-2xl text-white py-4">
@@ -15,11 +15,6 @@ const MainSection = ({ hits, popular }) => {
           <div className="flex overflow-auto hide-scrollbar w-full">
             <SongTile trackList={hits} />
           </div>
-          {/* <div className="flex overflow-x-auto gap-6 snap-x snap-mandatory hide-scrollbar">
-            {devotional.map((song) => (
-              <SongsCard key={song?.id} track={song} />
-            ))}
-          </div> */}
         </div>
       </div>
       <div className="flex-1 gap-4 rounded-3xl h-full flex flex-col">

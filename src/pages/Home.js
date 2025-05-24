@@ -7,7 +7,6 @@ import "../App.css";
 const Home = () => {
   const [popular, setPopular] = useState([]);
   const [hits, setHits] = useState([]);
-  // const [topDevotional, setTopDevotional] = useState([]);
   useEffect(() => {
     const fetchSongs = async () => {
       const top = await getPopular();
