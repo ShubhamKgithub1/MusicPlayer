@@ -26,8 +26,13 @@ const playerSlice = createSlice({
       state.currentSongIndex = 0;
     },
     addToQueue: (state, action) => {
+      if (Array.isArray(action.payload)) {
+        console.warn("Expected single track but got array in addToQueue");
+        return;
+      }
       state.queue.push(action.payload);
     },
+
     playNext: (state) => {
       if (!state.queue || state.queue.length === 0) return;
 
@@ -60,7 +65,7 @@ const playerSlice = createSlice({
         state.isPlaying = true;
       }
     },
-    toggleShuffle:(state)=>{
+    toggleShuffle: (state) => {
       state.isShuffle = !state.isShuffle;
     },
   },
@@ -76,6 +81,6 @@ export const {
   playPrevious,
   setCurrentSongIndex,
   isShuffle,
-  toggleShuffle
+  toggleShuffle,
 } = playerSlice.actions;
 export default playerSlice.reducer;

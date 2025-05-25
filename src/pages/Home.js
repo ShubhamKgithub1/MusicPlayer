@@ -3,6 +3,7 @@ import { getHits, getPopular } from "../services/deezerAPI";
 import { useEffect, useState } from "react";
 import MainSection from "../components/MainSection";
 import "../App.css";
+import Playbar from "../components/Playbar";
 
 const Home = () => {
   const [popular, setPopular] = useState([]);
@@ -28,6 +29,9 @@ const Home = () => {
         ) : (
           <h1>Loading...</h1>
         )}
+      </div>
+      <div className="absolute top-4 w-[20dvw] pr-4 right-2 text-white">
+        <Playbar />
       </div>
     </div>
   );

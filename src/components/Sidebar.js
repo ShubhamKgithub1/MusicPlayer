@@ -19,7 +19,7 @@ const Sidebar = () => {
       </ul>
 
       {/* Login Message Card */}
-      <div className="bg-white/30 border border-white/40 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm">
+      <div className="bg-white/30 border border-white/40 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm ">
         <h2 className="text-lg text-white font-semibold">
           You're not logged in
         </h2>
@@ -31,9 +31,7 @@ const Sidebar = () => {
           Login
         </button>
       </div>
-      <div className="absolute bottom-0 w-[20dvw] pr-4 left-0">
-        <Playbar />
-      </div>
+      
     </nav>
   );
 };

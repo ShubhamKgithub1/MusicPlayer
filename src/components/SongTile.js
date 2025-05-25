@@ -1,5 +1,11 @@
 import { useDispatch } from "react-redux";
-import { setCurrentSong, playPause, setQueue, setCurrentSongIndex } from "../reduxStore/playerSlice";
+import {
+  playPause,
+  setQueue,
+  setCurrentSongIndex,
+  addToQueue,
+} from "../reduxStore/playerSlice";
+import { Play } from "lucide-react";
 export const SongTile = ({ trackList }) => {
   const dispatch = useDispatch();
 
@@ -8,15 +14,15 @@ export const SongTile = ({ trackList }) => {
     dispatch(setQueue(trackList));
     const index = trackList.findIndex((t) => t.id === track.id);
 
-    // Update current song index and play
     if (index !== -1) {
       dispatch(setCurrentSongIndex(index));
       dispatch(playPause(true));
     }
     // dispatch(playPause(true));
   };
+
   if (!trackList) {
-    return null
+    return null;
   }
 
   return (
@@ -24,9 +30,10 @@ export const SongTile = ({ trackList }) => {
       {trackList.map((track) => (
         <div
           key={track.id}
-          onClick={() => handlePlay(track)}
-          className="flex items-center gap-4 rounded-lg py-2 shadow-sm hover:bg-white/40 transition-all duration-200 cursor-pointer"
+          className="relative z-10 flex items-center justify-center gap-4 rounded-lg p-1 shadow-sm transition-all duration-200 cursor-pointer group"
         >
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-200 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+
           <img
             src={track.album.cover_small}
             alt={track.title}
@@ -37,6 +44,17 @@ export const SongTile = ({ trackList }) => {
               {track.title_short}
             </h2>
             <p className="text-xs text-gray-500">{track.artist.name}</p>
+          </div>
+          <div className="flex gap-2 justify-center items-center ml-auto">
+            <button onClick={() => handlePlay(track)} className="flex justify-center items-center size-10 transition-all duration-300 rounded-full p-2 active:bg-gray-500 active:scale-75 shadow-lg ">
+              <Play size={16} />
+            </button>
+            <button
+              onClick={() => dispatch(addToQueue(track))}
+              className="transition-all duration-300 size-10 rounded-full p-2 shadow-xl active:bg-gray-500 hover:shadow-md active:scale-75"
+            >
+              Q
+            </button>
           </div>
         </div>
       ))}

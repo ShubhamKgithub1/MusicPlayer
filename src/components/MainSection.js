@@ -12,7 +12,7 @@ const MainSection = ({ hits, popular }) => {
           <h1 className="font-bold text-2xl text-white py-4">
             {hits[0]?.artist?.name} Songs
           </h1>
-          <div className="flex overflow-auto hide-scrollbar w-full">
+          <div className="flex overflow-auto hide-scrollbar w-full px-2">
             <SongTile trackList={hits} />
           </div>
         </div>
