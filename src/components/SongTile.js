@@ -30,7 +30,7 @@ export const SongTile = ({ trackList }) => {
       {trackList.map((track) => (
         <div
           key={track.id}
-          className="relative z-10 flex items-center justify-center gap-4 rounded-lg p-1 shadow-sm transition-all duration-200 cursor-pointer group"
+          className="relative z-10 snap-start flex items-center justify-center gap-4 rounded-lg p-1 shadow-sm transition-all duration-200 cursor-pointer group"
         >
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-200 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
 
@@ -46,7 +46,10 @@ export const SongTile = ({ trackList }) => {
             <p className="text-xs text-gray-500">{track.artist.name}</p>
           </div>
           <div className="flex gap-2 justify-center items-center ml-auto">
-            <button onClick={() => handlePlay(track)} className="flex justify-center items-center size-10 transition-all duration-300 rounded-full p-2 active:bg-gray-500 active:scale-75 shadow-lg ">
+            <button
+              onClick={() => handlePlay(track)}
+              className="flex justify-center items-center size-10 transition-all duration-300 rounded-full p-2 active:bg-gray-500 active:scale-75 shadow-lg "
+            >
               <Play size={16} />
             </button>
             <button

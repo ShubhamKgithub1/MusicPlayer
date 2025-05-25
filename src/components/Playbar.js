@@ -128,7 +128,7 @@ const Playbar = () => {
 
   return (
     <div
-      className={`w-full relative ${
+      className={`w-full relative z-50 ${
         isExpand
           ? "rounded-3xl overflow-hidden border border-white/30 shadow-2xl"
           : "rounded-none border-none shadow-xl"
@@ -136,6 +136,7 @@ const Playbar = () => {
     >
       {/* Audio Element */}
       <audio ref={audioRef} src={currentSong.preview} />
+      {/*Collapsed Playbar*/}
       <div
         className={`flex items-center  ${
           isExpand
@@ -157,15 +158,21 @@ const Playbar = () => {
                 : "h-16 w-16 border-none"
             } transition-all duration-500 rounded-full`}
           />
-          <div className={`${isExpand?"items-center":"items-start"} flex flex-col justify-center `}>
+          <div
+            className={`${
+              isExpand ? "items-center" : "items-start"
+            } flex flex-col justify-center `}
+          >
             <p
               className={` ${
-                isExpand ? "text-lg" : "text-base "
+                isExpand ? "text-lg truncate" : "text-base "
               } font-semibold`}
             >
-              {currentSong?.title}
+              {currentSong?.title_short}
             </p>
-            <p className={`text-xs text-white`}>{currentSong?.artist?.name}</p>
+            <p className={`text-xs text-white truncate`}>
+              {currentSong?.artist?.name}
+            </p>
           </div>
         </div>
 
@@ -178,16 +185,17 @@ const Playbar = () => {
           {isPlaying ? <Pause size={20} /> : <Play size={20} />}
         </button>
       </div>
+      {/*Expanded Playbar*/}
       <div
         className={`${
           isExpand
-            ? "min-h-20 opacity-100 bg-white/30 bg-opacity-100 py-2"
+            ? "min-h-20 opacity-100  py-2"
             : "h-0 opacity-0 py-0 bg-transparent bg-opacity-0"
         } transition-all duration-500 w-full relative`}
       >
         {/* Controls */}
         <div
-          className={`flex items-center justify-center gap-2 ${
+          className={`flex items-center bg-white/30 bg-opacity-100 justify-center gap-2 ${
             isExpand ? "min-h-20 w-full opacity-100" : "w-0 h-0 opacity-0"
           }`}
         >
@@ -205,7 +213,7 @@ const Playbar = () => {
             onClick={() => dispatch(playPrevious())}
             className={`${
               isExpand
-                ? "min-h-12 min-w-12 opacity-100 active:scale-50 bg-gray-700 rounded-full hover:scale-110 active:bg-slate-700 active:rounded-full p-2"
+                ? "flex justify-center items-center h-10 w-10 opacity-100 active:scale-50 bg-gray-700 rounded-full hover:scale-110 active:bg-slate-700 active:rounded-full p-2"
                 : "h-0 w-0 opacity-0 p-0"
             } transition-all duration-300`}
           >
@@ -223,7 +231,7 @@ const Playbar = () => {
             onClick={() => dispatch(playNext())}
             className={` ${
               isExpand
-                ? "min-h-12 min-w-12 opacity-100 p-2 active:scale-50 bg-gray-700 rounded-full hover:scale-110 active:bg-slate-700"
+                ? "flex justify-center items-center h-10 w-10 opacity-100 p-2 active:scale-50 bg-gray-700 rounded-full hover:scale-110 active:bg-slate-700"
                 : "h-0 w-0 opacity-0 p-0"
             } transition-all duration-300`}
           >
@@ -245,25 +253,35 @@ const Playbar = () => {
 
         {/*Seekbar*/}
         <div
-          className={`${isExpand?"w-full h-2 opacity-100 bg-black":"h-0 opacity-0 bg-transparent"} absolute top-0 cursor-pointer transition-all duration-300`}
+          className={`${
+            isExpand
+              ? "w-full h-2 opacity-100 bg-black"
+              : "h-0 opacity-0 bg-transparent"
+          } absolute top-0 cursor-pointer transition-all duration-300`}
           onClick={handleSeek}
           ref={seekBarRef}
         >
           <div
-            className={`${isExpand?"h-2 bg-white opacity-100":"h-0 bg-transparent opacity-0"} transition-all duration-300`}
+            className={`${
+              isExpand
+                ? "h-2 bg-white opacity-100"
+                : "h-0 bg-transparent opacity-0"
+            } transition-all duration-300`}
             style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
           />
         </div>
+        {/*Queue Container */}
+        <div
+          className={`${
+            isExpand ? "min-h-[10dvh] opacity-100" : "h-0 opacity-0"
+          } max-h-[50dvh] w-full transition-all duration-700 overflow-auto hide-scrollbar`}
+        >
+          {queue.map((track, index) => (
+            <QueueCard track={track} key={track?.id} />
+          ))}
+        </div>
       </div>
-      <div
-        className={`${
-          isExpand ? "min-h-[10dvh] opacity-100" : "h-0 opacity-0"
-        } max-h-[50dvh] w-full transition-all duration-700 overflow-auto hide-scrollbar`}
-      >
-        {queue.map((track, index) => (
-          <QueueCard track={track} key={track?.id} />
-        ))}
-      </div>
+      {/*Playbar Expand Icon*/}
       <button
         className={`${
           isExpand ? "rotate-0" : "rotate-180"

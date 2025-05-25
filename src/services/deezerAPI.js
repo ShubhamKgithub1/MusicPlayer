@@ -66,3 +66,16 @@ export const getTopAlbums = async () => {
   }
 };
 
+export const getSearch = async (tag) => {
+  try {
+    const res = await fetch(
+      `https://deezerdevs-deezer.p.rapidapi.com/search?q=${tag}`,
+      options
+    );
+    const data = await res.json();
+    return data.data;
+  } catch (error) {
+    console.log("Error searching..", error);
+    return [];
+  }
+};

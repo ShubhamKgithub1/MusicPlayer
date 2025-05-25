@@ -1,0 +1,84 @@
+import { useEffect, useState } from "react";
+import { getSearch } from "../services/deezerAPI";
+import { SongTile } from "./SongTile";
+
+const Search = () => {
+  const quickSearchTags = [
+    "Pop",
+    "Hip-Hop",
+    "Chill",
+    "Workout",
+    "Romantic",
+    "Classical",
+    "Indie",
+    "Jazz",
+    "Electronic",
+    "Trending",
+    "Throwback",
+    "Party",
+    "Lo-Fi",
+    "Instrumental",
+    "Mood Boosters",
+  ];
+  const [tag, setTag] = useState("");
+  const [result, setResult] = useState([]);
+
+  const onSearch = (searchTag) => {
+    if (!searchTag) return null;
+
+    const search = async () => {
+      const res = await getSearch(searchTag);
+      setResult(res);
+      console.log("Search result for ", searchTag);
+      console.log(res);
+    };
+    search();
+  };
+
+  return (
+    <div className="w-full h-full bg-white/30 rounded-3xl p-6 flex flex-col">
+      <div>
+        <div className="flex gap-4">
+          <input
+            type="search"
+            placeholder="search songs.."
+            value={tag}
+            className="w-[50%] rounded-full p-2 outline-none text-black"
+            onChange={(e) => setTag(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                onSearch(tag);
+              }
+            }}
+          />
+          <button
+            className="border px-4 py-2 rounded-3xl bg-white text-green-500 font-semibold hover:bg-transparent hover:text-white transition-all duration-300 active:scale-95 shadow-md hover:shadow-lg"
+            onClick={() => onSearch(tag)}
+          >
+            Search
+          </button>
+        </div>
+        <h1 className="text-lg font-semibold text-white py-4">Tags</h1>
+        <div className="flex gap-4 flex-wrap w-2/3 border-b pb-6">
+          {quickSearchTags.map((c, index) => (
+            <div
+              key={index}
+              className="cursor-pointer active:scale-x-90 transition-all duration-300 bg-white hover:bg-transparent hover:text-white text-gray-500 font-medium w-max px-2 py-1 rounded-full border"
+              onClick={() => {
+                setTag(c);
+                onSearch(c);
+              }}
+            >
+              <h1>{c}</h1>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="relative w-2/3 overflow-y-scroll snap-y snap-mandatory flex-1 hide-scrollbar my-4">
+        {result && <SongTile trackList={result} />}
+      </div>
+    </div>
+  );
+};
+
+export default Search;
