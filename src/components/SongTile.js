@@ -6,7 +6,8 @@ import {
   addToQueue,
 } from "../reduxStore/playerSlice";
 import { Play } from "lucide-react";
-export const SongTile = ({ trackList }) => {
+
+const SongTile = ({ trackList }) => {
   const dispatch = useDispatch();
 
   const handlePlay = (track) => {
@@ -53,7 +54,9 @@ export const SongTile = ({ trackList }) => {
               <Play size={16} />
             </button>
             <button
-              onClick={() => dispatch(addToQueue(track))}
+              onClick={() => {dispatch(addToQueue(track))
+                dispatch(playPause(true))
+              }}
               className="transition-all duration-300 size-10 rounded-full p-2 shadow-xl active:bg-gray-500 hover:shadow-md active:scale-75"
             >
               Q
@@ -64,3 +67,5 @@ export const SongTile = ({ trackList }) => {
     </div>
   );
 };
+
+export default SongTile;

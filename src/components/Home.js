@@ -1,9 +1,38 @@
 import BannerCard from "./BannerCard";
 import { ArtistTitleCard } from "./ArtistTitleCard";
-import { SongTile } from "./SongTile";
+import SongTile from "./SongTile";
+import { useEffect, useState } from "react";
+import { getHits, getPopular } from "../services/deezerAPI";
 
-const MainSection = ({ hits, popular }) => {
-  if (!hits || !popular) return null;
+const Home = () => {
+  const [popular, setPopular] = useState([]);
+  const [hits, setHits] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchSongs = async () => {
+      const top = await getPopular();
+      const hits = await getHits();
+      setPopular(top);
+      setHits(hits);
+      setLoading(false);
+    };
+    fetchSongs();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center w-full h-full text-white">
+        <div className="flex items-end justify-center gap-2 h-20">
+          <div className="w-1 h-5 bg-white animate-[bounce_0.6s_infinite] origin-bottom" />
+          <div className="w-1 h-7 bg-white animate-[bounce_0.6s_infinite_0.1s] origin-bottom" />
+          <div className="w-1 h-9 bg-white animate-[bounce_0.6s_infinite_0.2s] origin-bottom" />
+          <div className="w-1 h-7 bg-white animate-[bounce_0.6s_infinite_0.3s] origin-bottom" />
+          <div className="w-1 h-5 bg-white animate-[bounce_0.6s_infinite_0.4s] origin-bottom" />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-full gap-4">
       <div className="flex flex-col w-[40%] p-4  bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl">
@@ -46,4 +75,4 @@ const MainSection = ({ hits, popular }) => {
   );
 };
 
-export default MainSection;
+export default Home;

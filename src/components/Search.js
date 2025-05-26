@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getSearch } from "../services/deezerAPI";
-import { SongTile } from "./SongTile";
+import SongTile from "./SongTile";
 
 const Search = () => {
   const quickSearchTags = [
@@ -20,19 +20,24 @@ const Search = () => {
     "Instrumental",
     "Mood Boosters",
   ];
+
   const [tag, setTag] = useState("");
   const [result, setResult] = useState([]);
+  const [loading, setLoading] = useState(false); // New state
 
-  const onSearch = (searchTag) => {
-    if (!searchTag) return null;
+  const onSearch = async (searchTag) => {
+    if (!searchTag) return;
 
-    const search = async () => {
+    setLoading(true); // Start loading
+
+    try {
       const res = await getSearch(searchTag);
       setResult(res);
-      console.log("Search result for ", searchTag);
-      console.log(res);
-    };
-    search();
+    } catch (err) {
+      console.error("Error while searching:", err);
+    } finally {
+      setLoading(false); // Always stop loading
+    }
   };
 
   return (
@@ -43,12 +48,10 @@ const Search = () => {
             type="search"
             placeholder="search songs.."
             value={tag}
-            className="w-[50%] rounded-full p-2 outline-none text-black"
+            className="w-[50%] rounded-full p-2 outline-none text-black shadow-md"
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                onSearch(tag);
-              }
+              if (e.key === "Enter") onSearch(tag);
             }}
           />
           <button
@@ -58,6 +61,7 @@ const Search = () => {
             Search
           </button>
         </div>
+
         <h1 className="text-lg font-semibold text-white py-4">Tags</h1>
         <div className="flex gap-4 flex-wrap w-2/3 border-b pb-6">
           {quickSearchTags.map((c, index) => (
@@ -74,8 +78,21 @@ const Search = () => {
           ))}
         </div>
       </div>
+
       <div className="relative w-2/3 overflow-y-scroll snap-y snap-mandatory flex-1 hide-scrollbar my-4">
-        {result && <SongTile trackList={result} />}
+        {loading ? (
+          <div className="flex items-center justify-center w-full h-full text-white">
+            <div className="flex items-end justify-center gap-2 h-20">
+              <div className="w-1 h-4 bg-white animate-[bounce_0.6s_infinite] origin-bottom" />
+              <div className="w-1 h-6 bg-white animate-[bounce_0.6s_infinite_0.1s] origin-bottom" />
+              <div className="w-1 h-8 bg-white animate-[bounce_0.6s_infinite_0.2s] origin-bottom" />
+              <div className="w-1 h-6 bg-white animate-[bounce_0.6s_infinite_0.3s] origin-bottom" />
+              <div className="w-1 h-4 bg-white animate-[bounce_0.6s_infinite_0.4s] origin-bottom" />
+            </div>
+          </div>
+        ) : (
+          result.length > 0 && <SongTile trackList={result} />
+        )}
       </div>
     </div>
   );
