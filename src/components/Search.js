@@ -23,12 +23,12 @@ const Search = () => {
 
   const [tag, setTag] = useState("");
   const [result, setResult] = useState([]);
-  const [loading, setLoading] = useState(false); // New state
+  const [loading, setLoading] = useState(false);
 
   const onSearch = async (searchTag) => {
     if (!searchTag) return;
 
-    setLoading(true); // Start loading
+    setLoading(true);
 
     try {
       const res = await getSearch(searchTag);
@@ -36,12 +36,12 @@ const Search = () => {
     } catch (err) {
       console.error("Error while searching:", err);
     } finally {
-      setLoading(false); // Always stop loading
+      setLoading(false);
     }
   };
 
   return (
-    <div className="w-full h-full bg-white/30 rounded-3xl p-6 flex flex-col">
+    <div className="w-full h-full bg-white/30 rounded-3xl p-6 flex flex-col animate-fade-in">
       <div>
         <div className="flex gap-4">
           <input

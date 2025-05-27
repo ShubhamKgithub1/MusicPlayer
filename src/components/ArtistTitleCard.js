@@ -1,7 +1,6 @@
 export const ArtistTitleCard = ({ prop }) => {
-  console.log(prop);
   return (
-    <div className="text-white flex items-center gap-10 p-6 relative border-b-2 rounded-xl">
+    <div className="text-white flex items-center gap-10 p-6 relative border-b-2 rounded-xl animate-fade-in">
       <img
         src={prop?.artist?.picture}
         alt="not found"

@@ -1,9 +1,15 @@
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
 
 const Sidebar = () => {
+
+  const { user, login, logout } = useAuth();
+
+
   return (
     <nav className="w-full h-full flex flex-col gap-3 text-white relative">
-      <ul className="flex flex-col w-full items-start text-lg font-medium p-4 rounded-3xl bg-white/30 backdrop-blur-lg border border-white/40 gap-2">
+      <ul className="flex flex-col w-full items-start text-lg font-medium p-4 rounded-3xl bg-white/30 backdrop-blur-lg border border-white/40 gap-2 animate-fade-in">
         <li className="self-center text-xl font-bold">Music Player</li>
         <NavLink
           to="/home"
@@ -41,7 +47,14 @@ const Sidebar = () => {
         </NavLink>
       </ul>
 
-      <div className="bg-white/30 border border-white/40 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm ">
+          {user ? (
+        <div className="flex items-center gap-4 animate-fade-in">
+          <img src={user.photoURL} alt="avatar" className="w-8 h-8 rounded-full" />
+          <span>{user.displayName}</span>
+          <button onClick={logout} className="px-2 py-1 bg-red-500 rounded">Logout</button>
+        </div>
+      ) : (
+        <div className="bg-white/30 border border-white/40 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
         <h2 className="text-lg text-white font-semibold">
           You're not logged in
         </h2>
@@ -49,10 +62,15 @@ const Sidebar = () => {
           Login to save your favorite songs and access your playlist across
           devices.
         </p>
-        <button className="mt-2 px-4 py-2 border text-green-500 font-semibold rounded-full bg-white hover:bg-transparent hover:text-white hover:border-white/30 transition">
-          Login
+       
+           <button className="mt-2 px-4 py-2 border text-green-500 font-semibold rounded-full bg-white hover:bg-transparent hover:text-white hover:border-white/30 transition"
+           onClick={login}>
+          Continue With Google
         </button>
+        
+       
       </div>
+      )}
     </nav>
   );
 };

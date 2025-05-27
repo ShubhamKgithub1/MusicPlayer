@@ -34,8 +34,8 @@ const Home = () => {
   }
 
   return (
-    <div className="flex h-full gap-4">
-      <div className="flex flex-col w-[40%] p-4  bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl">
+    <div className="flex h-full gap-4 ">
+      <div className="flex flex-col w-[40%] p-4  bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl animate-fade-in-delay">
         <BannerCard topTracks={hits} />
         <div className="max-h-[60%] w-full flex flex-col">
           <h1 className="font-bold text-2xl text-white py-4">
@@ -49,7 +49,7 @@ const Home = () => {
       <div className="flex-1 gap-4 rounded-3xl h-full flex flex-col">
         <ArtistTitleCard prop={hits[0]} />
         <div className="overflow-auto flex gap-4 w-full flex-1">
-          <div className="w-[50%] flex flex-col bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl hide-scrollbar p-4">
+          <div className="w-[50%] flex flex-col bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl hide-scrollbar p-4 animate-fade-in">
             <div>
               <h1 className="text-white text-lg font-medium py-2">
                 Most Popular
@@ -59,7 +59,7 @@ const Home = () => {
               <SongTile trackList={popular} />
             </div>
           </div>
-          <div className="w-[50%] flex flex-col bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl hide-scrollbar p-4">
+          <div className="w-[50%] flex flex-col bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl hide-scrollbar p-4 animate-fade-in">
             <div>
               <h1 className="text-white text-lg font-medium py-2">
                 Weekly Hits

@@ -132,7 +132,7 @@ const Playbar = () => {
         isExpand
           ? "rounded-3xl overflow-hidden border border-white/30 shadow-2xl"
           : "rounded-none border-none shadow-xl"
-      } transition-all duration-500 bg-white/30 backdrop-blur-lg flex flex-col items-center`}
+      } transition-all duration-500 bg-white/30 backdrop-blur-lg flex flex-col items-center animate-fade-in`}
     >
       {/* Audio Element */}
       <audio ref={audioRef} src={currentSong.preview} />
@@ -189,9 +189,9 @@ const Playbar = () => {
       <div
         className={`${
           isExpand
-            ? "min-h-20 opacity-100  py-2"
+            ? "min-h-20 opacity-100 py-2"
             : "h-0 opacity-0 py-0 bg-transparent bg-opacity-0"
-        } transition-all duration-500 w-full relative`}
+        } transition-all duration-500 w-full relative `}
       >
         {/* Controls */}
         <div

@@ -54,8 +54,9 @@ const SongTile = ({ trackList }) => {
               <Play size={16} />
             </button>
             <button
-              onClick={() => {dispatch(addToQueue(track))
-                dispatch(playPause(true))
+              onClick={() => {
+                dispatch(addToQueue(track));
+                dispatch(playPause(true));
               }}
               className="transition-all duration-300 size-10 rounded-full p-2 shadow-xl active:bg-gray-500 hover:shadow-md active:scale-75"
             >
