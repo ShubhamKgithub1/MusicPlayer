@@ -13,7 +13,7 @@ const Welcome = () => {
   }, [navigate]);
 
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center bg-white/30 animate-fade-in text-white relative overflow-hidden rounded-3xl border border-white/30">
+    <div className="h-full absolute w-screen top-0 left-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-[#134e5e] to-[#71b280] animate-fade-in text-white overflow-hidden">
       <div className="text-center flex flex-col gap-4 z-10">
         <h1 className="text-5xl font-bold animate-fade-in-delay">Welcome!</h1>
         <p className="text-lg font-light animate-fade-in-delay2">

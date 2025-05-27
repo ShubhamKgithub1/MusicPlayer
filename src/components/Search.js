@@ -41,21 +41,21 @@ const Search = () => {
   };
 
   return (
-    <div className="w-full h-full bg-white/30 rounded-3xl p-6 flex flex-col animate-fade-in">
+    <div className="w-full h-full bg-white/30 rounded-3xl p-4 flex flex-col animate-fade-in">
       <div>
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
           <input
             type="search"
             placeholder="search songs.."
             value={tag}
-            className="w-[50%] rounded-full p-2 outline-none text-black shadow-md"
+            className="w-[50%] rounded-full p-2 outline-none text-gray-500 shadow-md font-medium"
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") onSearch(tag);
             }}
           />
           <button
-            className="border px-4 py-2 rounded-3xl bg-white text-green-500 font-semibold hover:bg-transparent hover:text-white transition-all duration-300 active:scale-95 shadow-md hover:shadow-lg"
+            className="border px-4 p-2 rounded-3xl bg-white text-green-500 font-semibold hover:bg-transparent hover:text-white transition-all duration-300 active:scale-95 shadow-md hover:shadow-lg"
             onClick={() => onSearch(tag)}
           >
             Search
