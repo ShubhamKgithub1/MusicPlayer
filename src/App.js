@@ -9,14 +9,13 @@ function App() {
   return (
     <div className="h-screen bg-forest relative flex min-h-[90dvh] max-h-[100dvh] p-4 gap-4 border border-black overflow-hidden">
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="w-[20dvw] h-full">
+      <div className="w-[18dvw] h-full">
         <Sidebar />
       </div>
       <div className="flex flex-col w-[80dvw] max-h-screen h-screen">
         <div className="pb-4 h-[8%] border-b-2 border-b-white/50">
           <Navbar />
         </div>
-
         <div className="h-[90%] py-4">
           <Outlet />
         </div>

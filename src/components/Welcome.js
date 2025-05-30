@@ -1,4 +1,3 @@
-// src/components/Welcome.js
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,11 +5,22 @@ const Welcome = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const timeout = setTimeout(() => {
+     const allowed = sessionStorage.getItem("justLoggedIn");
+
+    if (!allowed) {
+      navigate("/home");
+      return;
+    }
+    // setTimeout(() => {
+    //   sessionStorage.removeItem("justLoggedIn");
     //   navigate("/home");
-    // }, 3000);
-    // return () => clearTimeout(timeout);
+    // }, 2000);
   }, [navigate]);
+
+  const clickHandler =()=>{
+     sessionStorage.removeItem("justLoggedIn");
+      navigate("/home");
+  };
 
   return (
     <div className="h-full absolute w-screen top-0 left-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-[#134e5e] to-[#71b280] animate-fade-in text-white overflow-hidden">
@@ -21,7 +31,7 @@ const Welcome = () => {
         </p>
         <button
           className="bg-white px-6 py-2 text-black rounded-3xl hover:bg-transparent border  border-white/30 hover:text-white transition-all duration-300 shadow-sm text-lg font-semibold"
-          onClick={() => navigate("/home")}
+          onClick={() => clickHandler()}
         >
           Continue..
         </button>

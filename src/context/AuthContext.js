@@ -1,49 +1,60 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { resetPlayer } from "../reduxStore/playerSlice";
+import { storeUserInfo } from "../services/userService";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({children}) => {
-    const navigate = useNavigate();
-    const [user, setUser] = useState(null);
+export const AuthProvider = ({ children }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
-    const login = async () =>{
-        const provider = new GoogleAuthProvider();
-        try {
-            const result = await signInWithPopup(auth, provider);
-            setUser(result.user);
-            navigate("/welcome");
-        } catch (error) {
-            console.log("Login error:", error);
-        }
-    };
-
-
-const logout = async () =>{
+  const login = async () => {
+    const provider = new GoogleAuthProvider();
     try {
-        await signOut(auth);
-        setUser(null);
-         toast.success("You’ve been logged out!");
+      const result = await signInWithPopup(auth, provider);
+      setUser(result.user);
+      await storeUserInfo(user);
+      sessionStorage.setItem("justLoggedIn", "true");
+      navigate("/welcome");
     } catch (error) {
-        console.log("Logout error:", error);
+      console.log("Login error:", error);
     }
-};
+  };
 
-useEffect(()=>{
-    const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
-        setUser(currentUser);
+  const logout = async () => {
+    try {
+      dispatch(resetPlayer());
+      await signOut(auth);
+      setUser(null);
+      toast.success("You’ve been logged out!");
+    } catch (error) {
+      console.log("Logout error:", error);
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
     });
-    return ()=> unsubscribe();
-},[]);
+    return () => unsubscribe();
+  }, []);
 
-return (
-    <AuthContext.Provider value={{user, login, logout}}>{children}</AuthContext.Provider>
-);
-
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
-export const useAuth = ()=> useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext);

@@ -39,6 +39,7 @@ const Search = () => {
       setLoading(false);
     }
   };
+  console.log(result);
 
   return (
     <div className="w-full h-full bg-white/30 rounded-3xl p-4 flex flex-col animate-fade-in">
@@ -79,7 +80,7 @@ const Search = () => {
         </div>
       </div>
 
-      <div className="relative w-2/3 overflow-y-scroll snap-y snap-mandatory flex-1 hide-scrollbar my-4">
+      <div className="relative w-2/3 overflow-y-scroll flex-1 hide-scrollbar my-4">
         {loading ? (
           <div className="flex items-center justify-center w-full h-full text-white">
             <div className="flex items-end justify-center gap-2 h-20">
@@ -91,7 +92,9 @@ const Search = () => {
             </div>
           </div>
         ) : (
-          result.length > 0 && <SongTile trackList={result} />
+          result.length > 0 && <div className="w-full flex flex-col gap-2">
+            {result.map((res)=>(<SongTile key={res?.id} track={res} trackList={result}/> ))}
+          </div>
         )}
       </div>
     </div>

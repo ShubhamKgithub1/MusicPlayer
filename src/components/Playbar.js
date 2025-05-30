@@ -17,8 +17,12 @@ import {
   toggleShuffle,
 } from "../reduxStore/playerSlice";
 import QueueCard from "./QueueCard";
+import { addRecentlyPlayed } from "../services/userService";
+import { getAuth } from "firebase/auth";
 
 const Playbar = () => {
+  const auth = getAuth();
+  const user = auth.currentUser;
   const dispatch = useDispatch();
   const queue = useSelector((state) => state.player.queue);
   const currentSongIndex = useSelector(
@@ -36,6 +40,7 @@ const Playbar = () => {
 
   const audioRef = useRef(null);
   const seekBarRef = useRef();
+  const lastAddedRef = useRef(null);
 
   const handleSeek = (e) => {
     const seekBar = seekBarRef.current;
@@ -60,18 +65,24 @@ const Playbar = () => {
     } else {
       audio.play();
       dispatch(playPause(true));
-      console.log("Paused");
     }
   };
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    // Logic for play/pause
     if (currentSong && isPlaying) {
-      audio.play().catch((err) => {
-        console.error("Autoplay failed:", err);
-      });
+      audio
+        .play()
+        .then(() => {
+          if (user && currentSong.id !== lastAddedRef.current?.id) {
+            addRecentlyPlayed(user.uid, currentSong);
+            lastAddedRef.current = currentSong;
+          }
+        })
+        .catch((err) => {
+          console.error("Autoplay failed:", err);
+        });
     } else {
       audio.pause();
     }
@@ -103,7 +114,7 @@ const Playbar = () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
       audio.removeEventListener("ended", handleEnded);
     };
-  }, [currentSong, isPlaying, dispatch]);
+  }, [currentSong, isPlaying, dispatch, currentSongIndex, queue, user]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -145,9 +156,9 @@ const Playbar = () => {
         } py-2 bg-black transition-all duration-500 items-center w-full px-2`}
       >
         <div
-          className={`flex ${
+          className={`flex flex-1 ${
             isExpand ? "flex-col" : "flex-row"
-          } items-center gap-2`}
+          } items-center gap-2 overflow-hidden`}
         >
           <img
             src={currentSong?.album?.cover}
@@ -160,13 +171,13 @@ const Playbar = () => {
           />
           <div
             className={`${
-              isExpand ? "items-center flex-grow" : "items-start flex-grow"
-            } flex flex-col justify-center`}
+              isExpand ? "items-center flex-grow flex flex-col justify-center " : "items-start flex-grow truncate"
+            } `}
           >
             <p
               className={` ${
-                isExpand ? "text-lg text-ellipsis whitespace-wrap" : "text-base"
-              } font-semibold overflow-hidden `}
+                isExpand ? "text-lg text-ellipsis whitespace-wrap" : "text-base truncate"
+              } font-semibold`}
             >
               {currentSong?.title_short}
             </p>

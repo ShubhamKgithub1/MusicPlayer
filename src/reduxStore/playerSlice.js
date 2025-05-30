@@ -48,11 +48,10 @@ const playerSlice = createSlice({
 
         state.currentSongIndex = nextIndex;
       } else {
-        // Normal next song logic
         if (state.currentSongIndex < state.queue.length - 1) {
           state.currentSongIndex += 1;
         } else {
-          state.currentSongIndex = 0; // Loop to beginning (optional)
+          state.currentSongIndex = 0;
         }
       }
 
@@ -68,6 +67,7 @@ const playerSlice = createSlice({
     toggleShuffle: (state) => {
       state.isShuffle = !state.isShuffle;
     },
+    resetPlayer: () => initialState,
   },
 });
 
@@ -82,5 +82,6 @@ export const {
   setCurrentSongIndex,
   isShuffle,
   toggleShuffle,
+  resetPlayer
 } = playerSlice.actions;
 export default playerSlice.reducer;

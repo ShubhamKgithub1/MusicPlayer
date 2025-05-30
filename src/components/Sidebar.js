@@ -1,10 +1,29 @@
+import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import RecentlyPlayed from "./RecentlyPlayed";
+import { getFavorites } from "../services/userService";
+import { getAuth } from "firebase/auth";
 
 const Sidebar = () => {
-  const { user, login, logout } = useAuth();
+  const { login, logout } = useAuth();
+  const [favorites, setFavorites] = useState([]);
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+  useEffect(()=>{
+    const fetchData = async ()=>{
+      if(user && user.uid){
+      const data = await getFavorites(user.uid);
+      setFavorites(data);
+      }
+    };
+    fetchData();
+   
+  },[user]);
+   console.log(favorites);
 
   return (
-    <nav className="w-full h-full flex flex-col gap-3 text-white relative">
+    <div className="w-full h-full flex flex-col gap-3 text-white relative">
       {/* <ul className="flex flex-col w-full items-start text-lg font-medium p-4 rounded-3xl bg-white/30 backdrop-blur-lg border border-white/40 gap-2 animate-fade-in">
         <li className="self-center text-xl font-bold">Music Player</li>
         <NavLink
@@ -43,16 +62,21 @@ const Sidebar = () => {
       </ul> */}
 
       {user ? (
-        <div className="flex items-center gap-4 animate-fade-in justify-center">
-          <img
-            src={user.photoURL}
-            alt="avatar"
-            className="w-8 h-8 rounded-full"
-          />
-          <span>{user.displayName}</span>
-          <button onClick={logout} className="px-2 py-1 bg-red-500 rounded">
-            Logout
-          </button>
+        <div className="flex flex-col items-center gap-4 animate-fade-in justify-center w-full">
+          <div className="flex items-center gap-4">
+            <img
+              src={user.photoURL}
+              alt="avatar"
+              className="w-8 h-8 rounded-full"
+            />
+            <span>{user.displayName}</span>
+            <button onClick={logout} className="px-2 py-1 bg-red-500 rounded">
+              Logout
+            </button>
+          </div>
+          <div className="w-full">
+            <RecentlyPlayed/>
+          </div>
         </div>
       ) : (
         <div className="bg-white/30 border border-white/40 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
@@ -72,7 +96,7 @@ const Sidebar = () => {
           </button>
         </div>
       )}
-    </nav>
+    </div>
   );
 };
 
