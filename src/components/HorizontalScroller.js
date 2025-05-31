@@ -50,13 +50,13 @@ const HorizontalScroller = ({ tag }) => {
     <div className="relative overflow-hidden animate-fade-in">
       <div
         onClick={scrollLeft}
-        className="absolute backdrop-blur-lg left-0 flex justify-center items-center h-full bg-gradient-to-r from-black/80 to-transparent z-20 top-1/2 -translate-y-1/2 border border-l-0 border-white/50 overflow-hidden p-2 cursor-pointer"
+        className="absolute backdrop-blur-lg left-0 flex justify-center items-center h-full bg-gradient-to-r from-black/80 to-transparent z-20 top-1/2 -translate-y-1/2 border border-l-0 border-white/20 overflow-hidden p-2 cursor-pointer"
       >
         <ChevronLeft className="text-white" size={24} />
       </div>
       <div
         onClick={scrollRight}
-        className="absolute right-0 flex justify-center items-center h-full top-1/2 -translate-y-1/2 z-20 bg-gradient-to-l from-black/80 to-transparent backdrop-blur-md p-2 overflow-hidden border border-white/50 border-r-0 cursor-pointer"
+        className="absolute right-0 flex justify-center items-center h-full top-1/2 -translate-y-1/2 z-20 bg-gradient-to-l from-black/80 to-transparent backdrop-blur-md p-2 overflow-hidden border border-white/20 border-r-0 cursor-pointer"
       >
         <ChevronRight className="text-white" size={24} />
       </div>
@@ -79,7 +79,7 @@ const HorizontalScroller = ({ tag }) => {
                 {res?.title_short}
               </h2>
               <button
-                className="border border-white/30 bg-white text-black flex justify-center items-center rounded-full p-2 hover:bg-transparent hover:text-white active:scale-75 hover:scale-[1.04] transition-all duration-300"
+                className="border border-white/20 bg-white text-black flex justify-center items-center rounded-full p-2 hover:bg-transparent hover:text-white active:scale-75 hover:scale-[1.04] transition-all duration-300"
                 onClick={() => handlePlay(res)}
               >
                 <Play size={16} />

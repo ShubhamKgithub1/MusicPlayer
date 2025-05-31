@@ -1,5 +1,7 @@
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+import toast from "react-hot-toast";
+import {setFavorites} from "../reduxStore/userSlice";
 
 export const storeUserInfo = async (user) => {
   if (!user || !user.uid) {
@@ -59,7 +61,7 @@ export const addRecentlyPlayed = async (userId, song) => {
   }
 };
 
-export const addToFavorites = async (userId, song)=>{
+export const addToFavorites = async (userId, song, dispatch)=>{
     if(!song?.id || !userId) return;
     try {
       const userDocRef = doc(db, "users", userId);
@@ -74,10 +76,14 @@ export const addToFavorites = async (userId, song)=>{
 
       const isAlreadyFav = favorites.some((fav)=> fav.id === song.id);
 
-      if (isAlreadyFav) return;
+      if (isAlreadyFav) {
+        toast.success(song?.title_short + " is already in favorites");
+        return;}
 
       favorites.unshift(song);
       await setDoc(userDocRef, {favorites}, {merge: true});
+      toast.success(song?.title_short + " added to favorite..");
+        dispatch(setFavorites(favorites));
 
     } catch (error) {
       console.error("Error adding to favorites:", error);
@@ -101,25 +107,30 @@ export const getFavorites = async (userId)=>{
   }
 };
 
-export const removeFromFavorites = async (userId, songId)=>{
-  if (!songId || !userId) {
-    return;
-  }
+export const removeFromFavorites = async (userId, songId, dispatch) => {
+  if (!userId || !songId) return;
 
   try {
     const userDocRef = doc(db, "users", userId);
-    const userDocSnap = getDoc(userDocRef);
+    const userDocSnap = await getDoc(userDocRef);
 
-    if(userDocSnap.exists()){
-      const data = await userDocSnap.data();
+    if (userDocSnap.exists()) {
+      const data = userDocSnap.data();
       const currentFavorites = data.favorites || [];
 
-      const updatedFavorites = currentFavorites.filter((song)=> song.id !==songId);
+      const updatedFavorites = currentFavorites.filter((song) => song.id !== songId);
 
-      await setDoc(userDocRef, {favorites: updatedFavorites},{merge: true});
+      await setDoc(userDocRef, { favorites: updatedFavorites }, { merge: true });
+      toast.success("Removed from favorites.");
+
+      // ✅ Update Redux store
+      dispatch(setFavorites(updatedFavorites));
+    } else {
+      toast.error("User data not found.");
     }
   } catch (error) {
     console.error("Error removing from favorites:", error);
+    toast.error("Failed to remove from favorites.");
   }
 };
 

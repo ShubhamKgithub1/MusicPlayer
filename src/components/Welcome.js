@@ -30,7 +30,7 @@ const Welcome = () => {
           Let the music flow 🎵
         </p>
         <button
-          className="bg-white px-6 py-2 text-black rounded-3xl hover:bg-transparent border  border-white/30 hover:text-white transition-all duration-300 shadow-sm text-lg font-semibold"
+          className="bg-white px-6 py-2 text-black rounded-3xl hover:bg-transparent border  border-white/20 hover:text-white transition-all duration-300 shadow-sm text-lg font-semibold"
           onClick={() => clickHandler()}
         >
           Continue..

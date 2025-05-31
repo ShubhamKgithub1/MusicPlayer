@@ -4,8 +4,13 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "./components/Navbar";
+import useInitUser from "./hooks/useInitUser";
+
+
 
 function App() {
+ useInitUser();
+
   return (
     <div className="h-screen bg-forest relative flex min-h-[90dvh] max-h-[100dvh] p-4 gap-4 border border-black overflow-hidden">
       <Toaster position="top-right" reverseOrder={false} />

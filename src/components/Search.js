@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getSearch } from "../services/deezerAPI";
 import SongTile from "./SongTile";
+import { useSelector } from "react-redux";
 
 const Search = () => {
   const quickSearchTags = [
@@ -24,6 +25,7 @@ const Search = () => {
   const [tag, setTag] = useState("");
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
+    const favorites = useSelector((state)=>state.user.favorites);
 
   const onSearch = async (searchTag) => {
     if (!searchTag) return;
@@ -93,7 +95,7 @@ const Search = () => {
           </div>
         ) : (
           result.length > 0 && <div className="w-full flex flex-col gap-2">
-            {result.map((res)=>(<SongTile key={res?.id} track={res} trackList={result}/> ))}
+            {result.map((res)=>(<SongTile key={res?.id} track={res} trackList={result} isFavorite={favorites?.some(fav => fav.id === res.id)}/> ))}
           </div>
         )}
       </div>

@@ -3,24 +3,16 @@ import { useAuth } from "../context/AuthContext";
 import RecentlyPlayed from "./RecentlyPlayed";
 import { getFavorites } from "../services/userService";
 import { getAuth } from "firebase/auth";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const { login, logout } = useAuth();
-  const [favorites, setFavorites] = useState([]);
+
+  // const favorites = useSelector((state)=> state.user.favorites);
+  // console.log("sidebar:",favorites);
     const auth = getAuth();
     const user = auth.currentUser;
 
-  useEffect(()=>{
-    const fetchData = async ()=>{
-      if(user && user.uid){
-      const data = await getFavorites(user.uid);
-      setFavorites(data);
-      }
-    };
-    fetchData();
-   
-  },[user]);
-   console.log(favorites);
 
   return (
     <div className="w-full h-full flex flex-col gap-3 text-white relative">
@@ -79,7 +71,7 @@ const Sidebar = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-white/30 border border-white/40 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
+        <div className="bg-white/30 border border-white/20 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
           <h2 className="text-lg text-white font-semibold">
             You're not logged in
           </h2>
@@ -89,7 +81,7 @@ const Sidebar = () => {
           </p>
 
           <button
-            className="mt-2 px-4 py-2 border text-green-500 font-semibold rounded-full bg-white hover:bg-transparent hover:text-white hover:border-white/30 transition"
+            className="mt-2 px-4 py-2 border text-green-500 font-semibold rounded-full bg-white hover:bg-transparent hover:text-white hover:border-white/20 transition"
             onClick={login}
           >
             Continue With Google

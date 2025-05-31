@@ -15,7 +15,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive ? "text-green-500" : "text-black"
-            } w-80 bg-white hover:text-white rounded-3xl py-1 px-2 cursor-pointer hover:bg-transparent border border-white/30 transition-all duration-300`
+            } w-80 bg-white hover:text-white rounded-3xl py-1 px-2 cursor-pointer hover:bg-transparent border border-white/20 transition-all duration-300`
           }
         >
           <Search />
@@ -27,7 +27,7 @@ const Navbar = () => {
               alt="User"
               className={`w-10 h-10 rounded-full ${
                 user.photoURL ? "bg-transparent" : "bg-red-400"
-              } border border-white/30 cursor-pointer relative`}
+              } border border-white/20 cursor-pointer relative`}
               onClick={() => setUserOptions(!userOptions)}
             />
             <div className={`${userOptions?"bg-red-500 rounded-full cursor-pointer h-min opacity-100 text-opacity-100":"bg-transparent h-0 opacity-0 text-opacity-0"} font-medium animation-fade-in flex items-center absolute -bottom-2 translate-y-2/3 transition-all duration-300 px-2 py-1 text-white`} onClick={()=>{setUserOptions(false); logout()}}>
@@ -45,7 +45,7 @@ const Navbar = () => {
               isActive
                 ? "text-green-500 bg-gradient-to-r from-transparent to-white/30 "
                 : "text-black"
-            } bg-white p-2 rounded-full hover:bg-transparent border border-white/30 hover:text-white transition-all duration-300 cursor-pointer`
+            } bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer`
           }
         >
           <Home />
@@ -58,7 +58,7 @@ const Navbar = () => {
               isActive
                 ? "text-green-500 bg-gradient-to-r from-transparent to-white/30"
                 : "text-black"
-            } flex items-center justify-center bg-white p-2 rounded-full hover:bg-transparent border border-white/30 hover:text-white transition-all duration-300 cursor-pointer`
+            } flex items-center justify-center bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer`
           }
         >
           <Music />

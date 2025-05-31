@@ -141,7 +141,7 @@ const Playbar = () => {
     <div
       className={`w-full relative z-50 ${
         isExpand
-          ? "rounded-3xl overflow-hidden border border-white/30 shadow-2xl"
+          ? "rounded-3xl overflow-hidden border border-white/20 shadow-2xl"
           : "rounded-none border-none shadow-xl"
       } transition-all duration-500 bg-white/30 backdrop-blur-lg flex flex-col items-center animate-fade-in`}
     >
@@ -165,7 +165,7 @@ const Playbar = () => {
             alt={currentSong?.title}
             className={`${
               isExpand
-                ? "h-32 w-32 border border-white/30"
+                ? "h-32 w-32 border border-white/20"
                 : "h-16 w-16 border-none"
             } transition-all duration-500 rounded-full`}
           />
