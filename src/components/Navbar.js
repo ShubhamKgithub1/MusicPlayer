@@ -1,4 +1,4 @@
-import { Home, Music, Search } from "lucide-react";
+import { Home, ListMinusIcon, ListMusicIcon, Music, Search } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
@@ -15,7 +15,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive ? "text-green-500" : "text-black"
-            } w-80 bg-white hover:text-white rounded-3xl py-1 px-2 cursor-pointer hover:bg-transparent border border-white/20 transition-all duration-300`
+            } w-80 bg-white hover:text-white rounded-3xl py-1 px-2 cursor-pointer hover:bg-transparent border border-white/20 transition-all duration-300 hover:bg-gradient-to-r from-transparent to-white/30`
           }
         >
           <Search />
@@ -43,9 +43,9 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? "text-green-500 bg-gradient-to-r from-transparent to-white/30 "
+                ? "text-green-500"
                 : "text-black"
-            } bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer`
+            } bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30`
           }
         >
           <Home />
@@ -56,12 +56,12 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? "text-green-500 bg-gradient-to-r from-transparent to-white/30"
+                ? "text-green-500"
                 : "text-black"
-            } flex items-center justify-center bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer`
+            } flex items-center justify-center bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30`
           }
         >
-          <Music />
+          <ListMusicIcon />
         </NavLink>
       </div>
     </div>

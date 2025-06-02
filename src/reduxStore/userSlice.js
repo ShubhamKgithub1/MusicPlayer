@@ -15,8 +15,9 @@ const userSlice = createSlice({
     setUserInfo: (state, action) => {
       state.userInfo = action.payload;
     },
+    resetUser:()=> initialState,
   },
 });
 
-export const {setFavorites, setUserInfo} = userSlice.actions;
+export const {setFavorites, setUserInfo, resetUser} = userSlice.actions;
 export default userSlice.reducer;

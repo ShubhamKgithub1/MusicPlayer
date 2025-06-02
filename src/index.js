@@ -11,6 +11,7 @@ import Explore from "./components/Explore";
 import Search from "./components/Search";
 import { AuthProvider } from "./context/AuthContext";
 import Welcome from "./components/Welcome";
+import MyLibrary from "./components/MyLibrary";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,7 @@ root.render(
               <Route path="explore" element={<Explore />} />
               <Route path="search" element={<Search />} />
               <Route path="/welcome" element={<Welcome />} />
+              <Route path="/library" element={<MyLibrary />} />
             </Route>
           </Routes>
         </AuthProvider>

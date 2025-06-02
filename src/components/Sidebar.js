@@ -1,73 +1,48 @@
-import { useEffect, useState } from "react";
+import { Library } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import RecentlyPlayed from "./RecentlyPlayed";
-import { getFavorites } from "../services/userService";
-import { getAuth } from "firebase/auth";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const { login, logout } = useAuth();
-
-  // const favorites = useSelector((state)=> state.user.favorites);
-  // console.log("sidebar:",favorites);
-    const auth = getAuth();
-    const user = auth.currentUser;
-
+  const user = useSelector((state) => state.user.userInfo);
 
   return (
     <div className="w-full h-full flex flex-col gap-3 text-white relative">
-      {/* <ul className="flex flex-col w-full items-start text-lg font-medium p-4 rounded-3xl bg-white/30 backdrop-blur-lg border border-white/40 gap-2 animate-fade-in">
-        <li className="self-center text-xl font-bold">Music Player</li>
-        <NavLink
-          to="/home"
-          end
-          className={({ isActive }) =>
-            `${isActive ? "text-green-500 bg-gradient-to-r from-transparent to-white/30 " : "text-white"} w-full`
-          }
-        >
-          <li className="flex items-center gap-2 cursor-pointer w-full hover:bg-gradient-to-r from-transparent to-white/30 px-2 py-1 transition-all duration-300">
-            <span><HomeIcon/> </span> <span>Home</span>
-          </li>
-        </NavLink>
-
-        <NavLink
-          to="/explore"
-          className={({ isActive }) =>
-            `${isActive ? "text-green-500 bg-gradient-to-r from-transparent to-white/30" : "text-white"} w-full`
-          }
-        >
-          <li className="items-center cursor-pointer flex gap-2 w-full hover:bg-gradient-to-r from-transparent to-white/30 transition-all duration-300 px-2 py-1">
-            <span><ListMusic/> </span> <span>Explore</span>
-          </li>
-        </NavLink>
-
-        <NavLink
-          to="/search"
-          className={({ isActive }) =>
-            `${isActive ? "text-green-500 bg-gradient-to-r from-transparent to-white/30" : "text-white"} w-full`
-          }
-        >
-          <li className="cursor-pointer flex items-center gap-2 w-full hover:bg-gradient-to-r from-transparent to-white/30 transition-all duration-300 px-2 py-1">
-            <span><Search/> </span> <span>Search</span>
-          </li>
-        </NavLink>
-      </ul> */}
-
       {user ? (
-        <div className="flex flex-col items-center gap-4 animate-fade-in justify-center w-full">
-          <div className="flex items-center gap-4">
-            <img
-              src={user.photoURL}
-              alt="avatar"
-              className="w-8 h-8 rounded-full"
-            />
-            <span>{user.displayName}</span>
-            <button onClick={logout} className="px-2 py-1 bg-red-500 rounded">
-              Logout
-            </button>
+        <div className="flex flex-col items-center gap-4 animate-fade-in justify-center w-full ">
+          <div className="bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl w-full flex flex-col items-center justify-center overflow-hidden">
+            <div className="flex items-center gap-4 p-4">
+              <img
+                src={user.photoURL}
+                alt="avatar"
+                className="w-8 h-8 rounded-full"
+                 referrerPolicy="no-referrer"
+              />
+              <span>{user.displayName}</span>
+              <button onClick={logout} className="px-2 py-1 bg-red-500 rounded">
+                Logout
+              </button>
+            </div>
+            <div className="w-full p-4 transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30">
+              <NavLink
+                to="/library"
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "text-green-500 bg-gradient-to-r from-transparent to-white/30"
+                      : "text-white"
+                  }w-full`
+                }
+              >
+                <button className="flex"><Library />
+                <span className="font-semibold">My Library</span></button>
+              </NavLink>
+            </div>
           </div>
-          <div className="w-full">
-            <RecentlyPlayed/>
+          <div className="w-full bg-white/30 backdrop-blur-lg rounded-3xl">
+            <RecentlyPlayed isFullTab={false} />
           </div>
         </div>
       ) : (

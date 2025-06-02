@@ -12,7 +12,14 @@ const useInitUser = () => {
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        dispatch(setUserInfo(user));
+        dispatch(
+          setUserInfo({
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL, // keep consistent with Firebase
+          })
+        );
         const favorites = await getFavorites(user.uid);
         dispatch(setFavorites(favorites));
       }

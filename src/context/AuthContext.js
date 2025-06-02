@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { resetPlayer } from "../reduxStore/playerSlice";
 import { storeUserInfo } from "../services/userService";
+import { resetUser } from "../reduxStore/userSlice";
 
 const AuthContext = createContext();
 
@@ -37,6 +38,7 @@ export const AuthProvider = ({ children }) => {
       dispatch(resetPlayer());
       await signOut(auth);
       setUser(null);
+      dispatch(resetUser());
       toast.success("You’ve been logged out!");
     } catch (error) {
       console.log("Logout error:", error);
