@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { Provider } from "react-redux";
+import { Provider} from "react-redux";
 import { store } from "./reduxStore/store";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/Home";
@@ -12,6 +12,7 @@ import Search from "./components/Search";
 import { AuthProvider } from "./context/AuthContext";
 import Welcome from "./components/Welcome";
 import MyLibrary from "./components/MyLibrary";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -26,7 +27,14 @@ root.render(
               <Route path="explore" element={<Explore />} />
               <Route path="search" element={<Search />} />
               <Route path="/welcome" element={<Welcome />} />
-              <Route path="/library" element={<MyLibrary />} />
+              <Route
+                path="/library"
+                element={
+                  <ProtectedRoute>
+                    <MyLibrary />
+                  </ProtectedRoute>
+                }
+              />
             </Route>
           </Routes>
         </AuthProvider>

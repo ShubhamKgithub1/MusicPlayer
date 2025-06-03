@@ -30,7 +30,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
           : "h-auto overflow-auto border border-white/20"
       }`}
     >
-      <div className="flex justify-between items-center py-3 px-4">
+      <div className="flex justify-between items-center  p-4">
         <h2
           className={`${
             isFullTab ? "text-xl font-bold" : "text-base font-semibold"
@@ -53,8 +53,8 @@ const RecentlyPlayed = ({ isFullTab }) => {
       </div>
       {recentSongs.length > 0 ? (
         <div
-          className={`flex flex-col gap-1 ${
-            isFullTab ? "overflow-auto hide-scrollbar" : "overflow-hidden"
+          className={`flex flex-col ${
+            isFullTab ? "overflow-auto hide-scrollbar gap-1" : "overflow-hidden"
           }  relative pb-4`}
         >
           {(isFullTab ? recentSongs : recentSongs.slice(0, 5)).map((song) => (

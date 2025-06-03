@@ -19,11 +19,10 @@ import {
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
+import { openModal } from "../reduxStore/modalSlice";
 
 const SongTile = ({ trackList, track, isFavorite }) => {
   const dispatch = useDispatch();
-  // const auth = getAuth();
-  // const user = auth.currentUser;
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   const user = useSelector((state) => state.user.userInfo);
@@ -48,16 +47,16 @@ const SongTile = ({ trackList, track, isFavorite }) => {
     toast.success("Song added to queue..");
   };
 
-const handleAddToFavorites = async (e, track) => {
-  e.stopPropagation();
-  if (!user) return;
+  const handleAddToFavorites = async (e, track) => {
+    e.stopPropagation();
+    if (!user) return;
 
-  if (isFavorite) {
-    await removeFromFavorites(user.uid, track.id, dispatch);
-  } else {
-    await addToFavorites(user.uid, track, dispatch);
-  }
-};
+    if (isFavorite) {
+      await removeFromFavorites(user.uid, track.id, dispatch);
+    } else {
+      await addToFavorites(user.uid, track, dispatch);
+    }
+  };
 
   const toggleMenu = (e) => {
     e.stopPropagation();
@@ -98,63 +97,67 @@ const handleAddToFavorites = async (e, track) => {
       </div>
 
       {/* Kebab Menu Button */}
-      {user?(
+      {user ? (
         <div className="relative z-50" ref={menuRef}>
-        <div className="flex flex-row-reverse items-center gap-2">
-          <button
-            className={`flex justify-center hover:bg-gray-400 items-center active:bg-gray-500 shadow-xl transition-all duration-300 rounded-full p-2 z-10 ${
-              showMenu ? "bg-gray-400" : "bg-transparent"
-            }`}
-            onClick={toggleMenu}
-          >
-            <MoreVertical size={20} />
-          </button>
-          <button
-            className={`flex items-center p-2 rounded-full bg-transparent w-full transition-all duration-300 ${
-              isFavorite
-                ? "shadow-md text-red-500 hover:bg-red-300"
-                : "shadow-md hover:bg-gray-400"
-            } hover:text-white`}
-            onClick={(e) => handleAddToFavorites(e, track)}
-          >
-            {isFavorite ? (
-              <Trash2 size={18} />
-            ) : (
-              <Heart className="text-white" size={20} />
-            )}
-          </button>
-        </div>
-
-        {/* Dropdown Menu */}
-        {showMenu && (
-          <div
-            className="absolute flex items-center right-0 gap-2 top-[80%] text-black rounded-md z-[99] cursor-default"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="flex flex-row-reverse items-center gap-2">
             <button
-              className="flex items-center p-2 bg-white hover:bg-transparent w-full border border-white/20 rounded-full transition-all duration-300 hover:text-white"
-              onClick={(e) => handleAddToQueue(e, track)}
+              className={`flex justify-center hover:bg-gray-400 items-center active:bg-gray-500 shadow-xl transition-all duration-300 rounded-full p-2 z-10 ${
+                showMenu ? "bg-gray-400" : "bg-transparent"
+              }`}
+              onClick={toggleMenu}
             >
-              <ListPlus size={18} />
+              <MoreVertical size={20} />
             </button>
             <button
-              className="flex items-center p-2 bg-transparent hover:bg-transparent w-full border border-white/20 rounded-full transition-all duration-300 bg-white hover:text-white"
-              onClick={(e) => {
-                e.stopPropagation();
-                // handleAddToPlaylist(track);
-              }}
+              className={`flex items-center p-2 rounded-full bg-transparent w-full transition-all duration-300 ${
+                isFavorite
+                  ? "shadow-md text-red-500 hover:bg-red-300"
+                  : "shadow-md hover:bg-gray-400"
+              } hover:text-white`}
+              onClick={(e) => handleAddToFavorites(e, track)}
             >
-              <FolderPlus size={18} />
+              {isFavorite ? (
+                <Trash2 size={18} />
+              ) : (
+                <Heart className="text-white" size={20} />
+              )}
             </button>
           </div>
-        )}
-      </div>
-      ):(<button
-              className="flex items-center p-2 text-white shadow-md hover:bg-gray-500 rounded-full transition-all duration-300 active:scale-75"
-              onClick={(e) => handleAddToQueue(e, track)}
+
+          {/* Dropdown Menu */}
+          {showMenu && (
+            <div
+              className="absolute flex items-center right-0 gap-2 top-[80%] text-black rounded-md z-[99] cursor-default"
+              onClick={(e) => e.stopPropagation()}
             >
-              <ListPlus size={18} />
-            </button>)}
+              <button
+                className="flex items-center p-2 bg-white hover:bg-transparent w-full border border-white/20 rounded-full transition-all duration-300 hover:text-white"
+                onClick={(e) => handleAddToQueue(e, track)}
+              >
+                <ListPlus size={18} />
+              </button>
+              <button
+                className="flex items-center p-2 bg-transparent hover:bg-transparent w-full border border-white/20 rounded-full transition-all duration-300 bg-white hover:text-white"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatch(openModal(track));
+                  setShowMenu(false);
+                  // handleAddToPlaylist(track);
+                }}
+              >
+                <FolderPlus size={18} />
+              </button>
+            </div>
+          )}
+        </div>
+      ) : (
+        <button
+          className="flex items-center p-2 text-white shadow-md hover:bg-gray-500 rounded-full transition-all duration-300 active:scale-75"
+          onClick={(e) => handleAddToQueue(e, track)}
+        >
+          <ListPlus size={18} />
+        </button>
+      )}
     </div>
   );
 };

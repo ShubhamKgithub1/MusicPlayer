@@ -5,11 +5,15 @@ import "./App.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "./components/Navbar";
 import useInitUser from "./hooks/useInitUser";
-
-
+import AddToPlaylistModal from "./components/AddToPlaylistModal";
+import { useSelector, useDispatch } from "react-redux";
+import { closeModal } from "./reduxStore/modalSlice";
 
 function App() {
- useInitUser();
+  useInitUser();
+  const dispatch = useDispatch();
+  const { isOpen, track } = useSelector((state) => state.modal);
+  const userId = useSelector((state) => state.user.userInfo?.uid);
 
   return (
     <div className="h-screen bg-forest relative flex min-h-[90dvh] max-h-[100dvh] p-4 gap-4 border border-black overflow-hidden">
@@ -28,6 +32,12 @@ function App() {
       <div className="absolute bottom-4 w-[20dvw] pr-4 left-2 text-white">
         <Playbar />
       </div>
+       <AddToPlaylistModal
+        isOpen={isOpen}
+        onClose={() => dispatch(closeModal())}
+        track={track}
+        userId={userId}
+      />
     </div>
   );
 }
