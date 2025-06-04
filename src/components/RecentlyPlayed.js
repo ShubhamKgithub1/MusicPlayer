@@ -1,26 +1,10 @@
-import { useEffect, useState } from "react";
-import { getRecentlyPlayed } from "../services/userService";
 import SongTile from "./SongTile";
-import { getAuth } from "firebase/auth";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const RecentlyPlayed = ({ isFullTab }) => {
-  const [recentSongs, setRecentSongs] = useState([]);
-  const auth = getAuth();
-  const user = auth.currentUser;
   const favorites = useSelector((state) => state.user.favorites);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (user?.uid) {
-        const songs = await getRecentlyPlayed(user.uid);
-        setRecentSongs(songs);
-      }
-    };
-
-    fetchData();
-  }, [user]);
+  const recentSongs = useSelector((state) => state.user.recentlyPlayed);
 
   return (
     <div

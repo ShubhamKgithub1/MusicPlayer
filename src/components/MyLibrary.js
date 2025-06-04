@@ -1,6 +1,7 @@
 import { useState } from "react";
 import RecentlyPlayed from "./RecentlyPlayed";
 import Favorites from "./Favorites";
+import Playlists from "./Playlists";
 
 const MyLibrary = () => {
   const [activeTab, setActiveTab] = useState("recent");
@@ -15,6 +16,7 @@ const MyLibrary = () => {
       </div>
       {activeTab === "recent" && <RecentlyPlayed isFullTab={true} />}
       {activeTab === "favorites" && <Favorites/>}
+      {activeTab === "playlists" && <Playlists/>}
       {/* <div className="flex gap-4 overflow-auto hide-scrollbar">
         <div className="flex-1">{activeTab === "favorites" && <Favorites/>}
         {activeTab === "playlists" && <RecentlyPlayed isFullTab={true} />}

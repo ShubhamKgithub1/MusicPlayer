@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { setUserInfo, setFavorites } from "../reduxStore/userSlice";
-import { getFavorites } from "../services/userService";
+import { setUserInfo, setFavorites, setRecentlyPlayed } from "../reduxStore/userSlice";
+import { getFavorites, getPlaylists, getRecentlyPlayed } from "../services/userService";
 
 const useInitUser = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,10 @@ const useInitUser = () => {
           })
         );
         const favorites = await getFavorites(user.uid);
+        const recents = await getRecentlyPlayed(user.uid);
         dispatch(setFavorites(favorites));
+        dispatch(setRecentlyPlayed(recents));
+        getPlaylists(user.uid, dispatch);
       }
     });
 

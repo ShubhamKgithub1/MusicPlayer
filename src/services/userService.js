@@ -2,7 +2,6 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import toast from "react-hot-toast";
 import {addPlaylist, setFavorites, setPlaylists} from "../reduxStore/userSlice";
-// import { v4 as uuidv4 } from "uuid";
 
 export const storeUserInfo = async (user) => {
   if (!user || !user.uid) {

@@ -142,7 +142,6 @@ const SongTile = ({ trackList, track, isFavorite }) => {
                   e.stopPropagation();
                   dispatch(openModal(track));
                   setShowMenu(false);
-                  // handleAddToPlaylist(track);
                 }}
               >
                 <FolderPlus size={18} />
