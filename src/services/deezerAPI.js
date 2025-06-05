@@ -41,7 +41,7 @@ export const getBollywoodTracks = async () => {
 export const getHits = async () => {
   try {
     const res = await fetch(
-      "https://deezerdevs-deezer.p.rapidapi.com/search?q=atif-aslam",
+      "https://deezerdevs-deezer.p.rapidapi.com/search?q=shahrukh khan hits",
       options
     );
     const data = await res.json();

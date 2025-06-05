@@ -5,6 +5,7 @@ import { useState } from "react";
 import PlaylistSongs from "./PlaylistSongs";
 import { deletePlaylist } from "../services/userService";
 import { playPause, setQueue } from "../reduxStore/playerSlice";
+import { openCreatePlaylistModal } from "../reduxStore/modalSlice";
 const Playlists = () => {
   const playlists = useSelector((state) => state.user.playlists);
   const userId = useSelector((state) => state.user.userInfo.uid);
@@ -32,7 +33,8 @@ const Playlists = () => {
                 setSelectedPlaylistId={setSelectedPlaylistId}
               />
             ))}
-            <div className="h-full w-full flex flex-col gap-2 items-center justify-center cursor-pointer transition-all duration-300 hover:bg-black/20 border border-white/30 rounded-lg bg-white/20 text-white">
+            <div className="h-full w-full flex flex-col gap-2 items-center justify-center cursor-pointer transition-all duration-300 hover:bg-black/20 border border-white/30 rounded-lg bg-white/20 text-white"
+            onClick={()=>dispatch(openCreatePlaylistModal())}>
               <PlusIcon size={40}></PlusIcon>
               <h1 className="font-semibold">Create Playlist</h1>
             </div>
@@ -40,8 +42,8 @@ const Playlists = () => {
         </div>
         <div className="flex-1 overflow-hidden animate-fade-in">
           {selectedPlaylistId && (
-            <div className="flex flex-col h-full w-2/3 bg-white/20 border border-white/20 rounded-3xl overflow-hidden animate-fade-in">
-              <div className="flex flex-row h-max gap-4 items-start backdrop-blur-lg p-4 rounded-t-3xl">
+            <div className="flex flex-col h-full w-2/3 border border-white/20 rounded-3xl overflow-hidden animate-fade-in">
+              <div className="flex flex-row h-max gap-4 items-start backdrop-blur-lg p-4 rounded-t-3xl bg-gradient-to-b from-black/50">
                 <img
                   src={selectedPlaylist?.songs[0]?.album?.cover}
                   alt={selectedPlaylist?.name}
@@ -72,7 +74,7 @@ const Playlists = () => {
                 </div>
               </div>
               {selectedPlaylist.songs.length > -1 && (
-                <div className="flex-1 flex flex-col h-max gap-1 overflow-auto hide-scrollbar snap-y snap-mandatory">
+                <div className="flex-1 flex flex-col h-max gap-1 bg-white/20 overflow-auto hide-scrollbar snap-y snap-mandatory animate-fade-in">
                   {selectedPlaylist.songs.map((track) => (
                     <PlaylistSongs
                       key={track?.id}

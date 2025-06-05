@@ -6,7 +6,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 
-const AddToPlaylistModal = ({ isOpen, onClose, track, userId }) => {
+const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
   const dispatch = useDispatch();
   const playlists = useSelector((state) => state.user.playlists);
   const [newPlaylistName, setNewPlaylistName] = useState("");
@@ -44,7 +44,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId }) => {
 
   return (
     <div className="fixed inset-0 backdrop-blur-lg flex items-center justify-center z-[99] animate-fade-in">
-      <div className="bg-white/30 backdrop-blur-lg text-white p-6 rounded-2xl border border-white/20 w-[90%] max-w-md relative shadow-lg">
+      <div className="bg-black/30 text-white p-6 rounded-2xl border border-white/20 w-[90%] max-w-md relative shadow-lg">
         <button className="absolute top-2 right-2 text-xl" onClick={onClose}>
           ✕
         </button>

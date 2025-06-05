@@ -7,12 +7,13 @@ import Navbar from "./components/Navbar";
 import useInitUser from "./hooks/useInitUser";
 import AddToPlaylistModal from "./components/AddToPlaylistModal";
 import { useSelector, useDispatch } from "react-redux";
-import { closeModal } from "./reduxStore/modalSlice";
+import { closeAddToPlaylistModal } from "./reduxStore/modalSlice";
+import CreatePlaylistModal from "./components/CreatePlaylistModal";
 
 function App() {
   useInitUser();
   const dispatch = useDispatch();
-  const { isOpen, track } = useSelector((state) => state.modal);
+  const { isAddToPlaylistOpen, track } = useSelector((state) => state.modal);
   const userId = useSelector((state) => state.user.userInfo?.uid);
 
   return (
@@ -33,11 +34,12 @@ function App() {
         <Playbar />
       </div>
        <AddToPlaylistModal
-        isOpen={isOpen}
-        onClose={() => dispatch(closeModal())}
+        isOpen={isAddToPlaylistOpen}
+        onClose={() => dispatch(closeAddToPlaylistModal())}
         track={track}
         userId={userId}
       />
+      <CreatePlaylistModal userId={userId}/>
     </div>
   );
 }

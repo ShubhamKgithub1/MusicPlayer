@@ -8,7 +8,7 @@ export const ArtistTitleCard = ({ prop }) => {
       />
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold">{prop?.artist?.name}</h1>
-        <h2 className="font-medium">{prop?.album?.title}</h2>
+        <h2 className="font-medium">{prop?.album?.title.substring(0,80)+". . ."}</h2>
       </div>
     </div>
   );

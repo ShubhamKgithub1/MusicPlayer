@@ -19,7 +19,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../reduxStore/modalSlice";
+import { openAddToPlaylistModal } from "../reduxStore/modalSlice";
 
 const SongTile = ({ trackList, track, isFavorite }) => {
   const dispatch = useDispatch();
@@ -140,7 +140,7 @@ const SongTile = ({ trackList, track, isFavorite }) => {
                 className="flex items-center p-2 bg-transparent hover:bg-transparent w-full border border-white/20 rounded-full transition-all duration-300 bg-white hover:text-white"
                 onClick={(e) => {
                   e.stopPropagation();
-                  dispatch(openModal(track));
+                  dispatch(openAddToPlaylistModal(track));
                   setShowMenu(false);
                 }}
               >

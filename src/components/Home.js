@@ -36,8 +36,8 @@ const Home = () => {
   };
 
   return (
-    <div className="flex h-full gap-4 pr-4 w-full overflow-hidden">
-      <div className="flex flex-col w-[40%] p-4 bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl animate-fade-in-delay">
+    <div className="flex h-full gap-4 w-full overflow-hidden">
+      <div className="flex flex-col w-[40%] h-full p-4 bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl animate-fade-in-delay">
         <BannerCard topTracks={hits} />
         <div className="max-h-[60%] w-full flex flex-col">
           <h1 className="font-bold text-2xl text-white py-4 bg-gradient-to-r from-transparent via-white/30 to-transparent">
@@ -49,10 +49,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="flex-1 overflow-hidden gap-4 rounded-3xl h-full w-full flex flex-col">
+      <div className="flex-1 overflow-hidden gap-4 h-full w-full flex flex-col">
         <ArtistTitleCard prop={hits[0]} />
-        <div className="overflow-hidden flex gap-4 w-full flex-1 border">
-          <div className="w-[50%] flex flex-col bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl hide-scrollbar animate-fade-in p-2">
+        <div className="overflow-hidden flex gap-4 flex-1">
+          <div className="w-1/2 flex flex-col bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl hide-scrollbar animate-fade-in p-2">
               <h1 className="text-white text-lg font-medium p-3">
                 Most Popular
               </h1>
@@ -60,7 +60,7 @@ const Home = () => {
               {popular.map((track)=><SongTile key={track?.id} trackList={popular} track={track} isFavorite={favorites?.some(fav => fav.id === track.id)}/>)}
             </div>
           </div>
-          <div className="w-[50%] flex flex-col bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl hide-scrollbar animate-fade-in p-2">
+          <div className="flex-1 min-w-0 flex flex-col bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl animate-fade-in p-2">
               <h1 className="text-white text-lg font-medium p-3">
                 Weekly Hits
               </h1>
