@@ -1,4 +1,4 @@
-import { Home, ListMinusIcon, ListMusicIcon, Music, Search } from "lucide-react";
+import { Home, ListMusicIcon, Search } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
@@ -14,8 +14,8 @@ const Navbar = () => {
           to="/search"
           className={({ isActive }) =>
             `${
-              isActive ? "text-green-500" : "text-black"
-            } w-80 bg-white hover:text-white rounded-3xl py-1 px-2 cursor-pointer hover:bg-transparent border border-white/20 transition-all duration-300 hover:bg-gradient-to-r from-transparent to-white/30`
+              isActive ? "shadow-custom text-green-500" : "text-black"
+            } w-80 bg-white hover:text-white rounded-3xl py-1 px-2 cursor-pointer hover:bg-transparent border border-white/20 transition-all duration-300 to-white/30`
           }
         >
           <Search />
@@ -43,9 +43,9 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? "text-green-500"
+                ? "shadow-custom text-green-500"
                 : "text-black"
-            } bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30`
+            } bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer to-white/30`
           }
         >
           <Home />
@@ -56,9 +56,9 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? "text-green-500"
+                ? "shadow-custom text-green-500"
                 : "text-black"
-            } flex items-center justify-center bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30`
+            } flex items-center justify-center bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer to-white/30`
           }
         >
           <ListMusicIcon />

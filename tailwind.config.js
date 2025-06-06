@@ -19,6 +19,9 @@ module.exports = {
           "100%": { transform: "translateY(0)", opacity: 1 },
         },
       },
+      boxShadow: {
+        custom: "0 0 12px #efeff2",
+      },
     },
   },
   plugins: [],

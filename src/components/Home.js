@@ -40,7 +40,7 @@ const Home = () => {
       <div className="flex flex-col w-[40%] h-full p-4 bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl animate-fade-in-delay">
         <BannerCard topTracks={hits} />
         <div className="max-h-[60%] w-full flex flex-col">
-          <h1 className="font-bold text-2xl text-white py-4 bg-gradient-to-r from-transparent via-white/30 to-transparent">
+          <h1 className="font-bold text-2xl text-white py-4 px-2">
             {hits[0]?.artist?.name} Songs
           </h1>
           <div className="flex flex-col gap-2 overflow-auto hide-scrollbar w-full relative z-0">

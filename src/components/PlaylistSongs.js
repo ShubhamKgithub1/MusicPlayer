@@ -7,7 +7,7 @@ const PlaylistSongs = ({song, playlistId, songId, userId, dispatch})=>{
     if(!song) return;
     return (
         <div className="flex gap-2 items-center w-full shadow-sm py-2 px-4 snap-start relative group cursor-pointer animate-fade-in">
-            <img src={song.album.cover_small} alt="not found"/>
+            <img src={song.album.cover_small} alt="not found" className="rounded-full"/>
             <div className="">
                 <h1 className="font-semibold">{song.title_short}</h1>
                 <h1 className="text-sm text-gray-500">{song.artist.name}</h1>

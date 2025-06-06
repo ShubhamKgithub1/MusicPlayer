@@ -51,14 +51,14 @@ const Search = () => {
             type="search"
             placeholder="search songs.."
             value={tag}
-            className="w-[50%] rounded-full p-2 outline-none text-gray-500 shadow-md font-medium"
+            className={`w-[40%] rounded-full p-2 outline-none transition-all duration-200 text-gray-500 font-medium `}
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") onSearch(tag);
             }}
           />
           <button
-            className="border px-4 p-2 rounded-3xl bg-white text-green-500 font-semibold hover:bg-transparent hover:text-white transition-all duration-300 active:scale-95 shadow-md hover:shadow-lg"
+            className={`px-4 p-2 rounded-3xl bg-white text-emerald-500 font-semibold hover:bg-transparent hover:text-white border transition-all duration-200 active:scale-95 ${tag?"shadow-custom":"shadow-md "}`}
             onClick={() => onSearch(tag)}
           >
             Search

@@ -26,7 +26,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
           <NavLink
             to="library"
             className={({ isActive }) =>
-              `${isActive ? "text-green-500 " : "text-gray-300"}`
+              `${isActive ? "text-white " : "text-gray-300"}`
             }
           >
             <button className="cursor-pointer transition-all duration-300 hover:text-white">

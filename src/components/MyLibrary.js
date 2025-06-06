@@ -9,12 +9,12 @@ const MyLibrary = () => {
   return (
     <div className="flex flex-col bg-white/30 rounded-3xl p-6 backdrop-blur-lg h-full overflow-hidden text-white">
       <h1 className="font-semibold text-2xl">User Library</h1>
-      <div className="flex gap-4 border-b pb-2 my-4">
-        <button onClick={() => setActiveTab("recent")}>Recently Played</button>
-        <button onClick={() => setActiveTab("favorites")}>Favorites</button>
-        <button onClick={() => setActiveTab("playlists")}>Playlists</button>
+      <div className="flex border-b my-4">
+        <button onClick={() => setActiveTab("recent")} className={`${activeTab === "recent" ?"bg-white text-emerald-500":"bg-transparent"} px-6 py-2 font-semibold transition-all duration-300 rounded-t-2xl`}>Recently Played</button>
+        <button onClick={() => setActiveTab("favorites")} className={`${activeTab === "favorites" ?"bg-white text-emerald-500":"bg-transparent"} px-6 py-2 font-semibold transition-all duration-300 rounded-t-2xl`}>Favorites</button>
+        <button onClick={() => setActiveTab("playlists")} className={`${activeTab === "playlists" ?"bg-white text-emerald-500":"bg-transparent"} px-6 py-2 font-semibold  transition-all duration-300 rounded-t-2xl`}>Playlists</button>
       </div>
-      {activeTab === "recent" && <RecentlyPlayed isFullTab={true} />}
+      {activeTab === "recent" && <RecentlyPlayed isFullTab={true} />} 
       {activeTab === "favorites" && <Favorites/>}
       {activeTab === "playlists" && <Playlists/>}
       {/* <div className="flex gap-4 overflow-auto hide-scrollbar">

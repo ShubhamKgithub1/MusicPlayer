@@ -22,8 +22,8 @@ function App() {
       <div className="w-[18dvw] h-full">
         <Sidebar />
       </div>
-      <div className="flex flex-col w-[80dvw] max-h-screen h-screen">
-        <div className="pb-4 h-[8%] border-b-2 border-b-white/50">
+      <div className="flex flex-col w-[80dvw] max-h-screen h-screen overflow-hidden">
+        <div className="h-[7%] border-b-2 border-b-white/50">
           <Navbar />
         </div>
         <div className="h-[90%] py-4">
