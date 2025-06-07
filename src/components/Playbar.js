@@ -7,6 +7,7 @@ import {
   VolumeX,
   SkipBack,
   SkipForward,
+  ListXIcon,
 } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -14,6 +15,7 @@ import {
   playNext,
   playPause,
   playPrevious,
+  resetPlayer,
   toggleShuffle,
 } from "../reduxStore/playerSlice";
 import QueueCard from "./QueueCard";
@@ -141,19 +143,32 @@ const Playbar = () => {
     <div
       className={`w-full relative z-50 ${
         isExpand
-          ? "rounded-3xl overflow-hidden border border-white/20 shadow-2xl"
-          : "rounded-none border-none shadow-xl"
-      } transition-all duration-500 bg-white/30 backdrop-blur-lg flex flex-col items-center animate-fade-in`}
+          ? "rounded-3xl border border-white/20 shadow-none"
+          : "rounded-none border-none shadow-custom"
+      } ${
+        isPlaying ? "shadow-custom" : "shadow-none"
+      } transition-all duration-500 bg-white/30 backdrop-blur-lg flex flex-col items-center animate-fade-in overflow-hidden`}
     >
+      {/*Clear Queue*/}
+      <div
+        className={`${
+          isExpand ? "block" : "hidden"
+        } absolute top-2 right-3 cursor-pointer z-[99]`}
+        onClick={() => {
+          dispatch(resetPlayer());
+        }}
+      >
+        <ListXIcon size={24} />
+      </div>
+
       {/* Audio Element */}
       <audio ref={audioRef} src={currentSong.preview} />
-      {/*Collapsed Playbar*/}
+
+      {/*Collapsed Playbar(Playbar Header)*/}
       <div
         className={`flex items-center overflow-hidden ${
-          isExpand
-            ? "flex-col text-center min-h-20"
-            : "flex-row gap-2 justify-between min-h-10"
-        } py-2 bg-black transition-all duration-500 items-center w-full px-2`}
+          isExpand ? "gap-0 min-h-20 text-center pb-4" : "gap-2 min-h-10"
+        } py-2 bg-black transition-all duration-500 items-center w-full px-2 relative`}
       >
         <div
           className={`flex flex-1 ${
@@ -164,20 +179,18 @@ const Playbar = () => {
             src={currentSong?.album?.cover}
             alt={currentSong?.title}
             className={`${
-              isExpand
-                ? "h-32 w-32 border border-white/20"
-                : "h-16 w-16 border-none"
+              isExpand ? "h-24 w-24" : "h-16 w-16"
             } transition-all duration-500 rounded-full`}
           />
           <div
             className={`${
-              isExpand ? "items-center flex-grow flex flex-col justify-center " : "items-start flex-grow truncate"
-            } `}
+              isExpand ? "text-center w-[95%]" : ""
+            } flex flex-col flex-grow transition-all duration-500 truncate overflow-hidden`}
           >
             <p
               className={` ${
-                isExpand ? "text-lg text-ellipsis whitespace-wrap" : "text-base truncate"
-              } font-semibold`}
+                isExpand ? "text-lg" : "text-base"
+              } font-semibold truncate`}
             >
               {currentSong?.title_short}
             </p>
@@ -189,34 +202,49 @@ const Playbar = () => {
 
         <button
           onClick={togglePlay}
-          className={`rounded-full text-black bg-white flex items-center justify-center shadow-md hover:scale-110 active:scale-90 transition-all duration-[0.4s] ${
-            isExpand ? "h-0 w-0 opacity-0" : "w-12 h-12 opacity-100"
-          } flex-shrink-0`}
+          className={`rounded-full text-black h-12 w-12 bg-white flex items-center justify-center hover:scale-110 active:scale-90 transition-all duration-500 ${
+            isExpand ? "hidden" : "block"
+          }`}
         >
           {isPlaying ? <Pause size={20} /> : <Play size={20} />}
         </button>
+
+        {/*Seekbar*/}
+        <div
+          className={`${
+            isExpand ? "min-h-2 opacity-100" : "h-0 opacity-0"
+          } absolute bottom-0 left-0 cursor-pointer transition-all duration-300 w-full `}
+          onClick={handleSeek}
+          ref={seekBarRef}
+        >
+          <div
+            className={`${
+              isExpand ? "min-h-2 opacity-100" : "h-0 opacity-0"
+            } transition-all duration-300 bg-white`}
+            style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
+          />
+        </div>
       </div>
-      {/*Expanded Playbar*/}
+
+      {/* Expanded Playbar */}
       <div
         className={`${
-          isExpand
-            ? "min-h-20 opacity-100 py-2"
-            : "h-0 opacity-0 py-0 bg-transparent bg-opacity-0"
-        } transition-all duration-500 w-full relative `}
+          isExpand ? "min-h-20 opacity-100" : "h-0 opacity-0"
+        } transition-all duration-500 w-full`}
       >
         {/* Controls */}
         <div
-          className={`flex items-center bg-white/30 bg-opacity-100 justify-center gap-2 ${
-            isExpand ? "min-h-20 w-full opacity-100" : "w-0 h-0 opacity-0"
+          className={`flex items-center bg-white/30 bg-opacity-100 justify-center gap-2 py-2 ${
+            isExpand ? "min-h-20 opacity-100" : "h-0 opacity-0"
           }`}
         >
           <button
             onClick={handleShuffleToggle}
-            className={`hover:scale-125 rounded-full transition-all duration-300 active:scale-50 ${
+            className={`flex justify-center items-center hover:scale-125 rounded-full transition-all duration-300 active:scale-50 shadow-md ${
               isShuffle ? "bg-gray-500" : "bg-transparent"
             } ${
               isExpand
-                ? "h-8 w-8 opacity-100 p-[5px] flex justify-center items-center"
+                ? "h-8 w-8 opacity-100 p-[5px] "
                 : "h-0 w-0 opacity-0 p-0"
             }`}
           >
@@ -225,37 +253,33 @@ const Playbar = () => {
           <button
             onClick={() => dispatch(playPrevious())}
             className={`${
-              isExpand
-                ? "flex justify-center items-center h-10 w-10 opacity-100 active:scale-[0.65] bg-gray-700 rounded-full hover:scale-110 active:bg-slate-700 active:rounded-full p-2"
-                : "h-0 w-0 opacity-0 p-0"
-            } transition-all duration-300`}
+              isExpand ? "h-10 w-10 opacity-100  p-2" : "h-0 w-0 opacity-0 p-0"
+            } flex justify-center items-center active:scale-[0.75] bg-gray-700 rounded-full hover:scale-110 transition-all duration-300`}
           >
             <SkipBack size={28} />
           </button>
           <button
             onClick={togglePlay}
             className={`${
-              isExpand ? "w-16 h-16 opacity-100" : "h-0 w-0 opacity-0"
+              isExpand ? "w-14 h-14 opacity-100" : "h-0 w-0 opacity-0"
             } rounded-full text-black bg-white flex items-center justify-center shadow-md hover:scale-105 active:scale-[0.85] transition-all duration-300`}
           >
-            {isPlaying ? <Pause size={32} /> : <Play size={32} />}
+            {isPlaying ? <Pause size={30} /> : <Play size={30} />}
           </button>
           <button
             onClick={() => dispatch(playNext())}
             className={` ${
-              isExpand
-                ? "flex justify-center items-center h-10 w-10 opacity-100 p-2 active:scale-[0.65] bg-gray-700 rounded-full hover:scale-110 active:bg-slate-700"
-                : "h-0 w-0 opacity-0 p-0"
-            } transition-all duration-300`}
+              isExpand ? " h-10 w-10 opacity-100 p-2 " : "h-0 w-0 opacity-0 p-0"
+            } flex justify-center items-center active:scale-[0.75] bg-gray-700 rounded-full hover:scale-110 transition-all duration-300`}
           >
             <SkipForward size={28} />
           </button>
           <div
             className={`${volume ? "" : "bg-gray-500"} ${
               isExpand
-                ? "h-8 w-8 opacity-100 p-[5px] active:scale-50 hover:scale-125 flex justify-center items-center"
+                ? "h-8 w-8 opacity-100 p-[5px] "
                 : "h-0 w-0 opacity-0 p-0"
-            } cursor-pointer rounded-full transition-all duration-300`}
+            } active:scale-50 hover:scale-125 flex justify-center items-center cursor-pointer rounded-full transition-all duration-300 shadow-md`}
             onClick={() => {
               setVolume(!volume);
             }}
@@ -264,41 +288,23 @@ const Playbar = () => {
           </div>
         </div>
 
-        {/*Seekbar*/}
-        <div
-          className={`${
-            isExpand
-              ? "w-full h-2 opacity-100 bg-black"
-              : "h-0 opacity-0 bg-transparent"
-          } absolute top-0 cursor-pointer transition-all duration-300`}
-          onClick={handleSeek}
-          ref={seekBarRef}
-        >
-          <div
-            className={`${
-              isExpand
-                ? "h-2 bg-white opacity-100"
-                : "h-0 bg-transparent opacity-0"
-            } transition-all duration-300`}
-            style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
-          />
-        </div>
         {/*Queue Container */}
         <div
           className={`${
-            isExpand ? " opacity-100 max-h-[50dvh]" : "h-0 opacity-0"
-          }  w-full transition-all duration-700 overflow-auto hide-scrollbar`}
+            isExpand ? "opacity-100 min-h-0" : "h-0 opacity-0"
+          } w-full transition-all duration-500 overflow-auto hide-scrollbar max-h-[35dvh]`}
         >
           {queue.map((track, index) => (
             <QueueCard track={track} key={track?.id} />
           ))}
         </div>
       </div>
+
       {/*Playbar Expand Icon*/}
       <button
         className={`${
           isExpand ? "rotate-0" : "rotate-180"
-        } h-4 px-2 bg-white w-full text-black`}
+        } h-4 bg-white w-full text-black`}
         onClick={() => {
           setIsExpand(!isExpand);
         }}

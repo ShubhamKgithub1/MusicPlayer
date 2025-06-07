@@ -18,7 +18,7 @@ const handleTrackClick =(trackId) => {
     return (
         <div className="relative group flex items-center gap-3 p-2 transition-all duration-300 cursor-pointer active:scale-95 shadow-sm" onClick={()=>handleTrackClick(track?.id)}>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none rounded-lg"></div>
-            <img src={track?.album?.cover_small} alt={track?.title} className="w-10 h-10 rounded-full"/>
+            <img src={track?.album?.cover_small} alt={track?.title} className="w-12 h-12 rounded-full"/>
             <div className="flex flex-col truncate">
                 <span className="text-sm font-medium truncate">{track?.title_short}</span>
                 <span className="text-xs text-gray-600 truncate">{track?.artist?.name}</span>

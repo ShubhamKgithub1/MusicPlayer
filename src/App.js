@@ -26,11 +26,11 @@ function App() {
         <div className="h-[7%] border-b-2 border-b-white/50">
           <Navbar />
         </div>
-        <div className="h-[90%] py-4">
+        <div className="h-[90%] pt-4">
           <Outlet />
         </div>
       </div>
-      <div className="absolute bottom-4 w-[20dvw] pr-4 left-2 text-white">
+      <div className="absolute bottom-4 w-[18dvw] left-4 text-white">
         <Playbar />
       </div>
        <AddToPlaylistModal

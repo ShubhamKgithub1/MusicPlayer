@@ -42,23 +42,23 @@ const HorizontalScroller = ({ tag }) => {
     };
     Search();
     // console.log("Result for", tag, result);
-  }, []);
+  }, [tag]);
 
   if (!result) return null;
 
   return (
-    <div className="relative overflow-hidden animate-fade-in">
+    <div className="relative overflow-hidden animate-fade-in px-4">
       <div
         onClick={scrollLeft}
-        className="absolute backdrop-blur-lg left-0 flex justify-center items-center h-full bg-gradient-to-r from-black/80 to-transparent z-20 top-1/2 -translate-y-1/2 border border-l-0 border-white/20 overflow-hidden p-2 cursor-pointer"
+        className="absolute bg-white left-0 flex justify-center items-center z-20 top-1/2 -translate-y-1/2 overflow-hidden p-2 cursor-pointer rounded-full"
       >
-        <ChevronLeft className="text-white" size={24} />
+        <ChevronLeft className="text-black" size={26} />
       </div>
       <div
         onClick={scrollRight}
-        className="absolute right-0 flex justify-center items-center h-full top-1/2 -translate-y-1/2 z-20 bg-gradient-to-l from-black/80 to-transparent backdrop-blur-md p-2 overflow-hidden border border-white/20 border-r-0 cursor-pointer"
+        className="absolute right-0 flex justify-center items-center top-1/2 -translate-y-1/2 z-20 p-2 overflow-hidden cursor-pointer rounded-full bg-white"
       >
-        <ChevronRight className="text-white" size={24} />
+        <ChevronRight className="text-black" size={26} />
       </div>
       <div
         ref={scrollContainerRef}

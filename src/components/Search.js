@@ -44,7 +44,7 @@ const Search = () => {
   console.log(result);
 
   return (
-    <div className="w-full h-full bg-white/30 rounded-3xl p-4 flex flex-col animate-fade-in">
+    <div className="w-full h-full bg-white/30 backdrop-blur-lg rounded-3xl p-4 flex flex-col animate-fade-in border border-white/20">
       <div>
         <div className="flex items-center gap-4">
           <input
