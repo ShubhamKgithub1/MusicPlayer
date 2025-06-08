@@ -94,7 +94,7 @@ const Search = () => {
             </div>
           </div>
         ) : (
-          result.length > 0 && <div className="w-full flex flex-col gap-2">
+          result.length > 0 && <div className="w-full flex flex-col gap-2 animate-fade-in">
             {result.map((res)=>(<SongTile key={res?.id} track={res} trackList={result} isFavorite={favorites?.some(fav => fav.id === res.id)}/> ))}
           </div>
         )}

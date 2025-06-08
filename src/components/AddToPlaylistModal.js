@@ -51,7 +51,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
           ✕
         </button>
 
-        <h2 className="text-lg font-semibold">Add to Playlist</h2>
+        <h2 className="text-lg font-semibold text-center">Add to Playlist</h2>
 
         <div className="space-y-2 max-h-60 overflow-auto hide-scrollbar">
           {playlists.length > 0 ? (
@@ -60,7 +60,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
                 key={pl.id}
                 onClick={() => handleAddToPlaylist(pl.id)}
                 disabled={loading}
-                className="w-full text-left py-2 px-3 font-medium backdrop-blur-lg rounded-3xl disabled:opacity-50 active:scale-x-[0.96] transition-all duration-200"
+                className="w-full text-left py-2 px-3 font-medium bg-white/20 rounded-3xl disabled:opacity-50 active:scale-x-[0.96] transition-all duration-200"
               >
                 {pl.name}
               </button>

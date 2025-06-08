@@ -6,6 +6,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
   const favorites = useSelector((state) => state.user.favorites);
   const recentSongs = useSelector((state) => state.user.recentlyPlayed);
 
+
   return (
     <div
       className={`flex flex-col relative rounded-3xl animate-fade-in ${
@@ -39,7 +40,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
         <div
           className={`flex flex-col ${
             isFullTab ? "overflow-auto hide-scrollbar gap-1" : "overflow-hidden"
-          }  relative pb-4`}
+          }  relative pb-4 animate-fade-in`}
         >
           {(isFullTab ? recentSongs : recentSongs.slice(0, 5)).map((song) => (
             <SongTile
@@ -51,7 +52,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
           ))}
         </div>
       ) : (
-        <p className="text-white text-sm px-6">No recently played songs yet.</p>
+        <p className="text-white text-sm px-6 animate-fade-in">No recently played songs yet.</p>
       )}
       {isFullTab && (
         <div className="absolute bottom-0 z-20 bg-gradient-to-t from-white/50 h-2 w-full" />

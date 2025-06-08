@@ -1,27 +1,15 @@
 import BannerCard from "./BannerCard";
 import { ArtistTitleCard } from "./ArtistTitleCard";
 import SongTile from "./SongTile";
-import { useEffect, useState } from "react";
-import { getHits, getPopular } from "../services/deezerAPI";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const [popular, setPopular] = useState([]);
-  const [hits, setHits] = useState([]);
-  const [loading, setLoading] = useState(true);
   const favorites = useSelector((state)=>state.user.favorites);
-  useEffect(() => {
-    const fetchSongs = async () => {
-      const top = await getPopular();
-      const hits = await getHits();
-      setPopular(top);
-      setHits(hits);
-      setLoading(false);
-    };
-    fetchSongs();
-  }, []);
+  const isLoaded = useSelector((state)=>state.api.loaded);
+  const popular = useSelector((state)=>state.api.mostPopular);
+  const hits = useSelector((state)=>state.api.hits);
 
-  if (loading) {
+  if (!isLoaded) {
     return (
       <div className="flex items-center justify-center w-full h-full text-white">
         <div className="flex items-end justify-center gap-2 h-20">

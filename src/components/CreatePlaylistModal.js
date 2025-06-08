@@ -19,7 +19,7 @@ const CreatePlaylistModal = ({ userId }) => {
   return (
     <div className="fixed text-white inset-0 backdrop-blur-lg flex items-center justify-center z-[99] animate-fade-in">
       <div className="bg-black/20 rounded-lg p-6 w-96 flex flex-col gap-4">
-        <h2 className="text-xl font-semibold mb-4">Create New Playlist</h2>
+        <h2 className="text-xl font-semibold mb-2 text-center">Create New Playlist</h2>
         <div>
           <input
           type="text"
