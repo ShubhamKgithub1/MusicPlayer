@@ -16,11 +16,13 @@ import {
   playPause,
   playPrevious,
   resetPlayer,
+  setVolume,
   toggleShuffle,
 } from "../reduxStore/playerSlice";
 import QueueCard from "./QueueCard";
 import { addRecentlyPlayed } from "../services/userService";
 import { getAuth } from "firebase/auth";
+import toast from "react-hot-toast";
 
 const Playbar = () => {
   const auth = getAuth();
@@ -37,7 +39,7 @@ const Playbar = () => {
 
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(true);
+  const volume = useSelector((state)=> state.player.volume);
   const [isExpand, setIsExpand] = useState(false);
 
   const audioRef = useRef(null);
@@ -156,6 +158,8 @@ const Playbar = () => {
         } absolute top-2 right-3 cursor-pointer z-[99]`}
         onClick={() => {
           dispatch(resetPlayer());
+          toast.success("Playing Queue cleared...");
+          setIsExpand(false);
         }}
       >
         <ListXIcon size={24} />
@@ -281,7 +285,7 @@ const Playbar = () => {
                 : "h-0 w-0 opacity-0 p-0"
             } active:scale-50 hover:scale-125 flex justify-center items-center cursor-pointer rounded-full transition-all duration-300 shadow-md`}
             onClick={() => {
-              setVolume(!volume);
+              dispatch(setVolume());
             }}
           >
             {getVolumeIcon()}

@@ -6,6 +6,7 @@ const initialState = {
   queue: [],
   currentSongIndex: 0,
   isShuffle: true,
+  volume: true,
 };
 
 const playerSlice = createSlice({
@@ -67,6 +68,9 @@ const playerSlice = createSlice({
     toggleShuffle: (state) => {
       state.isShuffle = !state.isShuffle;
     },
+    setVolume:(state)=>{
+      state.volume = !state.volume;
+    },
     resetPlayer: () => initialState,
   },
 });
@@ -82,6 +86,7 @@ export const {
   setCurrentSongIndex,
   isShuffle,
   toggleShuffle,
-  resetPlayer
+  resetPlayer,
+  setVolume
 } = playerSlice.actions;
 export default playerSlice.reducer;

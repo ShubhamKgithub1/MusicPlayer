@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { closeAddToPlaylistModal } from "./reduxStore/modalSlice";
 import CreatePlaylistModal from "./components/CreatePlaylistModal";
 import useInitAppData from "./hooks/useInitAppData";
+import { useEffect } from "react";
 
 function App() {
   useInitUser();
@@ -17,9 +18,21 @@ function App() {
   const dispatch = useDispatch();
   const { isAddToPlaylistOpen, track } = useSelector((state) => state.modal);
   const userId = useSelector((state) => state.user.userInfo?.uid);
+  const themeMode = useSelector((state) => state.theme.mode);
+
+  useEffect(() => {
+    const html = document.documentElement;
+    if (themeMode === 'dark') {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+    console.log(themeMode);
+  }, [themeMode]);
+  
 
   return (
-    <div className="h-screen bg-forest relative flex min-h-[90dvh] max-h-[100dvh] p-4 gap-4 overflow-hidden">
+    <div className={`h-screen ${themeMode === 'dark' ? 'bg-[#0e0e0e]' : 'bg-forest'} relative flex min-h-[90dvh] max-h-[100dvh] p-4 gap-4 overflow-hidden transition-all duration-700`}>
       <Toaster position="top-right" reverseOrder={false} />
       <div className="w-[18dvw] h-full">
         <Sidebar />

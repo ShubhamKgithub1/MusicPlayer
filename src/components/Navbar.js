@@ -2,9 +2,13 @@ import { Home, ListMusicIcon, Search } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../reduxStore/themeSlice";
 
 const Navbar = () => {
   const [userOptions, setUserOptions] = useState(false);
+  const dispatch = useDispatch();
+  const mode = useSelector((state)=> state.theme.mode);
 
   const { user, logout } = useAuth();
   return (
@@ -20,6 +24,12 @@ const Navbar = () => {
         >
           <Search />
         </NavLink>
+         <button
+      onClick={() => dispatch(toggleTheme())}
+      className="p-2 text-sm rounded bg-black text-white dark:bg-white dark:text-black"
+    >
+      Switch to {mode === 'light' ? 'Dark' : 'Light'} Mode
+    </button>
         {user && (
           <div className="relative flex justify-center">
             <img

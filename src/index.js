@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider} from "react-redux";
-import { store } from "./reduxStore/store";
+import { persistor, store } from "./reduxStore/store";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/Home";
 import Explore from "./components/Explore";
@@ -13,10 +13,12 @@ import { AuthProvider } from "./context/AuthContext";
 import Welcome from "./components/Welcome";
 import MyLibrary from "./components/MyLibrary";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { PersistGate } from "redux-persist/integration/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
     <React.StrictMode>
       <BrowserRouter>
         <AuthProvider>
@@ -40,6 +42,7 @@ root.render(
         </AuthProvider>
       </BrowserRouter>
     </React.StrictMode>
+    </PersistGate>
   </Provider>
 );
 

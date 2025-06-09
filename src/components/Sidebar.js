@@ -12,7 +12,7 @@ const Sidebar = () => {
     <div className="w-full h-full flex flex-col gap-3 text-white relative">
       {user ? (
         <div className="flex flex-col items-center gap-4 justify-center w-full ">
-          <div className="bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
+          <div className="dark:bg-black/40 dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]  bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
             <div className="flex items-center gap-4 p-4 animate-fade-in">
               <img
                 src={user.photoURL}

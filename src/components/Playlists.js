@@ -42,8 +42,8 @@ const Playlists = () => {
         </div>
         <div className="flex-1 overflow-hidden animate-fade-in">
           {selectedPlaylistId && (
-            <div className="flex flex-col h-full w-2/3 border border-white/20 rounded-3xl overflow-hidden animate-fade-in">
-              <div className="flex flex-row h-max gap-4 items-start backdrop-blur-lg p-4 rounded-t-3xl bg-gradient-to-b from-black/50">
+            <div className="flex flex-col h-full w-2/3 border border-white/20 rounded-3xl overflow-hidden animate-fade-in bg-gradient-to-br from-emerald-600/30 to-white/30">
+              <div className="flex flex-row h-max gap-4 items-start p-4 rounded-t-3xl">
                 <img
                   src={selectedPlaylist?.songs[0]?.album?.cover}
                   alt={selectedPlaylist?.name}
@@ -74,7 +74,7 @@ const Playlists = () => {
                 </div>
               </div>
               {selectedPlaylist.songs.length > -1 && (
-                <div className="flex-1 flex flex-col h-max gap-1 bg-white/20 overflow-auto hide-scrollbar snap-y snap-mandatory animate-fade-in">
+                <div className="flex-1 flex flex-col h-max gap-1 overflow-auto hide-scrollbar snap-y snap-mandatory animate-fade-in">
                   {selectedPlaylist.songs.map((track) => (
                     <PlaylistSongs
                       key={track?.id}

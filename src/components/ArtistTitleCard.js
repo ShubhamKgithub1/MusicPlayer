@@ -2,7 +2,7 @@ export const ArtistTitleCard = ({ prop }) => {
 
   if(!prop) return;
   return (
-    <div className="text-white flex items-center bg-white/30 backdrop-blur-lg border border-white/20 gap-10 p-6 relative rounded-xl animate-fade-in">
+    <div className="text-white flex items-center gap-4 p-3 relative animate-fade-in border-b ">
       <div className="">
         <img
           src={prop?.artist?.picture}
