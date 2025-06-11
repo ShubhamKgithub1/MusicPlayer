@@ -28,7 +28,7 @@ const Explore = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 bg-white/30 backdrop-blur-lg max-h-full h-max w-full p-6 rounded-3xl border border-white/20 animate-fade-in">
+    <div className="flex flex-col gap-4 dark:bg-black/40 dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] bg-white/30 backdrop-blur-lg max-h-full h-max w-full p-6 rounded-3xl border border-white/10 animate-fade-in">
       <div className="flex-1 overflow-auto hide-scrollbar flex flex-col gap-4">
         {sections.map(({title, data}, index) => (
           <div key={index} className="flex flex-col gap-4">

@@ -12,14 +12,14 @@ const RecentlyPlayed = ({ isFullTab }) => {
       className={`flex flex-col relative rounded-3xl animate-fade-in ${
         isFullTab
           ? "h-full overflow-auto "
-          : "h-auto overflow-auto border border-white/20"
+          : "h-auto overflow-auto border border-white/10"
       }`}
     >
-      <div className="flex justify-between items-center  p-4">
+      <div className="flex justify-between items-center p-4">
         <h2
           className={`${
             isFullTab ? "text-xl font-bold" : "text-base font-semibold"
-          } text-white`}
+          } text-white dark:text-textPrimary`}
         >
           Recently Played
         </h2>
@@ -27,7 +27,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
           <NavLink
             to="library"
             className={({ isActive }) =>
-              `${isActive ? "text-white " : "text-gray-300"}`
+              `${isActive ? "text-white " : "text-gray-300 dark:text-textMuted"}`
             }
           >
             <button className="cursor-pointer transition-all duration-300 hover:text-white">
@@ -39,7 +39,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
       {recentSongs.length > 0 ? (
         <div
           className={`flex flex-col ${
-            isFullTab ? "overflow-auto hide-scrollbar gap-1" : "overflow-hidden"
+            isFullTab ? "overflow-auto hide-scrollbar gap-1" : "overflow-hidden gap-1 dark:px-3"
           }  relative pb-4 animate-fade-in`}
         >
           {(isFullTab ? recentSongs : recentSongs.slice(0, 5)).map((song) => (

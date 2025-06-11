@@ -8,6 +8,7 @@ import {
   SkipBack,
   SkipForward,
   ListXIcon,
+  X,
 } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -59,7 +60,8 @@ const Playbar = () => {
     setCurrentTime(newTime);
   };
 
-  const togglePlay = () => {
+  const togglePlay = (e) => {
+    e.stopPropagation();
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -143,19 +145,18 @@ const Playbar = () => {
 
   return (
     <div
-      className={`w-full relative z-50 ${
-        isExpand
-          ? "rounded-3xl border border-white/20 shadow-none"
-          : "rounded-none border-none shadow-custom"
-      } ${
-        isPlaying ? "shadow-custom" : "shadow-none"
-      } transition-all duration-500 bg-white/30 backdrop-blur-lg flex flex-col items-center animate-fade-in overflow-hidden`}
-    >
+  className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-500 ${
+    isExpand
+      ? "h-screen sm:h-auto sm:rounded-3xl sm:border sm:border-white/20 shadow-none"
+      : "rounded-none border-none shadow-custom"
+  } ${isPlaying ? "shadow-custom" : "shadow-none"} bg-white/30 backdrop-blur-lg cursor-pointer`}
+>
+
       {/*Clear Queue*/}
       <div
         className={`${
           isExpand ? "block" : "hidden"
-        } absolute top-2 right-3 cursor-pointer z-[99]`}
+        } absolute top-2 left-3 cursor-pointer z-[99] text-white`}
         onClick={() => {
           dispatch(resetPlayer());
           toast.success("Playing Queue cleared...");
@@ -164,6 +165,16 @@ const Playbar = () => {
       >
         <ListXIcon size={24} />
       </div>
+      <div
+        className={`${
+          isExpand ? "block" : "hidden"
+        } absolute top-2 right-3 cursor-pointer z-[99] text-white`}
+        onClick={() => {
+          setIsExpand(false);
+        }}
+      >
+        <X size={24} />
+      </div>
 
       {/* Audio Element */}
       <audio ref={audioRef} src={currentSong.preview} />
@@ -171,9 +182,12 @@ const Playbar = () => {
       {/*Collapsed Playbar(Playbar Header)*/}
       <div
         className={`flex items-center overflow-hidden ${
-          isExpand ? "gap-0 min-h-20 text-center pb-4" : "gap-2 min-h-10"
+          isExpand ? "gap-0 min-h-20 text-center pb-4 py-4" : "gap-2 min-h-10"
         } py-2 bg-black transition-all duration-500 items-center w-full px-2 relative`}
-      >
+      
+      onClick={() => {
+          setIsExpand(true);
+        }}>
         <div
           className={`flex flex-1 ${
             isExpand ? "flex-col" : "flex-row"
@@ -183,13 +197,13 @@ const Playbar = () => {
             src={currentSong?.album?.cover}
             alt={currentSong?.title}
             className={`${
-              isExpand ? "h-24 w-24" : "h-16 w-16"
+              isExpand ? "h-24 w-24" : "sm:h-16 sm:w-16 h-14 w-14"
             } transition-all duration-500 rounded-full`}
           />
           <div
             className={`${
               isExpand ? "text-center w-[95%]" : ""
-            } flex flex-col flex-grow transition-all duration-500 truncate overflow-hidden`}
+            } flex flex-col flex-grow transition-all duration-500 truncate overflow-hidden text-white`}
           >
             <p
               className={` ${
@@ -232,10 +246,10 @@ const Playbar = () => {
 
       {/* Expanded Playbar */}
       <div
-        className={`${
-          isExpand ? "min-h-20 opacity-100" : "h-0 opacity-0"
-        } transition-all duration-500 w-full`}
-      >
+  className={`w-full transition-all duration-500 flex flex-col ${
+    isExpand ? "flex-1 opacity-100 min-h-0" : "h-0 opacity-0"
+  }`}
+>
         {/* Controls */}
         <div
           className={`flex items-center bg-white/30 bg-opacity-100 justify-center gap-2 py-2 ${
@@ -294,21 +308,21 @@ const Playbar = () => {
 
         {/*Queue Container */}
         <div
-          className={`${
-            isExpand ? "opacity-100 min-h-0" : "h-0 opacity-0"
-          } w-full transition-all duration-500 overflow-auto hide-scrollbar max-h-[35dvh]`}
-        >
-          {queue.map((track, index) => (
-            <QueueCard track={track} key={track?.id} />
-          ))}
-        </div>
+  className={`w-full overflow-y-auto transition-all duration-500 hide-scrollbar sm:max-h-[35dvh] ${
+    isExpand ? "flex-1 opacity-100 min-h-0" : "h-0 opacity-0"
+  } px-2 sm:px-0`}
+>
+  {queue.map((track, index) => (
+    <QueueCard track={track} key={track?.id} />
+  ))}
+</div>
       </div>
 
       {/*Playbar Expand Icon*/}
       <button
         className={`${
-          isExpand ? "rotate-0" : "rotate-180"
-        } h-4 bg-white w-full text-black`}
+          isExpand ? "rotate-180" : "rotate-0"
+        } h-4 bg-white w-full text-black hidden sm:block`}
         onClick={() => {
           setIsExpand(!isExpand);
         }}

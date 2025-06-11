@@ -32,20 +32,20 @@ function App() {
   
 
   return (
-    <div className={`h-screen ${themeMode === 'dark' ? 'bg-[#0e0e0e]' : 'bg-forest'} relative flex min-h-[90dvh] max-h-[100dvh] p-4 gap-4 overflow-hidden transition-all duration-700`}>
+    <div className={`h-screen ${themeMode === 'dark' ? 'sm:bg-[#1e1e1e]' : 'bg-forest '} flex-col sm:flex-row relative flex sm:min-h-[90dvh] sm:max-h-[100dvh] sm:p-4 sm:gap-4 sm:overflow-hidden transition-all duration-700`}>
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="w-[18dvw] h-full">
+      <div className="hidden sm:block w-full sm:w-[18dvw] sm:h-full">
         <Sidebar />
       </div>
-      <div className="flex-1 flex flex-col min-w-0">
-        <div className="pb-4 border-b-2 border-b-white/50">
+      <div className="h-[90dvh] sm:h-auto sm:flex-1 flex flex-col sm:min-h-0 sm:min-w-0">
+        <div className="sm:pb-4 border-b sm:border-b-2 border-b-white/50 py-3 sm:py-0">
           <Navbar />
         </div>
-        <div className="flex-1 pt-4 overflow-hidden">
+        <div className="flex-1 sm:pt-4 min-h-0 overflow-auto">
           <Outlet />
         </div>
       </div>
-      <div className="absolute bottom-4 w-[18dvw] left-4 text-white">
+      <div className="absolute bottom-0 sm:bottom-4 w-full sm:w-[18dvw] sm:left-4 sm:text-white">
         <Playbar />
       </div>
        <AddToPlaylistModal

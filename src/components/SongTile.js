@@ -79,7 +79,7 @@ const SongTile = ({ trackList, track, isFavorite }) => {
   return (
     <div
       key={track.id}
-      className="relative z-0 snap-start max-w-[inherit] flex gap-2 items-center justify-between rounded-lg px-4 py-2 shadow-sm transition-all duration-300 cursor-pointer group text-white"
+      className="relative z-0 snap-start max-w-[inherit] flex gap-2 bg-white/5 sm:bg-transparent dark:bg-white/5 items-center justify-between rounded-lg px-4 py-2 shadow-sm transition-all duration-300 cursor-pointer group dark:text-textPrimary text-white"
       onClick={() => handlePlay(track)}
     >
       <div className="absolute z-0 inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
@@ -92,7 +92,7 @@ const SongTile = ({ trackList, track, isFavorite }) => {
         />
         <div className="truncate">
           <h2 className="text-sm font-medium truncate">{track.title_short}</h2>
-          <p className="text-xs text-gray-500">{track.artist.name}</p>
+          <p className="text-xs dark:text-textMuted text-gray-500">{track.artist.name}</p>
         </div>
       </div>
 

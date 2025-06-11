@@ -1,4 +1,4 @@
-import { Home, ListMusicIcon, Search } from "lucide-react";
+import { Home, ListMusicIcon, MoonIcon, Search, SunDim } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
@@ -13,22 +13,22 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   return (
     <div className="bg-transparent w-full backdrop-blur-lg h-full flex flex-row-reverse justify-between items-center animate-fade-in px-4">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <NavLink
           to="/search"
           className={({ isActive }) =>
             `${
               isActive ? "shadow-custom text-green-500" : "text-black"
-            } w-80 bg-white hover:text-white rounded-3xl py-1 px-2 cursor-pointer hover:bg-transparent border border-white/20 transition-all duration-300 to-white/30`
+            } md:w-80 bg-white hover:text-white rounded-3xl p-2 md:py-1 md:px-2 cursor-pointer hover:bg-transparent border border-white/20 transition-all duration-300 to-white/30`
           }
         >
           <Search />
         </NavLink>
          <button
       onClick={() => dispatch(toggleTheme())}
-      className="p-2 text-sm rounded bg-black text-white dark:bg-white dark:text-black"
+      className="p-2 text-sm rounded-full bg-black text-white dark:bg-white dark:text-black"
     >
-      Switch to {mode === 'light' ? 'Dark' : 'Light'} Mode
+      {mode === 'light' ? (<MoonIcon/>) : (<SunDim/>)}
     </button>
         {user && (
           <div className="relative flex justify-center">
@@ -46,7 +46,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <NavLink
           to="/home"
           end

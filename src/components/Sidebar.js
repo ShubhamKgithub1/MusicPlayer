@@ -9,31 +9,31 @@ const Sidebar = () => {
   const user = useSelector((state) => state.user.userInfo);
 
   return (
-    <div className="w-full h-full flex flex-col gap-3 text-white relative">
+    <div className="sm:w-full sm:h-full sm:flex sm:flex-col sm:gap-3 sm:dark:text-textPrimary sm:text-white sm:relative">
       {user ? (
-        <div className="flex flex-col items-center gap-4 justify-center w-full ">
-          <div className="dark:bg-black/40 dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]  bg-white/30 backdrop-blur-lg border border-white/20 rounded-3xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
-            <div className="flex items-center gap-4 p-4 animate-fade-in">
+        <div className="sm:flex sm:flex-col sm:items-center sm:gap-4 sm:justify-center sm:w-full ">
+          <div className="dark:bg-black/10  sm:bg-white/30 sm:backdrop-blur-lg sm:border sm:border-white/10 sm:rounded-3xl sm:w-full sm:flex sm:flex-col sm:items-center sm:justify-center sm:overflow-hidden animate-fade-in">
+            <div className="sm:flex sm:flex-col sm:items-center sm:gap-4 sm:p-4 animate-fade-in">
               <img
                 src={user.photoURL}
                 alt="avatar"
-                className="w-8 h-8 rounded-full"
+                className="sm:w-20 sm:h-20 rounded-full "
                  referrerPolicy="no-referrer"
               />
-              <span>{user.displayName}</span>
-              <button onClick={logout} className="px-2 py-1 bg-red-500 rounded">
+              <span className="sm:text-xl">{user.displayName}</span>
+              {/* <button onClick={logout} className="px-2 py-1 bg-red-500 rounded">
                 Logout
-              </button>
+              </button> */}
             </div>
-            <div className="w-full p-4 transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
+            <div className="sm:w-full sm:p-4 transition-all duration-300 cursor-pointer sm:hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
               <NavLink
                 to="/library"
                 className={({ isActive }) =>
                   `${
                     isActive
-                      ? "text-green-500 bg-gradient-to-r from-transparent to-white/30"
-                      : "text-white"
-                  }w-full`
+                      ? "sm:text-green-500"
+                      : ""
+                  } sm:w-full`
                 }
               >
                 <button className="flex"><Library />
@@ -41,12 +41,12 @@ const Sidebar = () => {
               </NavLink>
             </div>
           </div>
-          <div className="w-full bg-white/30 backdrop-blur-lg rounded-3xl animate-fade-in">
+          <div className="w-full  sm:dark:bg-black/40 bg-white/30 backdrop-blur-lg rounded-3xl animate-fade-in">
             <RecentlyPlayed isFullTab={false} />
           </div>
         </div>
       ) : (
-        <div className="bg-white/30 border border-white/20 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
+        <div className="sm:bg-white/30 sm:dark:bg-black/40 sm:dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] sm:border sm:border-white/20 sm:backdrop-blur-lg sm:rounded-3xl sm:p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
           <h2 className="text-lg text-white font-semibold">
             You're not logged in
           </h2>

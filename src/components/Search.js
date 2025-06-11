@@ -44,7 +44,7 @@ const Search = () => {
   console.log(result);
 
   return (
-    <div className="w-full h-full bg-white/30 backdrop-blur-lg rounded-3xl p-4 flex flex-col animate-fade-in border border-white/20">
+    <div className="w-full h-full dark:bg-black/40 bg-white/30 backdrop-blur-lg rounded-3xl p-4 flex flex-col animate-fade-in border border-white/10 dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]">
       <div>
         <div className="flex items-center gap-4">
           <input
@@ -65,12 +65,12 @@ const Search = () => {
           </button>
         </div>
 
-        <h1 className="text-lg font-semibold text-white py-4">Tags</h1>
+        <h1 className="text-lg font-semibold dark:text-textPrimary text-white py-4">Tags</h1>
         <div className="flex gap-4 flex-wrap w-2/3 border-b pb-6">
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
-              className="cursor-pointer active:scale-x-90 transition-all duration-300 bg-white hover:bg-transparent hover:text-white text-gray-500 font-medium w-max px-2 py-1 rounded-full border"
+              className="cursor-pointer active:scale-x-90 transition-all duration-300 bg-white hover:bg-transparent dark:hover:bg-black/40 dark:text-textPrimary dark:border-borderSoft dark:bg-white/10 dark:shadow-neon-blue hover:text-white text-gray-500 font-medium w-max px-2 py-1 rounded-full border"
               onClick={() => {
                 setTag(c);
                 onSearch(c);
