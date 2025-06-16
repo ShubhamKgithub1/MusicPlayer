@@ -1,11 +1,8 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { closeDrawer } from "../reduxStore/uiSlice";
 
 const Welcome = () => {
   const navigate = useNavigate();
-   const dispatch = useDispatch();
 
   useEffect(() => {
      const allowed = sessionStorage.getItem("justLoggedIn");
@@ -27,13 +24,13 @@ const Welcome = () => {
 
   return (
     <div className="h-full absolute w-screen top-0 left-0 z-50 flex flex-col items-center justify-center dark:bg-gradient-to-r from-[#1e1e1e] to-[#1e1e1e] bg-forest animate-fade-in text-white overflow-hidden">
-      <div className="text-center flex flex-col gap-4 z-10">
-        <h1 className="text-5xl font-bold animate-fade-in-delay dark:text-neonBlue">Welcome!</h1>
-        <p className="text-lg font-light animate-fade-in-delay2 dark:text-textMuted">
+      <div className="text-center flex flex-col gap-3 sm:gap-4 z-10">
+        <h1 className="text-4xl sm:text-5xl font-bold animate-fade-in-delay dark:text-neonBlue">Welcome!</h1>
+        <p className="text-base sm:text-lg font-light animate-fade-in-delay2 dark:text-textMuted">
           Let the music flow 🎵
         </p>
         <button
-          className="bg-white px-6 py-2 dark:text-white dark:hover:bg-transparent dark:bg-black/40 dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] text-black rounded-3xl hover:bg-transparent shadow-custom hover:text-white transition-all duration-300 text-lg font-semibold active:scale-[0.94]"
+          className="bg-white sm:px-6 py-2 dark:text-white dark:hover:bg-transparent dark:border dark:border-black/20 dark:bg-black/40 dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] text-black rounded-3xl hover:bg-transparent shadow-custom hover:text-white transition-all duration-300 text-lg font-semibold active:scale-[0.94]"
           onClick={() => clickHandler()}
         >
           Continue..

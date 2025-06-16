@@ -8,7 +8,7 @@ const MobileNavbar = ({user}) => {
       const mode = useSelector((state)=> state.theme.mode);
 
   return (
-    <nav className="flex justify-between items-center px-4 py-3 text-white h-full bg-white/15 backdrop-blur-md sm:hidden">
+    <nav className="flex justify-between items-center px-4 py-3 text-white h-full bg-white/20 dark:bg-black/40 backdrop-blur-md sm:hidden">
       <button onClick={()=>dispatch(openDrawer())} className="transition-all duration-200">
         <Menu size={24} />
       </button>

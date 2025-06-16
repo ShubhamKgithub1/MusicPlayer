@@ -22,7 +22,7 @@ function App() {
   const user = useSelector((state) => state.user.userInfo);
   const userId = user?.uid;
   const themeMode = useSelector((state) => state.theme.mode);
-
+ const queue = useSelector((state)=> state.player.queue);
   useEffect(() => {
     const html = document.documentElement;
     if (themeMode === 'dark') {
@@ -37,13 +37,13 @@ function App() {
       <div className="hidden sm:block w-full sm:w-[18dvw] sm:h-full">
         <Sidebar />
       </div>
-      <div className="h-[90dvh] sm:h-auto sm:flex-1 flex flex-col sm:min-h-0 sm:min-w-0">
+      <div className={` ${queue.length > 0 ?" h-[90dvh] ":" h-[100dvh] "}  sm:h-auto sm:flex-1 flex flex-col sm:min-h-0 sm:min-w-0`}>
         <div className="sm:pb-4 border-b sm:border-b-2 border-b-white/50 sm:py-0">
           <Navbar />
           <MobileNavbar
           user={user}/>
         </div>
-        <div className="flex-1 sm:pt-4 min-h-0 overflow-auto hide-scrollbar">
+        <div className={`flex-1 sm:pt-4 min-h-0 overflow-auto hide-scrollbar`}>
           <Outlet />
         </div>
       </div>

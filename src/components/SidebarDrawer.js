@@ -10,13 +10,13 @@ const SidebarDrawer = ({ user }) => {
   const isOpen = useSelector((state) => state.ui.isSidebarDrawerOpen);
   return (
     <div
-      className={`fixed top-0 left-0 sm:hidden bg-black/20 backdrop-blur-3xl h-screen w-2/3 ${
+      className={`fixed top-0 left-0 sm:hidden bg-black/10 dark:bg-black/20 backdrop-blur-3xl h-screen w-2/3 ${
         isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
       } transition-all duration-500`}
     >
       <button
         onClick={() => dispatch(closeDrawer())}
-        className="absolute top-2 right-2 text-white"
+        className="absolute top-2 right-2 text-white border border-white/20 rounded-md"
       >
         <X />
       </button>
@@ -24,13 +24,13 @@ const SidebarDrawer = ({ user }) => {
         {/* User Info */}
         {user && (
           <div className="mb-4">
-            <p className="text-lg font-semibold">Hello, {user.name}</p>
+            <p className="text-lg font-semibold">Hello, {user.displayName}</p>
             <p className="text-sm text-gray-400">{user.email}</p>
           </div>
         )}
 
         {/* Menu Items */}
-        <ul className="text-sm">
+        <ul className="text-lg flex flex-col gap-1 font-semibold">
           <li className="">
             <NavLink
               to="/home"
@@ -38,12 +38,12 @@ const SidebarDrawer = ({ user }) => {
               className={({ isActive }) =>
                 `${
                   isActive ? "text-green-500" : ""
-                } transition-all duration-300 cursor-pointer`
+                } cursor-pointer`
               }
             >
               <button className="flex items-center gap-1 py-1">
                 <Home size={20}/>
-                <span className="font-semibold">Home</span>
+                <span>Home</span>
               </button>
             </NavLink>
           </li>
@@ -53,12 +53,12 @@ const SidebarDrawer = ({ user }) => {
               className={({ isActive }) =>
                 `${
                   isActive ? "text-green-500" : ""
-                } transition-all duration-300 cursor-pointer`
+                } cursor-pointer`
               }
             >
               <button className="flex items-center gap-1 py-1">
                 <Music size={20}/>
-                <span className="font-semibold">Explore</span>
+                <span>Explore</span>
               </button>
             </NavLink>
           </li>
@@ -68,12 +68,12 @@ const SidebarDrawer = ({ user }) => {
               className={({ isActive }) =>
                 `${
                   isActive ? "text-green-500" : ""
-                } transition-all duration-300 cursor-pointer`
+                } cursor-pointer`
               }
             >
               <button className="flex items-center gap-1 py-1">
                 <Search size={20}/>
-                <span className="font-semibold">Search</span>
+                <span>Search</span>
               </button>
             </NavLink>
           </li>
@@ -86,14 +86,14 @@ const SidebarDrawer = ({ user }) => {
             >
               <button className="flex items-center gap-1 py-1">
                 <Library size={20} />
-                <span className="font-semibold">My Library</span>
+                <span>My Library</span>
               </button>
             </NavLink>
           )}
         </ul>
         {user ? (
-          <div className="py-1 text-red-500 cursor-pointer" onClick={logout}>
-            🚪 Logout
+          <div className="mt-3 flex justify-center py-1 rounded-3xl border hover:bg-transparent dark:hover:bg-transparent active:scale-x-[0.96] border-white/20 font-semibold bg-white/30 dark:bg-black/40 text-red-600 text-lg cursor-pointer transition-all duration-300" onClick={logout}>
+             Logout
           </div>
         ) : (
           <div className="mt-3 bg-white/30 sm:dark:bg-black/40 sm:dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] border border-white/20 backdrop-blur-lg rounded-xl p-4 flex flex-col items-start gap-1.5 text-sm animate-fade-in">
