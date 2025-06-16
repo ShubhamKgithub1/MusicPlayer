@@ -7,7 +7,7 @@ import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 import { createFilter } from "redux-persist-transform-filter";
 import themeReducer from "./themeSlice";
-// import persistReducer from "redux-persist/es/persistReducer";
+import uiReducer from "./uiSlice";
 
 const playerFilter = createFilter("player", [
   "currentSong",
@@ -23,6 +23,7 @@ const rootReducer = combineReducers({
   api: apiReducer,
   modal: modalReducer,
   theme: themeReducer,
+  ui: uiReducer,
 });
 
 const persistConfig = {

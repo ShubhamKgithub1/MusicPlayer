@@ -12,17 +12,17 @@ const Navbar = () => {
 
   const { user, logout } = useAuth();
   return (
-    <div className="bg-transparent w-full backdrop-blur-lg h-full flex flex-row-reverse justify-between items-center animate-fade-in px-4">
+    <div className="hidden bg-transparent w-full backdrop-blur-lg h-full sm:flex flex-row-reverse justify-between items-center animate-fade-in px-4">
       <div className="flex items-center gap-2 sm:gap-4">
         <NavLink
           to="/search"
           className={({ isActive }) =>
             `${
               isActive ? "shadow-custom text-green-500" : "text-black"
-            } md:w-80 bg-white hover:text-white rounded-3xl p-2 md:py-1 md:px-2 cursor-pointer hover:bg-transparent border border-white/20 transition-all duration-300 to-white/30`
+            } sm:w-80 bg-white hover:text-white rounded-3xl p-1.5 md:py-1 md:px-2 cursor-pointer hover:bg-transparent border border-white/20 transition-all duration-300 to-white/30`
           }
         >
-          <Search />
+          <Search/>
         </NavLink>
          <button
       onClick={() => dispatch(toggleTheme())}
@@ -55,10 +55,10 @@ const Navbar = () => {
               isActive
                 ? "shadow-custom text-green-500"
                 : "text-black"
-            } bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer to-white/30`
+            } bg-white p-1.5 md:p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer to-white/30`
           }
         >
-          <Home />
+          <Home/>
         </NavLink>
 
         <NavLink
@@ -68,7 +68,7 @@ const Navbar = () => {
               isActive
                 ? "shadow-custom text-green-500"
                 : "text-black"
-            } flex items-center justify-center bg-white p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer to-white/30`
+            } flex items-center justify-center bg-white p-1.5 md:p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer to-white/30`
           }
         >
           <ListMusicIcon />

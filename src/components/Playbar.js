@@ -40,7 +40,7 @@ const Playbar = () => {
 
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const volume = useSelector((state)=> state.player.volume);
+  const volume = useSelector((state) => state.player.volume);
   const [isExpand, setIsExpand] = useState(false);
 
   const audioRef = useRef(null);
@@ -145,13 +145,14 @@ const Playbar = () => {
 
   return (
     <div
-  className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-500 ${
-    isExpand
-      ? "h-screen sm:h-auto sm:rounded-3xl sm:border sm:border-white/20 shadow-none"
-      : "rounded-none border-none shadow-custom"
-  } ${isPlaying ? "shadow-custom" : "shadow-none"} bg-white/30 backdrop-blur-lg cursor-pointer`}
->
-
+      className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-500 ${
+        isExpand
+          ? "h-screen sm:h-auto sm:rounded-3xl sm:border sm:border-white/20 shadow-none"
+          : "rounded-none border-none shadow-custom"
+      } ${
+        isPlaying ? "shadow-custom" : "shadow-none"
+      } bg-white/30 backdrop-blur-lg cursor-pointer`}
+    >
       {/*Clear Queue*/}
       <div
         className={`${
@@ -184,10 +185,10 @@ const Playbar = () => {
         className={`flex items-center overflow-hidden ${
           isExpand ? "gap-0 min-h-20 text-center pb-4 py-4" : "gap-2 min-h-10"
         } py-2 bg-black transition-all duration-500 items-center w-full px-2 relative`}
-      
-      onClick={() => {
+        onClick={() => {
           setIsExpand(true);
-        }}>
+        }}
+      >
         <div
           className={`flex flex-1 ${
             isExpand ? "flex-col" : "flex-row"
@@ -246,10 +247,10 @@ const Playbar = () => {
 
       {/* Expanded Playbar */}
       <div
-  className={`w-full transition-all duration-500 flex flex-col ${
-    isExpand ? "flex-1 opacity-100 min-h-0" : "h-0 opacity-0"
-  }`}
->
+        className={`w-full transition-all duration-200 flex flex-col ${
+          isExpand ? "flex-1 opacity-100 min-h-0 max-h-[90dvh]" : "max-h-0 opacity-0"
+        }`}
+      >
         {/* Controls */}
         <div
           className={`flex items-center bg-white/30 bg-opacity-100 justify-center gap-2 py-2 ${
@@ -262,7 +263,7 @@ const Playbar = () => {
               isShuffle ? "bg-gray-500" : "bg-transparent"
             } ${
               isExpand
-                ? "h-8 w-8 opacity-100 p-[5px] "
+                ? "h-8 w-8 opacity-100 p-[5px]"
                 : "h-0 w-0 opacity-0 p-0"
             }`}
           >
@@ -308,14 +309,14 @@ const Playbar = () => {
 
         {/*Queue Container */}
         <div
-  className={`w-full overflow-y-auto transition-all duration-500 hide-scrollbar sm:max-h-[35dvh] ${
-    isExpand ? "flex-1 opacity-100 min-h-0" : "h-0 opacity-0"
-  } px-2 sm:px-0`}
->
-  {queue.map((track, index) => (
-    <QueueCard track={track} key={track?.id} />
-  ))}
-</div>
+          className={`w-full overflow-y-auto transition-all duration-300 hide-scrollbar ${
+            isExpand ? "flex-1 opacity-100 min-h-0 max-h-[80dvh] sm:max-h-[35dvh]" : "max-h-0 opacity-0"
+          } px-2 sm:px-0`}
+        >
+          {queue.map((track, index) => (
+            <QueueCard track={track} key={track?.id} />
+          ))}
+        </div>
       </div>
 
       {/*Playbar Expand Icon*/}

@@ -92,7 +92,7 @@ const SongTile = ({ trackList, track, isFavorite }) => {
         />
         <div className="truncate">
           <h2 className="text-sm font-medium truncate">{track.title_short}</h2>
-          <p className="text-xs dark:text-textMuted text-gray-500">{track.artist.name}</p>
+          <p className="text-xs dark:text-textMuted sm:text-gray-500 text-gray-300">{track.artist.name}</p>
         </div>
       </div>
 

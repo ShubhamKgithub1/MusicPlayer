@@ -17,7 +17,7 @@ const Sidebar = () => {
               <img
                 src={user.photoURL}
                 alt="avatar"
-                className="sm:w-20 sm:h-20 rounded-full "
+                className="sm:w-20 sm:h-20 rounded-full"
                  referrerPolicy="no-referrer"
               />
               <span className="sm:text-xl">{user.displayName}</span>

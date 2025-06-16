@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { resetPlayer } from "../reduxStore/playerSlice";
 import { storeUserInfo } from "../services/userService";
 import { resetUser } from "../reduxStore/userSlice";
+import { closeDrawer } from "../reduxStore/uiSlice";
 
 const AuthContext = createContext();
 
@@ -27,6 +28,7 @@ export const AuthProvider = ({ children }) => {
       setUser(result.user);
       await storeUserInfo(user);
       sessionStorage.setItem("justLoggedIn", "true");
+       dispatch(closeDrawer());
       navigate("/welcome");
     } catch (error) {
       console.log("Login error:", error);
@@ -39,6 +41,7 @@ export const AuthProvider = ({ children }) => {
       await signOut(auth);
       setUser(null);
       dispatch(resetUser());
+      dispatch(closeDrawer());
       toast.success("You’ve been logged out!");
     } catch (error) {
       console.log("Logout error:", error);

@@ -1,8 +1,11 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { closeDrawer } from "../reduxStore/uiSlice";
 
 const Welcome = () => {
   const navigate = useNavigate();
+   const dispatch = useDispatch();
 
   useEffect(() => {
      const allowed = sessionStorage.getItem("justLoggedIn");
