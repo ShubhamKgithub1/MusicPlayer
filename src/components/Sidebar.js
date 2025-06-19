@@ -1,4 +1,4 @@
-import { Library } from "lucide-react";
+import { Library, LogOut } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import RecentlyPlayed from "./RecentlyPlayed";
 import { useSelector } from "react-redux";
@@ -9,44 +9,49 @@ const Sidebar = () => {
   const user = useSelector((state) => state.user.userInfo);
 
   return (
-    <div className="sm:w-full sm:h-full sm:flex sm:flex-col sm:gap-3 sm:dark:text-textPrimary sm:text-white sm:relative">
+    <div className="w-full h-full flex flex-col gap-3 dark:text-textPrimary text-white relative">
       {user ? (
-        <div className="sm:flex sm:flex-col sm:items-center sm:gap-4 sm:justify-center sm:w-full ">
-          <div className="dark:bg-black/10  sm:bg-white/30 sm:backdrop-blur-lg sm:border sm:border-white/10 sm:rounded-3xl sm:w-full sm:flex sm:flex-col sm:items-center sm:justify-center sm:overflow-hidden animate-fade-in">
-            <div className="sm:flex sm:flex-col sm:items-center sm:gap-4 sm:p-4 animate-fade-in">
+        <div className="flex flex-col items-center gap-4 justify-center w-full ">
+          <div className="dark:bg-black/40  bg-white/30 backdrop-blur-lg border border-white/10 rounded-3xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
+            <div className="flex items-center justify-start w-full gap-2 p-4 animate-fade-in">
               <img
                 src={user.photoURL}
                 alt="avatar"
-                className="sm:w-20 sm:h-20 rounded-full"
-                 referrerPolicy="no-referrer"
+                className="w-12 h-12 rounded-full"
+                referrerPolicy="no-referrer"
               />
-              <span className="sm:text-xl">{user.displayName}</span>
-              {/* <button onClick={logout} className="px-2 py-1 bg-red-500 rounded">
-                Logout
-              </button> */}
+              <div>
+                <h1 className="text-lg font-medium">{user.displayName}</h1>
+                <h1 className="text-xs text-gray-300">{user.email}</h1>
+              </div>
+              <button
+                onClick={logout}
+                className="ml-auto flex items-center gap-2 px-4 py-2 rounded-xl backdrop-blur-md bg-white/10 text-white hover:bg-white/20 active:scale-95 transition-all duration-300 shadow-lg border border-white/20"
+              >
+                <LogOut size={16} />
+                <span className="font-semibold">Logout</span>
+              </button>
             </div>
-            <div className="sm:w-full sm:p-4 transition-all duration-300 cursor-pointer sm:hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
+            <div className="w-full p-4 transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
               <NavLink
                 to="/library"
                 className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "sm:text-green-500"
-                      : ""
-                  } sm:w-full`
+                  `${isActive ? "text-green-500" : ""} w-full`
                 }
               >
-                <button className="flex"><Library />
-                <span className="font-semibold">My Library</span></button>
+                <button className="flex">
+                  <Library />
+                  <span className="font-semibold">My Library</span>
+                </button>
               </NavLink>
             </div>
           </div>
-          <div className="w-full  sm:dark:bg-black/40 bg-white/30 backdrop-blur-lg rounded-3xl animate-fade-in">
+          <div className="w-full  dark:bg-black/40 bg-white/30 backdrop-blur-lg rounded-3xl animate-fade-in">
             <RecentlyPlayed isFullTab={false} />
           </div>
         </div>
       ) : (
-        <div className="sm:bg-white/30 sm:dark:bg-black/40 sm:dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] sm:border sm:border-white/20 sm:backdrop-blur-lg sm:rounded-3xl sm:p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
+        <div className="bg-white/30 dark:bg-black/40 dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] border border-white/20 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
           <h2 className="text-lg text-white font-semibold">
             You're not logged in
           </h2>

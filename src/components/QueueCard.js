@@ -21,7 +21,7 @@ const handleTrackClick =(trackId) => {
             <img src={track?.album?.cover_small} alt={track?.title} className="w-12 h-12 rounded-full"/>
             <div className="flex flex-col truncate">
                 <span className="text-sm font-medium truncate">{track?.title_short}</span>
-                <span className="text-xs text-gray-600 truncate">{track?.artist?.name}</span>
+                <span className="text-xs text-gray-600 dark:text-gray-300 truncate">{track?.artist?.name}</span>
             </div>
         </div>
     );

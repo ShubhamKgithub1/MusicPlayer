@@ -34,6 +34,7 @@ function App() {
   return (
     <div className={`h-screen ${themeMode === 'dark' ? 'bg-[#1e1e1e]' : 'bg-forest '} flex-col sm:flex-row relative flex sm:min-h-[90dvh] sm:max-h-[100dvh] sm:p-4 sm:gap-4 sm:overflow-hidden transition-all duration-700`}>
       <Toaster position="top-right" reverseOrder={false} />
+      {/* <div className="absolute inset-0 z-0"><img src={"https://img.freepik.com/free-vector/gradient-glassmorphism_23-2149456194.jpg?t=st=1750320872~exp=1750324472~hmac=829dfff80a0400c6759d566bd3bae82be19b9960718d6e7bc98c72a963bac4a9&w=1380"} alt="" className="w-full h-full"/></div> */}
       <div className="hidden sm:block w-full sm:w-[18dvw] sm:h-full">
         <Sidebar />
       </div>

@@ -24,7 +24,7 @@ const BannerCard = ({ topTracks }) => {
           <h3 className="text-sm sm:text-lg font-medium">{track?.artist?.name}</h3>
           <div className="flex gap-2">
             <button
-              className="flex justify-center items-center border border-white/20 sm:border-white/30 p-1 sm:p-2 bg-white sm:py-2 rounded-full hover:bg-transparent text-black hover:text-white transition-all duration-300 active:scale-90"
+              className="flex justify-center items-center border border-white/20 sm:border-white/30 p-1.5 sm:p-2 bg-white sm:py-2 rounded-full hover:bg-transparent text-black hover:text-white transition-all duration-300 active:scale-90"
               onClick={() => handlePlay()}
             >
               <Play/>

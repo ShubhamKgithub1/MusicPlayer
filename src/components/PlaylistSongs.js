@@ -6,11 +6,11 @@ const PlaylistSongs = ({song, playlistId, songId, userId, dispatch})=>{
 
     if(!song) return;
     return (
-        <div className="flex gap-2 items-center w-full shadow-sm py-2 px-4 snap-start relative group cursor-pointer animate-fade-in">
-            <img src={song.album.cover_small} alt="not found" className="rounded-full"/>
-            <div className="">
-                <h1 className="font-semibold">{song.title_short}</h1>
-                <h1 className="text-sm text-gray-500">{song.artist.name}</h1>
+        <div className="flex gap-2 rounded-md items-center w-full bg-white/5 shadow-sm p-2 md:py-2 md:px-4 snap-start relative group cursor-pointer animate-fade-in">
+            <img src={song.album.cover_small} alt="not found" className="w-12 h-12 rounded-full"/>
+            <div className="truncate">
+                <h1 className="text-sm font-medium truncate">{song.title_short}</h1>
+                <h1 className="text-xs dark:text-textMuted sm:text-gray-500 text-gray-300">{song.artist.name}</h1>
             </div>
                 <button className="hover:bg-gray-200 rounded-full p-2 ml-auto transition-all duration-200 hover:text-red-500 text-white"
                 onClick={()=>removeSongFromPlaylist(userId, playlistId, songId, dispatch)}>

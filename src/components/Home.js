@@ -24,8 +24,8 @@ const Home = () => {
   }
 
   return (
-    <div className="flex flex-col sm:dark:border sm:dark:border-white/10 sm:flex-row sm:h-full sm:gap-4 sm:dark:gap-0 w-full text-white sm:dark:text-textPrimary overflow-y-auto sm:dark:bg-black/40 p-2 rounded-3xl transition-all duration-200">
-      <div className="flex flex-col sm:w-[40%] gap-0 h-[80dvh] sm:h-full px-2 sm:p-4 dark:bg-transparent dark:border-none  sm:bg-white/30 backdrop-blur-lg sm:border sm:border-white/20 rounded-3xl animate-fade-in-delay">
+    <div className="flex flex-col sm:flex-row sm:h-full sm:gap-4 sm:dark:gap-0 w-full text-white sm:dark:text-textPrimary overflow-y-auto sm:dark:bg-black/40 p-2 rounded-3xl transition-all duration-300">
+      <div className="flex flex-col sm:w-[40%] gap-0 h-[80dvh] sm:h-full px-2 sm:p-4 sm:dark:p-2 dark:bg-transparent dark:border-none  sm:bg-white/30 backdrop-blur-lg sm:border sm:border-white/20 rounded-3xl animate-fade-in-delay">
         <BannerCard topTracks={hits} />
         <div className="flex-1 min-h-0 w-full flex flex-col">
           <h1 className="font-semibold sm:font-bold text-lg sm:text-2xl p-3 sm:py-4 sm:px-2">

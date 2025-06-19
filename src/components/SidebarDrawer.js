@@ -1,8 +1,9 @@
-import { Home, Library, Music, Search, X } from "lucide-react";
+import { Home, Library, LogOut, Music, Search, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
 import { closeDrawer } from "../reduxStore/uiSlice";
 import { NavLink } from "react-router-dom";
+import RecentlyPlayed from "./RecentlyPlayed";
 
 const SidebarDrawer = ({ user }) => {
   const { login, logout } = useAuth();
@@ -10,7 +11,7 @@ const SidebarDrawer = ({ user }) => {
   const isOpen = useSelector((state) => state.ui.isSidebarDrawerOpen);
   return (
     <div
-      className={`fixed top-0 left-0 sm:hidden bg-black/10 dark:bg-black/20 backdrop-blur-3xl h-screen w-2/3 ${
+      className={`fixed top-0 left-0 sm:hidden bg-black/10 dark:bg-black/20 backdrop-blur-3xl h-screen w-3/4 ${
         isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
       } transition-all duration-500`}
     >
@@ -31,48 +32,42 @@ const SidebarDrawer = ({ user }) => {
 
         {/* Menu Items */}
         <ul className="text-lg flex flex-col gap-1 font-semibold">
-          <li className="">
+          <li onClick={() => dispatch(closeDrawer())}>
             <NavLink
               to="/home"
               end
               className={({ isActive }) =>
-                `${
-                  isActive ? "text-green-500" : ""
-                } cursor-pointer`
+                `${isActive ? "text-green-500" : ""} cursor-pointer`
               }
             >
               <button className="flex items-center gap-1 py-1">
-                <Home size={20}/>
+                <Home size={20} />
                 <span>Home</span>
               </button>
             </NavLink>
           </li>
-          <li className="">
+          <li onClick={() => dispatch(closeDrawer())}>
             <NavLink
               to="/explore"
               className={({ isActive }) =>
-                `${
-                  isActive ? "text-green-500" : ""
-                } cursor-pointer`
+                `${isActive ? "text-green-500" : ""} cursor-pointer`
               }
             >
               <button className="flex items-center gap-1 py-1">
-                <Music size={20}/>
+                <Music size={20} />
                 <span>Explore</span>
               </button>
             </NavLink>
           </li>
-          <li className="">
+          <li onClick={() => dispatch(closeDrawer())}>
             <NavLink
               to="/search"
               className={({ isActive }) =>
-                `${
-                  isActive ? "text-green-500" : ""
-                } cursor-pointer`
+                `${isActive ? "text-green-500" : ""} cursor-pointer`
               }
             >
               <button className="flex items-center gap-1 py-1">
-                <Search size={20}/>
+                <Search size={20} />
                 <span>Search</span>
               </button>
             </NavLink>
@@ -83,6 +78,7 @@ const SidebarDrawer = ({ user }) => {
               className={({ isActive }) =>
                 `${isActive ? "text-green-500" : ""} w-full`
               }
+              onClick={() => dispatch(closeDrawer())}
             >
               <button className="flex items-center gap-1 py-1">
                 <Library size={20} />
@@ -92,11 +88,20 @@ const SidebarDrawer = ({ user }) => {
           )}
         </ul>
         {user ? (
-          <div className="mt-3 flex justify-center py-1 rounded-3xl border hover:bg-transparent dark:hover:bg-transparent active:scale-x-[0.96] border-white/20 font-semibold bg-white/30 dark:bg-black/40 text-red-600 text-lg cursor-pointer transition-all duration-300" onClick={logout}>
-             Logout
+          <div className="flex flex-col gap-2 mt-3 ">
+            <div className="w-full dark:bg-black/40 bg-white/10 rounded-lg animate-fade-in">
+              <RecentlyPlayed isFullTab={false} />
+            </div>
+            <button
+              onClick={logout}
+              className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl backdrop-blur-md bg-white/10 text-white hover:bg-white/20 active:scale-95 transition-all duration-300 shadow-lg border border-white/20"
+            >
+              <LogOut size={16} />
+              <span className="font-semibold">Logout</span>
+            </button>
           </div>
         ) : (
-          <div className="mt-3 bg-white/30 sm:dark:bg-black/40 sm:dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] border border-white/20 backdrop-blur-lg rounded-xl p-4 flex flex-col items-start gap-1.5 text-sm animate-fade-in">
+          <div className="mt-3 bg-white/20 dark:bg-black/20 border-2 border-white/10 backdrop-blur-lg rounded-xl p-4 flex flex-col items-start gap-1.5 text-sm animate-fade-in">
             <h2 className="text-base text-white font-semibold">
               You're not logged in
             </h2>
@@ -106,7 +111,7 @@ const SidebarDrawer = ({ user }) => {
             </p>
 
             <button
-              className="mt-2 px-3 py-1.5 border text-green-500 font-semibold rounded-full bg-white hover:bg-transparent hover:text-white hover:border-white/20 transition"
+              className="mt-2 text-sm px-2 py-1.5 border text-green-500 font-medium rounded-full bg-white hover:bg-transparent hover:text-white hover:border-white/20 transition"
               onClick={login}
             >
               Continue With Google
