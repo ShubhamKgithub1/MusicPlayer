@@ -3,11 +3,13 @@ import playerReducer from "./playerSlice";
 import userReducer from "./userSlice";
 import modalReducer from "./modalSlice";
 import apiReducer from "./apiSlice";
+import themeReducer from "./themeSlice";
+import uiReducer from "./uiSlice";
+
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 import { createFilter } from "redux-persist-transform-filter";
-import themeReducer from "./themeSlice";
-import uiReducer from "./uiSlice";
+
 
 const playerFilter = createFilter("player", [
   "currentSong",
@@ -16,6 +18,16 @@ const playerFilter = createFilter("player", [
   "isShuffle",
   "volume",
 ]);
+
+const apiFilter = createFilter("api", [
+  "topTracks",
+  "trendingTracks",
+  "newReleases",
+  "mostPopular",
+  "hits",
+  "loaded", // Required for useInitAppData to skip refetch
+]);
+
 
 const rootReducer = combineReducers({
   player: playerReducer,
@@ -29,9 +41,10 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["player"],
-  transforms: [playerFilter],
+  whitelist: ["player", "api"],
+  transforms: [playerFilter, apiFilter],
 };
+
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

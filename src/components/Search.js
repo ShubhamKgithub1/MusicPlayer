@@ -51,7 +51,7 @@ const Search = () => {
             type="search"
             placeholder="Search songs..."
             value={tag}
-            className="w-full sm:w-[40%] px-4 py-1.5 md:py-2 rounded-full bg-transparent text-white placeholder-white/70 border border-white/10 md:border-none font-medium backdrop-blur-md outline-none transition-all duration-300 focus:ring-2 focus:ring-emerald-400"
+            className="w-full sm:w-[40%] px-4 py-1.5 md:py-2 rounded-full bg-white text-black/70 dark:bg-transparent dark:text-white dark:placeholder-white/70 placeholder-black/70 border border-white/10 md:border-none font-medium backdrop-blur-md outline-none transition-all duration-300 focus:ring-2 focus:ring-emerald-400"
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") onSearch(tag);

@@ -9,10 +9,10 @@ const Sidebar = () => {
   const user = useSelector((state) => state.user.userInfo);
 
   return (
-    <div className="w-full h-full flex flex-col gap-3 dark:text-textPrimary text-white relative">
+    <div className="w-full h-full flex flex-col gap-3 dark:text-white relative">
       {user ? (
-        <div className="flex flex-col items-center gap-4 justify-center w-full ">
-          <div className="dark:bg-black/40  bg-white/30 backdrop-blur-lg border border-white/10 rounded-3xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
+        <div className="flex flex-col items-center gap-4 justify-center w-full">
+          <div className="dark:bg-black/40 shadow-md dark:shadow-none bg-white/30 backdrop-blur-lg border border-white/10 rounded-3xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
             <div className="flex items-center justify-start w-full gap-2 p-4 animate-fade-in">
               <img
                 src={user.photoURL}
@@ -21,12 +21,12 @@ const Sidebar = () => {
                 referrerPolicy="no-referrer"
               />
               <div>
-                <h1 className="text-lg font-medium">{user.displayName}</h1>
-                <h1 className="text-xs text-gray-300">{user.email}</h1>
+                <h1 className="text-lg font-medium text-glow">{user.displayName}</h1>
+                <h1 className="text-xs text-gray-600 dark:text-gray-300">{user.email}</h1>
               </div>
               <button
                 onClick={logout}
-                className="ml-auto flex items-center gap-2 px-4 py-2 rounded-xl backdrop-blur-md bg-white/10 text-white hover:bg-white/20 active:scale-95 transition-all duration-300 shadow-lg border border-white/20"
+                className="ml-auto flex items-center gap-2 px-4 py-2 rounded-xl backdrop-blur-md hover:bg-cyan-300 dark:hover:bg-transparent hover:shadow-neonBlue dark:hover:shadow-custom text-black dark:text-white hover:text-white bg-white/10 active:scale-95 transition-all duration-300 shadow-lg border border-white dark:border-white/20"
               >
                 <LogOut size={16} />
                 <span className="font-semibold">Logout</span>
@@ -36,7 +36,7 @@ const Sidebar = () => {
               <NavLink
                 to="/library"
                 className={({ isActive }) =>
-                  `${isActive ? "text-green-500" : ""} w-full`
+                  `${isActive ? "text-emerald-500" : ""} w-full`
                 }
               >
                 <button className="flex">
@@ -46,22 +46,22 @@ const Sidebar = () => {
               </NavLink>
             </div>
           </div>
-          <div className="w-full  dark:bg-black/40 bg-white/30 backdrop-blur-lg rounded-3xl animate-fade-in">
+          <div className="w-full dark:bg-black/40 shadow-md dark:shadow-none bg-white/30 backdrop-blur-lg rounded-3xl animate-fade-in">
             <RecentlyPlayed isFullTab={false} />
           </div>
         </div>
       ) : (
-        <div className="bg-white/30 dark:bg-black/40 dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] border border-white/20 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
-          <h2 className="text-lg text-white font-semibold">
+        <div className="bg-white/30 shadow-md dark:shadow-none dark:bg-black/40 border border-white/20 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
+          <h2 className="text-lg text-glow dark:text-white font-semibold">
             You're not logged in
           </h2>
-          <p className="text-gray-300">
+          <p className="text-glow dark:text-white text-gray-500">
             Login to save your favorite songs and access your playlist across
             devices.
           </p>
 
           <button
-            className="mt-2 px-4 py-2 border text-green-500 font-semibold rounded-full bg-white hover:bg-transparent hover:text-white hover:border-white/20 transition"
+            className="mt-2 px-4 py-2 border border-white dark:border-white/20 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:bg-cyan-300 hover:text-white hover:shadow-neonBlue dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 text-black shadow-md transition duration-300 dark:text-glow"
             onClick={login}
           >
             Continue With Google

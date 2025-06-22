@@ -19,7 +19,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
         <h2
           className={`${
             isFullTab ? "text-lg sm:text-xl font-semibold sm:font-bold" : "text-base font-semibold"
-          } text-white dark:text-textPrimary`}
+          } dark:text-white`}
         >
           Recently Played
         </h2>
@@ -27,10 +27,10 @@ const RecentlyPlayed = ({ isFullTab }) => {
           <NavLink
             to="library"
             className={({ isActive }) =>
-              `${isActive ? "text-white " : "text-gray-300 dark:text-textMuted"} hidden md:block`
+              `${isActive ? "dark:text-white " : "dark:text-gray-300 text-gray-500"} hidden md:block`
             }
           >
-            <button className="cursor-pointer transition-all duration-300 hover:text-white">
+            <button className="cursor-pointer transition-all duration-300 dark:hover:text-white">
               View all
             </button>
           </NavLink>

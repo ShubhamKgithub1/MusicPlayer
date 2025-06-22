@@ -8,28 +8,37 @@ import { toggleTheme } from "../reduxStore/themeSlice";
 const Navbar = () => {
   const [userOptions, setUserOptions] = useState(false);
   const dispatch = useDispatch();
-  const mode = useSelector((state)=> state.theme.mode);
+  const mode = useSelector((state) => state.theme.mode);
 
   const { user, logout } = useAuth();
   return (
-    <div className="hidden bg-transparent w-full backdrop-blur-lg h-full sm:flex flex-row-reverse justify-between items-center animate-fade-in px-4">
+    <div className="hidden bg-transparent w-full h-full sm:flex flex-row-reverse justify-between items-center animate-fade-in px-4">
       <div className="flex items-center gap-2 sm:gap-4">
         <NavLink
           to="/search"
+          // className={({ isActive }) =>
+          //   `${
+          //     isActive
+          //       ? " text-white bg-cyan-300 shadow-neonBlue dark:text-orange-200 shadow-md dark:shadow-orange-500"
+          //       : "dark:text-white shadow-custom dark:shadow-none border-none bg-white"
+          //   }  w-80 py-1.5 px-2 rounded-full hover:bg-transparent dark:bg-black/40 dark:hover:bg-transparent dark:border-white/20 hover:text-white transition-all duration-300 cursor-pointer`
+          // }
           className={({ isActive }) =>
             `${
-              isActive ? "shadow-custom text-green-500" : "text-black"
-            } sm:w-80 bg-white hover:text-white rounded-3xl p-1.5 md:py-1 md:px-2 cursor-pointer hover:bg-transparent border border-white/20 transition-all duration-300 to-white/30`
+              isActive
+                ? " text-white bg-cyan-300 shadow-neonBlue dark:bg-black/40 dark:text-orange-200 shadow-md dark:shadow-orange-500"
+                : "dark:text-white border-none hover:bg-black/15 hover:text-white bg-white dark:bg-black/40 dark:hover:bg-transparent dark:shadow-black dark:shadow shadow hover:shadow-custom"
+            }   w-80 py-1.5 px-2 rounded-full dark:border-white/20 transition-all duration-300 cursor-pointer`
           }
         >
-          <Search/>
+          <Search />
         </NavLink>
-         <button
-      onClick={() => dispatch(toggleTheme())}
-      className="p-2 text-sm rounded-full bg-black text-white dark:bg-white dark:text-black"
-    >
-      {mode === 'light' ? (<MoonIcon/>) : (<SunDim/>)}
-    </button>
+        <button
+          onClick={() => dispatch(toggleTheme())}
+          className="p-2 text-sm rounded-full bg-black text-white dark:bg-white dark:text-black"
+        >
+          {mode === "light" ? <MoonIcon /> : <SunDim />}
+        </button>
         {user && (
           <div className="relative flex justify-center">
             <img
@@ -40,8 +49,18 @@ const Navbar = () => {
               } border border-white/20 cursor-pointer relative`}
               onClick={() => setUserOptions(!userOptions)}
             />
-            <div className={`${userOptions?"bg-red-500 rounded-full cursor-pointer h-min opacity-100 text-opacity-100":"bg-transparent h-0 opacity-0 text-opacity-0"} font-medium animation-fade-in flex items-center absolute -bottom-2 translate-y-2/3 transition-all duration-300 px-2 py-1 text-white`} onClick={()=>{setUserOptions(false); logout()}}>
-                Logout
+            <div
+              className={`${
+                userOptions
+                  ? "bg-red-500 rounded-full cursor-pointer h-min opacity-100 text-opacity-100"
+                  : "bg-transparent h-0 opacity-0 text-opacity-0"
+              } font-medium animation-fade-in flex items-center absolute -bottom-2 translate-y-2/3 transition-all duration-300 px-2 py-1 text-white`}
+              onClick={() => {
+                setUserOptions(false);
+                logout();
+              }}
+            >
+              Logout
             </div>
           </div>
         )}
@@ -53,12 +72,12 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? "shadow-custom text-green-500"
-                : "text-black"
-            } bg-white p-1.5 md:p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer to-white/30`
+                ? " text-white bg-cyan-300 shadow-neonBlue dark:bg-black/40 dark:text-purple-500 shadow-md dark:shadow-purple-500"
+                : "dark:text-white border-none hover:bg-black/15 hover:text-white bg-white dark:bg-black/40 dark:hover:bg-transparent dark:shadow-black dark:shadow shadow hover:shadow-custom"
+            }   p-3 rounded-full dark:border-white/20 transition-all duration-300 cursor-pointer`
           }
         >
-          <Home/>
+          <Home />
         </NavLink>
 
         <NavLink
@@ -66,9 +85,9 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? "shadow-custom text-green-500"
-                : "text-black"
-            } flex items-center justify-center bg-white p-1.5 md:p-2 rounded-full hover:bg-transparent border border-white/20 hover:text-white transition-all duration-300 cursor-pointer to-white/30`
+                ? " text-white bg-cyan-300 shadow-neonBlue dark:bg-black/40 dark:text-purple-500 shadow-md dark:shadow-purple-500"
+                : "dark:text-white border-none hover:bg-black/15 hover:text-white bg-white dark:bg-black/40 dark:hover:bg-transparent dark:shadow-black dark:shadow shadow hover:shadow-custom"
+            }   p-3 rounded-full dark:border-white/20 transition-all duration-300 cursor-pointer`
           }
         >
           <ListMusicIcon />

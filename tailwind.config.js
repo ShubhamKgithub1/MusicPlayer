@@ -4,8 +4,16 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      textShadow: {
+           'md': '2px 2px 4px rgba(0, 0, 0, 0.5)',
+           'lg': '0 0 5px rgba(0, 0, 0, 0.5)',
+         },
       backgroundImage: {
         forest: "linear-gradient(135deg, #134e5e, #71b280);",
+        hyperGlow: "linear-gradient(135deg, #ff6ec4, #7873f5);",
+        neon:"background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);",
+        darkBg: "linear-gradient(135deg, #0f2027, #203a43, #2c5364);",
+        
       },
       colors: {
         darkBg: "#0f172a", // Deep dark background
@@ -44,10 +52,6 @@ module.exports = {
         "neon-green": "0 0 8px #32ff7e",
         "neon-blue": "0 0 8px #18dcff",
         "neon-pink": "0 0 8px #ff4dff",
-        glass: "0 4px 30px rgba(0, 0, 0, 0.1)",
-        neumorphic: "6px 6px 12px #bebebe, -6px -6px 12px #ffffff",
-        neumorphicInset:
-          "inset 6px 6px 12px #bebebe, inset -6px -6px 12px #ffffff",
       },
     },
   },

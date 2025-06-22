@@ -12,6 +12,35 @@
 .bg-neon {
   background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
 }
+.bg-light {
+  background-image: url('/src/images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.bg-dark {
+  background-image: url('/src/images/bgDark.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.text-shadow {
+   text-shadow: 2px 2px 5px #10b981;
+  color: #fff;
+}
+.text-shadow2 {
+  text-shadow: 0 0 4.5px #131414;
+}
+.box-shadow {
+  box-shadow: 3px 3px 15px cyan;
+}
+.text-glow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.loader-glow {
+  box-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+}
+
 
 /* .bg-forest {
   background: linear-gradient(135deg, #134e5e, #71b280);

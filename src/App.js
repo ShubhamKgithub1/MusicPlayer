@@ -22,27 +22,40 @@ function App() {
   const user = useSelector((state) => state.user.userInfo);
   const userId = user?.uid;
   const themeMode = useSelector((state) => state.theme.mode);
- const queue = useSelector((state)=> state.player.queue);
+  const queue = useSelector((state) => state.player.queue);
   useEffect(() => {
     const html = document.documentElement;
-    if (themeMode === 'dark') {
-      html.classList.add('dark');
+    if (themeMode === "dark") {
+      html.classList.add("dark");
     } else {
-      html.classList.remove('dark');
+      html.classList.remove("dark");
     }
   }, [themeMode]);
   return (
-    <div className={`h-screen ${themeMode === 'dark' ? 'bg-[#1e1e1e]' : 'bg-forest '} flex-col sm:flex-row relative flex sm:min-h-[90dvh] sm:max-h-[100dvh] sm:p-4 sm:gap-4 sm:overflow-hidden transition-all duration-700`}>
+    <div
+      className={`h-screen ${
+        themeMode === "dark" ? " bg-dark" : "bg-light"
+      } flex-col sm:flex-row relative flex sm:min-h-[90dvh] sm:max-h-[100dvh] sm:p-4 sm:gap-4 sm:overflow-hidden transition-all duration-700`}
+    >
       <Toaster position="top-right" reverseOrder={false} />
-      {/* <div className="absolute inset-0 z-0"><img src={"https://img.freepik.com/free-vector/gradient-glassmorphism_23-2149456194.jpg?t=st=1750320872~exp=1750324472~hmac=829dfff80a0400c6759d566bd3bae82be19b9960718d6e7bc98c72a963bac4a9&w=1380"} alt="" className="w-full h-full"/></div> */}
+      {/* <div className="absolute inset-0 z-0">
+        <img
+          src="https://media.istockphoto.com/id/2149460420/video/colorful-simple-neon-sign-chat-bubble-typing-icon-animation-in-black-4k.jpg?s=640x640&k=20&c=zW1vyxl4iXn4xbSz3PpDE7rx5KxYD24-K1ugGSEMi7I="
+          alt=""
+          className="w-full h-full"
+        />
+      </div> */}
       <div className="hidden sm:block w-full sm:w-[18dvw] sm:h-full">
         <Sidebar />
       </div>
-      <div className={` ${queue.length > 0 ?" h-[90dvh] ":" h-[100dvh] "}  sm:h-auto sm:flex-1 flex flex-col sm:min-h-0 sm:min-w-0`}>
-        <div className="sm:pb-4 border-b sm:border-b-2 border-b-white/50 sm:py-0">
+      <div
+        className={` ${
+          queue.length > 0 ? " h-[90dvh] " : " h-[100dvh] "
+        }  sm:h-auto sm:flex-1 flex flex-col sm:min-h-0 sm:min-w-0`}
+      >
+        <div className="sm:pb-4 sm:border-b sm:border-b-white/50 sm:py-0">
           <Navbar />
-          <MobileNavbar
-          user={user}/>
+          <MobileNavbar user={user} />
         </div>
         <div className={`flex-1 sm:pt-4 min-h-0 overflow-auto hide-scrollbar`}>
           <Outlet />
@@ -51,15 +64,14 @@ function App() {
       <div className="absolute bottom-0 sm:bottom-4 w-full sm:w-[18dvw] sm:left-4 sm:text-white">
         <Playbar />
       </div>
-       <AddToPlaylistModal
+      <AddToPlaylistModal
         isOpen={isAddToPlaylistOpen}
         onClose={() => dispatch(closeAddToPlaylistModal())}
         track={track}
         userId={userId}
       />
-      <CreatePlaylistModal userId={userId}/>
-      <SidebarDrawer
-      user={user}/>
+      <CreatePlaylistModal userId={userId} />
+      <SidebarDrawer user={user} />
     </div>
   );
 }
