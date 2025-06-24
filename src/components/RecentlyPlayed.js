@@ -9,17 +9,17 @@ const RecentlyPlayed = ({ isFullTab }) => {
 
   return (
     <div
-      className={`flex flex-col relative animate-fade-in ${
+      className={`flex flex-col relative animate-fade-in bg-white/30 rounded-lg dark:bg-black/80 sm:dark:bg-transparent sm:border-none border border-white/10 backdrop-blur-lg sm:backdrop-blur-none sm:bg-transparent ${
         isFullTab
-          ? "h-full overflow-auto "
-          : "h-auto overflow-auto"
+          ? "h-full overflow-auto rounded-tl-none border-t-0"
+          : "h-auto overflow-auto "
       }`}
     >
       <div className="flex justify-between items-center p-3 sm:p-4">
         <h2
           className={`${
             isFullTab ? "text-lg sm:text-xl font-semibold sm:font-bold" : "text-base font-semibold"
-          } dark:text-white`}
+          } dark:text-white text-glow`}
         >
           Recently Played
         </h2>
@@ -39,7 +39,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
       {recentSongs.length > 0 ? (
         <div
           className={`flex flex-col ${
-            isFullTab ? "overflow-auto hide-scrollbar gap-1 bg-white/10 sm:bg-transparent dark:bg-black/40 rounded-lg sm:p-0 md:dark:p-3" : "overflow-hidden gap-1 md:dark:px-3"
+            isFullTab ? "overflow-auto hide-scrollbar gap-1 sm:bg-transparent dark:bg-transparent sm:dark:bg-black/40 rounded-lg sm:p-0 md:dark:p-3" : "overflow-hidden gap-1 md:dark:px-3"
           }  relative animate-fade-in p-2`}
         >
           {(isFullTab ? recentSongs : recentSongs.slice(0, 5)).map((song) => (

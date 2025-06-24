@@ -221,11 +221,11 @@ const Playbar = () => {
 
         <button
           onClick={togglePlay}
-          className={`rounded-full text-black h-12 w-12 bg-white flex items-center justify-center hover:scale-110 active:scale-90 transition-all duration-300 ${
+          className={`rounded-full text-black border border-white hover:shadow-[inset_0_7px_4px_black] h-12 w-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-300 ${
             isExpand ? "hidden" : "block"
           }`}
         >
-          {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+          {isPlaying ? <Pause size={24} /> : <Play size={24} />}
         </button>
 
         {/*Seekbar*/}

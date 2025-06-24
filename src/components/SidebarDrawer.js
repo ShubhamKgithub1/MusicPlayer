@@ -17,9 +17,9 @@ const SidebarDrawer = ({ user }) => {
     >
       <button
         onClick={() => dispatch(closeDrawer())}
-        className="absolute top-2 right-2 text-white border border-white/20 rounded-md"
+        className="absolute top-2 right-2 p-1 text-white dark:hover:bg-white dark:hover:text-black hover:shadow-[inset_0_4px_6px_black] rounded-md transition-all duration-300"
       >
-        <X />
+        <X/>
       </button>
       <div className="p-4 text-white">
         {/* User Info */}

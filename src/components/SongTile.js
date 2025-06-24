@@ -79,10 +79,10 @@ const SongTile = ({ trackList, track, isFavorite }) => {
   return (
     <div
       key={track.id}
-      className="relative z-0 snap-start max-w-[inherit] hover:shadow-inner hover:shadow-black/80 sm:hover:shadow-none flex gap-2 bg-white/5 sm:bg-transparent dark:bg-white/5 items-center justify-between rounded-lg px-4 py-2 shadow-sm transition-all duration-300 cursor-pointer group dark:text-textPrimary text-white"
+      className="relative z-0 snap-start max-w-[inherit] hover:shadow-[inset_0_5px_8px_black] dark:hover:bg-white/10 sm:hover:shadow-none flex gap-2 bg-white/5 sm:bg-transparent dark:bg-white/5 items-center justify-between rounded-lg px-4 py-2 shadow-sm transition-all duration-300 cursor-pointer group dark:text-textPrimary text-white"
       onClick={() => handlePlay(track)}
     >
-      <div className="absolute z-0 inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+      <div className="hidden sm:block absolute z-0 inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
 
       <div className="flex justify-start overflow-hidden gap-3 items-center flex-1">
         <img
@@ -91,7 +91,7 @@ const SongTile = ({ trackList, track, isFavorite }) => {
           className="w-12 h-12 object-cover rounded-full"
         />
         <div className="truncate">
-          <h2 className="text-sm font-medium truncate text-white text-glow">{track.title_short}</h2>
+          <h2 className="text-sm font-medium truncate text-glow">{track.title_short}</h2>
           <p className="text-xs dark:text-gray-400 text-black/60 text-glow">{track.artist.name}</p>
         </div>
       </div>
@@ -119,7 +119,7 @@ const SongTile = ({ trackList, track, isFavorite }) => {
               {isFavorite ? (
                 <Trash2 size={18} />
               ) : (
-                <Heart className="text-white" size={20} />
+                <Heart className="" size={20} />
               )}
             </button>
           </div>
