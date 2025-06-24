@@ -26,7 +26,7 @@ const Sidebar = () => {
               </div>
               <button
                 onClick={logout}
-                className="ml-auto flex items-center gap-2 px-4 py-2 rounded-xl backdrop-blur-md hover:bg-cyan-300 dark:hover:bg-transparent hover:shadow-neonBlue dark:hover:shadow-custom text-black dark:text-white hover:text-white bg-white/10 active:scale-95 transition-all duration-300 shadow-lg border border-white dark:border-white/20"
+                className="ml-auto flex items-center gap-2 px-4 py-2 rounded-xl backdrop-blur-md hover:shadow-inner hover:bg-red-500 dark:hover:bg-transparent hover:shadow-red-800 hover:border-none dark:hover:shadow-custom text-black dark:text-white hover:text-white bg-white/10 active:scale-95 transition-all duration-300 shadow-lg"
               >
                 <LogOut size={16} />
                 <span className="font-semibold">Logout</span>
@@ -60,8 +60,8 @@ const Sidebar = () => {
             devices.
           </p>
 
-          <button
-            className="mt-2 px-4 py-2 border border-white dark:border-white/20 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:bg-cyan-300 hover:text-white hover:shadow-neonBlue dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 text-black shadow-md transition duration-300 dark:text-glow"
+            <button
+            className="mt-2 px-4 py-2 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:shadow-black/40 hover:shadow-inner hover:bg-transparent dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 text-black shadow-md transition duration-300 dark:text-glow"
             onClick={login}
           >
             Continue With Google

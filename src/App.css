@@ -25,7 +25,7 @@
   background-repeat: no-repeat;
 }
 .text-shadow {
-   text-shadow: 2px 2px 5px #10b981;
+   text-shadow: 2px 2px 5px cyan;
   color: #fff;
 }
 .text-shadow2 {
@@ -40,17 +40,9 @@
 .loader-glow {
   box-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
 }
-
-
-/* .bg-forest {
-  background: linear-gradient(135deg, #134e5e, #71b280);
-  forest: "linear-gradient(135deg, #a8edea, #fed6e3)"
-} */
-
 .bg-hyper-glow {
   background: linear-gradient(135deg, #ff6ec4, #7873f5);
 }
-
 
 .bg-custom {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);

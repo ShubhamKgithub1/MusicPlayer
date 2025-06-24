@@ -35,7 +35,7 @@ const HorizontalScroller = ({data}) => {
   if (!data) return null;
 
   return (
-    <div className="relative overflow-hidden px-3 py-2 sm:py-0 bg-white/5 sm:bg-transparent rounded-md sm:rounded-none">
+    <div className="relative overflow-hidden px-3 sm:px-6 py-2 sm:py-0 bg-white/30 shadow-inner shadow-black/40 dark:bg-black/40 sm:dark:bg-transparent backdrop-blur-lg border border-white/20 sm:border-none sm:shadow-none sm:backdrop-blur-none sm:bg-transparent rounded-md sm:rounded-none">
       <div
         onClick={scrollLeft}
         className="absolute bg-white left-0 flex justify-center items-center z-40 top-1/2 -translate-y-1/2 overflow-hidden p-1 sm:p-2 cursor-pointer rounded-full hover:scale-[1.04] active:scale-[0.82] transition-all duration-300"
@@ -55,7 +55,7 @@ const HorizontalScroller = ({data}) => {
         {data.map((res) => (
           <div
             key={res?.id}
-            className="flex-[0_0_33%] sm:flex-[0_0_13%] flex snap-start rounded-lg sm:rounded-xl shadow-md relative overflow-hidden cursor-pointer transition-all duration-300"
+            className="flex-[0_0_33%] sm:flex-[0_0_13%] flex snap-start rounded-lg sm:rounded-xl sm:dark:rounded-none shadow-md relative overflow-hidden cursor-pointer transition-all duration-300"
             onClick={() => handlePlay(res)}
           >
             <img
@@ -63,8 +63,8 @@ const HorizontalScroller = ({data}) => {
               alt="cover"
               className="object-center relative z-10"
             />
-            <div className="overflow-hidden rounded-lg sm:rounded-xl absolute bottom-0 right-0 z-20 inset-0 flex items-end text-white w-full">
-              <div className="max-h-[25%] flex justify-between sm:rounded-b-xl items-center p-1 bg-gradient-to-t from-black to-transparent sm:backdrop-blur-md w-full">
+            <div className="absolute bottom-0 right-0 z-20 inset-0 flex items-end text-white w-full">
+              <div className="max-h-[25%] flex justify-between items-center p-1 bg-gradient-to-t from-black to-transparent sm:backdrop-blur-md w-full">
                 <h2 className="font-medium sm:font-semibold truncate text-sm">
                 {res?.title_short}
               </h2>

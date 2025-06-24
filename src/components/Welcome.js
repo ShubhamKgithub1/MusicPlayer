@@ -23,14 +23,14 @@ const Welcome = () => {
   };
 
   return (
-    <div className="h-full absolute w-screen top-0 left-0 z-50 flex flex-col items-center justify-center dark:bg-gradient-to-r from-[#1e1e1e] to-[#1e1e1e] bg-forest animate-fade-in text-white overflow-hidden">
-      <div className="text-center flex flex-col gap-3 sm:gap-4 z-10">
-        <h1 className="text-4xl sm:text-5xl font-bold animate-fade-in-delay dark:text-neonBlue">Welcome!</h1>
-        <p className="text-base sm:text-lg font-light animate-fade-in-delay2 dark:text-textMuted">
+    <div className="h-full absolute w-screen top-0 left-0 z-50 flex flex-col items-center justify-center dark:bg-dark bg-light animate-fade-in text-white overflow-hidden">
+      <div className="flex flex-col items-center sm:justify-center gap-3 sm:gap-4 z-10 sm:bg-white/20 sm:dark:bg-black/40 sm:backdrop-blur-lg sm:rounded-2xl sm:border border-white/10 sm:overflow-hidden sm:h-80 sm:w-1/4">
+        <h1 className="text-4xl sm:text-5xl font-bold animate-fade-in-delay text-white text-shadow2 dark:text-cyan-300">Welcome!</h1>
+        <p className="text-base sm:text-lg animate-fade-in-delay2 dark:text-gray-300 text-black text-glow">
           Let the music flow 🎵
         </p>
         <button
-          className="bg-white sm:px-6 py-2 dark:text-white dark:hover:bg-transparent dark:border dark:border-black/20 dark:bg-black/40 dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] text-black rounded-3xl hover:bg-transparent shadow-custom hover:text-white transition-all duration-300 text-lg font-semibold active:scale-[0.94]"
+          className="bg-white px-8 py-2 sm:w-60 dark:text-white hover:shadow-inner hover:shadow-black dark:hover:bg-white dark:hover:text-purple-500 dark:bg-purple-500 text-black rounded-3xl hover:bg-transparent  hover:text-white transition-all duration-300 text-lg font-bold active:scale-[0.94]"
           onClick={() => clickHandler()}
         >
           Continue..

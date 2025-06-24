@@ -16,19 +16,12 @@ const Navbar = () => {
       <div className="flex items-center gap-2 sm:gap-4">
         <NavLink
           to="/search"
-          // className={({ isActive }) =>
-          //   `${
-          //     isActive
-          //       ? " text-white bg-cyan-300 shadow-neonBlue dark:text-orange-200 shadow-md dark:shadow-orange-500"
-          //       : "dark:text-white shadow-custom dark:shadow-none border-none bg-white"
-          //   }  w-80 py-1.5 px-2 rounded-full hover:bg-transparent dark:bg-black/40 dark:hover:bg-transparent dark:border-white/20 hover:text-white transition-all duration-300 cursor-pointer`
-          // }
           className={({ isActive }) =>
             `${
               isActive
                 ? " text-white bg-cyan-300 shadow-neonBlue dark:bg-black/40 dark:text-orange-200 shadow-md dark:shadow-orange-500"
-                : "dark:text-white border-none hover:bg-black/15 hover:text-white bg-white dark:bg-black/40 dark:hover:bg-transparent dark:shadow-black dark:shadow shadow hover:shadow-custom"
-            }   w-80 py-1.5 px-2 rounded-full dark:border-white/20 transition-all duration-300 cursor-pointer`
+                : " border-none hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40  dark:hover:shadow-inner dark:shadow-black dark:hover:shadow-orange-500 dark:text-orange-200 shadow-md"
+            } w-80 py-1.5 px-2 p-3 rounded-full dark:border-white/20 transition-all duration-300 cursor-pointer`
           }
         >
           <Search />
@@ -73,7 +66,7 @@ const Navbar = () => {
             `${
               isActive
                 ? " text-white bg-cyan-300 shadow-neonBlue dark:bg-black/40 dark:text-purple-500 shadow-md dark:shadow-purple-500"
-                : "dark:text-white border-none hover:bg-black/15 hover:text-white bg-white dark:bg-black/40 dark:hover:bg-transparent dark:shadow-black dark:shadow shadow hover:shadow-custom"
+                : " border-none hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40  dark:hover:shadow-inner dark:shadow-black dark:hover:shadow-purple-500 dark:text-purple-500 shadow-md"
             }   p-3 rounded-full dark:border-white/20 transition-all duration-300 cursor-pointer`
           }
         >
@@ -85,9 +78,9 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? " text-white bg-cyan-300 shadow-neonBlue dark:bg-black/40 dark:text-purple-500 shadow-md dark:shadow-purple-500"
-                : "dark:text-white border-none hover:bg-black/15 hover:text-white bg-white dark:bg-black/40 dark:hover:bg-transparent dark:shadow-black dark:shadow shadow hover:shadow-custom"
-            }   p-3 rounded-full dark:border-white/20 transition-all duration-300 cursor-pointer`
+                ? " text-white bg-cyan-300 shadow-neonBlue dark:bg-black/40 dark:text-cyan-500 shadow-md dark:shadow-cyan-500"
+                : " border-none hover:bg-black/15 dark:hover:bg-transparent hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40  dark:hover:shadow-inner dark:shadow-black dark:hover:shadow-cyan-400 dark:text-cyan-400 shadow-md"
+            }   p-3 rounded-full dark:border-white/20 transition-all duration-500 cursor-pointer`
           }
         >
           <ListMusicIcon />

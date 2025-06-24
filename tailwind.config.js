@@ -25,11 +25,6 @@ module.exports = {
         textMuted: "#94a3b8", // Secondary text color
         borderSoft: "rgba(255, 255, 255, 0.1)", // Light glass border
       },
-      backdropBlur: {
-        sm: "4px",
-        md: "8px",
-        lg: "14px",
-      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out forwards",
         "fade-in-delay": "fadeIn 1s ease-out forwards",

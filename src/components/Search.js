@@ -51,7 +51,7 @@ const Search = () => {
             type="search"
             placeholder="Search songs..."
             value={tag}
-            className="w-full sm:w-[40%] px-4 py-1.5 md:py-2 rounded-full bg-white text-black/70 dark:bg-transparent dark:text-white dark:placeholder-white/70 placeholder-black/70 border border-white/10 md:border-none font-medium backdrop-blur-md outline-none transition-all duration-300 focus:ring-2 focus:ring-emerald-400"
+            className="w-full sm:w-[40%] px-4 py-1.5 md:py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:focus:bg-white/20 dark:focus:shadow-black dark:hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-black/70 hover:bg-transparent hover:shadow-black/10 hover:shadow-inner focus:bg-transparent focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-300"
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") onSearch(tag);
@@ -62,7 +62,7 @@ const Search = () => {
             disabled={!tag.trim()}
             className={`px-4 py-1.5 md:py-2 rounded-full font-semibold text-white transition-all duration-300 active:scale-95 ${
               tag.trim()
-                ? "bg-emerald-500 text-white hover:bg-emerald-600 shadow-[0_0_12px_#10B981]"
+                ? "bg-emerald-400 text-white hover:bg-emerald-600 shadow-[0_0_12px_#10B981]"
                 : "bg-white/10 text-white/50 cursor-not-allowed"
             }`}
             // Button color code-#A855F7
@@ -70,15 +70,15 @@ const Search = () => {
             Search
           </button>
         </div>
-
-        <h1 className="sm:text-lg font-medium sm:font-semibold dark:text-textPrimary text-white py-4">
-          Tags
-        </h1>
-        <div className="flex gap-2 sm:gap-4 flex-wrap sm:w-2/3 sm:border-b sm:pb-6">
+{/* 
+        <h1 className="sm:text-lg font-medium sm:font-semibold dark:text-textPrimary text-white py-4 text-shadow2">
+          Quick Search
+        </h1> */}
+        <div className="mt-3 md:mt-6 flex gap-2 sm:gap-4 flex-wrap sm:w-2/3 sm:border-b sm:pb-6">
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
-              className="text-sm sm:text-base cursor-pointer active:scale-x-90 transition-all duration-300 bg-white hover:bg-transparent dark:hover:bg-black/40 dark:text-textPrimary dark:border-borderSoft dark:bg-white/10  hover:text-white text-gray-500 font-medium w-max py-1 px-1.5 sm:px-2 sm:py-1 rounded-full border"
+              className="text-sm sm:text-base hover:shadow-[inset_0_2px_6px_black] cursor-pointer active:scale-x-90 bg-white dark:bg-purple-600 dark:hover:bg-white dark:hover:text-black dark:text-textPrimary text-gray-500 font-medium w-max py-1 px-2 sm:px-3 sm:py-1 rounded-full shadow-md transition-all duration-500"
               onClick={() => {
                 setTag(c);
                 onSearch(c);

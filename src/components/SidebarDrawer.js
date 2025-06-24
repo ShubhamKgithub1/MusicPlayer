@@ -26,7 +26,7 @@ const SidebarDrawer = ({ user }) => {
         {user && (
           <div className="mb-4">
             <p className="text-lg font-semibold">Hello, {user.displayName}</p>
-            <p className="text-sm text-gray-400">{user.email}</p>
+            <p className="text-sm dark:text-gray-400 text-black/60">{user.email}</p>
           </div>
         )}
 
@@ -94,7 +94,7 @@ const SidebarDrawer = ({ user }) => {
             </div>
             <button
               onClick={logout}
-              className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl backdrop-blur-md bg-white/10 text-white hover:bg-white/20 active:scale-95 transition-all duration-300 shadow-lg border border-white/20"
+              className="flex items-center justify-center hover:shadow-black hover:shadow-inner gap-2 px-4 py-2 rounded-xl backdrop-blur-md bg-white/10 text-white hover:bg-white/20 active:scale-95 transition-all duration-300 shadow"
             >
               <LogOut size={16} />
               <span className="font-semibold">Logout</span>
@@ -109,13 +109,12 @@ const SidebarDrawer = ({ user }) => {
               Login to save your favorite songs and access your playlist across
               devices.
             </p>
-
             <button
-              className="mt-2 text-sm px-2 py-1.5 border text-green-500 font-medium rounded-full bg-white hover:bg-transparent hover:text-white hover:border-white/20 transition"
-              onClick={login}
-            >
-              Continue With Google
-            </button>
+            className="mt-2 px-4 py-2 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:shadow-black/40 hover:shadow-inner hover:bg-transparent hover:text-white dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 text-black shadow-md transition duration-300 dark:text-glow"
+            onClick={login}
+          >
+            Continue With Google
+          </button>
           </div>
         )}
       </div>
