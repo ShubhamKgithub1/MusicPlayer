@@ -5,27 +5,25 @@ const Welcome = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-     const allowed = sessionStorage.getItem("justLoggedIn");
+    const allowed = sessionStorage.getItem("justLoggedIn");
 
     if (!allowed) {
       navigate("/home");
       return;
     }
-    // setTimeout(() => {
-    //   sessionStorage.removeItem("justLoggedIn");
-    //   navigate("/home");
-    // }, 2000);
   }, [navigate]);
 
-  const clickHandler =()=>{
-     sessionStorage.removeItem("justLoggedIn");
-      navigate("/home");
+  const clickHandler = () => {
+    sessionStorage.removeItem("justLoggedIn");
+    navigate("/home");
   };
 
   return (
     <div className="h-full absolute w-screen top-0 left-0 z-50 flex flex-col items-center justify-center dark:bg-dark bg-light animate-fade-in text-white overflow-hidden">
       <div className="flex flex-col items-center sm:justify-center gap-3 sm:gap-4 z-10 sm:bg-white/20 sm:dark:bg-black/40 sm:backdrop-blur-lg sm:rounded-2xl sm:border border-white/10 sm:overflow-hidden sm:h-80 sm:w-1/4">
-        <h1 className="text-4xl sm:text-5xl font-bold animate-fade-in-delay text-white text-shadow2 dark:text-cyan-300">Welcome!</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold animate-fade-in-delay text-white text-shadow2 dark:text-cyan-300">
+          Welcome!
+        </h1>
         <p className="text-base sm:text-lg animate-fade-in-delay2 dark:text-gray-300 text-black text-glow">
           Let the music flow 🎵
         </p>
