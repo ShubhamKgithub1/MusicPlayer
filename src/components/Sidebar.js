@@ -52,16 +52,16 @@ const Sidebar = () => {
         </div>
       ) : (
         <div className="bg-white/30 shadow-md dark:shadow-none dark:bg-black/40 border border-white/20 backdrop-blur-lg rounded-2xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
-          <h2 className="text-lg text-glow dark:text-white font-semibold">
+          <h2 className="text-lg text-gray-600 dark:text-white font-bold">
             You're not logged in
           </h2>
-          <p className="text-glow dark:text-white text-gray-500">
+          <p className="font-semibold dark:text-gray-400 text-gray-500">
             Login to save your favorite songs and access your playlist across
             devices.
           </p>
 
             <button
-            className="mt-2 px-4 py-2 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:shadow-black/40 hover:shadow-inner hover:bg-transparent dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 text-black shadow-md transition duration-300 dark:text-glow"
+            className="mt-2 px-4 py-2 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:shadow-black/40 hover:shadow-inner dark:hover:text-white font-semibold rounded-full bg-black/60 text-white active:scale-95 hover:bg-white hover:text-gray-600 shadow-md transition duration-300 dark:text-glow"
             onClick={login}
           >
             Continue With Google

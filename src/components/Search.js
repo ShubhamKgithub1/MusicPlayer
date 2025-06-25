@@ -70,15 +70,11 @@ const Search = () => {
             Search
           </button>
         </div>
-{/* 
-        <h1 className="sm:text-lg font-medium sm:font-semibold dark:text-textPrimary text-white py-4 text-shadow2">
-          Quick Search
-        </h1> */}
         <div className="mt-3 md:mt-6 flex gap-2 sm:gap-4 flex-wrap sm:w-2/3 sm:border-b sm:pb-6">
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
-              className="text-sm sm:text-base hover:shadow-[inset_0_2px_6px_black] cursor-pointer active:scale-x-90 bg-white dark:bg-purple-600 dark:hover:bg-white dark:hover:text-black dark:text-textPrimary text-gray-500 font-medium w-max py-1 px-2 sm:px-3 sm:py-1 rounded-full shadow-md transition-all duration-500"
+              className="text-sm sm:text-base hover:shadow-[inset_0_2px_6px_black] cursor-pointer active:scale-x-90 bg-white dark:bg-purple-600 dark:hover:bg-white dark:hover:text-black dark:text-textPrimary text-gray-500 font-medium w-max py-1 px-2 sm:px-3 sm:py-1 rounded-full shadow-md transition-all duration-300"
               onClick={() => {
                 setTag(c);
                 onSearch(c);

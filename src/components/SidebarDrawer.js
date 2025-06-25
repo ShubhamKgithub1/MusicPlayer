@@ -102,15 +102,15 @@ const SidebarDrawer = ({ user }) => {
           </div>
         ) : (
           <div className="mt-3 bg-white/20 dark:bg-black/20 border-2 border-white/10 backdrop-blur-lg rounded-xl p-4 flex flex-col items-start gap-1.5 text-sm animate-fade-in">
-            <h2 className="text-base text-white font-semibold">
+            <h2 className="text-base text-white dark:text-gray-300 font-bold text-glow">
               You're not logged in
             </h2>
-            <p className="text-gray-300">
+            <p className="dark:text-gray-400 text-gray-700">
               Login to save your favorite songs and access your playlist across
               devices.
             </p>
             <button
-            className="mt-2 px-4 py-2 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:shadow-black/40 hover:shadow-inner hover:bg-transparent hover:text-white dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 text-black shadow-md transition duration-300 dark:text-glow"
+            className="mt-2 px-4 py-2 shadow-md hover:shadow-shadowInner hover:bg-transparent text-gray-600 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:text-white dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 transition duration-300 dark:text-glow"
             onClick={login}
           >
             Continue With Google

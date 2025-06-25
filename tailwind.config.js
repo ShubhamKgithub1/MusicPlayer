@@ -44,6 +44,9 @@ module.exports = {
       boxShadow: {
         box: "6px 6px 12px #b8b9be, -6px -6px 12px #fff",
         custom: "0 0 12px #efeff2",
+        shadowOuter:"-2px -3px 6px white, 2px 3px 6px gray",
+        shadowOuterLarge:"-6px -6px 7px white, 6px 6px 7px gray",
+        shadowInner:"inset -2px -3px 6px white, inset 2px 3px 6px gray",
         "neon-green": "0 0 8px #32ff7e",
         "neon-blue": "0 0 8px #18dcff",
         "neon-pink": "0 0 8px #ff4dff",
