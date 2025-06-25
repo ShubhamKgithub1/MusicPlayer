@@ -24,14 +24,14 @@ const BannerCard = ({ topTracks }) => {
           <h3 className="text-sm sm:text-lg font-medium">{track?.artist?.name}</h3>
           <div className="flex gap-2">
             <button
-              className="flex justify-center items-center border border-white/20 p-2 sm:p-2 bg-white sm:py-2 rounded-full hover:shadow-[inset_0_6px_5px_black] text-black transition-all duration-300 active:scale-90"
+              className="flex justify-center items-center border border-white/20 p-2 sm:p-2 bg-white sm:py-2 rounded-full hover:shadow-[inset_0_4px_6px_black] text-black transition-all duration-300 active:scale-90"
               onClick={() => handlePlay()}
             >
               <Play/>
             </button>
             <NavLink
             to="/explore"
-            className="flex items-center justify-center font-semibold bg-white text-black border border-white/20 px-4 py-1 sm:py-2 rounded-full hover:shadow-[inset_0_6px_5px_black] transition-all duration-300">
+            className="flex items-center justify-center font-semibold bg-white text-black border border-white/20 px-4 py-1 sm:py-2 rounded-full hover:shadow-[inset_0_4px_6px_black] transition-all duration-300">
               More
             </NavLink>
           </div>

@@ -9,6 +9,7 @@ import {
   SkipForward,
   ListXIcon,
   X,
+  Repeat,
 } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -198,7 +199,7 @@ const Playbar = () => {
             src={currentSong?.album?.cover}
             alt={currentSong?.title}
             className={`${
-              isExpand ? "h-36 w-36 md:h-24 md:w-24 " : "sm:h-16 sm:w-16 h-14 w-14"
+              isExpand ? "h-36 w-36 md:h-24 md:w-24 " : "sm:h-14 sm:w-14 h-14 w-14"
             } transition-all duration-300 rounded-full`}
           />
           <div
@@ -221,7 +222,7 @@ const Playbar = () => {
 
         <button
           onClick={togglePlay}
-          className={`rounded-full text-black border border-white hover:shadow-[inset_0_7px_4px_black] h-12 w-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-300 ${
+          className={`rounded-full text-black border border-white hover:shadow-[inset_0_4px_5px_black] h-12 w-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-300 ${
             isExpand ? "hidden" : "block"
           }`}
         >
@@ -253,21 +254,19 @@ const Playbar = () => {
       >
         {/* Controls */}
         <div
-          className={`flex items-center py-3 bg-white/30 bg-opacity-100 justify-center gap-3 md:gap-2 md:py-2 text-white transition-all duration-300 ${
+          className={`flex items-center py-3 shadow bg-white/30 bg-opacity-100 justify-center gap-3 md:gap-2 md:py-2 text-white transition-all duration-300 ${
             isExpand ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <button
             onClick={handleShuffleToggle}
-            className={`flex justify-center items-center hover:scale-[1.13] md:hover:scale-[1.15] rounded-full transition-all duration-300 active:scale-[0.70] md:active:scale-[0.55] shadow-md ${
-              isShuffle ? "bg-gray-500" : "bg-transparent"
-            } ${
+            className={`flex justify-center items-center hover:scale-[1.13] md:hover:scale-[1.15] rounded-full transition-all duration-300 active:scale-[0.70] md:active:scale-[0.55] shadow-md bg-gray-500 ${
               isExpand
                 ? "h-10 w-10 md:h-8 md:w-8 opacity-100 p-[5px]"
                 : "h-0 w-0 opacity-0 p-0"
             }`}
           >
-            <Shuffle size={20} />
+            {isShuffle ? <Shuffle size={20} /> : <Repeat size={20} />}
           </button>
           <button
             onClick={() => dispatch(playPrevious())}
@@ -294,11 +293,11 @@ const Playbar = () => {
             <SkipForward size={28} />
           </button>
           <div
-            className={`${volume ? "" : "bg-gray-500"} ${
+            className={` ${
               isExpand
                 ? "h-10 w-10 md:h-8 md:w-8 opacity-100 p-[5px] "
                 : "h-0 w-0 opacity-0 p-0"
-            } active:scale-[0.70] md:active:scale-[0.55] hover:scale-[1.13] md:hover:scale-[1.15] flex justify-center items-center cursor-pointer rounded-full transition-all duration-300 shadow-md`}
+            } bg-gray-500 active:scale-[0.70] md:active:scale-[0.55] hover:scale-[1.13] md:hover:scale-[1.15] flex justify-center items-center cursor-pointer rounded-full transition-all duration-300 shadow-md`}
             onClick={() => {
               dispatch(setVolume());
             }}
@@ -309,7 +308,7 @@ const Playbar = () => {
 
         {/*Queue Container */}
         <div
-          className={`w-full overflow-y-auto transition-all duration-300 hide-scrollbar ${
+          className={`w-full overflow-y-auto transition-all duration-300 bg-black/15 hide-scrollbar ${
             isExpand ? "flex-1 opacity-100 min-h-0 max-h-[80dvh] sm:max-h-[35dvh]" : "max-h-0 opacity-0"
           } px-2 sm:px-0`}
         >
@@ -320,7 +319,7 @@ const Playbar = () => {
       </div>
 
       {/*Playbar Expand Icon*/}
-      <button
+      {/* <button
         className={`${
           isExpand ? "rotate-180" : "rotate-0"
         } h-4 bg-white w-full text-black hidden sm:block`}
@@ -329,7 +328,7 @@ const Playbar = () => {
         }}
       >
         ^
-      </button>
+      </button> */}
     </div>
   );
 };

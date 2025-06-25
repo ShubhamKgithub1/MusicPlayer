@@ -11,7 +11,7 @@ const SidebarDrawer = ({ user }) => {
   const isOpen = useSelector((state) => state.ui.isSidebarDrawerOpen);
   return (
     <div
-      className={`fixed top-0 left-0 sm:hidden bg-black/10 dark:bg-black/20 backdrop-blur-3xl h-screen w-3/4 ${
+      className={`fixed top-0 left-0 z-[99] sm:hidden bg-white/5 dark:bg-black/20 backdrop-blur-3xl h-screen w-3/4 ${
         isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
       } transition-all duration-500 overflow-y-auto hide-scrollbar`}
     >

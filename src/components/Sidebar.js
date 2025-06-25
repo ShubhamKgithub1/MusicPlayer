@@ -12,7 +12,7 @@ const Sidebar = () => {
     <div className="w-full h-full flex flex-col gap-3 dark:text-white relative">
       {user ? (
         <div className="flex flex-col items-center gap-4 justify-center w-full">
-          <div className="dark:bg-black/40 shadow-md dark:shadow-none bg-white/30 backdrop-blur-lg border border-white/10 rounded-3xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
+          <div className="dark:bg-black/40 shadow-lg dark:shadow-none bg-white/30 backdrop-blur-lg border border-white/10 rounded-2xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
             <div className="flex items-center justify-start w-full gap-2 p-4 animate-fade-in">
               <img
                 src={user.photoURL}
@@ -46,12 +46,12 @@ const Sidebar = () => {
               </NavLink>
             </div>
           </div>
-          <div className="w-full dark:bg-black/40 shadow-md dark:shadow-none bg-white/30 backdrop-blur-lg rounded-3xl animate-fade-in">
+          <div className="w-full dark:bg-black/40 shadow-lg border border-white/10 dark:shadow-none bg-white/30 backdrop-blur-lg rounded-2xl animate-fade-in">
             <RecentlyPlayed isFullTab={false} />
           </div>
         </div>
       ) : (
-        <div className="bg-white/30 shadow-md dark:shadow-none dark:bg-black/40 border border-white/20 backdrop-blur-lg rounded-3xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
+        <div className="bg-white/30 shadow-md dark:shadow-none dark:bg-black/40 border border-white/20 backdrop-blur-lg rounded-2xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
           <h2 className="text-lg text-glow dark:text-white font-semibold">
             You're not logged in
           </h2>
