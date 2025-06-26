@@ -222,7 +222,7 @@ const Playbar = () => {
 
         <button
           onClick={togglePlay}
-          className={`rounded-full text-black shadow-shadowOuter dark:shadow-none hover:shadow-shadowInner dark:hover:shadow-shadowInner h-12 w-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-300 ${
+          className={`rounded-full text-black dark:shadow-none hover:shadow-[inset_2px_3px_8px_black] dark:hover:shadow-shadowInner h-12 w-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-300 ${
             isExpand ? "hidden" : "block"
           }`}
         >

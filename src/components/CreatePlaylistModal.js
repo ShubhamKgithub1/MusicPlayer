@@ -20,12 +20,12 @@ const CreatePlaylistModal = ({ userId }) => {
     <div className="fixed text-white inset-0 backdrop-blur-lg flex items-center justify-center z-[99] animate-fade-in">
       <div className="bg-black/20 rounded-lg p-6 w-96 flex flex-col gap-4">
         <h2 className="text-xl font-semibold mb-2 text-center">Create New Playlist</h2>
-        <div>
+        <div className="flex flex-col gap-4">
           <input
           type="text"
           value={playlistName}
           onChange={(e) => setPlaylistName(e.target.value)}
-          className="w-full border p-2 rounded shadow-custom mb-4 outline-none backdrop-blur-lg text-gray-500 font-semibold"
+            className="w-full px-3 hover:text-white hover:placeholder-white focus:placeholder-white py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:focus:bg-white/20 dark:focus:shadow-black dark:hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-gray-600 hover:bg-transparent hover:shadow-black/10 hover:shadow-inner focus:bg-transparent focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-300"
           placeholder="Enter playlist name"
         />
         <div className="flex justify-end gap-4">

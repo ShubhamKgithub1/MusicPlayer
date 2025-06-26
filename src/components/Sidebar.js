@@ -61,7 +61,7 @@ const Sidebar = () => {
           </p>
 
             <button
-            className="mt-2 px-4 py-2 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:shadow-black/40 hover:shadow-inner dark:hover:text-white font-semibold rounded-full bg-black/60 text-white active:scale-95 hover:bg-white hover:text-gray-600 shadow-md transition duration-300 dark:text-glow"
+            className="mt-2 px-4 py-2 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:shadow-black hover:shadow-inner dark:hover:text-white font-semibold rounded-full bg-black/60 text-white active:scale-95 hover:bg-white hover:text-gray-600 transition duration-300 dark:text-glow"
             onClick={login}
           >
             Continue With Google

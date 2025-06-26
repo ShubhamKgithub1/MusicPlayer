@@ -12,14 +12,6 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
   const [newPlaylistName, setNewPlaylistName] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   if (isOpen && userId) {
-  //     getPlaylists(userId, dispatch);
-  //   } Backdrop color-#1c1b1926
-      //  Button-bg-#efeff2
-      //     box-shadow: 0 0 14px #efeff2;
-  // }, [isOpen, userId, dispatch]);
-
   const handleAddToPlaylist = async (playlistId) => {
     if (loading) return;
     setLoading(true);
@@ -60,7 +52,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
                 key={pl.id}
                 onClick={() => handleAddToPlaylist(pl.id)}
                 disabled={loading}
-                className="w-full text-left py-2 px-3 font-medium bg-white/20 rounded-3xl disabled:opacity-50 active:scale-x-[0.96] transition-all duration-200"
+                className="w-full text-left py-2 px-3 font-bold bg-white/40 dark:bg-black/40 dark:hover:bg-white/20 text-gray-600 hover:text-white  dark:text-gray-300 hover:bg-white/20 hover:shadow-[inset_0_2px_6px_black] rounded-3xl disabled:opacity-50 active:scale-x-[0.96] transition-all duration-200"
               >
                 {pl.name}
               </button>
@@ -76,7 +68,8 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
             placeholder="New playlist name"
             value={newPlaylistName}
             onChange={(e) => setNewPlaylistName(e.target.value)}
-            className="w-full px-3 py-2 shadow-custom text-gray-500 backdrop-blur-lg rounded-3xl mb-2 font-semibold outline-none"
+            className="w-full px-3 hover:text-white hover:placeholder-white focus:placeholder-white py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:focus:bg-white/20 dark:focus:shadow-black dark:hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-gray-600 hover:bg-transparent hover:shadow-black/10 hover:shadow-inner focus:bg-transparent focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-300"
+
             disabled={loading}
           />
           <button

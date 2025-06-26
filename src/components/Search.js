@@ -74,7 +74,7 @@ const Search = () => {
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
-              className="text-sm sm:text-base hover:shadow-[inset_0_2px_6px_black] cursor-pointer active:scale-x-90 bg-white dark:bg-purple-600 dark:hover:bg-white dark:hover:text-black dark:text-textPrimary text-gray-500 font-medium w-max py-1 px-2 sm:px-3 sm:py-1 rounded-full shadow-md transition-all duration-300"
+              className="text-sm sm:text-base hover:shadow-[inset_0_2px_6px_black] cursor-pointer active:scale-x-90 bg-white dark:bg-purple-600 dark:hover:bg-white dark:hover:text-black dark:text-textPrimary text-gray-500 font-medium w-max py-1 px-2 sm:px-3 sm:py-1 rounded-full transition-all duration-300"
               onClick={() => {
                 setTag(c);
                 onSearch(c);
