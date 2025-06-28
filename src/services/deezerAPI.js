@@ -79,3 +79,12 @@ export const getSearch = async (tag) => {
     return [];
   }
 };
+export const fetchFreshPreviewUrl = async (id, title, artist) => {
+  try {
+    const results = await getSearch(`${title} ${artist}`);
+    return results.find((track) => track.id === id || track.title === title);
+  } catch (err) {
+    console.error("Error fetching fresh preview:", err);
+    return null;
+  }
+};
