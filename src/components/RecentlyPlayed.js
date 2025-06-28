@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 const RecentlyPlayed = ({ isFullTab }) => {
   const favorites = useSelector((state) => state.user.favorites);
   const recentSongs = useSelector((state) => state.user.recentlyPlayed);
+  const viewAll=(!isFullTab && favorites.length >0);
 
 
   return (
@@ -23,7 +24,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
         >
           Recently Played
         </h2>
-        {!isFullTab && (
+        {viewAll && (
           <NavLink
             to="library"
             className={({ isActive }) =>
@@ -52,7 +53,7 @@ const RecentlyPlayed = ({ isFullTab }) => {
           ))}
         </div>
       ) : (
-        <p className="text-white text-sm p-2 md:p-4 font-medium md:font-semibold animate-fade-in">No recently played songs yet.</p>
+        <p className="text-gray-600 dark:text-white text-sm md:text-base p-2 md:p-4 font-medium md:font-semibold animate-fade-in">No recent activity found.</p>
       )}
       {/* {isFullTab && (
         <div className="absolute bottom-0 z-20 bg-gradient-to-t from-white/50 h-2 w-full" />

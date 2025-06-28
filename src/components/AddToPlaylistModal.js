@@ -52,13 +52,13 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
                 key={pl.id}
                 onClick={() => handleAddToPlaylist(pl.id)}
                 disabled={loading}
-                className="w-full text-left py-2 px-3 font-bold bg-white/40 dark:bg-black/40 dark:hover:bg-white/20 text-gray-600 hover:text-white  dark:text-gray-300 hover:bg-white/20 hover:shadow-[inset_0_2px_6px_black] rounded-3xl disabled:opacity-50 active:scale-x-[0.96] transition-all duration-200"
+                className="w-full text-left py-2 px-3 font-bold bg-white/40 dark:bg-black/40 dark:hover:bg-white/20 text-gray-600 hover:text-white  dark:text-gray-300 hover:bg-transparent hover:shadow-[inset_0_2px_6px_black] rounded-3xl disabled:opacity-50 active:scale-x-[0.96] transition-all duration-200"
               >
                 {pl.name}
               </button>
             ))
           ) : (
-            <p className="text-gray-600">No playlists found.</p>
+            <p className="dark:text-gray-300">No playlists found.</p>
           )}
         </div>
 
@@ -75,7 +75,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
           <button
             onClick={handleCreateAndAdd}
             disabled={loading}
-            className="w-full bg-emerald-500 font-medium py-2 rounded-3xl transition-all duration-200 disabled:opacity-50 active:scale-x-[0.96]"
+            className="w-full bg-violet-400 font-medium py-2 rounded-3xl transition-all duration-300 disabled:opacity-50 active:scale-x-[0.96]"
           >
             {loading ? "Adding..." : "Create & Add"}
           </button>
