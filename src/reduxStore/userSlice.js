@@ -5,6 +5,7 @@ const initialState = {
   userInfo: null,
   playlists: [],
   recentlyPlayed: [],
+  userLoaded: false,
 };
 
 const userSlice = createSlice({
@@ -33,12 +34,21 @@ const userSlice = createSlice({
         target.songs = songs;
       }
     },
+    setUserLoaded: (state, action) => {
+      state.userLoaded = action.payload;
+    },
     resetUser: () => initialState,
   },
 });
 
-export const { setFavorites, setUserInfo, resetUser, setRecentlyPlayed,
+export const {
+  setFavorites,
+  setUserInfo,
+  resetUser,
+  setRecentlyPlayed,
   setPlaylists,
   addPlaylist,
-  updatePlaylistSongs } = userSlice.actions;
+  updatePlaylistSongs,
+  setUserLoaded
+} = userSlice.actions;
 export default userSlice.reducer;

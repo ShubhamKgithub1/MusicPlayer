@@ -2,9 +2,11 @@ import { useState } from "react";
 import RecentlyPlayed from "./RecentlyPlayed";
 import Favorites from "./Favorites";
 import Playlists from "./Playlists";
+import { useSelector } from "react-redux";
 
 const MyLibrary = () => {
   const [activeTab, setActiveTab] = useState("recent");
+    const recentSongs = useSelector((state) => state.user.recentlyPlayed);
 
   return (
     <div className="flex flex-col sm:dark:bg-black/40  sm:bg-white/20 sm:rounded-3xl p-4 sm:p-6 sm:backdrop-blur-lg h-full overflow-hidden text-white">
@@ -14,7 +16,7 @@ const MyLibrary = () => {
         <button onClick={() => setActiveTab("favorites")} className={`${activeTab === "favorites" ?"bg-white dark:bg-black text-emerald-500 ":"bg-transparent text-glow"} px-4 py-1.5 sm:px-6 sm:py-2 font-semibold transition-all duration-300 rounded-t-2xl`}>Favorites</button>
         <button onClick={() => setActiveTab("playlists")} className={`${activeTab === "playlists" ?"bg-white dark:bg-black text-emerald-500 ":"bg-transparent text-glow"} px-4 py-1.5 sm:px-6 sm:py-2 font-semibold  transition-all duration-300 rounded-t-2xl`}>Playlists</button>
       </div>
-      {activeTab === "recent" && <RecentlyPlayed isFullTab={true} />} 
+      {activeTab === "recent" && <RecentlyPlayed isFullTab={true} recentSongs={recentSongs}/>} 
       {activeTab === "favorites" && <Favorites/>}
       {activeTab === "playlists" && <Playlists/>}
     </div>

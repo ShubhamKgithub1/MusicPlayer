@@ -10,7 +10,6 @@ import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 import { createFilter } from "redux-persist-transform-filter";
 
-
 const playerFilter = createFilter("player", [
   "currentSong",
   "queue",
@@ -28,6 +27,7 @@ const apiFilter = createFilter("api", [
   "loaded", // Required for useInitAppData to skip refetch
 ]);
 
+const userFilter = createFilter("user", ["userInfo", "userLoaded","recentlyPlayed"]);
 
 const rootReducer = combineReducers({
   player: playerReducer,
@@ -41,10 +41,9 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["player", "api"],
-  transforms: [playerFilter, apiFilter],
+  whitelist: ["player", "api", "user"],
+  transforms: [playerFilter, apiFilter, userFilter],
 };
-
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

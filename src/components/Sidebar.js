@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 const Sidebar = () => {
   const { login, logout } = useAuth();
   const user = useSelector((state) => state.user.userInfo);
+  const recentSongs = useSelector((state) => state.user.recentlyPlayed);
 
   return (
     <div className="w-full h-full flex flex-col gap-3 dark:text-white relative">
@@ -21,8 +22,12 @@ const Sidebar = () => {
                 referrerPolicy="no-referrer"
               />
               <div>
-                <h1 className="text-lg font-medium text-glow">{user.displayName}</h1>
-                <h1 className="text-xs text-gray-600 dark:text-gray-300">{user.email}</h1>
+                <h1 className="text-lg font-medium text-glow">
+                  {user.displayName}
+                </h1>
+                <h1 className="text-xs text-gray-600 dark:text-gray-300">
+                  {user.email}
+                </h1>
               </div>
               <button
                 onClick={logout}
@@ -46,9 +51,13 @@ const Sidebar = () => {
               </NavLink>
             </div>
           </div>
-          <div className="w-full dark:bg-black/40 shadow-lg border border-white/10 dark:shadow-none bg-white/30 backdrop-blur-lg rounded-2xl animate-fade-in">
-            <RecentlyPlayed isFullTab={false} />
-          </div>
+          {recentSongs?.length > 0 && (
+            <div className="w-full dark:bg-black/40 shadow-lg border border-white/10 dark:shadow-none bg-white/30 backdrop-blur-lg rounded-2xl animate-fade-in">
+              {Array.isArray(recentSongs) && recentSongs.length > 0 && (
+                <RecentlyPlayed isFullTab={false} recentSongs={recentSongs} />
+              )}
+            </div>
+          )}
         </div>
       ) : (
         <div className="bg-white/30 shadow-md dark:shadow-none dark:bg-black/40 border border-white/20 backdrop-blur-lg rounded-2xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
@@ -60,7 +69,7 @@ const Sidebar = () => {
             devices.
           </p>
 
-            <button
+          <button
             className="mt-2 px-4 py-2 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:shadow-black hover:shadow-inner dark:hover:text-white font-semibold rounded-full bg-black/60 text-white active:scale-95 hover:bg-white hover:text-gray-600 transition duration-300 dark:text-glow"
             onClick={login}
           >
