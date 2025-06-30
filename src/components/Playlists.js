@@ -21,19 +21,19 @@ const Playlists = () => {
   };
 
   return (
-    <div className="animate-fade-in flex flex-col w-full h-full overflow-hidden bg-white/20 border border-white/10 border-t-0 md:border-0 dark:bg-black/60 sm:bg-transparent sm:dark:bg-transparent backdrop-blur-lg sm:backdrop-blur-none p-3 rounded-lg">
-      <h1 className="text-lg sm:text-xl font-semibold sm:font-bold pb-3 text-glow">
+    <div className="flex flex-col w-full h-full overflow-hidden bg-white/20 border border-white/10 border-t-0 md:border-0 dark:bg-black/60 lg:bg-transparent lg:dark:bg-transparent backdrop-blur-lg lg:backdrop-blur-none p-3 rounded-lg">
+      <h1 className="text-lg lg:text-xl font-semibold lg:font-bold pb-3 text-glow animate-fade-in">
         Playlists
       </h1>
       {playlists.length > 0 ? (
-        <div className="flex flex-col flex-1 gap-2 md:gap-3 overflow-hidden">
-          <div className="w-[100%] flex gap-2 overflow-x-scroll hide-scrollbar">
+        <div className="flex flex-col flex-1 gap-2 lg:gap-3 overflow-hidden">
+          <div className="w-[100%] flex gap-2 overflow-x-scroll hide-scrollbar animate-fade-in">
             <div
               className="snap-start aspect-square flex flex-col gap-1 items-center justify-center cursor-pointer transition-all duration-300 hover:bg-white hover:text-black active:scale-[0.92] rounded-lg bg-black/60 hover:shadow-[inset_0_2px_8px_black] text-white"
               onClick={() => dispatch(openCreatePlaylistModal())}
             >
               <PlusIcon size={32} />
-              <h1 className="text-sm md:text-sm font-semibold">
+              <h1 className="text-sm lg:text-sm font-semibold">
                 Create Playlist
               </h1>
             </div>
@@ -45,10 +45,10 @@ const Playlists = () => {
               />
             ))}
           </div>
-          <div className="flex-1 animate-fade-in overflow-hidden md:p-2">
+          <div className="flex-1 animate-fade-in overflow-hidden lg:p-2">
             {selectedPlaylistId && (
-              <div className="flex flex-col max-h-full md:w-2/3 border border-white/10 rounded-xl overflow-hidden animate-fade-in dark:bg-black/10 backdrop-blur-lg bg-white/10 md:shadow-[2px_2px_7px_gray]">
-                <div className="flex h-max gap-4 items-center p-2 md:p-3 bg-white/5 shadow">
+              <div className="flex flex-col max-h-full xl:w-2/3 border border-white/10 rounded-xl overflow-hidden animate-fade-in dark:bg-black/10 backdrop-blur-lg bg-white/10 lg:shadow-[2px_2px_7px_gray]">
+                <div className="flex h-max gap-4 items-center p-2 lg:p-3 bg-white/5 shadow">
                   <img
                     src={selectedPlaylist?.songs[0]?.album?.cover}
                     alt={selectedPlaylist?.name}
@@ -103,15 +103,15 @@ const Playlists = () => {
         </div>
       ) : (
        <div>
-         <p className="text-gray-600 dark:text-white text-sm p-2 md:p-4 font-medium md:font-semibold animate-fade-in">
+         <p className="text-gray-600 dark:text-white text-sm p-2 lg:p-4 font-medium lg:font-semibold animate-fade-in">
           No playlist found.
         </p>
                     <div
-              className="aspect-square w-32 md:w-40 flex flex-col gap-1 items-center justify-center cursor-pointer transition-all duration-300 hover:bg-white hover:text-black active:scale-[0.92] rounded-lg bg-black/60 hover:shadow-[inset_0_2px_8px_black] text-white"
+              className="aspect-square w-32 lg:w-40 flex flex-col gap-1 items-center justify-center cursor-pointer transition-all duration-300 hover:bg-white hover:text-black active:scale-[0.92] rounded-lg bg-black/60 hover:shadow-[inset_0_2px_8px_black] text-white"
               onClick={() => dispatch(openCreatePlaylistModal())}
             >
               <PlusIcon size={32} />
-              <h1 className="text-sm md:text-sm font-semibold">
+              <h1 className="text-sm lg:text-sm font-semibold">
                 Create Playlist
               </h1>
             </div>

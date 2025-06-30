@@ -7,7 +7,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const mode = useSelector((state) => state.theme.mode);
   return (
-    <div className="hidden bg-transparent w-full h-full sm:flex flex-row-reverse justify-between items-center animate-fade-in px-4">
+    <div className="hidden bg-transparent w-full h-full lg:flex flex-row-reverse justify-between items-center animate-fade-in px-4">
       <div className="flex items-center gap-2 sm:gap-4">
         <NavLink
           to="/search"

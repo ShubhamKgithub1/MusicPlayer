@@ -35,33 +35,26 @@ function App() {
     <div
       className={`h-screen ${
         themeMode === "dark" ? " bg-dark" : "bg-light"
-      } flex-col sm:flex-row relative flex sm:min-h-[90dvh] sm:max-h-[100dvh] sm:p-4 sm:gap-4 sm:overflow-hidden transition-all duration-700`}
+      } flex-col md:flex-row relative flex md:min-h-[90dvh] md:max-h-[100dvh] lg:p-4 md:gap-4 md:overflow-hidden transition-all duration-700`}
     >
       <Toaster position="top-right" reverseOrder={false} />
-      {/* <div className="absolute inset-0 z-0">
-        <img
-          src="https://media.istockphoto.com/id/2149460420/video/colorful-simple-neon-sign-chat-bubble-typing-icon-animation-in-black-4k.jpg?s=640x640&k=20&c=zW1vyxl4iXn4xbSz3PpDE7rx5KxYD24-K1ugGSEMi7I="
-          alt=""
-          className="w-full h-full"
-        />
-      </div> */}
-      <div className="hidden sm:block w-full sm:w-[18dvw] sm:h-full">
+      <div className="hidden lg:block w-full lg:w-[18dvw] lg:h-full">
         <Sidebar />
       </div>
       <div
         className={` ${
           queue.length > 0 ? " h-[90dvh] " : " h-[100dvh] "
-        }  sm:h-auto sm:flex-1 flex flex-col sm:min-h-0 sm:min-w-0`}
+        }  md:h-auto md:flex-1 flex flex-col md:min-h-0 md:min-w-0`}
       >
-        <div className="sm:pb-4 sm:border-b sm:border-b-white/50 sm:py-0">
+        <div className="lg:pb-4 lg:border-b lg:border-b-white/50 lg:py-0">
           <Navbar />
           <MobileNavbar user={user} />
         </div>
-        <div className={`flex-1 sm:pt-4 min-h-0 overflow-auto hide-scrollbar`}>
+        <div className={`flex-1 lg:pt-4 min-h-0 overflow-auto hide-scrollbar`}>
           <Outlet />
         </div>
       </div>
-      <div className="absolute bottom-0 sm:bottom-4 w-full sm:w-[18dvw] sm:left-4 sm:text-white">
+      <div className="absolute bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40%] lg:w-[30%] xl:w-[18dvw] md:left-2 lg:left-4 md:text-white">
         <Playbar />
       </div>
       <AddToPlaylistModal

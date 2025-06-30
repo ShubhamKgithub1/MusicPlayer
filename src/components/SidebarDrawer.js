@@ -12,7 +12,7 @@ const SidebarDrawer = ({ user }) => {
   const recentSongs = useSelector((state) => state.user.recentlyPlayed);
   return (
     <div
-      className={`fixed top-0 left-0 z-[99] sm:hidden bg-white/5 dark:bg-black/20 backdrop-blur-3xl h-screen w-3/4 ${
+      className={`fixed top-0 left-0 z-[99] lg:hidden bg-white/5 dark:bg-black/20 backdrop-blur-3xl h-screen w-3/4 sm:w-2/4 md:w-1/3 ${
         isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
       } transition-all duration-500 overflow-y-auto hide-scrollbar`}
     >

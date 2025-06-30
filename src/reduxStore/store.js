@@ -24,7 +24,7 @@ const apiFilter = createFilter("api", [
   "newReleases",
   "mostPopular",
   "hits",
-  "loaded", // Required for useInitAppData to skip refetch
+  "loaded", //to skip refetch inside useInitAppData 
 ]);
 
 const userFilter = createFilter("user", ["userInfo", "userLoaded","recentlyPlayed"]);

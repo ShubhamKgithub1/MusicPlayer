@@ -14,15 +14,15 @@ const Sidebar = () => {
       {user ? (
         <div className="flex flex-col items-center gap-4 justify-center w-full">
           <div className="dark:bg-black/40 shadow-lg dark:shadow-none bg-white/30 backdrop-blur-lg border border-white/10 rounded-2xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
-            <div className="flex items-center justify-start w-full gap-2 p-4 animate-fade-in">
+            <div className="flex items-center lg:flex-wrap justify-start w-full gap-2 p-2 xl:p-4 animate-fade-in">
               <img
                 src={user.photoURL}
                 alt="avatar"
-                className="w-12 h-12 rounded-full"
+                className="w-8 h-8 xl:w-12 xl:h-12 rounded-full"
                 referrerPolicy="no-referrer"
               />
               <div>
-                <h1 className="text-lg font-medium text-glow">
+                <h1 className="xl:text-lg font-medium text-glow">
                   {user.displayName}
                 </h1>
                 <h1 className="text-xs text-gray-600 dark:text-gray-300">
@@ -31,20 +31,20 @@ const Sidebar = () => {
               </div>
               <button
                 onClick={logout}
-                className="ml-auto flex items-center gap-2 px-4 py-2 rounded-xl backdrop-blur-md hover:shadow-inner hover:bg-red-500 dark:hover:bg-transparent hover:shadow-red-800 hover:border-none dark:hover:shadow-custom text-black dark:text-white hover:text-white bg-white/10 active:scale-95 transition-all duration-300 shadow-lg"
+                className="flex items-center gap-2 p-2 xl:px-4 xl:py-2 rounded-xl backdrop-blur-md hover:shadow-inner hover:bg-red-500 dark:hover:bg-transparent hover:shadow-red-800 dark:hover:shadow-custom text-black dark:text-white hover:text-white bg-white/10 active:scale-95 transition-all duration-300 shadow-lg"
               >
                 <LogOut size={16} />
                 <span className="font-semibold">Logout</span>
               </button>
             </div>
-            <div className="w-full p-4 transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
+            <div className=" w-full p-2 xl:p-4 transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
               <NavLink
                 to="/library"
                 className={({ isActive }) =>
                   `${isActive ? "text-emerald-500" : ""} w-full`
                 }
               >
-                <button className="flex">
+                <button className="flex items-center">
                   <Library />
                   <span className="font-semibold">My Library</span>
                 </button>
