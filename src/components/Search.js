@@ -46,7 +46,7 @@ const Search = () => {
   return (
     <div className="w-full h-full lg:dark:bg-black/40 lg:bg-white/20 backdrop-blur-lg rounded-3xl p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">
       <div>
-        <div className="flex items-center gap-2 lg:gap-4">
+        <div className="flex items-center gap-2 xl:gap-4">
           <input
             type="search"
             placeholder="Search songs..."
@@ -65,16 +65,15 @@ const Search = () => {
                 ? "bg-emerald-400 text-white hover:bg-emerald-600 shadow-[0_0_12px_#10B981]"
                 : "bg-white/10 text-white/50 cursor-not-allowed"
             }`}
-            // Button color code-#A855F7
           >
             Search
           </button>
         </div>
-        <div className="mt-3 lg:mt-6 flex gap-2 lg:gap-4 flex-wrap xl:w-2/3 lg:border-b lg:pb-6">
+        <div className="mt-3 xl:mt-6 flex gap-2 xl:gap-3 flex-wrap xl:w-2/3 lg:border-b pb-4 xl:pb-6">
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
-              className="text-sm xl:text-base hover:shadow-[inset_0_2px_6px_black] cursor-pointer active:scale-x-90 bg-white dark:bg-purple-600 dark:hover:bg-white dark:hover:text-black dark:text-textPrimary text-gray-500 font-medium w-max py-1 px-2 xl:px-3 lg:py-1 rounded-full transition-all duration-300"
+              className="text-sm xl:text-base hover:shadow-[inset_0_2px_6px_black] cursor-pointer active:scale-x-90 bg-white dark:bg-black/30 dark:hover:bg-white/20 dark:hover:bg-white dark:text-white/70 text-gray-500 font-medium w-max py-1 px-2 xl:px-3 lg:py-1 rounded-full transition-all duration-300"
               onClick={() => {
                 setTag(c);
                 onSearch(c);

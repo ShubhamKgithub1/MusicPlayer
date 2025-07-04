@@ -11,7 +11,7 @@ const MobileNavbar = ({ user }) => {
     <nav className="flex justify-between items-center px-4 py-3 text-white h-full bg-white/20 dark:bg-black/40 backdrop-blur-md lg:hidden">
       <button
         onClick={() => dispatch(openDrawer())}
-        className=" p-1 transition-all duration-300 hover:bg-white/80 hover:shadow-[inset_0_2px_5px_black] hover:text-black/60 rounded-md"
+        className=" p-1 transition-all duration-300 dark:hover:bg-white/20 dark:hover:text-white active:scale-[0.85] hover:shadow-[inset_0_4px_6px_black] rounded-md"
       >
         <Menu size={24} />
       </button>

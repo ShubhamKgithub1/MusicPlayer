@@ -35,7 +35,7 @@ const HorizontalScroller = ({data}) => {
   if (!data) return null;
 
   return (
-    <div className="relative overflow-hidden px-3 sm:px-6 py-2 sm:py-0 bg-white/30 shadow-inner shadow-black/40 dark:bg-black/40 sm:dark:bg-transparent backdrop-blur-lg border border-white/20 sm:border-none sm:shadow-none sm:backdrop-blur-none sm:bg-transparent rounded-md sm:rounded-none">
+    <div className="relative overflow-hidden px-3 sm:px-6 py-2 sm:py-0 bg-white/30 shadow-inner shadow-black/40 dark:bg-black/10 sm:dark:bg-transparent backdrop-blur-lg border border-white/20 sm:border-none sm:shadow-none sm:backdrop-blur-none sm:bg-transparent rounded-md sm:rounded-none">
       <div
         onClick={scrollLeft}
         className="absolute bg-white left-0 flex justify-center items-center z-40 top-1/2 -translate-y-1/2 overflow-hidden p-1 sm:p-2 cursor-pointer rounded-full hover:scale-[1.04] active:scale-[0.82] transition-all duration-300"

@@ -15,8 +15,8 @@ const Navbar = () => {
             `${
               isActive
                 ? " text-white bg-cyan-300 shadow-neon-blue dark:bg-black/40 dark:text-orange-200 dark:shadow-orange-500"
-                : " hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40  dark:hover:shadow-inner dark:shadow-black dark:hover:shadow-orange-500 dark:text-orange-200"
-            } w-80 py-1.5 px-2 p-3 rounded-full transition-all duration-300 cursor-pointer`
+                : " hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40 dark:hover:shadow-inner dark:hover:shadow-orange-500 dark:text-orange-200"
+            } w-80 py-1 xl:py-1.5 px-2 rounded-full transition-all duration-300 cursor-pointer`
           }
         >
           <Search />
@@ -36,8 +36,8 @@ const Navbar = () => {
             `${
               isActive
                 ? " text-white bg-cyan-300 shadow-neon-blue dark:bg-black/40 dark:text-purple-500 dark:shadow-purple-500"
-                : " hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40  dark:hover:shadow-inner dark:shadow-black dark:hover:shadow-purple-500 dark:text-purple-500"
-            }   p-3 rounded-full transition-all duration-300 cursor-pointer`
+                : " hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40 dark:hover:shadow-inner dark:hover:shadow-purple-500 dark:text-purple-500"
+            }  p-2 xl:p-3 rounded-full transition-all duration-300 cursor-pointer`
           }
         >
           <Home />
@@ -49,8 +49,8 @@ const Navbar = () => {
             `${
               isActive
                 ? " text-white bg-cyan-300 shadow-neon-blue dark:bg-black/40 dark:text-cyan-500 dark:shadow-cyan-500"
-                : " hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40  dark:hover:shadow-inner dark:shadow-black dark:hover:shadow-cyan-400 dark:text-cyan-400"
-            }   p-3 rounded-full transition-all duration-300 cursor-pointer`
+                : " hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40  dark:hover:shadow-inner dark:hover:shadow-cyan-400 dark:text-cyan-400"
+            }   p-2 xl:p-3 rounded-full transition-all duration-300 cursor-pointer`
           }
         >
           <ListMusicIcon />

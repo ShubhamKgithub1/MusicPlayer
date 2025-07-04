@@ -46,11 +46,11 @@ function App() {
           queue.length > 0 ? " h-[90dvh] " : " h-[100dvh] "
         }  md:h-auto md:flex-1 flex flex-col md:min-h-0 md:min-w-0`}
       >
-        <div className="lg:pb-4 lg:border-b lg:border-b-white/50 lg:py-0">
+        <div className=" lg:pb-3 xl:pb-4 lg:border-b lg:border-b-white/50 lg:py-0">
           <Navbar />
           <MobileNavbar user={user} />
         </div>
-        <div className={`flex-1 lg:pt-4 min-h-0 overflow-auto hide-scrollbar`}>
+        <div className={`flex-1 lg:pt-3 xl:pt-4 min-h-0 overflow-auto hide-scrollbar`}>
           <Outlet />
         </div>
       </div>

@@ -14,15 +14,15 @@ const Sidebar = () => {
       {user ? (
         <div className="flex flex-col items-center gap-4 justify-center w-full">
           <div className="dark:bg-black/40 shadow-lg dark:shadow-none bg-white/30 backdrop-blur-lg border border-white/10 rounded-2xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
-            <div className="flex items-center lg:flex-wrap justify-start w-full gap-2 p-2 xl:p-4 animate-fade-in">
+            <div className="flex items-center justify-start w-full gap-2 p-2 2xl:p-4 animate-fade-in">
               <img
                 src={user.photoURL}
                 alt="avatar"
-                className="w-8 h-8 xl:w-12 xl:h-12 rounded-full"
+                className="w-8 h-8 xl:h-10 xl:w-10 2xl:w-12 2xl:h-12 rounded-full"
                 referrerPolicy="no-referrer"
               />
               <div>
-                <h1 className="xl:text-lg font-medium text-glow">
+                <h1 className="text-sm 2xl:text-lg font-medium text-glow">
                   {user.displayName}
                 </h1>
                 <h1 className="text-xs text-gray-600 dark:text-gray-300">
@@ -31,10 +31,10 @@ const Sidebar = () => {
               </div>
               <button
                 onClick={logout}
-                className="flex items-center gap-2 p-2 xl:px-4 xl:py-2 rounded-xl backdrop-blur-md hover:shadow-inner hover:bg-red-500 dark:hover:bg-transparent hover:shadow-red-800 dark:hover:shadow-custom text-black dark:text-white hover:text-white bg-white/10 active:scale-95 transition-all duration-300 shadow-lg"
+                className="flex items-center gap-2 p-2 xl:px-4 xl:py-2 xl:ml-auto rounded-xl backdrop-blur-md hover:shadow-inner hover:bg-red-500 dark:hover:bg-transparent hover:shadow-red-800 dark:hover:shadow-custom text-black dark:text-white hover:text-white bg-white/10 active:scale-95 transition-all duration-300 shadow-lg"
               >
                 <LogOut size={16} />
-                <span className="font-semibold">Logout</span>
+                <span className="font-semibold hidden 2xl:block text-sm">Logout</span>
               </button>
             </div>
             <div className=" w-full p-2 xl:p-4 transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
@@ -70,7 +70,7 @@ const Sidebar = () => {
           </p>
 
           <button
-            className="mt-2 px-4 py-2 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:shadow-black hover:shadow-inner dark:hover:text-white font-semibold rounded-full bg-black/60 text-white active:scale-95 hover:bg-white hover:text-gray-600 transition duration-300 dark:text-glow"
+            className="mt-2 px-4 py-2 dark:text-white text-gray-600 dark:bg-white/10 dark:hover:bg-transparent hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-custom dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 hover:bg-white hover:text-gray-600 transition duration-300 dark:text-glow"
             onClick={login}
           >
             Continue With Google

@@ -29,7 +29,7 @@ const Playlists = () => {
         <div className="flex flex-col flex-1 gap-2 lg:gap-3 overflow-hidden">
           <div className="w-[100%] flex gap-2 overflow-x-scroll hide-scrollbar animate-fade-in">
             <div
-              className="snap-start aspect-square flex flex-col gap-1 items-center justify-center cursor-pointer transition-all duration-300 hover:bg-white hover:text-black active:scale-[0.92] rounded-lg bg-black/60 hover:shadow-[inset_0_2px_8px_black] text-white"
+              className="snap-start aspect-square flex flex-col gap-1 items-center justify-center cursor-pointer transition-all duration-300 dark:text-white active:scale-[0.92] rounded-lg bg-white/30 shadow-[inset_0_2px_4px_gray] dark:shadow-black/60 hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-[inset_0_2px_6px_black] text-black"
               onClick={() => dispatch(openCreatePlaylistModal())}
             >
               <PlusIcon size={32} />
