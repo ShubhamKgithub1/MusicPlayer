@@ -20,7 +20,7 @@ if (!isFullTab) {
       <div className={`flex justify-between items-center ${isFullTab?"py-4 pt-3 lg:pt-4":"lg:px-3 py-2 lg:py-3"} `}>
         <h2
           className={`${
-            isFullTab ? "text-lg lg:text-xl font-semibold lg:font-bold" : "text-base font-semibold"
+            isFullTab ? "text-lg 2xl:text-xl font-semibold 2xl:font-bold" : "text-base font-semibold"
           } dark:text-white text-glow animate-fade-in`}
         >
           Recently Played
@@ -32,7 +32,7 @@ if (!isFullTab) {
               `${isActive ? "dark:text-white " : "dark:text-gray-300 text-gray-500"} hidden lg:block`
             }
           >
-            <button className="text-sm xl:text-base cursor-pointer transition-all duration-300 dark:hover:text-white animate-fade-in">
+            <button className="text-sm cursor-pointer transition-all duration-300 dark:hover:text-white animate-fade-in">
               View all
             </button>
           </NavLink>
@@ -54,7 +54,7 @@ if (!isFullTab) {
           ))}
         </div>
       ) : (
-        <p className="text-gray-600 dark:text-white text-sm lg:text-base p-2 lg:p-4 font-medium lg:font-semibold animate-fade-in">No recent activity found.</p>
+        <p className="text-gray-600 dark:text-white text-sm xl:text-base p-2 xl:p-4 font-medium xl:font-semibold animate-fade-in">No recent activity found.</p>
       )}
     </div>
   );

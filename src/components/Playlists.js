@@ -22,7 +22,7 @@ const Playlists = () => {
 
   return (
     <div className="flex flex-col w-full h-full overflow-hidden bg-white/20 border border-white/10 border-t-0 md:border-0 dark:bg-black/60 lg:bg-transparent lg:dark:bg-transparent backdrop-blur-lg lg:backdrop-blur-none p-3 rounded-lg">
-      <h1 className="text-lg lg:text-xl font-semibold lg:font-bold pb-3 text-glow animate-fade-in">
+      <h1 className="text-lg 2xl:text-xl font-semibold 2xl:font-bold pb-3 text-glow animate-fade-in">
         Playlists
       </h1>
       {playlists.length > 0 ? (
@@ -33,7 +33,7 @@ const Playlists = () => {
               onClick={() => dispatch(openCreatePlaylistModal())}
             >
               <PlusIcon size={32} />
-              <h1 className="text-sm lg:text-sm font-semibold">
+              <h1 className="text-sm  font-semibold">
                 Create Playlist
               </h1>
             </div>

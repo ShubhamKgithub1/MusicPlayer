@@ -172,7 +172,7 @@ const Playbar = () => {
         }`}
       >
         <button
-          className={`rounded-full shadow-shadowOuter dark:shadow-none dark:hover:shadow-custom hover:shadow-shadowInner active:scale-[0.80] p-2 md:p-1.5 cursor-pointer transition-all duration-300`}
+          className={`rounded-full shadow-shadowOuter dark:shadow-none dark:hover:shadow-custom hover:shadow-shadowInner active:scale-[0.80] p-1.5 cursor-pointer transition-all duration-300`}
           onClick={() => {
             dispatch(resetPlayer());
             toast.success("Playing Queue cleared...");
@@ -185,7 +185,7 @@ const Playbar = () => {
           PLAYING NOW
         </h1>
         <button
-          className={`rounded-full shadow-shadowOuter hover:shadow-shadowInner active:scale-[0.80] dark:shadow-none dark:hover:shadow-custom p-2 md:p-1.5 cursor-pointer transition-all duration-300`}
+          className={`rounded-full shadow-shadowOuter hover:shadow-shadowInner active:scale-[0.80] dark:shadow-none dark:hover:shadow-custom p-1.5 cursor-pointer transition-all duration-300`}
           onClick={() => {
             setIsExpand(false);
           }}
@@ -218,7 +218,7 @@ const Playbar = () => {
             className={`${
               isExpand
                 ? "h-36 w-36 md:h-28 md:w-28 shadow-shadowOuterLarge dark:shadow-none border-2 border-white/40"
-                : "sm:h-14 sm:w-14 h-14 w-14"
+                : "w-12 h-12 xl:h-12 xl:w-12 2xl:h-14 2xl:w-14"
             } transition-all duration-300 rounded-full`}
           />
           <div
@@ -230,7 +230,7 @@ const Playbar = () => {
               className={` ${
                 isExpand
                   ? "text-xl md:text-base text-gray-600"
-                  : "text-base text-white"
+                  : "text-base md:text-sm 2xl:text-base text-white"
               } font-semibold truncate  dark:text-white`}
             >
               {currentSong?.title_short}
@@ -243,7 +243,7 @@ const Playbar = () => {
 
         <button
           onClick={togglePlay}
-          className={`rounded-full text-black dark:shadow-none hover:shadow-[inset_2px_3px_8px_black] dark:hover:shadow-shadowInner h-12 w-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-300 ${
+          className={`rounded-full text-black dark:shadow-none hover:shadow-[inset_2px_3px_8px_black] dark:hover:shadow-shadowInner w-12 h-12 xl:h-12 xl:w-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-300 ${
             isExpand ? "hidden" : "block"
           }`}
         >
