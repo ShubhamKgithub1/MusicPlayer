@@ -31,7 +31,7 @@ const Sidebar = () => {
               </div>
               <button
                 onClick={logout}
-                className="flex items-center gap-2 p-2 xl:px-4 xl:py-2 xl:ml-auto rounded-xl backdrop-blur-md hover:shadow-inner hover:bg-red-500 dark:hover:bg-transparent hover:shadow-red-800 dark:hover:shadow-custom text-black dark:text-white hover:text-white bg-white/10 active:scale-95 transition-all duration-300 shadow-lg"
+                className="flex items-center gap-2 p-2 xl:px-4 xl:py-2 xl:ml-auto rounded-xl hover:shadow-[inset_0_2px_6px_black] bg-red-600 text-white active:scale-95 transition-all duration-300"
               >
                 <LogOut size={16} />
                 <span className="font-semibold hidden 2xl:block text-sm">Logout</span>
@@ -60,17 +60,17 @@ const Sidebar = () => {
           )}
         </div>
       ) : (
-        <div className="bg-white/30 shadow-md dark:shadow-none dark:bg-black/40 border border-white/20 backdrop-blur-lg rounded-2xl p-6 flex flex-col items-start gap-3 text-sm animate-fade-in">
-          <h2 className="text-lg text-gray-600 dark:text-white font-bold">
+        <div className="bg-white/30 shadow-md dark:shadow-none dark:bg-black/40 border border-white/20 backdrop-blur-lg rounded-2xl p-4 2xl:p-4 flex flex-col items-start gap-2 xl:gap-2 text-sm animate-fade-in">
+          <h2 className=" text-base xl:text-lg text-gray-600 dark:text-white font-bold">
             You're not logged in
           </h2>
-          <p className="font-semibold dark:text-gray-400 text-gray-500">
+          <p className="text-xs xl:text-sm font-semibold dark:text-gray-400 text-gray-500">
             Login to save your favorite songs and access your playlist across
             devices.
           </p>
 
           <button
-            className="mt-2 px-4 py-2 dark:text-white text-gray-600 dark:bg-white/10 dark:hover:bg-transparent hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-custom dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 hover:bg-white hover:text-gray-600 transition duration-300 dark:text-glow"
+            className="mt-2 px-2 text-xs xl:text-sm xl:px-4 py-2 dark:text-white text-gray-600 dark:bg-white/10 dark:hover:bg-transparent hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-custom dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 hover:bg-white hover:text-gray-600 transition duration-300"
             onClick={login}
           >
             Continue With Google

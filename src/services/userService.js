@@ -2,6 +2,7 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import toast from "react-hot-toast";
 import {addPlaylist, setFavorites, setPlaylists} from "../reduxStore/userSlice";
+import { setRecentlyPlayed } from "../reduxStore/userSlice";
 
 export const storeUserInfo = async (user) => {
   if (!user || !user.uid) {
@@ -22,13 +23,14 @@ export const storeUserInfo = async (user) => {
     });
   }
 };
-export const addRecentlyPlayed = async (userId, song) => {
+export const addRecentlyPlayed = async (userId, song, dispatch, existingList = []) => {
   if (!song?.id) {
-  console.warn("Invalid song data:", song);
-  return;
-}
+    console.warn("Invalid song data:", song);
+    return;
+  }
+
   try {
-    const userDocRef = doc(db, 'users', userId);
+    const userDocRef = doc(db, "users", userId);
     const userDocSnap = await getDoc(userDocRef);
 
     const newEntry = {
@@ -41,25 +43,32 @@ export const addRecentlyPlayed = async (userId, song) => {
     if (userDocSnap.exists()) {
       const data = userDocSnap.data();
       recentlyPlayed = data.recentlyPlayed || [];
+    } else {
+      recentlyPlayed = existingList;
     }
 
-    // Remove the same song if it already exists
-    if (!song?.id) return;
+    // Remove duplicate
     recentlyPlayed = recentlyPlayed.filter((s) => s.id !== song.id);
 
-    // Add new song to the top
+    // Add new song to top
     recentlyPlayed.unshift(newEntry);
 
-    // Keep only the latest 20
-    if (recentlyPlayed.length > 20) {
-      recentlyPlayed = recentlyPlayed.slice(0, 20);
+    // Limit to latest 20
+    if (recentlyPlayed.length > 50) {
+      recentlyPlayed = recentlyPlayed.slice(0, 50);
     }
 
     await setDoc(userDocRef, { recentlyPlayed }, { merge: true });
+
+    // ✅ Update Redux too
+    if (dispatch) {
+      dispatch(setRecentlyPlayed(recentlyPlayed));
+    }
   } catch (error) {
-    console.error('Error updating recently played:', error);
+    console.error("Error updating recently played:", error);
   }
 };
+
 
 export const addToFavorites = async (userId, song, dispatch)=>{
     if(!song?.id || !userId) return;

@@ -68,6 +68,9 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
             placeholder="New playlist name"
             value={newPlaylistName}
             onChange={(e) => setNewPlaylistName(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleCreateAndAdd();
+            }}
             className="w-full px-3 hover:text-white hover:placeholder-white focus:placeholder-white py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:focus:bg-white/20 dark:focus:shadow-black dark:hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-gray-600 hover:bg-white/10 hover:shadow-black/10 hover:shadow-inner focus:bg-white/20 focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-300"
 
             disabled={loading}

@@ -4,10 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
   const favorites = useSelector((state) => state.user.favorites);
-  const viewAll=(!isFullTab && favorites?.length > 0);
-if (!isFullTab) {
-  console.log("recentSongs:",isFullTab, recentSongs);
-}
+  const viewAll=(!isFullTab && recentSongs?.length > 0);
 
   return (
     <div
@@ -29,7 +26,7 @@ if (!isFullTab) {
           <NavLink
             to="library"
             className={({ isActive }) =>
-              `${isActive ? "dark:text-white " : "dark:text-gray-300 text-gray-500"} hidden lg:block`
+              `${isActive ? "dark:text-white text-gray-600" : "dark:text-gray-300 text-gray-500"} hidden lg:block`
             }
           >
             <button className="text-sm cursor-pointer transition-all duration-300 dark:hover:text-white animate-fade-in">

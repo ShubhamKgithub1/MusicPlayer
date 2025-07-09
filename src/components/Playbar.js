@@ -38,6 +38,7 @@ const Playbar = () => {
   const currentSong = queue[currentSongIndex];
   const isPlaying = useSelector((state) => state.player.isPlaying);
   const isShuffle = useSelector((state) => state.player.isShuffle);
+  const recentSongs = useSelector((state) => state.user.recentlyPlayed);
 
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -70,18 +71,22 @@ const Playbar = () => {
       audio.pause();
       dispatch(playPause(false));
     } else {
+      audio.play();
       dispatch(playPause(true));
     }
   };
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || !currentSong) return;
 
-    const playSong = async () => {
+    const fetchAndSetSrc = async () => {
       try {
-        // Always fetch fresh preview URL
-        const freshData = await fetchFreshPreviewUrl(currentSong?.id, currentSong?.title_short, currentSong?.artist?.name);
+        const freshData = await fetchFreshPreviewUrl(
+          currentSong?.id,
+          currentSong?.title_short,
+          currentSong?.artist?.name
+        );
 
         if (!freshData?.preview) {
           console.error("No valid preview URL available.");
@@ -90,29 +95,38 @@ const Playbar = () => {
 
         audio.src = freshData.preview;
 
+        // If auto-play is enabled when song changes
         if (isPlaying) {
           await audio.play();
 
           if (user && currentSong.id !== lastAddedRef.current?.id) {
-            addRecentlyPlayed(user.uid, freshData);
+            addRecentlyPlayed(user.uid, freshData, dispatch, recentSongs);
             lastAddedRef.current = freshData;
           }
-        } else {
-          audio.pause();
         }
       } catch (err) {
         console.error("Error loading or playing track:", err);
       }
     };
 
-    if (currentSong) {
-      playSong();
+    fetchAndSetSrc();
+  }, [currentSong,dispatch,user]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio || !currentSong) return;
+
+    if (isPlaying) {
+      audio.play().catch((err) => console.error("Play error:", err));
     } else {
       audio.pause();
-      audio.src = "";
     }
+  }, [isPlaying, currentSong]);
 
-    // Seekbar & cleanup logic
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
     const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
     const handleLoadedMetadata = () => setDuration(audio.duration);
     const handleEnded = () => {
@@ -134,7 +148,7 @@ const Playbar = () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
       audio.removeEventListener("ended", handleEnded);
     };
-  }, [currentSong, isPlaying, dispatch, currentSongIndex, queue, user]);
+  }, [currentSongIndex, queue, dispatch]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -293,12 +307,10 @@ const Playbar = () => {
           <button
             onClick={() => dispatch(playPrevious())}
             className={`${
-              isExpand
-                ? " opacity-100 p-3 lg:p-2"
-                : "h-0 w-0 opacity-0"
+              isExpand ? " opacity-100 p-3 lg:p-2" : "h-0 w-0 opacity-0"
             } flex justify-center items-center active:scale-[0.75] dark:active:scale-[0.75] dark:hover:scale-[1.10] text-gray-600 dark:bg-gray-900 dark:shadow-none dark:text-white hover:shadow-shadowInner rounded-full transition-all duration-300`}
           >
-            <SkipBack size={28}/>
+            <SkipBack size={28} />
           </button>
           <button
             onClick={togglePlay}
@@ -313,9 +325,7 @@ const Playbar = () => {
           <button
             onClick={() => dispatch(playNext())}
             className={` ${
-              isExpand
-                ? " opacity-100 p-3 lg:p-2"
-                : "h-0 w-0 opacity-0"
+              isExpand ? " opacity-100 p-3 lg:p-2" : "h-0 w-0 opacity-0"
             } flex justify-center items-center active:scale-[0.75] dark:active:scale-[0.75] dark:hover:scale-[1.10] text-gray-600 dark:bg-gray-900 dark:shadow-none dark:text-white hover:shadow-shadowInner rounded-full transition-all duration-300`}
           >
             <SkipForward size={28} />
@@ -338,7 +348,7 @@ const Playbar = () => {
         <div
           className={`w-full overflow-y-auto transition-all duration-300  hide-scrollbar ${
             isExpand
-              ? "flex-1 opacity-100 min-h-0 max-h-[80dvh] sm:max-h-[35dvh]"
+              ? "flex-1 opacity-100 min-h-0 max-h-[80dvh] md:max-h-[35dvh]"
               : "max-h-0 opacity-0"
           } p-2 sm:p-0`}
         >

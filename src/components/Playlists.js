@@ -29,7 +29,7 @@ const Playlists = () => {
         <div className="flex flex-col flex-1 gap-2 lg:gap-3 overflow-hidden">
           <div className="w-[100%] flex gap-2 overflow-x-scroll hide-scrollbar animate-fade-in">
             <div
-              className="snap-start aspect-square flex flex-col gap-1 items-center justify-center cursor-pointer transition-all duration-300 dark:text-white active:scale-[0.92] rounded-lg bg-white/30 shadow-[inset_0_2px_4px_gray] dark:shadow-black/60 hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-[inset_0_2px_6px_black] text-black"
+              className="snap-start aspect-square flex flex-col p-4 gap-1 items-center justify-center cursor-pointer transition-all duration-300 dark:text-white active:scale-[0.92] rounded-lg bg-white/30 shadow-[inset_0_2px_4px_gray] dark:shadow-black/60 hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-[inset_0_2px_6px_black] text-gray-700"
               onClick={() => dispatch(openCreatePlaylistModal())}
             >
               <PlusIcon size={32} />
@@ -103,11 +103,11 @@ const Playlists = () => {
         </div>
       ) : (
        <div>
-         <p className="text-gray-600 dark:text-white text-sm p-2 lg:p-4 font-medium lg:font-semibold animate-fade-in">
+         <p className="text-gray-600 dark:text-white text-sm py-2 lg:py-4 font-medium lg:font-semibold animate-fade-in">
           No playlist found.
         </p>
                     <div
-              className="aspect-square w-32 lg:w-40 flex flex-col gap-1 items-center justify-center cursor-pointer transition-all duration-300 hover:bg-white hover:text-black active:scale-[0.92] rounded-lg bg-black/60 hover:shadow-[inset_0_2px_8px_black] text-white"
+              className="aspect-square w-32 lg:w-36 flex flex-col gap-1 items-center justify-center cursor-pointer transition-all duration-300 dark:text-white active:scale-[0.92] rounded-lg bg-white/30 shadow-[inset_0_2px_4px_gray] dark:shadow-black/60 hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-[inset_0_2px_6px_black] text-gray-700"
               onClick={() => dispatch(openCreatePlaylistModal())}
             >
               <PlusIcon size={32} />

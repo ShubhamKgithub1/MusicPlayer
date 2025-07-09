@@ -12,7 +12,7 @@ const SidebarDrawer = ({ user }) => {
   const recentSongs = useSelector((state) => state.user.recentlyPlayed);
   return (
     <div
-      className={`fixed top-0 left-0 z-[99] lg:hidden bg-white/5 dark:bg-black/20 backdrop-blur-3xl h-screen w-3/4 sm:w-2/4 md:w-1/3 ${
+      className={`fixed top-0 left-0 z-[99] lg:hidden bg-black/25 dark:bg-black/20 backdrop-blur-3xl h-screen w-3/4 sm:w-2/4 md:w-1/3 ${
         isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
       } transition-all duration-500 overflow-y-auto hide-scrollbar`}
     >
@@ -101,7 +101,7 @@ const SidebarDrawer = ({ user }) => {
             )}
             <button
               onClick={logout}
-              className="flex items-center justify-center hover:shadow-[inset_0_2px_6px_black] gap-2 px-4 py-2 rounded-xl backdrop-blur-md bg-white/10 text-white hover:bg-white/20 active:scale-95 transition-all duration-300"
+              className="flex items-center justify-center bg-red-600 hover:shadow-[inset_0_2px_6px_black] gap-2 px-4 py-2 rounded-xl backdrop-blur-md text-white active:scale-95 transition-all duration-300"
             >
               <LogOut size={16} />
               <span className="font-semibold">Logout</span>

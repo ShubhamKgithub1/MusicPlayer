@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
       await storeUserInfo(user);
       sessionStorage.setItem("justLoggedIn", "true");
       dispatch(closeDrawer());
+      dispatch(resetPlayer());
       navigate("/welcome");
     } catch (error) {
       console.log("Login error:", error);
