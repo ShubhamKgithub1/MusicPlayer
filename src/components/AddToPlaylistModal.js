@@ -37,22 +37,22 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 backdrop-blur-lg flex items-center justify-center z-[99] animate-fade-in">
-      <div className="flex flex-col gap-4 bg-black/20 dark:bg-black/40 backdrop-blur-lg text-white p-6 rounded-2xl w-[90%] max-w-md relative">
+    <div className="fixed inset-0 backdrop-blur-lg flex items-center justify-center z-[99] transition-all duration-200">
+      <div className="flex flex-col gap-4 bg-black/20 dark:bg-black/40 backdrop-blur-lg text-white p-6 rounded-2xl w-[90%] max-w-md relative animate-fade-in">
         <button className="absolute top-2 right-2 text-xl" onClick={onClose}>
           ✕
         </button>
 
         <h2 className="text-lg font-semibold text-center">Add to Playlist</h2>
 
-        <div className="space-y-2 max-h-60 overflow-auto hide-scrollbar">
+        <div className="space-y-2 max-h-60 overflow-auto hide-scrollbar border-b border-white/40 pb-4">
           {playlists.length > 0 ? (
             playlists.map((pl) => (
               <button
                 key={pl.id}
                 onClick={() => handleAddToPlaylist(pl.id)}
                 disabled={loading}
-                className="w-full text-left py-1.5 px-3 font-bold bg-white/40 dark:bg-black/40 dark:hover:bg-white/20 text-gray-600 hover:text-white  dark:text-gray-300 hover:bg-transparent hover:shadow-[inset_0_2px_6px_black] rounded-3xl disabled:opacity-50 active:scale-x-[0.96] transition-all duration-200"
+                className="w-full text-left py-1.5 px-3 font-bold bg-white/60 dark:bg-black/40 dark:hover:bg-white/20 text-gray-600 hover:text-white  dark:text-gray-300 hover:bg-transparent hover:shadow-[inset_0_2px_6px_black] rounded-3xl disabled:opacity-50 active:scale-x-[0.96] transition-all duration-200"
               >
                 {pl.name}
               </button>

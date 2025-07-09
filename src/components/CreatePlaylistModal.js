@@ -17,8 +17,8 @@ const CreatePlaylistModal = ({ userId }) => {
 
   if (!isOpen) return;
   return (
-    <div className="fixed text-white inset-0 backdrop-blur-lg flex items-center justify-center z-[99] animate-fade-in">
-      <div className="bg-black/20 backdrop-blur-lg rounded-lg p-6 w-96 flex flex-col gap-4">
+    <div className="fixed text-white inset-0 backdrop-blur-lg flex items-center justify-center z-[99] transition-all duration-200">
+      <div className="bg-black/30 backdrop-blur-lg rounded-lg p-6 w-96 flex flex-col gap-4 animate-fade-in">
         <h2 className="text-xl font-semibold mb-2 text-center">Create New Playlist</h2>
         <div className="flex flex-col gap-4">
           <input
@@ -43,7 +43,7 @@ const CreatePlaylistModal = ({ userId }) => {
           </button>
           <button
             onClick={handleSubmit}
-            className="bg-violet-500 active:scale-x-[0.96] text-white px-4 py-2 rounded transition-all duration-300"
+            className="bg-violet-500 active:scale-x-[0.96] text-white px-4 py-1.5 rounded transition-all duration-300"
           >
             Create
           </button>

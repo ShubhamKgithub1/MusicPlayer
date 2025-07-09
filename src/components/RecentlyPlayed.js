@@ -38,7 +38,7 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
       {recentSongs?.length > 0 ? (
         <div
           className={`flex flex-col ${
-            isFullTab ? "overflow-auto hide-scrollbar gap-1 lg:bg-transparent dark:bg-transparent lg:dark:bg-black/40 rounded-lg lg:dark:p-3" : "overflow-hidden gap-1 lg:dark:px-3"
+            isFullTab ? "overflow-auto hide-scrollbar gap-1 lg:bg-transparent dark:bg-transparent lg:dark:bg-black/40 rounded-lg lg:dark:p-3" : "overflow-auto hide-scrollbar gap-1 lg:dark:px-3"
           }  relative animate-fade-in`}
         >
           {(isFullTab ? recentSongs : recentSongs?.slice(0, 5))?.map((song) => (
