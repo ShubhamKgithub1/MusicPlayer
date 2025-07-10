@@ -12,7 +12,7 @@ const SidebarDrawer = ({ user }) => {
   const recentSongs = useSelector((state) => state.user.recentlyPlayed);
   return (
     <div
-      className={`fixed top-0 left-0 z-[99] lg:hidden bg-black/25 dark:bg-black/20 backdrop-blur-3xl h-screen w-3/4 sm:w-2/4 md:w-1/3 ${
+      className={`fixed top-0 left-0 z-[99] lg:hidden bg-black/25 dark:bg-black/20 backdrop-blur-3xl h-screen w-[90%] sm:w-2/4 md:w-1/3 ${
         isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
       } transition-all duration-500 overflow-y-auto hide-scrollbar`}
     >
@@ -108,16 +108,16 @@ const SidebarDrawer = ({ user }) => {
             </button>
           </div>
         ) : (
-          <div className="mt-3 bg-white/20 shadow-md dark:bg-black/20 border-2 border-white/10 backdrop-blur-lg rounded-xl p-4 flex flex-col items-start gap-1.5 text-sm animate-fade-in">
-            <h2 className="text-base text-white dark:text-gray-300 font-bold text-glow">
+          <div className="mt-3 bg-white/20 shadow-md dark:bg-black/20 border-2 border-white/10 backdrop-blur-lg rounded-xl p-3 flex flex-col items-start gap-1.5 text-sm">
+            <h2 className="text-base text-white dark:text-white font-bold text-glow">
               You're not logged in
             </h2>
-            <p className="dark:text-gray-400 text-gray-700">
+            <p className="text-gray-400 font-semibold">
               Login to save your favorite songs and access your playlist across
               devices.
             </p>
             <button
-              className="mt-2 px-4 py-2 hover:bg-black/10 hover:shadow-[inset_0_2px_6px_black] text-gray-600 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:text-white dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 transition duration-300 dark:text-glow"
+              className="mt-2 px-4 py-1.5 hover:bg-black/10 hover:shadow-[inset_0_2px_6px_black] text-gray-600 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:text-white dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 transition duration-300 dark:text-glow"
               onClick={login}
             >
               Continue With Google

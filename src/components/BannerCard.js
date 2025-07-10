@@ -19,19 +19,19 @@ const BannerCard = ({ topTracks }) => {
         className="w-full h-full relative object-fill"
       />
       <div className="flex flex-col justify-end items-start absolute z-10 bottom-0 text-white bg-gradient-to-tr from-black to-transparent inset-0">
-        <div className="p-4 flex flex-col justify-end truncate w-full gap-1 sm:gap-2">
-          <h1 className="text-xl sm:text-3xl font-bold truncate">{track?.album?.title}</h1>
-          <h3 className="text-sm sm:text-lg font-medium">{track?.artist?.name}</h3>
-          <div className="flex gap-2">
+        <div className="p-2 xl:p-4 flex flex-col justify-end truncate w-full gap-0 lg:gap-1">
+          <h1 className="text-lg xl:text-2xl font-semibold lg:font-bold truncate">{track?.album?.title}</h1>
+          <h3 className="text-sm xl:text-lg">{track?.artist?.name}</h3>
+          <div className="flex gap-1.5">
             <button
-              className="flex justify-center items-center border border-white/20 p-2 sm:p-2 bg-white sm:py-2 rounded-full hover:shadow-[inset_0_4px_6px_black] text-black transition-all duration-300 active:scale-90"
+              className="flex justify-center items-center border border-white/20 p-1.5 lg:p-3 bg-white rounded-full hover:shadow-[inset_0_4px_6px_black] text-black transition-all duration-300 active:scale-90"
               onClick={() => handlePlay()}
             >
-              <Play/>
+              <Play size={20}/>
             </button>
             <NavLink
             to="/explore"
-            className="flex items-center justify-center font-semibold bg-white text-black border border-white/20 px-4 py-1 sm:py-2 rounded-full hover:shadow-[inset_0_4px_6px_black] transition-all duration-300">
+            className="flex items-center justify-center font-medium bg-white text-black border border-white/20 px-3 lg:px-4 py-1 lg:py-2 rounded-full hover:shadow-[inset_0_4px_6px_black] transition-all duration-300">
               More
             </NavLink>
           </div>

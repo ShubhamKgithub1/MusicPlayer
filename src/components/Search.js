@@ -44,14 +44,14 @@ const Search = () => {
   console.log(result);
 
   return (
-    <div className="w-full h-full lg:dark:bg-black/40 lg:bg-white/20 backdrop-blur-lg rounded-3xl p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">
+    <div className="w-full h-full lg:dark:bg-black/40 lg:bg-white/20 backdrop-blur-lg lg:rounded-3xl p-3 lg:p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">
       <div>
         <div className="flex items-center gap-2 xl:gap-4">
           <input
             type="search"
             placeholder="Search songs..."
             value={tag}
-            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-4 py-1.5 lg:py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:focus:bg-white/20 dark:focus:shadow-black dark:hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-black/70 hover:bg-transparent hover:shadow-black/10 hover:shadow-inner focus:bg-transparent focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-300"
+            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1 lg:py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:focus:bg-white/20 dark:focus:shadow-black dark:hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-black/70 hover:bg-white/20 hover:shadow-black/10 hover:shadow-inner focus:bg-white/20 focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-300"
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") onSearch(tag);
@@ -60,7 +60,7 @@ const Search = () => {
           <button
             onClick={() => onSearch(tag)}
             disabled={!tag.trim()}
-            className={`px-4 py-1.5 lg:py-2 rounded-full font-semibold text-white transition-all duration-300 active:scale-95 ${
+            className={`px-4 py-1 lg:py-2 rounded-full font-semibold text-white transition-all duration-300 active:scale-95 ${
               tag.trim()
                 ? "bg-emerald-400 text-white hover:bg-emerald-600 shadow-[0_0_12px_#10B981]"
                 : "bg-white/10 text-white/50 cursor-not-allowed"
@@ -69,7 +69,7 @@ const Search = () => {
             Search
           </button>
         </div>
-        <div className="mt-3 xl:mt-6 flex gap-2 xl:gap-3 flex-wrap xl:w-2/3 lg:border-b pb-4 xl:pb-6">
+        <div className="mt-3 xl:mt-4 flex gap-1.5 xl:gap-3 flex-wrap xl:w-2/3 lg:border-b pb-2 mb-2 xl:pb-6 border-b border-white/40">
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
@@ -84,7 +84,7 @@ const Search = () => {
           ))}
         </div>
       </div>
-      <div className="relative xl:w-2/3 overflow-y-scroll flex-1 hide-scrollbar mt-4 snap-y lg:snap-none snap-mandatory scroll-smooth">
+      <div className="relative xl:w-2/3 overflow-y-scroll flex-1 hide-scrollbar lg:mt-4 scroll-smooth">
         {loading ? (
           <div className="flex items-center justify-center w-full h-full text-white px-4 lg:px-0">
             <div className="flex items-end justify-center gap-[3px] h-16 lg:gap-2 lg:h-20">
@@ -97,7 +97,7 @@ const Search = () => {
           </div>
         ) : (
           result.length > 0 && (
-            <div className="w-full flex flex-col gap-2 animate-fade-in snap-start lg:snap-none">
+            <div className="w-full flex flex-col gap-1 lg:gap-1.5 animate-fade-in dark:bg-black/40 rounded-md dark:p-1.5 lg:dark:p-2">
               {result.map((res) => (
                 <SongTile
                   key={res?.id}
