@@ -14,7 +14,7 @@ const Sidebar = () => {
       {user ? (
         <div className="flex flex-col items-center gap-4 justify-center w-full">
           <div className="dark:bg-black/40 shadow-lg dark:shadow-none bg-white/30 backdrop-blur-lg border border-white/10 rounded-2xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
-            <div className="flex items-center justify-start w-full gap-2 p-2 2xl:p-4 animate-fade-in">
+            <div className="flex items-center justify-start w-full gap-2 p-2 2xl:p-4 animate-fade-in flex-wrap">
               <img
                 src={user.photoURL}
                 alt="avatar"
@@ -31,13 +31,13 @@ const Sidebar = () => {
               </div>
               <button
                 onClick={logout}
-                className="flex items-center gap-2 p-2 xl:px-4 xl:py-2 xl:ml-auto rounded-xl hover:shadow-[inset_0_2px_6px_black] bg-red-600 text-white active:scale-95 transition-all duration-300"
+                className="flex items-center gap-2 p-2 xl:px-4 xl:py-2 rounded-xl hover:shadow-[inset_0_2px_6px_black] bg-red-600 text-white active:scale-95 transition-all duration-200"
               >
                 <LogOut size={16} />
-                <span className="font-semibold hidden 2xl:block text-sm">Logout</span>
+                <span className="font-semibold text-sm">Logout</span>
               </button>
             </div>
-            <div className=" w-full p-2 xl:p-4 transition-all duration-300 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
+            <div className=" w-full p-2 xl:p-4 transition-all duration-200 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
               <NavLink
                 to="/library"
                 className={({ isActive }) =>
@@ -70,7 +70,7 @@ const Sidebar = () => {
           </p>
 
           <button
-            className="mt-2 px-2 text-xs xl:text-sm xl:px-4 py-2 dark:text-white text-gray-600 dark:bg-white/10 dark:hover:bg-transparent hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-custom dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 hover:bg-white hover:text-gray-600 transition duration-300"
+            className="mt-2 px-2 text-xs xl:text-sm xl:px-4 py-2 dark:text-white text-gray-600 dark:bg-white/10 dark:hover:bg-transparent hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-custom dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 hover:bg-white hover:text-gray-600 transition duration-200"
             onClick={login}
           >
             Continue With Google

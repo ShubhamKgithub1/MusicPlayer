@@ -49,7 +49,7 @@ const Welcome = () => {
           Redirecting in {secondsLeft} second{secondsLeft !== 1 && "s"}...
         </p>
         <button
-          className="bg-white w-[80%] text-sm py-2 sm:w-60 dark:text-white hover:shadow-inner hover:shadow-black dark:hover:bg-white dark:hover:text-purple-500 dark:bg-purple-500 text-black rounded-3xl hover:bg-transparent hover:text-white transition-all duration-300 lg:text-lg font-semibold active:scale-[0.94]"
+          className="bg-white w-[80%] text-sm py-2 sm:w-60 dark:text-white hover:shadow-inner hover:shadow-black dark:hover:bg-white dark:hover:text-purple-500 dark:bg-purple-500 text-black rounded-3xl hover:bg-transparent hover:text-white transition-all duration-200 lg:text-lg font-semibold active:scale-[0.94]"
           onClick={() => clickHandler()}
         >
           Continue..

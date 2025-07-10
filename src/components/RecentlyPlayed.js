@@ -29,7 +29,7 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
               `${isActive ? "dark:text-white text-gray-600" : "dark:text-gray-300 text-gray-500"} hidden lg:block`
             }
           >
-            <button className="text-sm cursor-pointer transition-all duration-300 dark:hover:text-white animate-fade-in">
+            <button className="text-sm cursor-pointer transition-all duration-200 dark:hover:text-white animate-fade-in">
               View all
             </button>
           </NavLink>

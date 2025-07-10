@@ -51,7 +51,7 @@ const Search = () => {
             type="search"
             placeholder="Search songs..."
             value={tag}
-            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1 lg:py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:focus:bg-white/20 dark:focus:shadow-black dark:hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-black/70 hover:bg-white/20 hover:shadow-black/10 hover:shadow-inner focus:bg-white/20 focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-300"
+            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1.5 lg:py-2 rounded-full bg-white/15 hover:bg-white/10 focus:bg-white/10 text-black/70 dark:text-white dark:placeholder-white/70 placeholder-black/70 shadow-black/10 shadow-inner hover:shadow-black/20 focus:shadow-inner focus:shadow-black/40 font-medium backdrop-blur-md outline-none transition-all duration-200"
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") onSearch(tag);
@@ -60,7 +60,7 @@ const Search = () => {
           <button
             onClick={() => onSearch(tag)}
             disabled={!tag.trim()}
-            className={`px-4 py-1 lg:py-2 rounded-full font-semibold text-white transition-all duration-300 active:scale-95 ${
+            className={`px-4 py-1.5 lg:py-2 rounded-full font-semibold text-white transition-all duration-200 active:scale-95 ${
               tag.trim()
                 ? "bg-emerald-400 text-white hover:bg-emerald-600 shadow-[0_0_12px_#10B981]"
                 : "bg-white/10 text-white/50 cursor-not-allowed"
@@ -73,7 +73,7 @@ const Search = () => {
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
-              className="text-sm xl:text-base hover:shadow-[inset_0_2px_6px_black] cursor-pointer active:scale-x-90 bg-white dark:bg-black/30 dark:hover:bg-white/20 dark:hover:bg-white dark:text-white/70 text-gray-500 font-medium w-max py-1 px-2 xl:px-3 lg:py-1 rounded-full transition-all duration-300"
+              className="text-sm xl:text-base shadow-inner shadow-black/10 hover:shadow-black/40 cursor-pointer active:scale-x-95 bg-white/60 dark:bg-black/30 dark:hover:bg-white/20 dark:text-white/70 text-gray-500 font-medium w-max py-1 px-2 xl:px-3 lg:py-1 rounded-full transition-all duration-200"
               onClick={() => {
                 setTag(c);
                 onSearch(c);

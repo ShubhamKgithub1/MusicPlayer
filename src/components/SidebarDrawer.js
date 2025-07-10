@@ -14,11 +14,11 @@ const SidebarDrawer = ({ user }) => {
     <div
       className={`fixed top-0 left-0 z-[99] lg:hidden bg-black/25 dark:bg-black/20 backdrop-blur-3xl h-screen w-[90%] sm:w-2/4 md:w-1/3 ${
         isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
-      } transition-all duration-500 overflow-y-auto hide-scrollbar`}
+      } transition-all duration-200 overflow-y-auto hide-scrollbar`}
     >
       <button
         onClick={() => dispatch(closeDrawer())}
-        className="absolute top-2 right-2 p-1 text-white dark:hover:bg-white/10 active:scale-[0.85] hover:shadow-[inset_0_4px_6px_black] rounded-md transition-all duration-300"
+        className="absolute top-2 right-2 p-1 text-white dark:hover:bg-white/10 active:scale-[0.85] hover:shadow-[inset_0_4px_6px_black] rounded-md transition-all duration-200"
       >
         <X />
       </button>
@@ -101,7 +101,7 @@ const SidebarDrawer = ({ user }) => {
             )}
             <button
               onClick={logout}
-              className="flex items-center justify-center bg-red-600 hover:shadow-[inset_0_2px_6px_black] gap-2 px-4 py-2 rounded-xl backdrop-blur-md text-white active:scale-95 transition-all duration-300"
+              className="flex items-center justify-center bg-red-600 hover:shadow-[inset_0_2px_6px_black] gap-2 px-4 py-2 rounded-xl backdrop-blur-md text-white active:scale-95 transition-all duration-200"
             >
               <LogOut size={16} />
               <span className="font-semibold">Logout</span>
@@ -117,7 +117,7 @@ const SidebarDrawer = ({ user }) => {
               devices.
             </p>
             <button
-              className="mt-2 px-4 py-1.5 hover:bg-black/10 hover:shadow-[inset_0_2px_6px_black] text-gray-600 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:text-white dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 transition duration-300 dark:text-glow"
+              className="mt-2 px-4 py-1.5 hover:bg-black/10 hover:shadow-[inset_0_2px_6px_black] text-gray-600 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:text-white dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 transition duration-200 dark:text-glow"
               onClick={login}
             >
               Continue With Google

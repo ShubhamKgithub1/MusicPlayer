@@ -28,7 +28,7 @@ const CreatePlaylistModal = ({ userId }) => {
           onKeyDown={(e)=>{
             if (e.key === "Enter") handleSubmit();
           }}
-            className="w-full px-3 hover:text-white hover:placeholder-white focus:placeholder-white py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:hover:bg-white/10 dark:focus:bg-white/20 dark:focus:shadow-black hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-gray-600 hover:shadow-black/10 hover:shadow-inner focus:bg-white/20 focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-300"
+            className="w-full px-3 hover:text-white hover:placeholder-white focus:placeholder-white py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:hover:bg-white/10 dark:focus:bg-white/20 dark:focus:shadow-black hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-gray-600 hover:shadow-black/10 hover:shadow-inner focus:bg-white/20 focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-200"
           placeholder="Enter playlist name"
         />
         <div className="flex justify-end gap-4">
@@ -43,7 +43,7 @@ const CreatePlaylistModal = ({ userId }) => {
           </button>
           <button
             onClick={handleSubmit}
-            className="bg-violet-500 active:scale-x-[0.96] text-white px-4 py-1.5 rounded transition-all duration-300"
+            className="bg-violet-500 active:scale-x-[0.96] text-white px-4 py-1.5 rounded transition-all duration-200"
           >
             Create
           </button>

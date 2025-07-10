@@ -36,7 +36,7 @@ const MyLibrary = () => {
             activeTab === "recent"
               ? "bg-white dark:bg-black text-emerald-500 "
               : "bg-transparent text-glow"
-          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold transition-all duration-300 rounded-t-2xl`}
+          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold transition-all duration-200 rounded-t-2xl`}
         >
           Recently Played
         </button>
@@ -46,7 +46,7 @@ const MyLibrary = () => {
             activeTab === "favorites"
               ? "bg-white dark:bg-black text-emerald-500 "
               : "bg-transparent text-glow"
-          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold transition-all duration-300 rounded-t-2xl`}
+          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold transition-all duration-200 rounded-t-2xl`}
         >
           Favorites
         </button>
@@ -56,7 +56,7 @@ const MyLibrary = () => {
             activeTab === "playlists"
               ? "bg-white dark:bg-black text-emerald-500 "
               : "bg-transparent text-glow"
-          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold  transition-all duration-300 rounded-t-2xl`}
+          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold  transition-all duration-200 rounded-t-2xl`}
         >
           Playlists
         </button>

@@ -71,14 +71,14 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
             onKeyDown={(e) => {
               if (e.key === "Enter") handleCreateAndAdd();
             }}
-            className="w-full px-3 hover:text-white hover:placeholder-white focus:placeholder-white py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:focus:bg-white/20 dark:focus:shadow-black dark:hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-gray-600 hover:bg-white/10 hover:shadow-black/10 hover:shadow-inner focus:bg-white/20 focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-300"
+            className="w-full px-3 hover:text-white hover:placeholder-white focus:placeholder-white py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:focus:bg-white/20 dark:focus:shadow-black dark:hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-gray-600 hover:bg-white/10 hover:shadow-black/10 hover:shadow-inner focus:bg-white/20 focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-200"
 
             disabled={loading}
           />
           <button
             onClick={handleCreateAndAdd}
             disabled={loading}
-            className="w-full bg-violet-400 font-medium py-1.5 rounded-3xl transition-all duration-300 disabled:opacity-50 active:scale-x-[0.96]"
+            className="w-full bg-violet-400 font-medium py-1.5 rounded-3xl transition-all duration-200 disabled:opacity-50 active:scale-x-[0.96]"
           >
             {loading ? "Adding..." : "Create & Add"}
           </button>

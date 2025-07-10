@@ -35,16 +35,16 @@ const HorizontalScroller = ({data}) => {
   if (!data) return null;
 
   return (
-    <div className="relative overflow-hidden p-4 lg:px-6 lg:py-0 bg-white/30 shadow-inner shadow-black/40 dark:bg-black/10 lg:dark:bg-transparent backdrop-blur-lg border border-white/20 lg:border-none lg:shadow-none lg:backdrop-blur-none lg:bg-transparent rounded-md lg:rounded-none">
+    <div className="relative overflow-hidden p-2 lg:px-4 lg:py-0 bg-white/30 shadow-inner shadow-black/40 dark:bg-black/10 lg:dark:bg-transparent backdrop-blur-lg border border-white/10 lg:border-none lg:shadow-none lg:backdrop-blur-none lg:bg-transparent rounded-md lg:rounded-none">
       <div
         onClick={scrollLeft}
-        className="absolute bg-white left-0 flex justify-center items-center z-40 top-1/2 -translate-y-1/2 overflow-hidden p-1.5 xl:p-2 cursor-pointer rounded-full hover:scale-[1.04] active:scale-[0.82] transition-all duration-300"
+        className="absolute bg-white left-0 flex justify-center items-center z-40 top-1/2 -translate-y-1/2 overflow-hidden p-1.5 xl:p-2 cursor-pointer rounded-full hover:scale-[1.04] active:scale-[0.82] transition-all duration-200"
       >
         <ChevronLeft className="text-black" size={22} />
       </div>
       <div
         onClick={scrollRight}
-        className="absolute right-0 flex justify-center items-center top-1/2 -translate-y-1/2 z-40 p-1.5 xl:p-2 overflow-hidden cursor-pointer rounded-full bg-white hover:scale-[1.04] active:scale-[0.82] transition-all duration-300"
+        className="absolute right-0 flex justify-center items-center top-1/2 -translate-y-1/2 z-40 p-1.5 xl:p-2 overflow-hidden cursor-pointer rounded-full bg-white hover:scale-[1.04] active:scale-[0.82] transition-all duration-200"
       >
         <ChevronRight className="text-black" size={22} />
       </div>
@@ -55,7 +55,7 @@ const HorizontalScroller = ({data}) => {
         {data.map((res) => (
           <div
             key={res?.id}
-            className="flex-[0_0_35%] sm:flex-[0_0_25%] md:flex-[0_0_20%] xl:flex-[0_0_13%] flex snap-start rounded-lg lg:rounded-xl lg:dark:rounded-none shadow-md relative overflow-hidden cursor-pointer transition-all duration-300"
+            className="flex-[0_0_35%] sm:flex-[0_0_25%] md:flex-[0_0_20%] xl:flex-[0_0_13%] flex snap-start rounded-lg lg:rounded-xl lg:dark:rounded-none shadow-md relative overflow-hidden cursor-pointer transition-all duration-200"
             onClick={() => handlePlay(res)}
           >
             <img
@@ -69,7 +69,7 @@ const HorizontalScroller = ({data}) => {
                 {res?.title_short}
               </h2>
               <button
-                className="border border-white/20 bg-white text-black flex justify-center items-center rounded-full p-1 lg:p-1.5 hover:bg-transparent hover:text-white active:scale-75 hover:scale-[1.04] transition-all duration-300"
+                className="border border-white/20 bg-white text-black flex justify-center items-center rounded-full p-1 lg:p-1.5 hover:bg-transparent hover:text-white active:scale-75 hover:scale-[1.04] transition-all duration-200"
                 onClick={() => handlePlay(res)}
               >
                 <Play size={16} />
