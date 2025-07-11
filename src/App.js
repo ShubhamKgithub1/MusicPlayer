@@ -43,7 +43,7 @@ function App() {
       </div>
       <div
         className={` ${
-          queue.length > 0 ? " h-[90dvh] " : " h-[100dvh] "
+          queue.length > 0 ? " h-[92dvh] " : " h-[100dvh] "
         }  md:h-auto md:flex-1 flex flex-col md:min-h-0 md:min-w-0`}
       >
         <div className=" lg:pb-3 xl:pb-4 lg:border-b lg:border-b-white/50 lg:py-0">

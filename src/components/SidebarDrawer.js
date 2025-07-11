@@ -12,17 +12,17 @@ const SidebarDrawer = ({ user }) => {
   const recentSongs = useSelector((state) => state.user.recentlyPlayed);
   return (
     <div
-      className={`fixed top-0 left-0 z-[99] lg:hidden bg-black/25 dark:bg-black/20 backdrop-blur-3xl h-screen w-[90%] sm:w-2/4 md:w-1/3 ${
-        isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
+      className={`fixed top-0 left-0 z-[99] text-white lg:hidden bg-black/25 backdrop-blur-3xl h-[100dvh] w-[90%] sm:w-2/4 md:w-1/3 ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
       } transition-all duration-200 overflow-y-auto hide-scrollbar`}
     >
       <button
         onClick={() => dispatch(closeDrawer())}
-        className="absolute top-2 right-2 p-1 text-white dark:hover:bg-white/10 active:scale-[0.85] hover:shadow-[inset_0_4px_6px_black] rounded-md transition-all duration-200"
+        className="absolute top-2 right-2 p-1 bg-white/10 active:scale-[0.85] hover:shadow-[inset_0_4px_6px_black] rounded-md transition-all"
       >
-        <X />
+        <X size={20}/>
       </button>
-      <div className="p-4 text-white">
+      <div className="p-4">
         {/* User Info */}
         {user && (
           <div className="mb-4">
@@ -34,16 +34,16 @@ const SidebarDrawer = ({ user }) => {
         )}
 
         {/* Menu Items */}
-        <ul className="text-lg flex flex-col gap-1 font-semibold">
+        <ul className="text-lg flex flex-col gap-2 font-semibold">
           <li onClick={() => dispatch(closeDrawer())}>
             <NavLink
               to="/home"
               end
               className={({ isActive }) =>
-                `${isActive ? "text-green-500" : ""} cursor-pointer`
+                `${isActive ? "text-green-500" : ""}`
               }
             >
-              <button className="flex items-center gap-1 py-1">
+              <button className="flex items-center gap-1">
                 <Home size={20} />
                 <span>Home</span>
               </button>
@@ -53,10 +53,10 @@ const SidebarDrawer = ({ user }) => {
             <NavLink
               to="/explore"
               className={({ isActive }) =>
-                `${isActive ? "text-green-500" : ""} cursor-pointer`
+                `${isActive ? "text-green-500" : ""}`
               }
             >
-              <button className="flex items-center gap-1 py-1">
+              <button className="flex items-center gap-1">
                 <Music size={20} />
                 <span>Explore</span>
               </button>
@@ -66,10 +66,10 @@ const SidebarDrawer = ({ user }) => {
             <NavLink
               to="/search"
               className={({ isActive }) =>
-                `${isActive ? "text-green-500" : ""} cursor-pointer`
+                `${isActive ? "text-green-500" : ""}`
               }
             >
-              <button className="flex items-center gap-1 py-1">
+              <button className="flex items-center gap-1">
                 <Search size={20} />
                 <span>Search</span>
               </button>
@@ -83,7 +83,7 @@ const SidebarDrawer = ({ user }) => {
               }
               onClick={() => dispatch(closeDrawer())}
             >
-              <button className="flex items-center gap-1 py-1">
+              <button className="flex items-center gap-1">
                 <Library size={20} />
                 <span>My Library</span>
               </button>
@@ -91,9 +91,9 @@ const SidebarDrawer = ({ user }) => {
           )}
         </ul>
         {user ? (
-          <div className="flex flex-col gap-2 mt-3 ">
+          <div className="flex flex-col gap-2 mt-3">
             {recentSongs?.length > 0 && (
-              <div className="w-full dark:bg-black/40 bg-white/10 rounded-lg animate-fade-in">
+              <div className=" bg-white/10 rounded-lg shadow-inner shadow-black">
                 {Array.isArray(recentSongs) && recentSongs.length > 0 && (
                   <RecentlyPlayed isFullTab={false} recentSongs={recentSongs} />
                 )}
@@ -101,23 +101,23 @@ const SidebarDrawer = ({ user }) => {
             )}
             <button
               onClick={logout}
-              className="flex items-center justify-center bg-red-600 hover:shadow-[inset_0_2px_6px_black] gap-2 px-4 py-2 rounded-xl backdrop-blur-md text-white active:scale-95 transition-all duration-200"
+              className="flex items-center justify-center bg-white/20 shadow-[inset_0_2px_6px_gray,inset_0_-2px_6px_black] dark:shadow-[inset_0_2px_6px_black,inset_0_-2px_6px_black] gap-2 py-2 rounded-xl active:scale-95 transition-all duration-200"
             >
-              <LogOut size={16} />
+              <LogOut size={20} />
               <span className="font-semibold">Logout</span>
             </button>
           </div>
         ) : (
-          <div className="mt-3 bg-white/20 shadow-md dark:bg-black/20 border-2 border-white/10 backdrop-blur-lg rounded-xl p-3 flex flex-col items-start gap-1.5 text-sm">
-            <h2 className="text-base text-white dark:text-white font-bold text-glow">
+          <div className="mt-3 bg-white/20 shadow-md dark:bg-black/20 rounded-xl p-3 flex flex-col items-start gap-1.5 text-sm">
+            <h2 className="text-base font-bold">
               You're not logged in
             </h2>
-            <p className="text-gray-400 font-semibold">
+            <p className="text-gray-300 font-semibold">
               Login to save your favorite songs and access your playlist across
               devices.
             </p>
             <button
-              className="mt-2 px-4 py-1.5 hover:bg-black/10 hover:shadow-[inset_0_2px_6px_black] text-gray-600 dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom hover:text-white dark:hover:text-white font-semibold rounded-full bg-white active:scale-95 transition duration-200 dark:text-glow"
+              className="mt-2 px-4 py-1.5 shadow-shadowInner bg-white text-gray-600 dark:shadow-none dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom font-semibold rounded-full active:scale-95 transition duration-200"
               onClick={login}
             >
               Continue With Google

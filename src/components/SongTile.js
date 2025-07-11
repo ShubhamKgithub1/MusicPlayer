@@ -79,7 +79,7 @@ const SongTile = ({ trackList, track, isFavorite }) => {
   return (
     <div
       key={track.id}
-      className="relative z-0 snap-start max-w-[inherit] lg:hover:bg-transparent dark:hover:shadow-black hover:bg-white/10 hover:shadow-[inset_0_0_8px_gray] dark:bg-white/5 dark:hover:bg-white/10 lg:hover:shadow-none flex gap-2 bg-white/5 lg:bg-transparent lg:dark:bg-white/5 items-center justify-between rounded-lg px-4 py-2 lg:shadow-sm transition-all duration-200 cursor-pointer group text-white animate-fade-in"
+      className="relative z-0 snap-start max-w-[inherit] lg:hover:bg-transparent dark:hover:shadow-black hover:bg-white/10 hover:shadow-[inset_-2px_-3px_6px_gray,inset_2px_3px_6px_gray] dark:bg-white/5 dark:hover:bg-white/10 lg:hover:shadow-none flex gap-2 bg-white/5 lg:bg-transparent lg:dark:bg-white/5 items-center justify-between rounded-lg px-4 py-2 lg:shadow-sm transition-all duration-200 cursor-pointer group text-white animate-fade-in"
       onClick={() => handlePlay(track)}
     >
       <div className="hidden lg:block absolute z-0 inset-0 opacity-0 group-hover:opacity-100 transition-all duration-200 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />

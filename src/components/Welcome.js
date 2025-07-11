@@ -34,7 +34,7 @@ const Welcome = () => {
 
   return (
     <div
-      className={`h-full absolute w-screen top-0 left-0 z-50 flex flex-col items-center justify-center ${
+      className={`h-full absolute w-[100dvw] top-0 left-0 z-50 flex flex-col items-center justify-center ${
         darkMode === "dark" ? " bg-dark" : "bg-light"
       } animate-fade-in text-white overflow-hidden`}
     >

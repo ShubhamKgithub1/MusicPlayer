@@ -173,38 +173,38 @@ const Playbar = () => {
 
   return (
     <div
-      className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-200 ${
+      className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-200 text-gray-700 ${
         isExpand
-          ? "h-[100dvh] md:h-auto md:rounded-xl dark:shadow-custom bg-purple-100/80 dark:bg-black/40"
-          : "rounded-none border-none dark:shadow-custom bg-black/40"
-      } ${isPlaying ? "shadow-custom" : "shadow-none"}  backdrop-blur-3xl`}
+          ? "h-[100dvh] md:h-auto md:rounded-xl dark:shadow-custom bg-purple-100/80 "
+          : "rounded-none border-none dark:shadow-custom bg-purple-100/40"
+      } ${isPlaying ? "shadow-custom" : "shadow-none"} dark:bg-black/80 backdrop-blur-3xl`}
     >
-      {/*Clear Queue*/}
+      {/*Header options*/}
       <div
-        className={` flex items-center w-full justify-between text-gray-600 dark:text-white overflow-hidden transition-all duration-200 ${
+        className={`flex items-center w-full justify-between overflow-hidden transition-all duration-200 ${
           isExpand ? "max-h-[40] p-4 pb-1.5 md:p-2 md:pb-2" : "max-h-0"
         }`}
       >
         <button
-          className={`rounded-full dark:shadow-none dark:hover:shadow-custom shadow-shadowInner active:scale-[0.80] p-1.5 cursor-pointer transition-all duration-200`}
+          className={`rounded-full shadow-shadowInner dark:bg-white active:scale-[0.80] p-1.5 cursor-pointer transition-all duration-200`}
           onClick={() => {
             dispatch(resetPlayer());
             toast.success("Playing Queue cleared...");
             setIsExpand(false);
           }}
         >
-          <ListXIcon size={24} />
+          <ListXIcon size={22} />
         </button>
-        <h1 className="text-gray-700 font-semibold dark:text-white text-sm">
+        <h1 className="font-semibold dark:text-white text-sm">
           PLAYING NOW
         </h1>
         <button
-          className={`rounded-full shadow-shadowInner active:scale-[0.80] dark:shadow-none dark:hover:shadow-custom p-1.5 cursor-pointer transition-all duration-200`}
+          className={`rounded-full shadow-shadowInner active:scale-[0.80] dark:bg-white p-1.5 cursor-pointer transition-all duration-200`}
           onClick={() => {
             setIsExpand(false);
           }}
         >
-          <X size={24} />
+          <X size={22} />
         </button>
       </div>
       {/* Audio Element */}
@@ -212,11 +212,11 @@ const Playbar = () => {
 
       {/*Collapsed Playbar(Playbar Header)*/}
       <div
-        className={`flex items-center ${
+        className={`flex items-center gap-2 ${
           isExpand
-            ? "gap-0 min-h-64 md:min-h-20 text-center pb-4"
-            : "gap-2 min-h-10 cursor-pointer py-2 md:py-1.5"
-        }  transition-all duration-200 items-center w-full px-2 relative`}
+            ? "min-h-64 md:min-h-20 text-center pb-4"
+            : " min-h-10 cursor-pointer py-3 md:py-2"
+        }  transition-all duration-200 w-full px-2 relative`}
         onClick={() => {
           setIsExpand(true);
         }}
@@ -227,25 +227,25 @@ const Playbar = () => {
           } items-center md:gap-2 overflow-x-hidden`}
         >
           <img
-            src={currentSong?.album?.cover}
+            src={currentSong?.album?.cover_big}
             alt={currentSong?.title}
             className={`${
               isExpand
-                ? "h-36 w-36 md:h-28 md:w-28 shadow-shadowOuterLarge dark:shadow-none border-2 border-white/40"
+                ? "h-40 w-40 md:h-28 md:w-28 shadow-shadowOuterLarge dark:shadow-none border-4"
                 : "w-12 h-12 xl:h-12 xl:w-12 2xl:h-14 2xl:w-14"
             } transition-all duration-200 rounded-full`}
           />
           <div
             className={`${
               isExpand ? "text-center w-[95%]" : ""
-            } flex flex-col flex-grow transition-all duration-200 truncate overflow-x-hidden`}
+            } flex flex-col transition-all duration-200 overflow-hidden`}
           >
             <p
               className={` ${
                 isExpand
-                  ? "text-xl md:text-base text-gray-600"
-                  : "text-base md:text-sm 2xl:text-base text-white"
-              } font-semibold truncate  dark:text-white`}
+                  ? "text-xl md:text-base"
+                  : "text-base md:text-sm 2xl:text-base"
+              } font-semibold truncate dark:text-white`}
             >
               {currentSong?.title_short}
             </p>
@@ -257,7 +257,7 @@ const Playbar = () => {
 
         <button
           onClick={togglePlay}
-          className={`rounded-full text-black dark:shadow-none hover:shadow-[inset_2px_3px_8px_black] dark:hover:shadow-shadowInner w-12 h-12 xl:h-12 xl:w-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-200 ${
+          className={`rounded-full text-black shadow-[inset_2px_3px_8px_black] w-12 h-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-200 ${
             isExpand ? "hidden" : "block"
           }`}
         >
@@ -290,13 +290,13 @@ const Playbar = () => {
       >
         {/* Controls */}
         <div
-          className={`flex items-center py-3 shadow bg-white/30 dark:bg-white/10 bg-opacity-100 justify-center gap-3 md:gap-2 md:py-2 text-white transition-all duration-200 ${
+          className={`flex items-center py-3 shadow bg-white/30 dark:bg-white/10 bg-opacity-100 justify-center gap-3 md:gap-2 md:py-2 transition-all duration-200 ${
             isExpand ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <button
             onClick={handleShuffleToggle}
-            className={`flex justify-center dark:shadow-none items-center dark:bg-gray-700 hover:scale-[1.13] md:hover:scale-[1.15] rounded-full transition-all duration-200 active:scale-[0.85] md:active:scale-[0.80] shadow-shadowOuter bg-gray-500 ${
+            className={`flex justify-center dark:shadow-none items-center text-white dark:bg-gray-700 hover:scale-[1.13] md:hover:scale-[1.15] rounded-full transition-all duration-200 active:scale-[0.85] md:active:scale-[0.80] shadow-shadowOuter bg-gray-500 ${
               isExpand
                 ? "h-10 w-10 md:h-8 md:w-8 opacity-100"
                 : "h-0 w-0 opacity-0"
@@ -308,7 +308,7 @@ const Playbar = () => {
             onClick={() => dispatch(playPrevious())}
             className={`${
               isExpand ? " opacity-100 p-3 lg:p-2" : "h-0 w-0 opacity-0"
-            } flex justify-center items-center active:scale-[0.75] bg-white dark:active:scale-[0.75] dark:hover:scale-[1.10] shadow-shadowInner text-gray-600 dark:bg-gray-900 dark:shadow-none dark:text-white rounded-full transition-all duration-200`}
+            } flex justify-center items-center active:scale-[0.75] bg-white dark:active:scale-[0.75] dark:hover:scale-[1.10] shadow-shadowInner dark:bg-gray-900 dark:shadow-none dark:text-white rounded-full transition-all duration-200`}
           >
             <SkipBack size={26} />
           </button>
@@ -318,7 +318,7 @@ const Playbar = () => {
               isExpand
                 ? "w-16 h-16 md:w-14 md:h-14 opacity-100"
                 : "h-0 w-0 opacity-0"
-            } rounded-full text-gray-600 dark:text-black bg-white shadow-shadowOuter dark:shadow-none dark:hover:scale-[1.05] active:scale-[0.80] flex items-center justify-center dark:active:scale-[0.85] transition-all duration-200`}
+            } rounded-full dark:text-black bg-white shadow-shadowOuter dark:shadow-none dark:hover:scale-[1.05] active:scale-[0.80] flex items-center justify-center dark:active:scale-[0.85] transition-all duration-200`}
           >
             {isPlaying ? <Pause size={30} /> : <Play size={30} />}
           </button>
@@ -326,7 +326,7 @@ const Playbar = () => {
             onClick={() => dispatch(playNext())}
             className={` ${
               isExpand ? " opacity-100 p-3 lg:p-2" : "h-0 w-0 opacity-0"
-            } flex justify-center items-center active:scale-[0.75] bg-white dark:active:scale-[0.75] dark:hover:scale-[1.10] shadow-shadowInner text-gray-600 dark:bg-gray-900 dark:shadow-none dark:text-white rounded-full transition-all duration-200`}
+            } flex justify-center items-center active:scale-[0.75] bg-white dark:active:scale-[0.75] dark:hover:scale-[1.10] shadow-shadowInner dark:bg-gray-900 dark:shadow-none dark:text-white rounded-full transition-all duration-200`}
           >
             <SkipForward size={26} />
           </button>
@@ -335,7 +335,7 @@ const Playbar = () => {
               isExpand
                 ? "h-10 w-10 md:h-8 md:w-8 opacity-100"
                 : "h-0 w-0 opacity-0"
-            } bg-gray-500 active:scale-[0.85] md:active:scale-[0.80] dark:bg-gray-700 hover:scale-[1.13] dark:shadow-none md:hover:scale-[1.15] flex justify-center items-center cursor-pointer rounded-full transition-all duration-200 shadow-shadowOuter`}
+            } bg-gray-500 active:scale-[0.85] md:active:scale-[0.80] text-white dark:bg-gray-700 hover:scale-[1.13] dark:shadow-none md:hover:scale-[1.15] flex justify-center items-center cursor-pointer rounded-full transition-all duration-200 shadow-shadowOuter`}
             onClick={() => {
               dispatch(setVolume());
             }}
@@ -357,18 +357,6 @@ const Playbar = () => {
           ))}
         </div>
       </div>
-
-      {/*Playbar Expand Icon*/}
-      {/* <button
-        className={`${
-          isExpand ? "rotate-180" : "rotate-0"
-        } h-4 bg-white w-full text-black hidden sm:block`}
-        onClick={() => {
-          setIsExpand(!isExpand);
-        }}
-      >
-        ^
-      </button> */}
     </div>
   );
 };
