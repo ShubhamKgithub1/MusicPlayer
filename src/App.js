@@ -35,7 +35,7 @@ function App() {
     <div
       className={`h-[100dvh] ${
         themeMode === "dark" ? " bg-dark" : "bg-light"
-      } flex-col md:flex-row relative flex md:min-h-[90dvh] md:max-h-[100dvh] lg:p-4 md:gap-4 md:overflow-hidden transition-all duration-700`}
+      } flex-col md:flex-row relative flex md:min-h-[90dvh] md:max-h-[100dvh] lg:p-4 md:gap-4 md:overflow-hidden transition-all duration-300`}
     >
       <Toaster position="top-right" reverseOrder={false} />
       <div className="hidden lg:block w-full lg:w-[18dvw] lg:h-full">
@@ -54,7 +54,7 @@ function App() {
           <Outlet />
         </div>
       </div>
-      <div className={` ${queue.length > 0 ?"absolute":"hidden"}  bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40%] lg:w-[30%] xl:w-[18dvw] md:left-2 lg:left-4 md:text-white`}>
+      <div className={` ${queue.length > 0 ?"absolute":"hidden"}  bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40%] lg:w-[30%] xl:w-[18dvw] md:left-2 lg:left-4`}>
         <Playbar />
       </div>
       <AddToPlaylistModal

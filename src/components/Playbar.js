@@ -173,20 +173,20 @@ const Playbar = () => {
 
   return (
     <div
-      className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-200 text-gray-700 ${
+      className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-300 text-gray-700 ${
         isExpand
-          ? "h-[100dvh] md:h-auto md:rounded-xl dark:shadow-custom bg-purple-100/80 "
-          : "rounded-none border-none dark:shadow-custom bg-purple-100/40"
-      } ${isPlaying ? "shadow-custom" : "shadow-none"} dark:bg-black/80 backdrop-blur-3xl`}
+          ? "max-h-[100dvh] md:h-auto md:rounded-xl bg-purple-100/80 "
+          : "rounded-none border-none bg-purple-100/40"
+      } dark:bg-black/80 backdrop-blur-3xl dark:shadow-custom`}
     >
       {/*Header options*/}
       <div
-        className={`flex items-center w-full justify-between overflow-hidden transition-all duration-200 ${
-          isExpand ? "max-h-[40] p-4 pb-1.5 md:p-2 md:pb-2" : "max-h-0"
+        className={`flex items-center w-full justify-between overflow-hidden transition-all duration-300 ${
+          isExpand ? "max-h-[40] p-4 pb-1.5 md:p-2 md:pb-0" : "max-h-0"
         }`}
       >
         <button
-          className={`rounded-full shadow-shadowInner dark:bg-white active:scale-[0.80] p-1.5 cursor-pointer transition-all duration-200`}
+          className={`rounded-full shadow-shadowInner dark:bg-white active:scale-[0.80] p-1.5 transition-all duration-300`}
           onClick={() => {
             dispatch(resetPlayer());
             toast.success("Playing Queue cleared...");
@@ -199,7 +199,7 @@ const Playbar = () => {
           PLAYING NOW
         </h1>
         <button
-          className={`rounded-full shadow-shadowInner active:scale-[0.80] dark:bg-white p-1.5 cursor-pointer transition-all duration-200`}
+          className={`rounded-full shadow-shadowInner active:scale-[0.80] dark:bg-white p-1.5 transition-all duration-300`}
           onClick={() => {
             setIsExpand(false);
           }}
@@ -216,7 +216,7 @@ const Playbar = () => {
           isExpand
             ? "min-h-64 md:min-h-20 text-center pb-4"
             : " min-h-10 cursor-pointer py-2"
-        }  transition-all duration-200 w-full px-2 relative`}
+        }  transition-all duration-300 w-full px-2 relative`}
         onClick={() => {
           setIsExpand(true);
         }}
@@ -233,12 +233,12 @@ const Playbar = () => {
               isExpand
                 ? "h-40 w-40 md:h-28 md:w-28 shadow-shadowOuterLarge dark:shadow-none border-4"
                 : "w-14 h-14"
-            } transition-all duration-200 rounded-full`}
+            } transition-all duration-300 rounded-full`}
           />
           <div
             className={`${
               isExpand ? "text-center w-[95%]" : ""
-            } flex flex-col transition-all duration-200 overflow-hidden`}
+            } flex flex-col transition-all duration-300 overflow-hidden`}
           >
             <p
               className={`text-base font-semibold truncate dark:text-white`}
@@ -253,7 +253,7 @@ const Playbar = () => {
 
         <button
           onClick={togglePlay}
-          className={`rounded-full text-black shadow-[inset_2px_3px_8px_black] w-12 h-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-200 ${
+          className={`rounded-full shadow-[inset_2px_3px_8px_black] w-12 h-12 bg-white flex items-center justify-center active:scale-90 transition-all duration-300 ${
             isExpand ? "hidden" : "block"
           }`}
         >
@@ -264,21 +264,21 @@ const Playbar = () => {
       <div
         className={`${
           isExpand ? "min-h-2" : "h-0"
-        } cursor-pointer shadow-shadowInner transition-all duration-200 w-full bg-white`}
+        } cursor-pointer shadow-shadowInner transition-all duration-300 w-full bg-white`}
         onClick={handleSeek}
         ref={seekBarRef}
       >
         <div
           className={`${
             isExpand ? "min-h-2" : "h-0"
-          } transition-all duration-200 bg-gray-600 dark:bg-gradient-to-r from-cyan-300 to-purple-600 rounded-r-md`}
+          } transition-all duration-300 bg-gray-600 dark:bg-gradient-to-r from-cyan-300 to-purple-600 rounded-r-md`}
           style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
         />
       </div>
 
       {/* Expanded Playbar */}
       <div
-        className={`w-full transition-all duration-200 flex flex-col min-h-0 ${
+        className={`w-full transition-all duration-300 flex flex-col min-h-0 ${
           isExpand
             ? "flex-1 max-h-[90dvh]"
             : "max-h-0"
@@ -286,52 +286,36 @@ const Playbar = () => {
       >
         {/* Controls */}
         <div
-          className={`flex items-center py-3 shadow bg-white/30 dark:bg-white/10 bg-opacity-100 justify-center gap-3 md:gap-2 md:py-2 transition-all duration-200 ${
+          className={`flex items-center shadow bg-white/30 dark:bg-white/10 justify-center gap-3 md:gap-2 py-9 md:py-2 transition-all duration-300 overflow-hidden ${
             isExpand ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <button
             onClick={handleShuffleToggle}
-            className={`flex justify-center dark:shadow-none items-center text-white dark:bg-gray-700 hover:scale-[1.13] md:hover:scale-[1.15] rounded-full transition-all duration-200 active:scale-[0.85] md:active:scale-[0.80] shadow-shadowOuter bg-gray-500 ${
-              isExpand
-                ? "h-10 w-10 md:h-8 md:w-8 opacity-100"
-                : "h-0 w-0 opacity-0"
-            }`}
+            className={`flex justify-center items-center h-10 w-10 md:h-8 md:w-8 text-white bg-gray-600 rounded-full transition-all duration-300 active:scale-[0.85] shadow-shadowOuter dark:shadow-none`}
           >
             {isShuffle ? <Shuffle size={18} /> : <Repeat size={18} />}
           </button>
           <button
             onClick={() => dispatch(playPrevious())}
-            className={`${
-              isExpand ? " opacity-100 p-3 lg:p-2" : "h-0 w-0 opacity-0"
-            } flex justify-center items-center active:scale-[0.75] bg-white dark:active:scale-[0.75] dark:hover:scale-[1.10] shadow-shadowInner dark:bg-gray-900 dark:shadow-none dark:text-white rounded-full transition-all duration-200`}
+            className={`flex justify-center items-center p-3 lg:p-2 active:scale-[0.75] bg-white shadow-shadowInner rounded-full transition-all duration-300`}
           >
             <SkipBack size={26} />
           </button>
           <button
             onClick={togglePlay}
-            className={`${
-              isExpand
-                ? "w-16 h-16 md:w-14 md:h-14 opacity-100"
-                : "h-0 w-0 opacity-0"
-            } rounded-full dark:text-black bg-white shadow-shadowOuter dark:shadow-none dark:hover:scale-[1.05] active:scale-[0.80] flex items-center justify-center dark:active:scale-[0.85] transition-all duration-200`}
+            className={`flex items-center justify-center rounded-full w-16 h-16 md:w-14 md:h-14 bg-white shadow-shadowOuter dark:shadow-none active:scale-[0.80] transition-all duration-300`}
           >
             {isPlaying ? <Pause size={30} /> : <Play size={30} />}
           </button>
           <button
             onClick={() => dispatch(playNext())}
-            className={` ${
-              isExpand ? " opacity-100 p-3 lg:p-2" : "h-0 w-0 opacity-0"
-            } flex justify-center items-center active:scale-[0.75] bg-white dark:active:scale-[0.75] dark:hover:scale-[1.10] shadow-shadowInner dark:bg-gray-900 dark:shadow-none dark:text-white rounded-full transition-all duration-200`}
+            className={`flex justify-center items-center active:scale-[0.75] p-3 lg:p-2 bg-white shadow-shadowInner rounded-full transition-all duration-300`}
           >
             <SkipForward size={26} />
           </button>
           <div
-            className={` ${
-              isExpand
-                ? "h-10 w-10 md:h-8 md:w-8 opacity-100"
-                : "h-0 w-0 opacity-0"
-            } bg-gray-500 active:scale-[0.85] md:active:scale-[0.80] text-white dark:bg-gray-700 hover:scale-[1.13] dark:shadow-none md:hover:scale-[1.15] flex justify-center items-center cursor-pointer rounded-full transition-all duration-200 shadow-shadowOuter`}
+            className={`flex justify-center items-center h-10 w-10 md:h-8 md:w-8 text-white bg-gray-600 active:scale-[0.85] dark:shadow-none cursor-pointer rounded-full transition-all duration-300 shadow-shadowOuter`}
             onClick={() => {
               dispatch(setVolume());
             }}
@@ -342,7 +326,7 @@ const Playbar = () => {
 
         {/*Queue Container */}
         <div
-          className={`overflow-y-auto transition-all duration-200 hide-scrollbar min-h-0 ${
+          className={`overflow-y-auto transition-all duration-300 hide-scrollbar min-h-0 ${
             isExpand
               ? "flex-1 max-h-[80dvh] md:max-h-[35dvh]"
               : "max-h-0"
