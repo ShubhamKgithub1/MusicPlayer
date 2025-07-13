@@ -44,14 +44,14 @@ const Search = () => {
   console.log(result);
 
   return (
-    <div className="w-full h-full lg:dark:bg-black/40 lg:bg-white/20 backdrop-blur-lg lg:rounded-3xl p-3 lg:p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">
+    <div className="w-full h-full lg:dark:bg-black/40 bg-white/5 lg:bg-white/20 backdrop-blur-lg lg:rounded-3xl p-3 lg:p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">
       <div>
         <div className="flex items-center gap-2 xl:gap-4">
           <input
             type="search"
             placeholder="Search songs..."
             value={tag}
-            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1.5 lg:py-2 rounded-full bg-white/15 hover:bg-white/10 focus:bg-white/10 text-black/70 dark:text-white dark:placeholder-white/70 placeholder-black/70 shadow-black/10 shadow-inner hover:shadow-black/20 focus:shadow-inner focus:shadow-black/40 font-medium backdrop-blur-md outline-none transition-all duration-200"
+            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1.5 lg:py-2 rounded-full bg-white/15 hover:bg-white/10 focus:bg-white/10 text-black/70 dark:text-white dark:placeholder-white/70 placeholder-black/60 shadow-inner shadow-black/5 hover:shadow-black/15 focus:shadow-black/25 dark:focus:shadow-black font-medium backdrop-blur outline-none transition-all duration-200"
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") onSearch(tag);

@@ -215,7 +215,7 @@ const Playbar = () => {
         className={`flex items-center gap-2 ${
           isExpand
             ? "min-h-64 md:min-h-20 text-center pb-4"
-            : " min-h-10 cursor-pointer py-3 md:py-2"
+            : " min-h-10 cursor-pointer py-2"
         }  transition-all duration-200 w-full px-2 relative`}
         onClick={() => {
           setIsExpand(true);
@@ -223,8 +223,8 @@ const Playbar = () => {
       >
         <div
           className={`flex flex-1 ${
-            isExpand ? "flex-col gap-6 pt-3 dark:pt-0" : "flex-row gap-2"
-          } items-center md:gap-2 overflow-x-hidden`}
+            isExpand ? "flex-col gap-6 pt-3" : "flex-row gap-2"
+          } items-center overflow-x-hidden`}
         >
           <img
             src={currentSong?.album?.cover_big}
@@ -232,7 +232,7 @@ const Playbar = () => {
             className={`${
               isExpand
                 ? "h-40 w-40 md:h-28 md:w-28 shadow-shadowOuterLarge dark:shadow-none border-4"
-                : "w-12 h-12 xl:h-12 xl:w-12 2xl:h-14 2xl:w-14"
+                : "w-14 h-14"
             } transition-all duration-200 rounded-full`}
           />
           <div
@@ -241,11 +241,7 @@ const Playbar = () => {
             } flex flex-col transition-all duration-200 overflow-hidden`}
           >
             <p
-              className={` ${
-                isExpand
-                  ? "text-xl md:text-base"
-                  : "text-base md:text-sm 2xl:text-base"
-              } font-semibold truncate dark:text-white`}
+              className={`text-base font-semibold truncate dark:text-white`}
             >
               {currentSong?.title_short}
             </p>
@@ -267,14 +263,14 @@ const Playbar = () => {
       {/*Seekbar*/}
       <div
         className={`${
-          isExpand ? "min-h-2 opacity-100" : "h-0 opacity-0"
+          isExpand ? "min-h-2" : "h-0"
         } cursor-pointer shadow-shadowInner transition-all duration-200 w-full bg-white`}
         onClick={handleSeek}
         ref={seekBarRef}
       >
         <div
           className={`${
-            isExpand ? "min-h-2 opacity-100" : "h-0 opacity-0"
+            isExpand ? "min-h-2" : "h-0"
           } transition-all duration-200 bg-gray-600 dark:bg-gradient-to-r from-cyan-300 to-purple-600 rounded-r-md`}
           style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
         />
@@ -282,10 +278,10 @@ const Playbar = () => {
 
       {/* Expanded Playbar */}
       <div
-        className={`w-full transition-all duration-200 flex flex-col ${
+        className={`w-full transition-all duration-200 flex flex-col min-h-0 ${
           isExpand
-            ? "flex-1 opacity-100 min-h-0 max-h-[90dvh]"
-            : "max-h-0 opacity-0"
+            ? "flex-1 max-h-[90dvh]"
+            : "max-h-0"
         }`}
       >
         {/* Controls */}
@@ -346,11 +342,11 @@ const Playbar = () => {
 
         {/*Queue Container */}
         <div
-          className={`w-full overflow-y-auto transition-all duration-200  hide-scrollbar ${
+          className={`overflow-y-auto transition-all duration-200 hide-scrollbar min-h-0 ${
             isExpand
-              ? "flex-1 opacity-100 min-h-0 max-h-[80dvh] md:max-h-[35dvh]"
-              : "max-h-0 opacity-0"
-          } p-2 sm:p-0`}
+              ? "flex-1 max-h-[80dvh] md:max-h-[35dvh]"
+              : "max-h-0"
+          } p-1`}
         >
           {queue.map((track, index) => (
             <QueueCard track={track} key={track?.id} />
