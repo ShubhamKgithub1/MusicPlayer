@@ -175,14 +175,14 @@ const Playbar = () => {
     <div
       className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-300 text-gray-700 ${
         isExpand
-          ? "max-h-[100dvh] md:h-auto md:rounded-xl bg-purple-100/80 "
-          : "rounded-none border-none bg-purple-100/40"
-      } dark:bg-black/80 backdrop-blur-3xl dark:shadow-custom`}
+          ? "max-h-[100dvh] h-[100dvh] md:h-auto md:rounded-xl bg-purple-100/80 "
+          : "rounded-none border-none bg-purple-100/40 max-h-40 dark:shadow-custom"
+      } dark:bg-slate-800 backdrop-blur-3xl`}
     >
       {/*Header options*/}
       <div
         className={`flex items-center w-full justify-between overflow-hidden transition-all duration-300 ${
-          isExpand ? "max-h-[40] p-4 pb-1.5 md:p-2 md:pb-0" : "max-h-0"
+          isExpand ? "max-h-40 p-4 pb-1.5 md:p-2 md:pb-0" : "max-h-0"
         }`}
       >
         <button
@@ -286,7 +286,7 @@ const Playbar = () => {
       >
         {/* Controls */}
         <div
-          className={`flex items-center shadow bg-white/30 dark:bg-white/10 justify-center gap-3 md:gap-2 py-9 md:py-2 transition-all duration-300 overflow-hidden ${
+          className={`flex items-center shadow bg-white/30 dark:bg-white/10 justify-center gap-3 md:gap-2 py-3 transition-all duration-300 overflow-hidden ${
             isExpand ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
           }`}
         >

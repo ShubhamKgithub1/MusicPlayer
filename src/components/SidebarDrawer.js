@@ -93,7 +93,7 @@ const SidebarDrawer = ({ user }) => {
         {user ? (
           <div className="flex flex-col gap-2 mt-3">
             {recentSongs?.length > 0 && (
-              <div className=" bg-white/10 rounded-lg">
+              <div className=" bg-white/20 dark:bg-black/20 rounded-lg shadow-md">
                 {Array.isArray(recentSongs) && recentSongs.length > 0 && (
                   <RecentlyPlayed isFullTab={false} recentSongs={recentSongs} />
                 )}
