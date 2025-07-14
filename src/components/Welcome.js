@@ -39,10 +39,10 @@ const Welcome = () => {
       } animate-fade-in text-white overflow-hidden`}
     >
       <div className="flex flex-col items-center justify-center gap-3 z-10 bg-white/20 dark:bg-black/40 backdrop-blur-lg rounded-xl md:rounded-2xl border border-white/10 overflow-hidden h-60 md:h-80 w-2/4 xl:w-1/3">
-        <h1 className="text-3xl xl:text-4xl font-bold animate-fade-in-delay text-white text-shadow2 dark:text-cyan-300">
+        <h1 className="text-3xl xl:text-4xl font-bold animate-fade-in text-white text-shadow2 dark:text-cyan-300">
           Welcome!
         </h1>
-        <p className="text-base md:text-lg animate-fade-in-delay2 dark:text-gray-300 text-black text-glow">
+        <p className="text-base md:text-lg animate-fade-in dark:text-gray-300 text-black text-glow">
           Let the music flow 🎵
         </p>
         <p className="text-sm font-semibold text-gray-100 dark:text-gray-300">

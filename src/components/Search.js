@@ -51,7 +51,7 @@ const Search = () => {
             type="search"
             placeholder="Search songs..."
             value={tag}
-            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1.5 lg:py-2 rounded-full bg-white/15 hover:bg-white/10 focus:bg-white/10 text-black/70 dark:text-white dark:placeholder-white/70 placeholder-black/60 shadow-inner shadow-black/5 hover:shadow-black/15 focus:shadow-black/25 dark:focus:shadow-black font-medium backdrop-blur outline-none transition-all duration-200"
+            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1.5 lg:py-2 rounded-full bg-white/15 hover:bg-white/10 focus:bg-white/10 text-black/70 dark:text-white dark:placeholder-white/70 placeholder-black/60 shadow-inner shadow-black/15 focus:shadow-shadowInner dark:focus:shadow-inner dark:focus:shadow-black font-medium backdrop-blur outline-none transition-all duration-200"
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") onSearch(tag);

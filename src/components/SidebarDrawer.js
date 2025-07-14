@@ -108,7 +108,7 @@ const SidebarDrawer = ({ user }) => {
             </button>
           </div>
         ) : (
-          <div className="mt-3 bg-white/20 shadow-md dark:bg-black/20 rounded-xl p-3 flex flex-col items-start gap-1.5 text-sm">
+          <div className="mt-3 bg-white/20 shadow-md dark:bg-black/20 rounded-xl p-3 flex flex-col items-start gap-1 text-sm">
             <h2 className="text-base font-bold">
               You're not logged in
             </h2>
@@ -117,7 +117,7 @@ const SidebarDrawer = ({ user }) => {
               devices.
             </p>
             <button
-              className="mt-2 px-4 py-1.5 shadow-shadowInner bg-white text-gray-600 dark:shadow-none dark:text-white dark:bg-white/10 dark:hover:bg-transparent dark:hover:shadow-custom font-semibold rounded-full active:scale-95 transition duration-200"
+              className="mt-2 px-4 py-1.5 bg-white text-green-500 dark:shadow-none font-semibold rounded-full active:scale-95 transition duration-200"
               onClick={login}
             >
               Continue With Google

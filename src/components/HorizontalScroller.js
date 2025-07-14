@@ -69,7 +69,7 @@ const HorizontalScroller = ({data}) => {
                 {res?.title_short}
               </h2>
               <button
-                className="border border-white/20 bg-white text-black flex justify-center items-center rounded-full p-1 lg:p-1.5 hover:bg-transparent hover:text-white active:scale-75 hover:scale-[1.04] transition-all duration-200"
+                className="bg-white hover:bg-white/80 text-black rounded-full p-1.5 active:scale-75 transition-all duration-200"
                 onClick={() => handlePlay(res)}
               >
                 <Play size={16} />
