@@ -55,7 +55,7 @@ const HorizontalScroller = ({data}) => {
         {data.map((res) => (
           <div
             key={res?.id}
-            className="flex-[0_0_35%] sm:flex-[0_0_25%] md:flex-[0_0_20%] xl:flex-[0_0_13%] flex snap-start rounded-lg lg:rounded-xl lg:dark:rounded-none shadow-md relative overflow-hidden cursor-pointer transition-all duration-200"
+            className="flex-[0_0_35%] sm:flex-[0_0_25%] md:flex-[0_0_20%] xl:flex-[0_0_13%] flex snap-start rounded-lg lg:rounded-xl lg:dark:rounded-none shadow-md relative overflow-hidden cursor-pointer transition-all duration-200 animate-fade-in"
             onClick={() => handlePlay(res)}
           >
             <img

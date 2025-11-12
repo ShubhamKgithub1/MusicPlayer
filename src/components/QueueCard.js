@@ -20,8 +20,8 @@ const handleTrackClick =(trackId) => {
             <div className="hidden dark:block md:block z-0 absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"></div>
             <img src={track?.album?.cover_small} alt={track?.title} className="w-12 h-12 rounded-full"/>
             <div className="flex flex-col truncate relative z-20">
-                <span className="text-sm font-medium dark:text-white truncate">{track?.title_short}</span>
-                <span className="text-xs dark:text-gray-300 truncate">{track?.artist?.name}</span>
+                <span className="text-sm font-bold dark:text-white truncate">{track?.title_short}</span>
+                <span className="text-xs font-semibold dark:text-gray-300 truncate">{track?.artist?.name}</span>
             </div>
         </div>
     );

@@ -39,7 +39,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
   return (
     <div className="fixed inset-0 backdrop-blur-lg flex items-center justify-center z-[99] transition-all duration-200">
       <div className="flex flex-col gap-4 bg-black/20 dark:bg-black/40 backdrop-blur-lg text-white p-6 rounded-2xl w-[90%] max-w-md relative animate-fade-in">
-        <button className="absolute top-2 right-2 text-xl" onClick={onClose}>
+        <button className="absolute top-3 right-3 text-xl" onClick={onClose}>
           ✕
         </button>
 

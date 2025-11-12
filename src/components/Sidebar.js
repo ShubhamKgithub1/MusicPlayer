@@ -60,7 +60,7 @@ const Sidebar = () => {
           )}
         </div>
       ) : (
-        <div className="bg-white/30 shadow-md dark:bg-black/40 border border-white/10 backdrop-blur-lg rounded-xl p-3 flex flex-col items-start gap-2 text-sm animate-fade-in">
+        <div className="bg-white/30 shadow-md dark:bg-black/40 border border-white/10 backdrop-blur-lg rounded-xl p-4 flex flex-col items-start gap-2 text-sm animate-fade-in">
           <h2 className=" text-base xl:text-lg text-gray-600 dark:text-white font-bold">
             You're not logged in
           </h2>
@@ -70,7 +70,7 @@ const Sidebar = () => {
           </p>
 
           <button
-            className="mt-2 px-2 text-xs xl:text-sm xl:px-4 py-2 text-green-500 font-semibold rounded-full bg-white active:scale-95 hover:shadow-shadowInner transition duration-200"
+            className="mt-2 px-2 text-xs xl:text-sm xl:px-4 py-2 text-green-500 font-semibold rounded-full bg-white active:scale-95 shadow hover:shadow-lg transition duration-200"
             onClick={login}
           >
             Continue With Google

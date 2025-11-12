@@ -2,6 +2,7 @@ import BannerCard from "./BannerCard";
 import { ArtistTitleCard } from "./ArtistTitleCard";
 import SongTile from "./SongTile";
 import { useSelector } from "react-redux";
+import FallbackLoader from "./FallbackLoader";
 
 const Home = () => {
   const favorites = useSelector((state) => state.user.favorites);
@@ -11,15 +12,7 @@ const Home = () => {
 
   if (!isLoaded) {
     return (
-      <div className="flex items-center justify-center w-full h-full text-white px-4 sm:px-0">
-        <div className="flex items-end justify-center gap-[3px] sm:gap-3">
-          <div className="w-[3px] sm:w-1.5 h-4 sm:h-7 bg-white dark:bg-cyan-300 dark:shadow-md dark:shadow-cyan-400 bggradient-to-b from-purple-500 to-orange-400 animate-[bounce_0.6s_infinite] origin-bottom" />
-          <div className="w-[3px] sm:w-1.5 h-6 sm:h-10 bg-white dark:bg-purple-500 dark:shadow-md dark:shadow-purple-500 bggradient-to-b from-cyan-400 via-purple-500 to-orange-400 animate-[bounce_0.6s_infinite_0.1s] origin-bottom" />
-          <div className="w-[3px] sm:w-1.5 h-8 sm:h-14 bg-white dark:bg-yellow-400 dark:shadow-md dark:shadow-orange-600 bggradient-to-b from-cyan-400 via-purple-500 to-orange-400 animate-[bounce_0.6s_infinite_0.2s] origin-bottom" />
-          <div className="w-[3px] sm:w-1.5 h-6 sm:h-10 bg-white dark:bg-purple-500 dark:shadow-md dark:shadow-purple-500 bggradient-to-b from-cyan-400 via-purple-500 to-orange-400 animate-[bounce_0.6s_infinite_0.3s] origin-bottom" />
-          <div className="w-[3px] sm:w-1.5 h-4 sm:h-7 bg-white dark:bg-cyan-300 dark:shadow-md dark:shadow-cyan-400 bggradient-to-b from-purple-500 to-orange-400 animate-[bounce_0.6s_infinite_0.4s] origin-bottom" />
-        </div>
-      </div>
+      <FallbackLoader/>
     );
   }
 

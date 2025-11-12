@@ -3,7 +3,7 @@ import { openDrawer } from "../reduxStore/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../reduxStore/themeSlice";
 
-const MobileNavbar = ({ user }) => {
+const MobileNavbar = () => {
   const dispatch = useDispatch();
   const mode = useSelector((state) => state.theme.mode);
 

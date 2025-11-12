@@ -173,16 +173,16 @@ const Playbar = () => {
 
   return (
     <div
-      className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-300 text-gray-700 ${
+      className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-300 text-gray-600 ${
         isExpand
           ? "max-h-[100dvh] h-[100dvh] md:h-auto md:rounded-xl"
-          : "rounded-none border-none max-h-40 dark:shadow-custom"
+          : "rounded-none border-none max-h-36 dark:shadow-custom"
       }  bg-purple-100 dark:bg-slate-800`}
     >
       {/*Header options*/}
       <div
         className={`flex items-center w-full justify-between overflow-hidden transition-all duration-300 ${
-          isExpand ? "max-h-40 p-4 pb-1.5 md:p-2 md:pb-0 opacity-100" : "max-h-0 opacity-0"
+          isExpand ? "max-h-40 p-4 pb-0 md:p-3 md:pb-0 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <button
@@ -195,7 +195,7 @@ const Playbar = () => {
         >
           <ListXIcon size={22} />
         </button>
-        <h1 className="font-medium dark:text-white text-sm">
+        <h1 className="font-bold dark:text-white text-sm">
           PLAYING NOW
         </h1>
         <button
@@ -241,11 +241,11 @@ const Playbar = () => {
             } flex flex-col transition-all duration-300 overflow-hidden`}
           >
             <p
-              className={`text-base font-semibold truncate dark:text-white`}
+              className={`text-base font-bold truncate dark:text-white`}
             >
               {currentSong?.title_short}
             </p>
-            <p className={`text-xs dark:text-gray-400 text-black/60 truncate`}>
+            <p className={`text-xs font-semibold dark:text-gray-400 text-black/60 truncate`}>
               {currentSong?.artist?.name}
             </p>
           </div>
@@ -332,7 +332,7 @@ const Playbar = () => {
               : "max-h-0"
           } p-1`}
         >
-          {queue.map((track, index) => (
+          {queue.map((track) => (
             <QueueCard track={track} key={track?.id} />
           ))}
         </div>

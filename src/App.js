@@ -34,12 +34,12 @@ function App() {
   return (
     <div
       className={`h-[100dvh] ${
-        themeMode === "dark" ? " bg-dark" : "bg-light"
+        themeMode === "dark" ? "bg-dark" : "bg-light"
       } flex-col md:flex-row relative flex md:min-h-[90dvh] md:max-h-[100dvh] lg:p-4 md:gap-4 md:overflow-hidden transition-all duration-300`}
     >
       <Toaster position="top-right" reverseOrder={false} />
       <div className="hidden lg:block w-full lg:w-[18dvw] lg:h-full">
-        <Sidebar />
+        <Sidebar/>
       </div>
       <div
         className={` ${
@@ -47,15 +47,15 @@ function App() {
         }  md:h-auto md:flex-1 flex flex-col md:min-h-0 md:min-w-0`}
       >
         <div className=" lg:pb-3 xl:pb-4 lg:border-b lg:border-b-white/50 lg:py-0">
-          <Navbar />
-          <MobileNavbar user={user} />
+          <Navbar/>
+          <MobileNavbar/>
         </div>
         <div className={`flex-1 lg:pt-3 xl:pt-4 min-h-0 overflow-auto hide-scrollbar`}>
-          <Outlet />
+          <Outlet/>
         </div>
       </div>
-      <div className={` ${queue.length > 0 ?"absolute":"hidden"}  bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40%] lg:w-[30%] xl:w-[18dvw] md:left-2 lg:left-4`}>
-        <Playbar />
+      <div className={` ${queue.length > 0 ?"absolute":"hidden"} bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4`}>
+        <Playbar/>
       </div>
       <AddToPlaylistModal
         isOpen={isAddToPlaylistOpen}
