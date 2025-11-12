@@ -10,7 +10,7 @@ const Sidebar = () => {
   const recentSongs = useSelector((state) => state.user.recentlyPlayed);
 
   return (
-    <div className="w-full h-full flex flex-col gap-3 dark:text-white relative">
+    <div className="w-[18dvw] h-full flex flex-col gap-3 dark:text-white relative">
       {user ? (
         <div className="flex flex-col items-center gap-4 justify-center w-full">
           <div className="dark:bg-black/40 shadow-lg dark:shadow-none bg-white/30 backdrop-blur-lg border border-white/10 rounded-2xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">

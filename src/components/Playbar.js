@@ -176,8 +176,8 @@ const Playbar = () => {
       className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-300 text-gray-600 ${
         isExpand
           ? "max-h-[100dvh] h-[100dvh] md:h-auto md:rounded-xl"
-          : "rounded-none border-none max-h-36 dark:shadow-custom"
-      }  bg-purple-100 dark:bg-slate-800`}
+          : "rounded-none border-none max-h-[68px] dark:shadow-custom"
+      }  bg-purple-100 dark:bg-slate-900`}
     >
       {/*Header options*/}
       <div
@@ -286,7 +286,7 @@ const Playbar = () => {
       >
         {/* Controls */}
         <div
-          className={`flex items-center shadow bg-white/30 dark:bg-white/10 justify-center gap-3 md:gap-2 py-3 transition-all duration-300 overflow-hidden ${
+          className={`flex items-center shadow bg-white/30 dark:bg-slate-800 justify-center gap-3 md:gap-2 py-3 transition-all duration-300 overflow-hidden ${
             isExpand ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
           }`}
         >

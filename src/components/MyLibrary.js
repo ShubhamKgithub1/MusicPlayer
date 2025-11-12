@@ -17,7 +17,7 @@ const MyLibrary = () => {
 };
 
   return (
-    <div className="flex flex-col lg:dark:bg-black/40 lg:border lg:border-white/10 lg:bg-white/20 lg:rounded-3xl p-4 lg:p-6 backdrop-blur-lg h-full overflow-hidden text-white">
+    <div className="flex flex-col lg:dark:bg-black/40 lg:border lg:border-white/10 lg:bg-white/20 rounded-xl 2xl:rounded-2xl p-4 backdrop-blur-lg h-full overflow-hidden text-white">
       <div className="flex items-center justify-between">
         <h1 className="font-semibold text-xl 2xl:text-2xl text-glow">
           User Library
