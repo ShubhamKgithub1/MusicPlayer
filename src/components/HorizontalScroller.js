@@ -6,11 +6,13 @@ import {
   playPause,
   setQueue,
 } from "../reduxStore/playerSlice";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import FallbackLoader from "./FallbackLoader";
 
 const HorizontalScroller = ({data}) => {
   const scrollContainerRef = useRef(null);
   const dispatch = useDispatch();
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const handlePlay = (track) => {
     if (!data) return;
@@ -55,12 +57,14 @@ const HorizontalScroller = ({data}) => {
         {data.map((res) => (
           <div
             key={res?.id}
-            className="flex-[0_0_35%] sm:flex-[0_0_25%] md:flex-[0_0_20%] xl:flex-[0_0_13%] flex snap-start rounded-lg lg:rounded-xl lg:dark:rounded-none shadow-md relative overflow-hidden cursor-pointer transition-all duration-200 animate-fade-in"
+            className="flex-[0_0_35%] sm:flex-[0_0_25%] md:flex-[0_0_20%] xl:flex-[0_0_13%] flex snap-start rounded-lg lg:rounded-xl lg:dark:rounded-none shadow-md relative overflow-hidden cursor-pointer transition-all duration-200 animate-fade-in aspect-square"
             onClick={() => handlePlay(res)}
           >
+             {!imageLoaded && <div className="absolute z-30 inset-0"><FallbackLoader/></div>}
             <img
               src={res?.album?.cover_medium}
               alt="cover"
+              onLoad={()=> setImageLoaded(true)}
               className="object-center relative z-10"
             />
             <div className="absolute bottom-0 right-0 z-20 inset-0 flex items-end text-white w-full">
