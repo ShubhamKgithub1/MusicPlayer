@@ -1,19 +1,21 @@
 import Sidebar from "./components/Sidebar";
-import Playbar from "./components/Playbar";
 import { Outlet } from "react-router-dom";
 import "./App.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "./components/Navbar";
 import useInitUser from "./hooks/useInitUser";
-import AddToPlaylistModal from "./components/AddToPlaylistModal";
 import { useSelector, useDispatch } from "react-redux";
 import { closeAddToPlaylistModal } from "./reduxStore/modalSlice";
-import CreatePlaylistModal from "./components/CreatePlaylistModal";
 import useInitAppData from "./hooks/useInitAppData";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import MobileNavbar from "./components/MobileNavbar";
 import SidebarDrawer from "./components/SidebarDrawer";
 import useIsSmallDevice from "./hooks/useIsSmallDevice";
+import FallbackLoader from "./components/FallbackLoader";
+const Playbar = lazy(() => import("./components/Playbar"));
+const AddToPlaylistModal = lazy(() => import("./components/AddToPlaylistModal"));
+const CreatePlaylistModal = lazy(() => import("./components/CreatePlaylistModal"));
+
 
 function App() {
   useInitUser();
@@ -63,7 +65,9 @@ function App() {
         <div
           className={`absolute bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4`}
         >
-          <Playbar />
+          <Suspense fallback={<FallbackLoader />}>
+            <Playbar />
+          </Suspense>
         </div>
       )}
       <AddToPlaylistModal
