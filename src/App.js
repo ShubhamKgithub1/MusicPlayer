@@ -11,7 +11,7 @@ import { lazy, Suspense, useEffect } from "react";
 import MobileNavbar from "./components/MobileNavbar";
 import SidebarDrawer from "./components/SidebarDrawer";
 import useIsSmallDevice from "./hooks/useIsSmallDevice";
-import FallbackLoader from "./components/FallbackLoader";
+import EqualizerLoader from "./components/EqualizerLoader";
 const Playbar = lazy(() => import("./components/Playbar"));
 const AddToPlaylistModal = lazy(() => import("./components/AddToPlaylistModal"));
 const CreatePlaylistModal = lazy(() => import("./components/CreatePlaylistModal"));
@@ -39,7 +39,7 @@ function App() {
     <div
       className={`h-[100dvh] ${
         themeMode === "dark" ? "bg-dark" : "bg-light"
-      } flex-col md:flex-row relative flex md:min-h-[90dvh] md:max-h-[100dvh] lg:p-4 md:gap-4 md:overflow-hidden transition-all duration-300`}
+      } flex-col md:flex-row relative flex md:min-h-[90dvh] md:max-h-[100dvh] lg:p-4 md:gap-4 md:overflow-hidden transition-all duration-300 select-none`}
     >
       <Toaster position="top-right" reverseOrder={false} />
       {isSmallDevice ? <SidebarDrawer user={user} /> : <Sidebar />}
@@ -65,7 +65,7 @@ function App() {
         <div
           className={`absolute bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4`}
         >
-          <Suspense fallback={<FallbackLoader />}>
+          <Suspense fallback={<EqualizerLoader/>}>
             <Playbar />
           </Suspense>
         </div>
