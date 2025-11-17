@@ -41,7 +41,6 @@ const Search = () => {
       setLoading(false);
     }
   };
-  console.log(result);
 
   return (
     <div className="w-full h-full lg:dark:bg-black/40 bg-white/5 lg:bg-white/20 backdrop-blur-lg rounded-xl 2xl:rounded-2xl p-1 lg:p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">

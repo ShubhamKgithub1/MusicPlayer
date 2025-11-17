@@ -37,19 +37,19 @@ const Sidebar = () => {
                 <span className="font-semibold text-sm">Logout</span>
               </button>
             </div>
-            <div className=" w-full p-2 xl:p-4 transition-all duration-200 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
-              <NavLink
-                to="/library"
-                className={({ isActive }) =>
-                  `${isActive ? "text-emerald-500" : ""} w-full`
-                }
-              >
+            <NavLink
+              to="/library"
+              className={({ isActive }) =>
+                `${isActive ? "text-emerald-500" : ""} w-full`
+              }
+            >
+              <div className=" w-full p-2 xl:p-4 transition-all duration-200 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
                 <button className="flex items-center">
                   <Library />
                   <span className="font-semibold">My Library</span>
                 </button>
-              </NavLink>
-            </div>
+              </div>
+            </NavLink>
           </div>
           {recentSongs?.length > 0 && (
             <div className="w-full dark:bg-black/40 shadow-lg border border-white/10 dark:shadow-none bg-white/30 backdrop-blur-lg rounded-2xl animate-fade-in">

@@ -176,7 +176,7 @@ const Playbar = () => {
       className={`w-full relative z-50 flex flex-col items-center overflow-hidden animate-fade-in transition-all duration-300 text-gray-600 ${
         isExpand
           ? "max-h-[100dvh] h-[100dvh] md:h-auto md:rounded-xl"
-          : "rounded-none border-none max-h-[68px] dark:shadow-custom"
+          : "rounded-none border-none max-h-[68px]"
       }  bg-purple-100 dark:bg-slate-900`}
     >
       {/*Header options*/}

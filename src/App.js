@@ -13,9 +13,12 @@ import SidebarDrawer from "./components/SidebarDrawer";
 import useIsSmallDevice from "./hooks/useIsSmallDevice";
 import EqualizerLoader from "./components/EqualizerLoader";
 const Playbar = lazy(() => import("./components/Playbar"));
-const AddToPlaylistModal = lazy(() => import("./components/AddToPlaylistModal"));
-const CreatePlaylistModal = lazy(() => import("./components/CreatePlaylistModal"));
-
+const AddToPlaylistModal = lazy(() =>
+  import("./components/AddToPlaylistModal")
+);
+const CreatePlaylistModal = lazy(() =>
+  import("./components/CreatePlaylistModal")
+);
 
 function App() {
   useInitUser();
@@ -35,6 +38,7 @@ function App() {
       html.classList.remove("dark");
     }
   }, [themeMode]);
+
   return (
     <div
       className={`h-[100dvh] ${
@@ -51,7 +55,7 @@ function App() {
         {isSmallDevice ? (
           <MobileNavbar />
         ) : (
-          <div className="lg:pb-3 xl:pb-4 border-b-2 border-b-white/50">
+          <div className="">
             <Navbar />
           </div>
         )}
@@ -65,18 +69,22 @@ function App() {
         <div
           className={`absolute bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4`}
         >
-          <Suspense fallback={<EqualizerLoader/>}>
+          <Suspense fallback={<EqualizerLoader />}>
             <Playbar />
           </Suspense>
         </div>
       )}
-      <AddToPlaylistModal
-        isOpen={isAddToPlaylistOpen}
-        onClose={() => dispatch(closeAddToPlaylistModal())}
-        track={track}
-        userId={userId}
-      />
-      <CreatePlaylistModal userId={userId} />
+      <Suspense fallback={<EqualizerLoader />}>
+        <AddToPlaylistModal
+          isOpen={isAddToPlaylistOpen}
+          onClose={() => dispatch(closeAddToPlaylistModal())}
+          track={track}
+          userId={userId}
+        />
+      </Suspense>
+      <Suspense fallback={<EqualizerLoader />}>
+         <CreatePlaylistModal userId={userId} />
+      </Suspense>
     </div>
   );
 }
