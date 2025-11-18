@@ -68,17 +68,17 @@ const Search = () => {
             Search
           </button>
         </div>
-        <div className="mt-3 xl:mt-4 flex gap-1.5 xl:gap-3 flex-wrap xl:w-2/3 lg:border-b pb-2 mb-2 xl:pb-6 border-b border-white/40">
+        <div className="mt-3 xl:mt-4 flex items-center overflow-auto gap-1.5 xl:gap-3 xl:w-2/3 hide-scrollbar">
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
-              className="text-sm xl:text-base shadow-inner shadow-black/10 hover:shadow-black/40 cursor-pointer active:scale-x-95 bg-white/60 dark:bg-black/30 dark:hover:bg-white/20 dark:text-white/70 text-gray-500 font-medium w-max py-1 px-2 xl:px-3 lg:py-1 rounded-full transition-all duration-200"
+              className="shrink-0 whitespace-nowrap text-sm xl:text-base shadow-inner shadow-black/10 hover:shadow-black/40 cursor-pointer active:scale-95 bg-white/60 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white/70 text-gray-500 font-medium py-1 px-2 xl:px-3 lg:py-1 rounded-full transition-all duration-200"
               onClick={() => {
                 setTag(c);
                 onSearch(c);
               }}
             >
-              <h1>{c}</h1>
+             <span>{c}</span>
             </div>
           ))}
         </div>
