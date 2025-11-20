@@ -55,9 +55,7 @@ function App() {
         {isSmallDevice ? (
           <MobileNavbar />
         ) : (
-          <div className="">
             <Navbar />
-          </div>
         )}
         <div
           className={`flex-1 lg:pt-3 xl:pt-4 min-h-0 overflow-auto hide-scrollbar`}

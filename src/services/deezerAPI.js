@@ -24,19 +24,6 @@ export const getPopular = async () => {
   }
 };
 
-export const getBollywoodTracks = async () => {
-  try {
-    const res = await fetch(
-      "https://deezerdevs-deezer.p.rapidapi.com/search?q=himesh+reshammiya",
-      options
-    );
-    const data = await res.json();
-    return data.data;
-  } catch (error) {
-    console.error("Error fetching bollywood tracks:", error);
-    return [];
-  }
-};
 
 export const getHits = async () => {
   try {
@@ -52,19 +39,6 @@ export const getHits = async () => {
   }
 };
 
-export const getTopAlbums = async () => {
-  try {
-    const res = await fetch(
-      "https://deezerdevs-deezer.p.rapidapi.com/chart/0/albums",
-      options
-    );
-    const data = await res.json();
-    return data.data;
-  } catch (error) {
-    console.error("Error fetching top albums:", error);
-    return [];
-  }
-};
 
 export const getSearch = async (tag) => {
   try {
