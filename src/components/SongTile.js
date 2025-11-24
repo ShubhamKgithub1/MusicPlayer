@@ -20,11 +20,14 @@ import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { openAddToPlaylistModal } from "../reduxStore/modalSlice";
+import Portal from "./Portal";
 
 const SongTile = ({ trackList, track, isFavorite }) => {
   const dispatch = useDispatch();
+  const menuButtonRef = useRef(null);
+  const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 });
   const [showMenu, setShowMenu] = useState(false);
-  const menuRef = useRef(null);
+  const dropdownRef = useRef(null);
   const user = useSelector((state) => state.user.userInfo);
 
   const handlePlay = (track) => {
@@ -60,26 +63,37 @@ const SongTile = ({ trackList, track, isFavorite }) => {
 
   const toggleMenu = (e) => {
     e.stopPropagation();
+    const rect = menuButtonRef.current.getBoundingClientRect();
+    setMenuPosition({
+      top: rect.bottom + window.scrollY + 5,
+      left: rect.left + window.scrollX - 80,
+    });
     setShowMenu((prev) => !prev);
   };
 
   // Close dropdown if clicked outside
   useEffect(() => {
+    if (!showMenu) return;
     const handleClickOutside = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target) &&
+        menuButtonRef.current &&
+        !menuButtonRef.current.contains(e.target)
+      ) {
         setShowMenu(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [showMenu]);
 
   if (!track) return null;
 
   return (
     <div
       key={track.id}
-      className="relative z-0 hover:shadow-[inset_2px_3px_6px_gray] dark:hover:shadow-[inset_-2px_-3px_6px_black,inset_2px_3px_6px_black] dark:bg-white/5 dark:hover:bg-white/10 hover:bg-white/15 flex gap-2 items-center justify-between rounded-lg px-4 py-2  transition-all duration-200 cursor-pointer text-white animate-fade-in"
+      className="relative z-10 hover:shadow-[inset_2px_3px_6px_gray] dark:hover:shadow-[inset_-2px_-3px_6px_black,inset_2px_3px_6px_black] dark:bg-white/5 dark:hover:bg-white/10 hover:bg-white/15 flex gap-2 items-center justify-between rounded-lg px-4 py-2  transition-all duration-200 cursor-pointer text-white"
       onClick={() => handlePlay(track)}
     >
       <div className="flex justify-start overflow-hidden gap-3 items-center flex-1">
@@ -100,7 +114,7 @@ const SongTile = ({ trackList, track, isFavorite }) => {
 
       {/* Kebab Menu Button */}
       {user ? (
-        <div className="relative z-50" ref={menuRef}>
+        <div>
           <div className="flex items-center gap-1">
             <button
               className={`p-2 rounded-full hover:shadow-[inset_0_2px_4px_black] active:scale-[0.90] hover:bg-white/10 transition-all duration-200 ${
@@ -117,6 +131,7 @@ const SongTile = ({ trackList, track, isFavorite }) => {
             <button
               className={`p-2 rounded-full hover:shadow-[inset_0_2px_3px_black] focus:shadow-[inset_0_3px_4px_black] hover:bg-white/5 transition-all duration-200`}
               onClick={toggleMenu}
+              ref={menuButtonRef}
             >
               <MoreVertical size={20} />
             </button>
@@ -124,27 +139,36 @@ const SongTile = ({ trackList, track, isFavorite }) => {
 
           {/* Dropdown Menu */}
           {showMenu && (
-            <div
-              className="absolute flex items-center right-0 gap-1.5 top-[80%] text-black z-[99]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="p-2 bg-white hover:shadow-[inset_0_2px_4px_black] rounded-full transition-all duration-200"
-                onClick={(e) => handleAddToQueue(e, track)}
-              >
-                <ListPlus size={18} />
-              </button>
-              <button
-                className="p-2 bg-white hover:shadow-[inset_0_2px_4px_black] rounded-full transition-all duration-200"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  dispatch(openAddToPlaylistModal(track));
-                  setShowMenu(false);
+            <Portal>
+              <div
+                ref={dropdownRef}
+                className={`fixed flex flex-col items-center justify-center gap-2 text-black bg-white p-1 rounded-lg shadow-lg transition-all duration-300`}
+                style={{
+                  top: menuPosition.top,
+                  left: menuPosition.left,
+                  zIndex: 9999,
                 }}
               >
-                <FolderPlus size={18} />
-              </button>
-            </div>
+                <button
+                  className="flex items-center p-1.5 gap-1 rounded-lg transition-all duration-200"
+                  onClick={(e) => handleAddToQueue(e, track)}
+                >
+                  <ListPlus size={18} />{" "}
+                  <span className="text-sm">Add to queue</span>
+                </button>
+                <button
+                  className="flex items-center gap-1 p-1.5 rounded-lg transition-all duration-200"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    dispatch(openAddToPlaylistModal(track));
+                    setShowMenu(false);
+                  }}
+                >
+                  <FolderPlus size={18} />{" "}
+                  <span className="text-sm">Add to playlist</span>
+                </button>
+              </div>
+            </Portal>
           )}
         </div>
       ) : (

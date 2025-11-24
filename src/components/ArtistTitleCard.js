@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export const ArtistTitleCard = ({ prop }) => {
 
   if(!prop) return;
@@ -16,7 +18,7 @@ export const ArtistTitleCard = ({ prop }) => {
           {prop?.album?.title.substring(0, 80) + ". . ."}
         </h2>
       </div>
-      <div className="ml-auto bg-white/30 border border-white/40 rounded-full px-2 py-1 backdrop-blur-xl cursor-pointer whitespace-nowrap">view all</div>
+      <NavLink to={"/explore"} className={"ml-auto"}><div className="rounded-full px-2 py-1 backdrop-blur-xl cursor-pointer whitespace-nowrap">Explore</div></NavLink>
     </div>
   );
 };
