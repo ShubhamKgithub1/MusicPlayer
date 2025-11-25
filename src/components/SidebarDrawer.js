@@ -101,7 +101,7 @@ const SidebarDrawer = ({ user }) => {
             )}
             <button
               onClick={logout}
-              className="flex items-center justify-center bg-white/20 shadow-[inset_0_2px_6px_gray,inset_0_-2px_6px_black] dark:shadow-[inset_0_2px_6px_black,inset_0_-2px_6px_black] gap-2 py-2 rounded-xl active:scale-95 transition-all duration-200"
+              className="flex items-center justify-center bg-red-600 hover:bg-red-500 gap-2 py-2 rounded-xl active:scale-95 transition-all duration-200"
             >
               <LogOut size={20} />
               <span className="font-semibold">Logout</span>

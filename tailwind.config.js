@@ -5,13 +5,16 @@ module.exports = {
   theme: {
     extend: {
       textShadow: {
-           'md': '2px 2px 4px rgba(0, 0, 0, 0.5)',
-           'lg': '0 0 5px rgba(0, 0, 0, 0.5)',
-         },
+        md: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+        lg: "0 0 5px rgba(0, 0, 0, 0.5)",
+      },
       animation: {
+        "qick-fade-in": "fadeIn 0.2s ease-out forwards",
         "fade-in": "fadeIn 0.5s ease-out forwards",
         "fade-in-delay": "fadeIn 1s ease-out forwards",
         "fade-in-delay2": "fadeIn 2s ease-out forwards",
+        "slide-up": "slideUp 0.5s ease-out forwards",
+        "expandDown": "expandDown 0.1s ease-out forwards",
       },
       keyframes: {
         fadeIn: {
@@ -25,9 +28,9 @@ module.exports = {
       },
       boxShadow: {
         custom: "0 0 12px #efeff2",
-        shadowOuter:"-2px -3px 6px white, 2px 3px 6px gray",
-        shadowOuterLarge:"-6px -6px 7px white, 6px 6px 7px gray",
-        shadowInner:"inset -2px -3px 6px white, inset 2px 3px 6px gray",
+        shadowOuter: "-2px -3px 6px white, 2px 3px 6px gray",
+        shadowOuterLarge: "-6px -6px 7px white, 6px 6px 7px gray",
+        shadowInner: "inset -2px -3px 6px white, inset 2px 3px 6px gray",
         "neon-green": "0 0 8px #32ff7e",
         "neon-blue": "0 0 12px #18dcff",
         "neon-pink": "0 0 8px #ff4dff",
