@@ -233,7 +233,7 @@ const Playbar = () => {
               isExpand
                 ? "h-40 w-40 md:h-28 md:w-28 shadow-shadowOuterLarge dark:shadow-none border-4"
                 : "w-12 h-12"
-            } transition-all duration-300 rounded-full`}
+            } transition-all duration-300 rounded-full aspect-square`}
           />
           <div
             className={`${

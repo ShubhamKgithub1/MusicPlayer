@@ -14,7 +14,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? " text-white bg-cyan-300 dark:bg-black/40 dark:text-orange-200 shadow-black/40 dark:shadow-orange-500 shadow-[1px_3px]"
+                ? " text-white bg-cyan-300 dark:bg-black/40 dark:text-orange-200 dark:shadow-orange-500 dark:shadow-[1px_3px]"
                 : " hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40 dark:text-orange-200"
             } w-80 py-1 xl:py-1.5 px-2 rounded-full transition-all duration-200 cursor-pointer`
           }
@@ -34,7 +34,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? " text-white bg-cyan-300 dark:bg-black/40 dark:text-purple-500 shadow-black/50 dark:shadow-purple-500 shadow-[1px_3px]"
+                ? " text-white bg-cyan-300 dark:bg-black/40 dark:text-purple-500 dark:shadow-purple-500 dark:shadow-[1px_3px]"
                 : " hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40 dark:text-purple-500"
             }  p-2 xl:p-3 rounded-full transition-all duration-200 cursor-pointer`
           }
@@ -47,7 +47,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? " text-white bg-cyan-300 dark:bg-black/40 dark:text-cyan-500 shadow-black/50 dark:shadow-cyan-500 shadow-[1px_3px]"
+                ? " text-white bg-cyan-300 dark:bg-black/40 dark:text-cyan-500 dark:shadow-cyan-500 dark:shadow-[1px_3px]"
                 : " hover:bg-black/15 hover:shadow-[inset_0_2px_4px_black] hover:text-white bg-white dark:bg-black/40 dark:text-cyan-400"
             }   p-2 xl:p-3 rounded-full transition-all duration-200 cursor-pointer`
           }

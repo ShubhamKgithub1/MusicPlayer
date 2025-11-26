@@ -43,7 +43,7 @@ const Search = () => {
   };
 
   return (
-    <div className="w-full h-full lg:dark:bg-black/40 bg-white/5 lg:bg-white/20 backdrop-blur-lg rounded-xl 2xl:rounded-2xl p-1 lg:p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">
+    <div className="w-full h-full dark:bg-black/40 bg-white/5 lg:bg-white/20 backdrop-blur-lg lg:rounded-xl 2xl:rounded-2xl p-1 lg:p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">
       <div className="p-2">
         <div className="flex items-center gap-2 xl:gap-4">
           <input
@@ -83,7 +83,7 @@ const Search = () => {
           ))}
         </div>
       </div>
-      <div className="relative xl:w-2/3 overflow-y-scroll flex-1 hide-scrollbar lg:mt-4 scroll-smooth">
+      <div className="relative xl:w-2/3 overflow-y-scroll flex-1 hide-scrollbar mt-4 px-2 scroll-smooth">
         {loading ? (
           <EqualizerLoader/>
         ) : (
