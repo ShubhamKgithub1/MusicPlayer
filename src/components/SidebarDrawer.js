@@ -18,7 +18,7 @@ const SidebarDrawer = ({ user }) => {
     >
       <button
         onClick={() => dispatch(closeDrawer())}
-        className="absolute top-2 right-2 p-1 bg-white/10 active:scale-[0.85] hover:shadow-[inset_0_4px_6px_black] rounded-md transition-all"
+        className="absolute top-2 right-2 p-1 active:scale-[0.85] transition-all"
       >
         <X size={20}/>
       </button>

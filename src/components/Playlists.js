@@ -48,7 +48,7 @@ const Playlists = () => {
           <div className="flex-1 animate-fade-in overflow-hidden lg:p-2">
             {selectedPlaylistId && (
               <div className="flex flex-col max-h-full xl:w-2/3 border border-white/10 rounded-xl overflow-hidden animate-fade-in dark:bg-black/10 backdrop-blur-lg bg-white/10 lg:shadow-[2px_2px_7px_gray]">
-                <div className="flex h-max gap-4 items-center p-2 lg:p-3 bg-white/5 shadow">
+                <div className="flex h-max gap-4 items-center p-2 lg:p-3 shadow">
                   <img
                     src={selectedPlaylist?.songs[0]?.album?.cover}
                     alt={selectedPlaylist?.name}
