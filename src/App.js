@@ -72,7 +72,7 @@ function App() {
           </Suspense>
         </div>
       )}
-      <Suspense fallback={<EqualizerLoader />}>
+      <Suspense>
         <AddToPlaylistModal
           isOpen={isAddToPlaylistOpen}
           onClose={() => dispatch(closeAddToPlaylistModal())}
@@ -80,7 +80,7 @@ function App() {
           userId={userId}
         />
       </Suspense>
-      <Suspense fallback={<EqualizerLoader />}>
+      <Suspense>
          <CreatePlaylistModal userId={userId} />
       </Suspense>
     </div>
