@@ -1,5 +1,4 @@
 const PlaylistsCard = ({playlist, setSelectedPlaylistId})=>{
-    // const songs = playlist?.songs;
     const length = playlist?.songs.length;
     if(!playlist) return;
     return (

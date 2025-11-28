@@ -59,7 +59,7 @@ useEffect(() => {
 
   document.addEventListener("mousedown", handleClickOutside);
   document.addEventListener("keydown", handleKeyPress);
-  window.addEventListener("scroll", close, true); // ✅ important change
+  window.addEventListener("scroll", close, true);
 
   return () => {
     document.removeEventListener("mousedown", handleClickOutside);

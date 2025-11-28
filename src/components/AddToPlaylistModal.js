@@ -1,13 +1,11 @@
-import { useState } from "react";
-import {
-  createPlaylist,
-  addSongToPlaylist,
-} from "../services/userService";
+import { useEffect, useRef, useState } from "react";
+import { createPlaylist, addSongToPlaylist } from "../services/userService";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 
-const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
+const AddToPlaylistModal = ({ isOpen, onClose, track, userId }) => {
   const dispatch = useDispatch();
+  const menuRef = useRef(null);
   const playlists = useSelector((state) => state.user.playlists);
   const [newPlaylistName, setNewPlaylistName] = useState("");
   const [loading, setLoading] = useState(false);
@@ -34,35 +32,53 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
     setLoading(false);
   };
 
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        onClose();
+      };
+    };
+
+
+    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 backdrop-blur-lg flex items-center justify-center z-[99] transition-all duration-200">
-      <div className="flex flex-col gap-4 bg-black/20 dark:bg-black/40 backdrop-blur-lg text-white p-6 rounded-2xl w-[90%] max-w-md relative animate-fade-in">
-        <button className="absolute top-3 right-3 text-xl" onClick={onClose}>
-          ✕
-        </button>
-
+    <div className="fixed inset-0 backdrop-blur-xl flex items-center justify-center z-[99] transition-all duration-200">
+      <div className="flex flex-col gap-4 bg-white/30 dark:bg-black/40 shadow-2xl text-white p-6 rounded-2xl w-[90%] max-w-md relative animate-fade-in" ref={menuRef}>
         <h2 className="text-lg font-semibold text-center">Add to Playlist</h2>
-
-        <div className="space-y-2 max-h-60 overflow-auto hide-scrollbar border-b border-white/40 pb-4">
+        <div className="flex gap-4 max-h-60 overflow-y-scroll hide-scrollbar p-3">
           {playlists.length > 0 ? (
             playlists.map((pl) => (
-              <button
+              <div
                 key={pl.id}
                 onClick={() => handleAddToPlaylist(pl.id)}
                 disabled={loading}
-                className="w-full text-left py-1.5 px-3 font-bold bg-white/60 dark:bg-black/40 dark:hover:bg-white/20 text-gray-600 hover:text-white  dark:text-gray-300 hover:bg-transparent hover:shadow-[inset_0_2px_6px_black] rounded-3xl disabled:opacity-50 active:scale-x-[0.96] transition-all duration-200"
+                className="flex-[0_0_30%] relative shadow-md group rounded-md overflow-hidden cursor-pointer disabled:opacity-50 active:scale-[0.92] transition-all duration-300"
               >
-                {pl.name}
-              </button>
+                <img src={pl?.songs[0]?.album?.cover} alt="Empty.." className="w-full group-hover:scale-[1.08] transition-all duration-300"/>
+                <span className="absolute inset-0 flex items-end p-2 bg-gradient-to-t from-black/80 via-black/20 z-10 truncate font-semibold">{pl?.name}</span>
+              </div>
             ))
           ) : (
             <p className="dark:text-gray-300">No playlists found.</p>
           )}
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <input
             type="text"
             placeholder="New playlist name"
@@ -71,16 +87,18 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId}) => {
             onKeyDown={(e) => {
               if (e.key === "Enter") handleCreateAndAdd();
             }}
-            className="w-full px-3 hover:text-white hover:placeholder-white focus:placeholder-white py-2 rounded-full bg-white text-black/70 dark:bg-black/40 dark:focus:bg-white/20 dark:focus:shadow-black dark:hover:bg-white/10 dark:hover:shadow-black/20 dark:text-white dark:placeholder-white/70 placeholder-gray-600 hover:bg-white/10 hover:shadow-black/10 hover:shadow-inner focus:bg-white/20 focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-200"
-
+            className="w-full px-3 py-2 rounded-full text-black/70 placeholder-gray-600 bg-white focus:bg-white/20 hover:shadow-inner hover:shadow-black/20 focus:shadow-inner focus:shadow-black dark:text-white dark:placeholder-white dark:bg-white/25 dark:focus:bg-white/20 font-medium backdrop-blur-md outline-none transition-all duration-200"
             disabled={loading}
           />
           <button
             onClick={handleCreateAndAdd}
             disabled={loading}
-            className="w-full bg-violet-400 font-medium py-1.5 rounded-3xl transition-all duration-200 disabled:opacity-50 active:scale-x-[0.96]"
+            className="w-full bg-violet-500 hover:bg-violet-600 shadow-md font-medium py-1.5 rounded-full transition-all duration-300 disabled:opacity-50 active:scale-[0.96]"
           >
             {loading ? "Adding..." : "Create & Add"}
+          </button>
+          <button className="font-medium" onClick={onClose}>
+            Cancel
           </button>
         </div>
       </div>
