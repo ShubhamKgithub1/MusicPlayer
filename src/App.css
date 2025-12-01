@@ -9,18 +9,6 @@
   scrollbar-width: none; /* Firefox */
 }
 
-.bg-light {
-  background-image: url('/src/images/bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.bg-dark {
-  background-image: url('/src/images/bgDark.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 .text-shadow {
    text-shadow: 2px 2px 5px cyan;
   color: #fff;

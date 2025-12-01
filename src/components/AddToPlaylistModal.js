@@ -60,7 +60,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId }) => {
     <div className="fixed inset-0 backdrop-blur-xl flex items-center justify-center z-[99] transition-all duration-200">
       <div className="flex flex-col gap-4 bg-white/30 dark:bg-black/40 shadow-2xl text-white p-6 rounded-2xl w-[90%] max-w-md relative animate-fade-in" ref={menuRef}>
         <h2 className="text-lg font-semibold text-center">Add to Playlist</h2>
-        <div className="flex gap-4 max-h-60 overflow-y-scroll hide-scrollbar p-3">
+        <div className="flex gap-4 max-h-60 overflow-y-scroll hide-scrollbar pt-0 p-3">
           {playlists.length > 0 ? (
             playlists.map((pl) => (
               <div
@@ -70,7 +70,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId }) => {
                 className="flex-[0_0_30%] relative shadow-md group rounded-md overflow-hidden cursor-pointer disabled:opacity-50 active:scale-[0.92] transition-all duration-300"
               >
                 <img src={pl?.songs[0]?.album?.cover} alt="Empty.." className="w-full group-hover:scale-[1.08] transition-all duration-300"/>
-                <span className="absolute inset-0 flex items-end p-2 bg-gradient-to-t from-black/80 via-black/20 z-10 truncate font-semibold">{pl?.name}</span>
+                <span className="absolute inset-0 flex items-end p-2 bg-gradient-to-t from-black/80 via-black/20 z-10 truncate text-sm font-medium">{pl?.name}</span>
               </div>
             ))
           ) : (

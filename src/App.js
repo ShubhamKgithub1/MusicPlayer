@@ -1,3 +1,5 @@
+import bgLight from "./images/bg.webp";
+import bgDark from "./images/bgDark.webp";
 import Sidebar from "./components/Sidebar";
 import { Outlet } from "react-router-dom";
 import "./App.css";
@@ -41,9 +43,10 @@ function App() {
 
   return (
     <div
-      className={`h-[100dvh] ${
-        themeMode === "dark" ? "bg-dark" : "bg-light"
-      } flex-col md:flex-row relative flex md:min-h-[90dvh] md:max-h-[100dvh] lg:p-4 md:gap-4 md:overflow-hidden transition-all duration-300 select-none`}
+      className={`h-[100dvh] flex flex-col md:flex-row relative lg:p-4 md:gap-4 select-none bg-cover bg-center bg-no-repeat md:overflow-hidden transition-all duration-300`}
+       style={{
+        backgroundImage: `url(${themeMode === "dark" ? bgDark : bgLight})`,
+      }}
     >
       <Toaster position="top-right" reverseOrder={false} />
       {isSmallDevice ? <SidebarDrawer user={user} /> : <Sidebar />}
