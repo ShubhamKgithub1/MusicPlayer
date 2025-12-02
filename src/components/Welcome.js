@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import bgLight from "../images/bg.webp";
+import bgDark from "../images/bgDark.webp";
 
 const Welcome = () => {
   const navigate = useNavigate();
-  const darkMode = useSelector((store) => store.theme.mode);
+  const themeMode = useSelector((store) => store.theme.mode);
   const [secondsLeft, setSecondsLeft] = useState(5);
 
   useEffect(() => {
@@ -34,15 +36,16 @@ const Welcome = () => {
 
   return (
     <div
-      className={`h-full absolute w-[100dvw] top-0 left-0 z-50 flex flex-col items-center justify-center ${
-        darkMode === "dark" ? " bg-dark" : "bg-light"
-      } animate-fade-in text-white overflow-hidden`}
+      className={`h-full absolute w-[100dvw] top-0 left-0 z-50 flex flex-col items-center justify-center text-white overflow-hidden`}
+      style={{
+        backgroundImage: `url(${themeMode === "dark" ? bgDark : bgLight})`,
+      }}
     >
-      <div className="flex flex-col items-center justify-center gap-3 z-10 bg-white/20 dark:bg-black/40 backdrop-blur-lg rounded-xl md:rounded-2xl border border-white/10 overflow-hidden h-60 md:h-80 w-2/4 xl:w-1/3">
-        <h1 className="text-3xl xl:text-4xl font-bold animate-fade-in text-white text-shadow2 dark:text-cyan-300">
+      <div className="flex flex-col items-center justify-center gap-3 z-10 bg-white/20 dark:bg-black/40 backdrop-blur-lg rounded-xl md:rounded-2xl border border-white/10 overflow-hidden h-60 md:h-80 w-2/4 xl:w-1/3 animate-fade-in">
+        <h1 className="text-3xl xl:text-4xl font-bold text-white text-shadow2 dark:text-cyan-300">
           Welcome!
         </h1>
-        <p className="text-base md:text-lg animate-fade-in dark:text-gray-300 text-black text-glow">
+        <p className="text-base md:text-lg dark:text-gray-300 text-black text-glow">
           Let the music flow 🎵
         </p>
         <p className="text-sm font-semibold text-gray-100 dark:text-gray-300">

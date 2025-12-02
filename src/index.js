@@ -44,7 +44,6 @@ root.render(
                     </LazyWrapper>
                   }
                 />
-                <Route path="/welcome" element={<Welcome />} />
                 <Route
                   path="/library"
                   element={
@@ -56,6 +55,7 @@ root.render(
                   }
                 />
               </Route>
+              <Route path="/welcome" element={<Welcome />} />
             </Routes>
           </AuthProvider>
         </BrowserRouter>

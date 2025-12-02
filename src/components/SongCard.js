@@ -10,9 +10,9 @@ import { openAddToPlaylistModal } from "../reduxStore/modalSlice";
 
 const SongCard = ({ track, onPlay, isFavorite }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-    const user = useSelector((state) => state.user.userInfo);
+  const user = useSelector((state) => state.user.userInfo);
   const dispatch = useDispatch();
-    const handleAddToQueue = (track) => {
+  const handleAddToQueue = (track) => {
     dispatch(addToQueue(track));
     dispatch(playPause(true));
     toast.success("Song added to queue..");
@@ -45,30 +45,36 @@ const SongCard = ({ track, onPlay, isFavorite }) => {
           onLoad={() => setImageLoaded(true)}
           className="w-full h-full object-cover relative z-10 group-hover:scale-[1.08] transition-transform duration-300"
         />
-        <div className=" lg:opacity-0 lg:group-hover:opacity-100 absolute inset-0 z-20 flex items-end text-white bg-gradient-to-t from-black/60 via-black/20 to-transparent transition-all duration-300">
+        <div className="absolute inset-0 z-20 flex flex-col-reverse justify-between p-1 text-white bg-gradient-to-tl from-black/70 via-black/40 to-transparent lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
           <div className="w-full flex justify-between items-center p-1 lg:p-2">
             <h2 className="font-semibold truncate text-sm lg:text-base">
               {track?.title_short}
             </h2>
-
-           {user && <KebabMenu
-            actions={[
-              {
-                label:"Add to Queue",
-                icon: ListPlus,
-                onClick: ()=> handleAddToQueue(track),
-              },{
-                label:"Add to Playlist",
-                icon: FolderPlus,
-                onClick: () => dispatch(openAddToPlaylistModal(track)),
-              },{
-                label: isFavorite?"Remove from Favorites":"Add to Favorites",
-                icon: isFavorite? Trash2 : Heart,
-                className: isFavorite? "text-red-600": "",
-                onClick: ()=> handleAddToFavorites(track),
-              }
-            ]}
-            />}
+          </div>
+          <div className="ml-auto">
+            <KebabMenu
+              actions={[
+                {
+                  label: "Add to Queue",
+                  icon: ListPlus,
+                  onClick: () => handleAddToQueue(track),
+                },
+                {
+                  label: "Add to Playlist",
+                  icon: FolderPlus,
+                  onClick: () => dispatch(openAddToPlaylistModal(track)),
+                },
+                {
+                  label: isFavorite
+                    ? "Remove from Favorites"
+                    : "Add to Favorites",
+                  icon: isFavorite ? Trash2 : Heart,
+                  className: isFavorite ? "text-red-600" : "",
+                  onClick: () => handleAddToFavorites(track),
+                },
+              ]}
+              user={user}
+            />
           </div>
         </div>
       </div>

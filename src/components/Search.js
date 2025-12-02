@@ -72,7 +72,7 @@ const Search = () => {
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
-              className="shrink-0 whitespace-nowrap text-sm xl:text-base shadow-inner shadow-black/10 hover:shadow-black/40 cursor-pointer active:scale-95 bg-white/60 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white/70 text-gray-500 font-medium py-1 px-2 xl:px-3 lg:py-1 rounded-full transition-all duration-200"
+              className="shrink-0 whitespace-nowrap text-sm xl:text-base cursor-pointer active:scale-90 bg-white hover:bg-white/80 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-white/90 text-gray-600 font-medium py-1 px-2 xl:px-3 lg:py-1 rounded-full transition-all duration-200"
               onClick={() => {
                 setTag(c);
                 onSearch(c);

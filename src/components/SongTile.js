@@ -52,7 +52,7 @@ const SongTile = ({ trackList, track, isFavorite }) => {
   return (
     <div
       key={track.id}
-      className="relative z-10 hover:shadow-[inset_2px_3px_6px_gray] dark:hover:shadow-[inset_-2px_-3px_6px_black,inset_2px_3px_6px_black] dark:bg-white/5 dark:hover:bg-white/10 hover:bg-white/15 flex gap-2 items-center justify-between rounded-lg px-4 py-2  transition-all duration-200 cursor-pointer text-white"
+      className="relative z-10 hover:shadow-[inset_2px_3px_6px_gray] dark:hover:shadow-none hover:bg-white/15 flex gap-2 items-center justify-between rounded-lg px-4 py-2  cursor-pointer text-white transition-all duration-300"
       onClick={() => handlePlay(track)}
     >
       <div className="flex justify-start overflow-hidden gap-3 items-center flex-1">
@@ -70,7 +70,6 @@ const SongTile = ({ trackList, track, isFavorite }) => {
           </p>
         </div>
       </div>
-      {user ? (
         <div>
           <KebabMenu
             actions={[
@@ -93,16 +92,9 @@ const SongTile = ({ trackList, track, isFavorite }) => {
                 onClick: () => handleAddToFavorites(track),
               },
             ]}
+            user={user}
           />
         </div>
-      ) : (
-        <button
-          className="p-2 text-white hover:shadow-[inset_0_2px_4px_black] hover:bg-white/5 rounded-full transition-all duration-200 active:scale-90"
-          onClick={(e) => handleAddToQueue(e, track)}
-        >
-          <ListPlus size={18} />
-        </button>
-      )}
     </div>
   );
 };

@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import Portal from "./Portal";
 import { MoreVertical } from "lucide-react";
 
-const KebabMenu = ({ actions }) => {
+const KebabMenu = ({ actions, user }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 });
   const menuButtonRef = useRef(null);
   const dropdownRef = useRef(null);
+  const visibleActions = user ? actions : [actions[0]];
 
   const toggleMenu = (e) => {
     e.stopPropagation();
@@ -37,48 +38,47 @@ const KebabMenu = ({ actions }) => {
     setShowMenu((prev) => !prev);
   };
 
-useEffect(() => {
-  if (!showMenu) return;
+  useEffect(() => {
+    if (!showMenu) return;
 
-  const handleClickOutside = (e) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(e.target) &&
-      menuButtonRef.current &&
-      !menuButtonRef.current.contains(e.target)
-    ) {
-      setShowMenu(false);
-    }
-  };
+    const handleClickOutside = (e) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target) &&
+        menuButtonRef.current &&
+        !menuButtonRef.current.contains(e.target)
+      ) {
+        setShowMenu(false);
+      }
+    };
 
-  const handleKeyPress = (e) => {
-    if (e.key === "Escape") setShowMenu(false);
-  };
+    const handleKeyPress = (e) => {
+      if (e.key === "Escape") setShowMenu(false);
+    };
 
-  const close = () => setShowMenu(false);
+    const close = () => setShowMenu(false);
 
-  document.addEventListener("mousedown", handleClickOutside);
-  document.addEventListener("keydown", handleKeyPress);
-  window.addEventListener("scroll", close, true);
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyPress);
+    window.addEventListener("scroll", close, true);
 
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
-    document.removeEventListener("keydown", handleKeyPress);
-    window.removeEventListener("scroll", close, true);
-  };
-}, [showMenu]);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyPress);
+      window.removeEventListener("scroll", close, true);
+    };
+  }, [showMenu]);
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
       <div className="flex items-center gap-1">
         <button
-          className={`p-2 rounded-full hover:shadow-[inset_0_2px_3px_black] focus:shadow-[inset_0_3px_4px_black] hover:bg-white/5 transition-all duration-200`}
+          className={`p-2 rounded-full hover:bg-white/25 transition-all duration-200`}
           onClick={toggleMenu}
           ref={menuButtonRef}
         >
-          <MoreVertical size={20} />
+          <MoreVertical size={22} />
         </button>
-        
       </div>
       {showMenu && (
         <Portal>
@@ -91,7 +91,7 @@ useEffect(() => {
               zIndex: 9999,
             }}
           >
-            {actions.map((action, index) => (
+            {visibleActions.map((action, index) => (
               <button
                 key={index}
                 className={`flex items-center p-1.5 gap-1 transition-all duration-200 hover:bg-slate-300 dark:hover:bg-slate-500 focus:bg-slate-400 ${
