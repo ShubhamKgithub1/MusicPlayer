@@ -11,7 +11,7 @@ const BannerCard = ({ topTracks }) => {
   const track = topTracks[0];
   if (!track) return null;
   return (
-    <div className="w-full h-[280px] md:h-[40%] flex relative rounded-lg lg:rounded-xl overflow-hidden ">
+    <div className="w-full h-[240px] md:h-[40%] flex relative rounded-lg lg:rounded-xl overflow-hidden ">
       <img
         src={track?.album?.cover_big}
         alt="not found"

@@ -68,7 +68,7 @@ const Search = () => {
             Search
           </button>
         </div>
-        <div className="mt-3 xl:mt-4 flex items-center overflow-auto gap-1.5 xl:gap-3 xl:w-2/3 hide-scrollbar">
+        <div className="py-3 xl:py-4 flex items-center overflow-auto gap-1.5 xl:gap-3 xl:w-2/3 hide-scrollbar">
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
@@ -83,12 +83,12 @@ const Search = () => {
           ))}
         </div>
       </div>
-      <div className="relative xl:w-2/3 overflow-y-scroll flex-1 hide-scrollbar mt-4 px-2 scroll-smooth">
+      <div className="relative xl:w-2/3 overflow-y-scroll flex-1 hide-scrollbar scroll-smooth">
         {loading ? (
           <EqualizerLoader/>
         ) : (
           result.length > 0 && (
-            <div className="w-full flex flex-col gap-1 lg:gap-1.5 animate-fade-in dark:bg-black/40 rounded-md dark:p-1.5 lg:dark:p-2">
+            <div className="w-full flex flex-col gap-1 lg:gap-1.5 animate-fade-in rounded-md">
               {result.map((res) => (
                 <SongTile
                   key={res?.id}

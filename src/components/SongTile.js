@@ -52,9 +52,10 @@ const SongTile = ({ trackList, track, isFavorite }) => {
   return (
     <div
       key={track.id}
-      className="relative z-10 hover:shadow-[inset_2px_3px_6px_gray] dark:hover:shadow-none hover:bg-white/15 flex gap-2 items-center justify-between rounded-lg px-4 py-2  cursor-pointer text-white transition-all duration-300"
+      className="relative z-10 group flex gap-2 items-center justify-between rounded-lg px-2 lg:px-4 py-2 cursor-pointer text-white transition-all duration-300"
       onClick={() => handlePlay(track)}
     >
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none transition-all duration-300"></div>
       <div className="flex justify-start overflow-hidden gap-3 items-center flex-1">
         <img
           src={track.album.cover_small}

@@ -55,7 +55,7 @@ const HorizontalScroller = ({ data, favorites }) => {
   if (!data) return null;
 
   return (
-    <div className="relative p-2 lg:px-4 lg:py-0 rounded-lg">
+    <div className={`relative p-2 lg:px-4 lg:py-0 rounded-lg`}>
       {canScrollLeft && (
         <div
           onClick={scrollLeft}

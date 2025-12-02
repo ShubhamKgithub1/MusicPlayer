@@ -77,14 +77,14 @@ const KebabMenu = ({ actions, user }) => {
           onClick={toggleMenu}
           ref={menuButtonRef}
         >
-          <MoreVertical size={22} />
+          <MoreVertical size={20} />
         </button>
       </div>
       {showMenu && (
         <Portal>
           <div
             ref={dropdownRef}
-            className={`fixed w-[150px] flex flex-col bg-white dark:bg-slate-950 dark:text-white text-slate-800 rounded-md overflow-hidden shadow-xl transition-all duration-300 animate-qick-fade-in`}
+            className={`fixed w-[150px] flex flex-col bg-white dark:bg-slate-800 dark:text-white text-slate-800 rounded-md overflow-hidden shadow-xl transition-all duration-300 animate-qick-fade-in`}
             style={{
               top: menuPosition.top,
               left: menuPosition.left,
@@ -94,7 +94,7 @@ const KebabMenu = ({ actions, user }) => {
             {visibleActions.map((action, index) => (
               <button
                 key={index}
-                className={`flex items-center p-1.5 gap-1 transition-all duration-200 hover:bg-slate-300 dark:hover:bg-slate-500 focus:bg-slate-400 ${
+                className={`flex items-center p-2 gap-1 transition-all duration-200 hover:bg-slate-300 dark:hover:bg-slate-500 focus:bg-slate-400 ${
                   action.className || ""
                 }`}
                 onClick={(e) => {
