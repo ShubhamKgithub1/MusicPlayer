@@ -92,7 +92,7 @@ const KebabMenu = ({ actions, user }) => {
       {showMenu && (
         <Portal>
           <div
-            className={`fixed z-[999] flex items-end ${useBottomMenu ?"inset-0 bg-black/40 p-[0_4px_1px_4px]":"w-[150px]"}`}
+            className={`fixed z-[999] flex items-end ${useBottomMenu ?"inset-0 bg-black/60 p-[0_4px_1px_4px]":"w-[150px]"}`}
             style={
               useBottomMenu
                 ? {}
