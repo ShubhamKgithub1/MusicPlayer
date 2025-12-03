@@ -57,7 +57,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 backdrop-blur-xl flex items-center justify-center z-[99] transition-all duration-200">
+    <div className="fixed inset-0 backdrop-blur-xl flex items-center justify-center z-[99] animate-opacity">
       <div className="flex flex-col gap-4 bg-white/30 dark:bg-black/40 shadow-2xl text-white p-6 rounded-2xl w-[90%] max-w-md relative animate-fade-in" ref={menuRef}>
         <h2 className="text-lg font-semibold text-center">Add to Playlist</h2>
         <div className="flex gap-4 max-h-60 overflow-y-scroll hide-scrollbar pt-0 p-3">

@@ -14,12 +14,17 @@ module.exports = {
         "fade-in-delay": "fadeIn 1s ease-out forwards",
         "fade-in-delay2": "fadeIn 2s ease-out forwards",
         "slide-up": "slide-up 0.25s ease-out forwards",
+        "opacity": "opacity 0.25s ease-out forwards",
         "expandDown": "expandDown 0.1s ease-out forwards",
       },
       keyframes: {
         "fadeIn": {
           "0%": { opacity: 0, transform: "scale(0.95)"},
           "100%": { opacity: 1, transform: "scale(1)"},
+        },
+        opacity:{
+          "0%": { opacity: 0},
+          "100%": { opacity: 1},
         },
         "slide-up": {
           "0%": { transform: "translateY(100%)", opacity: 0 },

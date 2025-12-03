@@ -25,7 +25,7 @@ const KebabMenu = ({ actions, user }) => {
     }
     const buttonRect = menuButtonRef.current.getBoundingClientRect();
     const menuWidth = 150;
-    const menuHeight = dropdownRef.current?.offsetHeight || 110;
+    const menuHeight = user ? 110 : 40;
     const padding = 8;
 
     let left = buttonRect.right - menuWidth;
@@ -70,11 +70,13 @@ const KebabMenu = ({ actions, user }) => {
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleKeyPress);
     window.addEventListener("scroll", close, true);
+    window.addEventListener("resize", close);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyPress);
       window.removeEventListener("scroll", close, true);
+      window.removeEventListener("resize", close);
     };
   }, [showMenu]);
 
@@ -92,32 +94,42 @@ const KebabMenu = ({ actions, user }) => {
       {showMenu && (
         <Portal>
           <div
-            className={`fixed z-[999] flex items-end ${useBottomMenu ?"inset-0 bg-black/60 p-[0_4px_1px_4px]":"w-[150px]"}`}
+            className={`fixed z-[999] flex items-end ${
+              useBottomMenu
+                ? "inset-0 bg-black/60 p-[0_4px_2px_4px] animate-opacity"
+                : "w-[150px]"
+            }`}
             style={
               useBottomMenu
                 ? {}
                 : { top: menuPosition.top, left: menuPosition.left }
             }
           >
-            <div ref={dropdownRef} className={`flex flex-col w-full bg-white dark:bg-slate-800 dark:text-white text-slate-800 overflow-hidden shadow-xl transition-all duration-300 ${useBottomMenu ?"rounded-t-md animate-slide-up":"rounded-md animate-quick-fade-in"}`}>
+            <div
+              ref={dropdownRef}
+              className={`flex flex-col w-full bg-white dark:bg-slate-800 dark:text-white text-slate-800 overflow-hidden shadow-xl transition-all duration-300 ${
+                useBottomMenu
+                  ? "rounded-t-md animate-slide-up"
+                  : "rounded-md animate-quick-fade-in"
+              }`}
+            >
               {visibleActions.map((action, index) => (
-              <button
-                key={index}
-                className={`flex items-center font-medium p-2 gap-1 transition-all duration-200 hover:bg-slate-300 dark:hover:bg-slate-500 focus:bg-slate-400 ${
-                  action.className || ""
-                }`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  action.onClick();
-                  setShowMenu(false);
-                }}
-              >
-                <action.icon size={18} />
-                <span className="text-sm truncate">{action.label}</span>
-              </button>
-            ))}
+                <button
+                  key={index}
+                  className={`flex items-center font-medium p-2 gap-1 transition-all duration-200 hover:bg-slate-300 dark:hover:bg-slate-500 focus:bg-slate-400 ${
+                    action.className || ""
+                  }`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    action.onClick();
+                    setShowMenu(false);
+                  }}
+                >
+                  <action.icon size={18} />
+                  <span className="text-sm truncate">{action.label}</span>
+                </button>
+              ))}
             </div>
-            
           </div>
         </Portal>
       )}
