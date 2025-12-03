@@ -94,8 +94,6 @@ const Playbar = () => {
         }
 
         audio.src = freshData.preview;
-
-        // If auto-play is enabled when song changes
         if (isPlaying) {
           await audio.play();
 

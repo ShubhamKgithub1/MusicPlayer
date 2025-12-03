@@ -45,8 +45,8 @@ const SongCard = ({ track, onPlay, isFavorite }) => {
           onLoad={() => setImageLoaded(true)}
           className="w-full h-full object-cover relative z-10 group-hover:scale-[1.08] transition-transform duration-300"
         />
-        <div className="absolute inset-0 z-20 flex flex-col-reverse justify-between p-1 text-white bg-gradient-to-tl from-black/70 via-black/40 to-transparent lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
-          <div className="w-full flex justify-between items-center p-1 lg:p-2">
+        <div className="absolute inset-0 z-20 flex flex-col-reverse justify-between lg:p-1 text-white bg-gradient-to-tl from-black/70 via-black/40 to-transparent lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
+          <div className="w-full flex justify-between items-center p-1.5 lg:p-2">
             <h2 className="font-semibold truncate text-sm lg:text-base">
               {track?.title_short}
             </h2>

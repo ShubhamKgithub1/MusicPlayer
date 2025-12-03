@@ -4,7 +4,11 @@ import { MoreVertical } from "lucide-react";
 
 const KebabMenu = ({ actions, user }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 });
+  const [useBottomMenu, setUseBottomMenu] = useState(false);
+  const [menuPosition, setMenuPosition] = useState({
+    top: 0,
+    left: 0,
+  });
   const menuButtonRef = useRef(null);
   const dropdownRef = useRef(null);
   const visibleActions = user ? actions : [actions[0]];
@@ -12,22 +16,27 @@ const KebabMenu = ({ actions, user }) => {
   const toggleMenu = (e) => {
     e.stopPropagation();
 
+    const isMobile = window.innerWidth < 640;
+
+    if (isMobile) {
+      setUseBottomMenu(true);
+      setShowMenu(true);
+      return;
+    }
     const buttonRect = menuButtonRef.current.getBoundingClientRect();
     const menuWidth = 150;
+    const menuHeight = dropdownRef.current?.offsetHeight || 110;
     const padding = 8;
 
     let left = buttonRect.right - menuWidth;
     let top = buttonRect.bottom + 5;
 
-    if (left + menuWidth > window.innerWidth) {
-      left = buttonRect.right - menuWidth;
-    }
     if (left < padding) {
       left = padding;
     }
 
-    if (top + 150 > window.innerHeight) {
-      top = buttonRect.top - 110;
+    if (top + menuHeight > window.innerHeight) {
+      top = buttonRect.top - menuHeight;
     }
 
     setMenuPosition({
@@ -35,7 +44,7 @@ const KebabMenu = ({ actions, user }) => {
       left: left + window.scrollX,
     });
 
-    setShowMenu((prev) => !prev);
+    setShowMenu(true);
   };
 
   useEffect(() => {
@@ -83,18 +92,18 @@ const KebabMenu = ({ actions, user }) => {
       {showMenu && (
         <Portal>
           <div
-            ref={dropdownRef}
-            className={`fixed w-[150px] flex flex-col bg-white dark:bg-slate-800 dark:text-white text-slate-800 rounded-md overflow-hidden shadow-xl transition-all duration-300 animate-qick-fade-in`}
-            style={{
-              top: menuPosition.top,
-              left: menuPosition.left,
-              zIndex: 9999,
-            }}
+            className={`fixed z-[999] flex items-end ${useBottomMenu ?"inset-0 bg-black/40 p-[0_4px_1px_4px]":"w-[150px]"}`}
+            style={
+              useBottomMenu
+                ? {}
+                : { top: menuPosition.top, left: menuPosition.left }
+            }
           >
-            {visibleActions.map((action, index) => (
+            <div ref={dropdownRef} className={`flex flex-col w-full bg-white dark:bg-slate-800 dark:text-white text-slate-800 overflow-hidden shadow-xl transition-all duration-300 ${useBottomMenu ?"rounded-t-md animate-slide-up":"rounded-md animate-quick-fade-in"}`}>
+              {visibleActions.map((action, index) => (
               <button
                 key={index}
-                className={`flex items-center p-2 gap-1 transition-all duration-200 hover:bg-slate-300 dark:hover:bg-slate-500 focus:bg-slate-400 ${
+                className={`flex items-center font-medium p-2 gap-1 transition-all duration-200 hover:bg-slate-300 dark:hover:bg-slate-500 focus:bg-slate-400 ${
                   action.className || ""
                 }`}
                 onClick={(e) => {
@@ -107,6 +116,8 @@ const KebabMenu = ({ actions, user }) => {
                 <span className="text-sm truncate">{action.label}</span>
               </button>
             ))}
+            </div>
+            
           </div>
         </Portal>
       )}

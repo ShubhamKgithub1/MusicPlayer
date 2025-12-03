@@ -9,19 +9,19 @@ module.exports = {
         lg: "0 0 5px rgba(0, 0, 0, 0.5)",
       },
       animation: {
-        "qick-fade-in": "fadeIn 0.2s ease-out forwards",
+        "quick-fade-in": "fadeIn 0.2s ease-out forwards",
         "fade-in": "fadeIn 0.5s ease-out forwards",
         "fade-in-delay": "fadeIn 1s ease-out forwards",
         "fade-in-delay2": "fadeIn 2s ease-out forwards",
-        "slide-up": "slideUp 0.5s ease-out forwards",
+        "slide-up": "slide-up 0.25s ease-out forwards",
         "expandDown": "expandDown 0.1s ease-out forwards",
       },
       keyframes: {
-        fadeIn: {
+        "fadeIn": {
           "0%": { opacity: 0, transform: "scale(0.95)"},
           "100%": { opacity: 1, transform: "scale(1)"},
         },
-        slideUp: {
+        "slide-up": {
           "0%": { transform: "translateY(100%)", opacity: 0 },
           "100%": { transform: "translateY(0)", opacity: 1 },
         },
