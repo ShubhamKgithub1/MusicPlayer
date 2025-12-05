@@ -58,14 +58,21 @@ const KebabMenu = ({ actions, user }) => {
         !menuButtonRef.current.contains(e.target)
       ) {
         setShowMenu(false);
+        setUseBottomMenu(false);
       }
     };
 
     const handleKeyPress = (e) => {
-      if (e.key === "Escape") setShowMenu(false);
+      if (e.key === "Escape") {
+        setShowMenu(false);
+        setUseBottomMenu(false);
+      }
     };
 
-    const close = () => setShowMenu(false);
+    const close = () => {
+      setShowMenu(false);
+      setUseBottomMenu(false);
+    };
 
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleKeyPress);

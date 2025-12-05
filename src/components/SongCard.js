@@ -36,7 +36,7 @@ const SongCard = ({ track, onPlay, isFavorite }) => {
       <div className="relative w-full h-full rounded-lg overflow-hidden">
         {!imageLoaded && (
           <div className="absolute inset-0 z-30">
-            <FallbackLoader />
+            <FallbackLoader className={"size-14"}/>
           </div>
         )}
         <img
