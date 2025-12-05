@@ -103,7 +103,7 @@ const KebabMenu = ({ actions, user }) => {
           <div
             className={`fixed z-[999] flex items-end ${
               useBottomMenu
-                ? "inset-0 bg-black/60 p-[0_4px_2px_4px] animate-opacity"
+                ? "inset-0 bg-black/60 p-[0_4px_3px_4px] animate-opacity"
                 : "w-[150px]"
             }`}
             style={
@@ -114,10 +114,10 @@ const KebabMenu = ({ actions, user }) => {
           >
             <div
               ref={dropdownRef}
-              className={`flex flex-col w-full bg-white dark:bg-slate-800 dark:text-white text-slate-800 overflow-hidden shadow-xl transition-all duration-300 ${
+              className={`flex flex-col rounded-md w-full bg-white dark:bg-slate-800 dark:text-white text-slate-800 overflow-hidden shadow-xl transition-all duration-300 ${
                 useBottomMenu
-                  ? "rounded-t-md animate-slide-up"
-                  : "rounded-md animate-quick-fade-in"
+                  ? "animate-slide-up"
+                  : "animate-quick-fade-in"
               }`}
             >
               {visibleActions.map((action, index) => (
