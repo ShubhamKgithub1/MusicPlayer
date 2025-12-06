@@ -195,7 +195,7 @@ const Playbar = () => {
               className={`flex items-center justify-between p-3 pb-0 overflow-hidden`}
             >
               <button
-                className="rounded-full shadow-shadowInner dark:bg-white active:scale-[0.80] p-1.5 transition-[colors,transform] duration-300"
+                className="rounded-full hover:shadow-shadowInner dark:bg-white active:scale-[0.80] p-1.5 transition-all duration-300"
                 onClick={() => {
                   dispatch(resetPlayer());
                   toast.success("Playing Queue cleared...");
@@ -208,7 +208,7 @@ const Playbar = () => {
               <h1 className="font-bold dark:text-white text-sm">PLAYING NOW</h1>
 
               <button
-                className="rounded-full shadow-shadowInner dark:bg-white active:scale-[0.80] p-1.5 transition-[colors,transform] duration-300"
+                className="rounded-full hover:shadow-shadowInner dark:bg-white active:scale-[0.80] p-1.5 transition-all duration-300"
                 onClick={() => setIsExpand(false)}
               >
                 <X size={22} />
@@ -224,7 +224,7 @@ const Playbar = () => {
               <img
                 src={currentSong?.album?.cover_big}
                 alt={currentSong?.title}
-                className={`h-40 w-40 md:h-28 md:w-28 shadow-shadowOuterLarge dark:shadow-none border-4 transition-[width,shadow] duration-300 rounded-full`}
+                className={`h-48 w-48 md:h-28 md:w-28 shadow-shadowOuterLarge dark:shadow-none border-4 transition-[width,shadow] duration-300 rounded-full`}
               />
               <div className={` text-center w-[95%]`}>
                 <p className={`text-base font-bold truncate dark:text-white`}>
@@ -287,13 +287,13 @@ const Playbar = () => {
             </div>
           </div>
           {/*Queue Container*/}
-          <div
+          {isExpand && <div
             className={`flex-1 overflow-y-auto hide-scrollbar p-1`}
           >
             {queue.map((track) => (
-              <QueueCard track={track} key={track?.id} />
+              <QueueCard track={track} key={track?.id}/>
             ))}
-          </div>
+          </div>}
         </div>
         <div
           className={`absolute bottom-0 left-0 right-0 flex items-center gap-1.5 cursor-pointer p-2 bg-purple-100 dark:bg-slate-900 transition-[opacity] duration-300 

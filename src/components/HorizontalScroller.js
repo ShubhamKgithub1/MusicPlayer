@@ -59,7 +59,7 @@ const HorizontalScroller = ({ data, favorites }) => {
       {canScrollLeft && (
         <div
           onClick={scrollLeft}
-          className="absolute z-[99] bg-white left-0 flex justify-center items-center top-1/2 -translate-y-1/2 overflow-hidden p-1.5 xl:p-2 cursor-pointer rounded-full hover:scale-[1.04] active:scale-[0.82] transition-all duration-200"
+          className="absolute z-[99] bg-white left-0 flex justify-center items-center top-1/2 -translate-y-1/2 overflow-hidden p-1.5 xl:p-2 cursor-pointer rounded-full hover:scale-[1.04] active:scale-[0.82] transition-transform duration-300"
         >
           <ChevronLeft className="text-black" size={22} />
         </div>
@@ -67,7 +67,7 @@ const HorizontalScroller = ({ data, favorites }) => {
       {canScrollRight && (
         <div
           onClick={scrollRight}
-          className="absolute right-0 flex justify-center items-center top-1/2 -translate-y-1/2 z-[99] p-1.5 xl:p-2 overflow-hidden cursor-pointer rounded-full bg-white hover:scale-[1.04] active:scale-[0.82] transition-all duration-200"
+          className="absolute right-0 flex justify-center items-center top-1/2 -translate-y-1/2 z-[99] p-1.5 xl:p-2 overflow-hidden cursor-pointer rounded-full bg-white hover:scale-[1.04] active:scale-[0.82] transition-transform duration-300"
         >
           <ChevronRight className="text-black" size={22} />
         </div>

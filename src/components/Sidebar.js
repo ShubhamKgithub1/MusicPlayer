@@ -43,12 +43,10 @@ const Sidebar = () => {
                 `${isActive ? "text-emerald-500" : ""} w-full`
               }
             >
-              <div className=" w-full p-2 xl:p-4 transition-all duration-200 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30 animate-fade-in">
-                <button className="flex items-center">
+                <button className="flex items-center w-full p-2 xl:p-4 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30">
                   <Library />
                   <span className="font-semibold">My Library</span>
                 </button>
-              </div>
             </NavLink>
           </div>
           {recentSongs?.length > 0 && (

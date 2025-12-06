@@ -17,14 +17,14 @@ const MyLibrary = () => {
 };
 
   return (
-    <div className="flex flex-col lg:dark:bg-black/40 lg:border lg:border-white/10 lg:bg-white/20 rounded-xl 2xl:rounded-2xl p-4 backdrop-blur-lg h-full overflow-hidden text-white">
+    <div className="flex flex-col lg:dark:bg-black/40 lg:border lg:border-white/10 lg:bg-white/20 lg:rounded-xl 2xl:rounded-2xl p-2 lg:p-4 backdrop-blur-lg h-full overflow-hidden text-white">
       <div className="flex items-center justify-between">
         <h1 className="font-semibold text-xl 2xl:text-2xl text-glow">
           User Library
         </h1>
         <button
           onClick={handleDeleteAccount}
-          className="px-3 xl:px-4 py-1.5 xl:py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+          className="px-3 xl:px-4 py-1.5 xl:py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
         >
           Delete Account
         </button>
@@ -36,7 +36,7 @@ const MyLibrary = () => {
             activeTab === "recent"
               ? "bg-white dark:bg-black text-emerald-500 "
               : "bg-transparent text-glow"
-          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold transition-all duration-200 rounded-t-2xl`}
+          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold transition-colors duration-200 rounded-t-2xl`}
         >
           Recently Played
         </button>
@@ -46,7 +46,7 @@ const MyLibrary = () => {
             activeTab === "favorites"
               ? "bg-white dark:bg-black text-emerald-500 "
               : "bg-transparent text-glow"
-          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold transition-all duration-200 rounded-t-2xl`}
+          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold transition-colors duration-200 rounded-t-2xl`}
         >
           Favorites
         </button>
@@ -56,7 +56,7 @@ const MyLibrary = () => {
             activeTab === "playlists"
               ? "bg-white dark:bg-black text-emerald-500 "
               : "bg-transparent text-glow"
-          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold  transition-all duration-200 rounded-t-2xl`}
+          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold  transition-colors duration-200 rounded-t-2xl`}
         >
           Playlists
         </button>

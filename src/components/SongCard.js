@@ -30,7 +30,7 @@ const SongCard = ({ track, onPlay, isFavorite }) => {
   return (
     <div
       key={track?.id}
-      className="flex-[0_0_35%] sm:flex-[0_0_25%] md:flex-[0_0_20%] xl:flex-[0_0_14%] relative group snap-start rounded-lg shadow-md cursor-pointer transition-all duration-200 animate-fade-in aspect-square"
+      className="flex-[0_0_35%] sm:flex-[0_0_25%] md:flex-[0_0_20%] xl:flex-[0_0_14%] relative group snap-start rounded-lg shadow-md cursor-pointer animate-fade-in aspect-square"
       onClick={() => onPlay(track)}
     >
       <div className="relative w-full h-full rounded-lg overflow-hidden">
@@ -45,7 +45,7 @@ const SongCard = ({ track, onPlay, isFavorite }) => {
           onLoad={() => setImageLoaded(true)}
           className="w-full h-full object-cover relative z-10 group-hover:scale-[1.08] transition-transform duration-300"
         />
-        <div className="absolute inset-0 z-20 flex flex-col-reverse justify-between lg:p-1 text-white bg-gradient-to-tl from-black/70 via-black/40 to-transparent lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
+        <div className="absolute inset-0 z-20 flex flex-col-reverse justify-between lg:p-1 text-white bg-gradient-to-tl from-black/70 via-black/40 to-transparent lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
           <div className="w-full flex justify-between items-center p-1.5 lg:p-2">
             <h2 className="font-semibold truncate text-sm lg:text-base">
               {track?.title_short}

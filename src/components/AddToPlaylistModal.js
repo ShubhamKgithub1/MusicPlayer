@@ -69,7 +69,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId }) => {
                 disabled={loading}
                 className="flex-[0_0_30%] relative shadow-md group rounded-md overflow-hidden cursor-pointer disabled:opacity-50 active:scale-[0.92] transition-all duration-300"
               >
-                <img src={pl?.songs[0]?.album?.cover} alt="Empty.." className="w-full group-hover:scale-[1.08] transition-all duration-300"/>
+                <img src={pl?.songs[0]?.album?.cover} alt="Empty.." className="w-full group-hover:scale-[1.08] transition-transform duration-300"/>
                 <span className="absolute inset-0 flex items-end p-2 bg-gradient-to-t from-black/80 via-black/20 z-10 truncate text-sm font-medium">{pl?.name}</span>
               </div>
             ))

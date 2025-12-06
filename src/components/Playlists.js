@@ -22,18 +22,18 @@ const Playlists = () => {
 
   return (
     <div className="flex flex-col w-full h-full overflow-hidden bg-white/20 border border-white/10 border-t-0 md:border-0 dark:bg-black/60 lg:bg-transparent lg:dark:bg-transparent backdrop-blur-lg lg:backdrop-blur-none p-3 rounded-lg">
-      <h1 className="text-lg 2xl:text-xl font-semibold 2xl:font-bold pb-3 text-glow animate-fade-in">
+      <h1 className="text-lg 2xl:text-xl font-semibold 2xl:font-bold pb-3 text-glow">
         Playlists
       </h1>
       {playlists.length > 0 ? (
-        <div className="flex flex-col flex-1 gap-2 lg:gap-3 overflow-hidden">
-          <div className="w-[100%] flex gap-2 overflow-x-scroll hide-scrollbar animate-fade-in">
+        <div className="flex flex-col flex-1 gap-2 lg:gap-3 overflow-hidden animate-fade-in">
+          <div className="w-[100%] flex gap-2 overflow-x-scroll hide-scrollbar">
             <div
-              className="snap-start aspect-square flex flex-col p-4 gap-1 items-center justify-center cursor-pointer transition-all duration-200 dark:text-white active:scale-[0.92] rounded-lg bg-white/30 shadow-[inset_0_2px_4px_gray] dark:shadow-black/60 hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-[inset_0_2px_6px_black] text-gray-700"
+              className="snap-start aspect-square flex flex-col p-4 gap-1 items-center justify-center cursor-pointer transition-transform duration-200 dark:text-white active:scale-[0.92] rounded-lg bg-white/30 shadow-[inset_0_2px_4px_gray] dark:shadow-black/60 text-gray-700"
               onClick={() => dispatch(openCreatePlaylistModal())}
             >
               <PlusIcon size={32} />
-              <h1 className="text-sm  font-semibold">
+              <h1 className="text-sm whitespace-nowrap font-semibold">
                 Create Playlist
               </h1>
             </div>
@@ -45,7 +45,7 @@ const Playlists = () => {
               />
             ))}
           </div>
-          <div className="flex-1 animate-fade-in overflow-hidden lg:p-2">
+          <div className="flex-1 overflow-hidden lg:p-2">
             {selectedPlaylistId && (
               <div className="flex flex-col max-h-full xl:w-2/3 border border-white/10 rounded-xl overflow-hidden animate-fade-in dark:bg-black/10 backdrop-blur-lg bg-white/10 lg:shadow-[2px_2px_7px_gray]">
                 <div className="flex h-max gap-4 items-center p-2 lg:p-3 shadow">
@@ -102,12 +102,12 @@ const Playlists = () => {
           </div>
         </div>
       ) : (
-       <div>
-         <p className="text-gray-600 dark:text-white text-sm py-2 lg:py-4 font-medium lg:font-semibold animate-fade-in">
+       <div className="animate-fade-in">
+         <p className="text-gray-600 dark:text-white text-sm py-2 lg:py-4 font-medium lg:font-semibold">
           No playlist found.
         </p>
                     <div
-              className="aspect-square w-32 lg:w-36 flex flex-col gap-1 items-center justify-center cursor-pointer transition-all duration-200 dark:text-white active:scale-[0.92] rounded-lg bg-white/30 shadow-[inset_0_2px_4px_gray] dark:shadow-black/60 hover:shadow-[inset_0_2px_6px_black] dark:hover:shadow-[inset_0_2px_6px_black] text-gray-700"
+              className="aspect-square w-32 lg:w-36 flex flex-col gap-1 items-center justify-center cursor-pointer transition-transform duration-200 dark:text-white active:scale-[0.92] rounded-lg bg-white/30 shadow-[inset_0_2px_4px_gray] dark:shadow-black/60 text-gray-700"
               onClick={() => dispatch(openCreatePlaylistModal())}
             >
               <PlusIcon size={32} />

@@ -8,9 +8,9 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
 
   return (
     <div
-      className={`flex flex-col relative lg:border-none p-3 pt-0 rounded-lg border border-white/10 backdrop-blur-lg lg:backdrop-blur-none lg:bg-transparent ${
+      className={`flex flex-col relative lg:border-none p-3 pt-0 rounded-lg border border-white/10 lg:bg-transparent ${
         isFullTab
-          ? "h-full overflow-auto rounded-tl-none border-t-0 bg-white/30 dark:bg-black/60 lg:dark:bg-transparent"
+          ? "h-full overflow-auto rounded-tl-none border-t-0 bg-white/20 dark:bg-black/60 lg:dark:bg-transparent"
           : "h-auto overflow-auto px-2 lg:px-0"
       }`}
     >
@@ -18,7 +18,7 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
         <h2
           className={`${
             isFullTab ? "text-lg 2xl:text-xl font-semibold 2xl:font-bold" : "text-base font-semibold"
-          } dark:text-white text-glow animate-fade-in`}
+          } dark:text-white text-glow`}
         >
           Recently Played
         </h2>
@@ -29,7 +29,7 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
               `${isActive ? "dark:text-white text-gray-600" : "dark:text-gray-300 text-gray-500"} hidden lg:block`
             }
           >
-            <button className="text-sm cursor-pointer transition-all duration-200 dark:hover:text-white animate-fade-in">
+            <button className="text-sm cursor-pointer transition-colors duration-200 dark:hover:text-white">
               View all
             </button>
           </NavLink>
