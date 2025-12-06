@@ -91,7 +91,7 @@ const KebabMenu = ({ actions, user }) => {
     <div onClick={(e) => e.stopPropagation()}>
       <div className="flex items-center gap-1">
         <button
-          className={`p-2 rounded-full hover:bg-white/25 transition-all duration-200`}
+          className={`p-2 rounded-full hover:bg-white/10 transition-colors duration-200`}
           onClick={toggleMenu}
           ref={menuButtonRef}
         >
@@ -114,7 +114,7 @@ const KebabMenu = ({ actions, user }) => {
           >
             <div
               ref={dropdownRef}
-              className={`flex flex-col rounded-md w-full bg-white dark:bg-slate-800 dark:text-white text-slate-800 overflow-hidden shadow-xl transition-all duration-300 ${
+              className={`flex flex-col rounded-md w-full bg-white dark:bg-slate-800 dark:text-white text-slate-800 overflow-hidden shadow-xl ${
                 useBottomMenu
                   ? "animate-slide-up"
                   : "animate-quick-fade-in"
@@ -123,7 +123,7 @@ const KebabMenu = ({ actions, user }) => {
               {visibleActions.map((action, index) => (
                 <button
                   key={index}
-                  className={`flex items-center font-medium p-2 gap-1 transition-all duration-200 hover:bg-slate-300 dark:hover:bg-slate-500 focus:bg-slate-400 ${
+                  className={`flex items-center font-medium p-2 gap-1 transition-colors duration-200 hover:bg-slate-300 dark:hover:bg-slate-500 focus:bg-slate-400 ${
                     action.className || ""
                   }`}
                   onClick={(e) => {

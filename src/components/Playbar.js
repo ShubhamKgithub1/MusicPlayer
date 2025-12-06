@@ -183,13 +183,121 @@ const Playbar = () => {
   return (
     <div
       ref={playbarRef}
-      className={`w-full z-50 overflow-hidden animate-fade-in duration-300 text-gray-600`}
+      className={`relative w-full z-50 min-h-[68px] animate-fade-in text-gray-600`}
     >
-      <audio ref={audioRef} preload="auto" />
-      {!isExpand && (
+      <audio ref={audioRef} preload="auto"/>
         <div
-          className={`flex items-center gap-1.5 cursor-pointer p-2 h-full overflow-hidden bg-purple-100 dark:bg-slate-900 transition-[opacity] duration-300 
-    ${isExpand ? "opacity-0" : "opacity-100"}
+          className={`bg-purple-100 dark:bg-slate-900 md:rounded-lg transition-[max-height,opacity] duration-300 ${isExpand ? "max-h-[100dvh] md:max-h-[60dvh] opacity-100" : "max-h-0 opacity-0"} flex flex-col`}
+        >
+          <div className="flex flex-col">
+            {/*Header options*/}
+            <div
+              className={`flex items-center justify-between p-3 pb-0 overflow-hidden`}
+            >
+              <button
+                className="rounded-full shadow-shadowInner dark:bg-white active:scale-[0.80] p-1.5 transition-[colors,transform] duration-300"
+                onClick={() => {
+                  dispatch(resetPlayer());
+                  toast.success("Playing Queue cleared...");
+                  setIsExpand(false);
+                }}
+              >
+                <ListXIcon size={22} />
+              </button>
+
+              <h1 className="font-bold dark:text-white text-sm">PLAYING NOW</h1>
+
+              <button
+                className="rounded-full shadow-shadowInner active:scale-[0.80] dark:bg-white p-1.5 transition-[colors,transform] duration-300"
+                onClick={() => setIsExpand(false)}
+              >
+                <X size={22} />
+              </button>
+            </div>
+            {/*Song metadata*/}
+            <div
+              className={`flex flex-col items-center gap-6 py-3`}
+              onClick={() => {
+                setIsExpand(true);
+              }}
+            >
+              <img
+                src={currentSong?.album?.cover_big}
+                alt={currentSong?.title}
+                className={`h-40 w-40 md:h-28 md:w-28 shadow-shadowOuterLarge dark:shadow-none border-4 transition-[width,shadow] duration-300 rounded-full`}
+              />
+              <div className={` text-center w-[95%]`}>
+                <p className={`text-base font-bold truncate dark:text-white`}>
+                  {currentSong?.title_short}
+                </p>
+                <p
+                  className={`text-xs font-bold dark:text-gray-400 text-black/60 truncate`}
+                >
+                  {currentSong?.artist?.name}
+                </p>
+              </div>
+            </div>
+            {/*Seekbar*/}
+            <div
+              className={`h-2 cursor-pointer shadow-shadowInner w-full bg-white`}
+              onClick={handleSeek}
+              ref={seekBarRef}
+            >
+              <div
+                className={`h-2 transition-[width] duration-300 bg-gray-600 rounded-r-md`}
+                style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
+              />
+            </div>
+            {/* Controls */}
+            <div
+              className={`flex items-center shadow bg-white/30 dark:bg-slate-800 justify-center gap-3 md:gap-2 py-3`}
+            >
+              <button
+                onClick={handleShuffleToggle}
+                className={`flex justify-center items-center h-10 w-10 md:h-8 md:w-8 text-white bg-gray-600 rounded-full transition-[transform] duration-300 active:scale-[0.85] shadow-shadowOuter dark:shadow-none`}
+              >
+                {isShuffle ? <Shuffle size={18} /> : <Repeat size={18} />}
+              </button>
+              <button
+                onClick={() => dispatch(playPrevious())}
+                className={`flex justify-center items-center p-3 lg:p-2 active:scale-[0.75] bg-white shadow-shadowInner rounded-full transition-[transform] duration-300`}
+              >
+                <SkipBack size={26} />
+              </button>
+              <button
+                onClick={togglePlay}
+                className={`flex items-center justify-center rounded-full w-16 h-16 md:w-14 md:h-14 bg-white shadow-shadowOuter dark:shadow-none active:scale-[0.80] transition-[transform] duration-300`}
+              >
+                {isPlaying ? <Pause size={30} /> : <Play size={30} />}
+              </button>
+              <button
+                onClick={() => dispatch(playNext())}
+                className={`flex justify-center items-center active:scale-[0.75] p-3 lg:p-2 bg-white shadow-shadowInner rounded-full transition-[transform] duration-300`}
+              >
+                <SkipForward size={26} />
+              </button>
+              <button
+                className={`flex justify-center items-center h-10 w-10 md:h-8 md:w-8 text-white bg-gray-600 active:scale-[0.85] dark:shadow-none cursor-pointer rounded-full transition-[transform] duration-300 shadow-shadowOuter`}
+                onClick={() => {
+                  dispatch(setVolume());
+                }}
+              >
+                {getVolumeIcon()}
+              </button>
+            </div>
+          </div>
+          {/*Queue Container*/}
+          <div
+            className={`flex-1 overflow-y-auto hide-scrollbar p-1`}
+          >
+            {queue.map((track) => (
+              <QueueCard track={track} key={track?.id} />
+            ))}
+          </div>
+        </div>
+        <div
+          className={`absolute bottom-0 left-0 right-0 flex items-center gap-1.5 cursor-pointer p-2 bg-purple-100 dark:bg-slate-900 transition-[opacity,transform] duration-300 
+   ${isExpand ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"}
     `}
           onClick={() => {
             setIsExpand(true);
@@ -219,120 +327,6 @@ const Playbar = () => {
             {isPlaying ? <Pause size={24} /> : <Play size={24} />}
           </button>
         </div>
-      )}
-      {isExpand && (
-        <div
-          className={`bg-purple-100 dark:bg-slate-900 md:rounded-lg flex flex-col max-h-[100dvh] animate-slide-up transition-[max-height] overflow-hidden duration-300`}
-        >
-          <div className="flex flex-col">
-            {/*Header options*/}
-            <div
-              className={`flex items-center justify-between p-3 pb-0
-    overflow-hidden transition-[max-height,opacity] duration-300
-  `}
-            >
-              <button
-                className="rounded-full shadow-shadowInner dark:bg-white active:scale-[0.80] p-1.5 transition-[colors,transform] duration-300"
-                onClick={() => {
-                  dispatch(resetPlayer());
-                  toast.success("Playing Queue cleared...");
-                  setIsExpand(false);
-                }}
-              >
-                <ListXIcon size={22} />
-              </button>
-
-              <h1 className="font-bold dark:text-white text-sm">PLAYING NOW</h1>
-
-              <button
-                className="rounded-full shadow-shadowInner active:scale-[0.80] dark:bg-white p-1.5 transition-[colors,transform] duration-300"
-                onClick={() => setIsExpand(false)}
-              >
-                <X size={22} />
-              </button>
-            </div>
-            {/*Song metadata*/}
-            <div
-              className={`flex flex-col items-center gap-6 py-3 transition-[opacity,transform] duration-300`}
-              onClick={() => {
-                setIsExpand(true);
-              }}
-            >
-              <img
-                src={currentSong?.album?.cover_big}
-                alt={currentSong?.title}
-                className={`h-40 w-40 md:h-28 md:w-28 shadow-shadowOuterLarge dark:shadow-none border-4 transition-[width,shadow] duration-300 rounded-full`}
-              />
-              <div className={` text-center w-[95%]`}>
-                <p className={`text-base font-bold truncate dark:text-white`}>
-                  {currentSong?.title_short}
-                </p>
-                <p
-                  className={`text-xs font-bold dark:text-gray-400 text-black/60 truncate`}
-                >
-                  {currentSong?.artist?.name}
-                </p>
-              </div>
-            </div>
-            {/*Seekbar*/}
-            <div
-              className={`h-2 cursor-pointer will-change-[height] shadow-shadowInner w-full bg-white`}
-              onClick={handleSeek}
-              ref={seekBarRef}
-            >
-              <div
-                className={`h-2 transition-[width] duration-300 bg-gray-600 rounded-r-md`}
-                style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
-              />
-            </div>
-            {/* Controls */}
-            <div
-              className={`flex items-center shadow bg-white/30 dark:bg-slate-800 justify-center gap-3 md:gap-2 py-3 transition-[opacity] duration-300`}
-            >
-              <button
-                onClick={handleShuffleToggle}
-                className={`flex justify-center items-center h-10 w-10 md:h-8 md:w-8 text-white bg-gray-600 rounded-full transition-[shadow,transform] duration-300 active:scale-[0.85] shadow-shadowOuter dark:shadow-none`}
-              >
-                {isShuffle ? <Shuffle size={18} /> : <Repeat size={18} />}
-              </button>
-              <button
-                onClick={() => dispatch(playPrevious())}
-                className={`flex justify-center items-center p-3 lg:p-2 active:scale-[0.75] bg-white shadow-shadowInner rounded-full transition-[transform] duration-300`}
-              >
-                <SkipBack size={26} />
-              </button>
-              <button
-                onClick={togglePlay}
-                className={`flex items-center justify-center rounded-full w-16 h-16 md:w-14 md:h-14 bg-white shadow-shadowOuter dark:shadow-none active:scale-[0.80] transition-[shadow,transform] duration-300`}
-              >
-                {isPlaying ? <Pause size={30} /> : <Play size={30} />}
-              </button>
-              <button
-                onClick={() => dispatch(playNext())}
-                className={`flex justify-center items-center active:scale-[0.75] p-3 lg:p-2 bg-white shadow-shadowInner rounded-full transition-[transform] duration-300`}
-              >
-                <SkipForward size={26} />
-              </button>
-              <button
-                className={`flex justify-center items-center h-10 w-10 md:h-8 md:w-8 text-white bg-gray-600 active:scale-[0.85] dark:shadow-none cursor-pointer rounded-full transition-[shadow,transform] duration-300 shadow-shadowOuter`}
-                onClick={() => {
-                  dispatch(setVolume());
-                }}
-              >
-                {getVolumeIcon()}
-              </button>
-            </div>
-          </div>
-          {/*Queue Container*/}
-          <div
-            className={`overflow-y-auto max-h-[60dvh] md:max-h-[35dvh] transition-opacity duration-300 hide-scrollbar flex-1 min-h-0 p-1`}
-          >
-            {queue.map((track) => (
-              <QueueCard track={track} key={track?.id} />
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

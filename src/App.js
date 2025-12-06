@@ -68,7 +68,7 @@ function App() {
       </div>
       {queue.length > 0 && (
         <div
-          className={`absolute bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4`}
+          className={`absolute bottom-0 overflow-hidden md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4`}
         >
           <Suspense fallback={<EqualizerLoader />}>
             <Playbar />
