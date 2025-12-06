@@ -187,7 +187,7 @@ const Playbar = () => {
     >
       <audio ref={audioRef} preload="auto"/>
         <div
-          className={`bg-purple-100 dark:bg-slate-900 md:rounded-lg will-change: height transition-[height,opacity] duration-500 ${isExpand ? "h-[100dvh] md:h-[60dvh] opacity-100" : "h-0 opacity-0"} flex flex-col`}
+          className={`bg-purple-100 dark:bg-slate-900 md:rounded-lg will-change: height transition-[height,opacity] duration-300 ${isExpand ? "h-[100dvh] md:h-[60dvh] opacity-100" : "h-0 opacity-0"} flex flex-col`}
         >
           <div className="flex flex-col">
             {/*Header options*/}
