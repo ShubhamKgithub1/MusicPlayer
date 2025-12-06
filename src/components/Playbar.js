@@ -187,7 +187,7 @@ const Playbar = () => {
     >
       <audio ref={audioRef} preload="auto"/>
         <div
-          className={`bg-purple-100 dark:bg-slate-900 md:rounded-lg will-change: height transition-[height,opacity] duration-300 ${isExpand ? "h-[100dvh] md:h-[60dvh] opacity-100" : "h-0 opacity-0"} flex flex-col`}
+          className={`bg-purple-100 dark:bg-slate-900 md:rounded-lg will-change-[height] transition-[height,opacity] duration-300 ${isExpand ? "h-[100dvh] md:h-[60dvh] opacity-100" : "h-0 opacity-0"} flex flex-col`}
         >
           <div className="flex flex-col">
             {/*Header options*/}
@@ -208,7 +208,7 @@ const Playbar = () => {
               <h1 className="font-bold dark:text-white text-sm">PLAYING NOW</h1>
 
               <button
-                className="rounded-full shadow-shadowInner active:scale-[0.80] dark:bg-white p-1.5 transition-[colors,transform] duration-300"
+                className="rounded-full shadow-shadowInner dark:bg-white active:scale-[0.80] p-1.5 transition-[colors,transform] duration-300"
                 onClick={() => setIsExpand(false)}
               >
                 <X size={22} />
@@ -296,7 +296,7 @@ const Playbar = () => {
           </div>
         </div>
         <div
-          className={`absolute bottom-0 left-0 right-0 flex items-center gap-1.5 cursor-pointer p-2 bg-purple-100 dark:bg-slate-900 transition-[opacity,transform] duration-300 
+          className={`absolute bottom-0 left-0 right-0 flex items-center gap-1.5 cursor-pointer p-2 bg-purple-100 dark:bg-slate-900 transition-[opacity] duration-300 
    ${isExpand ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"}
     `}
           onClick={() => {
