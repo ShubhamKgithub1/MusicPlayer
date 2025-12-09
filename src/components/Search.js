@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getSearch } from "../services/deezerAPI";
 import SongTile from "./SongTile";
 import { useSelector } from "react-redux";
@@ -27,6 +27,8 @@ const Search = () => {
   const [loading, setLoading] = useState(false);
   const favorites = useSelector((state) => state.user.favorites);
 
+    const inputRef = useRef(null);
+
   const onSearch = async (searchTag) => {
     if (!searchTag) return;
 
@@ -42,6 +44,20 @@ const Search = () => {
     }
   };
 
+  useEffect(()=>{
+    const handleKeyDown=(e)=>{
+      if (e.key) {
+        inputRef.current.focus();
+      }
+    };
+
+    window.addEventListener("keydown",handleKeyDown);
+
+    return ()=>{
+      window.removeEventListener("keydown",handleKeyDown);
+    };
+  },[]);
+
   return (
     <div className="w-full h-full dark:bg-black/40 bg-white/5 lg:bg-white/20 backdrop-blur-lg lg:rounded-xl 2xl:rounded-2xl p-1 lg:p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">
       <div className="p-2">
@@ -49,6 +65,7 @@ const Search = () => {
           <input
             type="search"
             placeholder="Search songs..."
+            ref={inputRef}
             value={tag}
             className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1.5 lg:py-2 rounded-full bg-white/15 hover:bg-white/10 focus:bg-white/10 text-black/70 dark:text-white dark:placeholder-white/70 placeholder-black/60 shadow-inner focus:shadow-shadowInner dark:focus:shadow-inner dark:focus:shadow-black font-medium backdrop-blur outline-none transition-all duration-200"
             onChange={(e) => setTag(e.target.value)}

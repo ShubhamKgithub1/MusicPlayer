@@ -167,9 +167,9 @@ const Playbar = () => {
 
   const getVolumeIcon = () => {
     if (volume === false) {
-      return <VolumeX size={18} />;
+      return <VolumeX size={20} />;
     }
-    return <Volume2 size={18} />;
+    return <Volume2 size={20} />;
   };
 
   const handleShuffleToggle = () => {
@@ -185,6 +185,16 @@ const Playbar = () => {
       ref={playbarRef}
       className={`relative w-full z-50 min-h-[68px] animate-fade-in text-gray-600`}
     >
+            {/*Old queueCard--
+        
+                <div className="relative group flex items-center rounded-lg gap-3 p-2 hover:bg-purple-200 dark:bg-transparent hover:shadow-shadowInner dark:hover:shadow-none transition-all duration-200 cursor-pointer active:scale-95" onClick={()=>handleTrackClick(track?.id)}>
+            <div className="hidden dark:block md:block z-0 absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"></div>
+            <img src={track?.album?.cover_small} alt={track?.title} className="w-12 h-12 rounded-full"/>
+            <div className="flex flex-col truncate relative z-20">
+                <span className="text-sm font-bold dark:text-white truncate">{track?.title_short}</span>
+                <span className="text-xs font-semibold dark:text-gray-300 truncate">{track?.artist?.name}</span>
+            </div>
+        </div>*/}
       <audio ref={audioRef} preload="auto"/>
         <div
           className={`bg-purple-100 dark:bg-slate-900 md:rounded-lg will-change-[height] transition-[height,opacity] duration-300 ${isExpand ? "h-[100dvh] md:h-[60dvh] opacity-100" : "h-0 opacity-0"} flex flex-col`}
@@ -217,9 +227,6 @@ const Playbar = () => {
             {/*Song metadata*/}
             <div
               className={`flex flex-col items-center gap-6 py-3`}
-              onClick={() => {
-                setIsExpand(true);
-              }}
             >
               <img
                 src={currentSong?.album?.cover_big}
