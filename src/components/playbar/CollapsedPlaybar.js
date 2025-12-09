@@ -11,11 +11,11 @@ const CollapsedPlaybar = ({
 }) => {
   return (
     <div
-      className={`absolute bottom-0 left-0 right-0 h-[65px] flex items-center gap-1.5 cursor-pointer p-2 bg-purple-100 dark:bg-slate-950 transition-[opacity] duration-300 
+      className={`absolute bottom-0 left-0 right-0 h-[60px] flex items-center gap-1.5 cursor-pointer p-2 bg-slate-300 dark:bg-slate-950 transition-[translate,opacity] duration-200 
    ${
      isExpand
-       ? "opacity-0 pointer-events-none"
-       : "opacity-100 pointer-events-auto"
+       ? "opacity-0 -translate-y-full pointer-events-none"
+       : "opacity-100 translate-y-0 pointer-events-auto"
    }
     `}
       onClick={onExpand}

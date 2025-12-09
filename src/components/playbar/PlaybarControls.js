@@ -33,7 +33,7 @@ export default function PlaybarControls({
       </button>
       <button
         onClick={togglePlay}
-        className={`flex items-center justify-center rounded-full p-4 md:p-3 bg-white text-black/90 active:scale-[0.80] transition-transform duration-300`}
+        className={`flex items-center justify-center rounded-full p-4 md:p-3 bg-white text-black/80 active:scale-[0.80] transition-transform duration-300`}
       >
         {isPlaying ? <Pause size={30} /> : <Play size={30} />}
       </button>

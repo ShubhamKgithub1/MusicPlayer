@@ -183,11 +183,11 @@ const Playbar = () => {
   return (
     <div
       ref={playbarRef}
-      className={`relative w-full z-50 min-h-[65px] animate-fade-in text-gray-600`}
+      className={`relative w-full z-50 min-h-[60px] animate-fade-in text-gray-600`}
     >
       <audio ref={audioRef} preload="auto" />
       <div
-        className={`bg-slate-500 text-white md:rounded-lg overflow-hidden will-change-[height] transition-[height] duration-300 ${
+        className={`bg-slate-500 text-white md:rounded-lg overflow-hidden will-change-[height] transition-[height] duration-200 ${
           isExpand ? "h-[100dvh] md:h-[60dvh]" : "h-0"
         } flex flex-col`}
       >
