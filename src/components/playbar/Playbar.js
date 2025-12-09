@@ -187,7 +187,7 @@ const Playbar = () => {
     >
       <audio ref={audioRef} preload="auto" />
       <div
-        className={`bg-slate-500 text-white md:rounded-lg overflow-hidden will-change-[height] transition-[height] duration-200 ${
+        className={`bg-slate-400 text-white md:rounded-lg overflow-hidden will-change-[height] transition-[height] duration-200 ${
           isExpand ? "h-[100dvh] md:h-[60dvh]" : "h-0"
         } flex flex-col`}
       >
@@ -197,7 +197,7 @@ const Playbar = () => {
           isExpand={isExpand}
         />
         <div
-          className={`relative z-50 flex flex-col h-full bg-gradient-to-br from-black/60 via-black/40 to-black/10 transition-opacity duration-300 ${
+          className={`relative z-50 flex flex-col h-full bg-gradient-to-b from-black/65 via-black/45 to-black/15 transition-opacity duration-300 ${
             isExpand ? "opacity-100" : "opacity-0"
           }`}
         >
