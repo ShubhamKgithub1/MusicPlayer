@@ -187,7 +187,7 @@ const Playbar = () => {
     >
       <audio ref={audioRef} preload="auto" />
       <div
-        className={`text-white md:rounded-lg overflow-hidden will-change-[height] transition-[height] duration-300 ${
+        className={`bg-slate-500 text-white md:rounded-lg overflow-hidden will-change-[height] transition-[height] duration-300 ${
           isExpand ? "h-[100dvh] md:h-[60dvh]" : "h-0"
         } flex flex-col`}
       >

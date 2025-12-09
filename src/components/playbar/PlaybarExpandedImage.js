@@ -4,7 +4,7 @@ export default function PlaybarExpandedImage({ src, alt, isExpand }) {
       <img
         src={src}
         alt={alt}
-        className={`w-full h-full blur-sm object-cover transition-opacity duration-300 ${
+        className={`w-full h-full blur object-cover transition-opacity duration-300 ${
           isExpand ? "opacity-100" : "opacity-0"
         }`}
       />
