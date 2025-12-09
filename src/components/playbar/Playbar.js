@@ -205,7 +205,7 @@ const Playbar = () => {
             onClose={() => setIsExpand(false)}
             onClearQueue={handleClearQueue}
           />
-          <div className=" h-[65%] w-[80%] mx-auto flex flex-col justify-end items-center gap-10">
+          <div className=" h-[65%] w-[80%] mx-auto flex flex-col justify-end items-center gap-8">
             {/*Current Song info*/}
             <PlaybarSongInfo
               title={currentSong?.title_short}
