@@ -11,10 +11,10 @@ const CollapsedPlaybar = ({
 }) => {
   return (
     <div
-      className={`absolute bottom-0 left-0 right-0 h-[60px] flex items-center gap-1.5 cursor-pointer p-2 bg-slate-300 dark:bg-slate-950 transition-[translate,opacity] duration-200 
+      className={`fixed bottom-0 md:bottom-2 lg:bottom-4 md:left-2 lg:left-4 z-50 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] h-[60px] flex items-center gap-1.5 cursor-pointer p-2 bg-slate-300 dark:bg-slate-950 transition-[transform,opacity] duration-300 
    ${
      isExpand
-       ? "opacity-0 -translate-y-full pointer-events-none"
+       ? "opacity-0 translate-y-full pointer-events-none"
        : "opacity-100 translate-y-0 pointer-events-auto"
    }
     `}

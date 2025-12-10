@@ -148,7 +148,7 @@ const Playbar = () => {
     };
   }, [currentSongIndex, queue, dispatch]);
 
-  useEffect((e) => {
+  useEffect(() => {
     const handleClickOutside = (e) => {
       if (playbarRef.current && !playbarRef.current.contains(e.target)) {
         setIsExpand(false);
@@ -181,14 +181,13 @@ const Playbar = () => {
   }
 
   return (
-    <div
-      ref={playbarRef}
-      className={`relative w-full z-50 min-h-[60px] animate-fade-in text-gray-600`}
-    >
-      <audio ref={audioRef} preload="auto"/>
+    <div ref={playbarRef} className={`relative text-gray-600 overflow-hidden`}>
+      <audio ref={audioRef} preload="auto" />
       <div
-        className={`bg-slate-400 text-white md:rounded-lg overflow-hidden will-change-[height] transition-[height] duration-300 ${
-          isExpand ? "h-[100dvh] md:h-[60dvh]" : "h-0"
+        className={`fixed bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4 z-50 bg-slate-400 text-white md:rounded-lg overflow-hidden transition-[transform,opacity] duration-300 h-[100dvh] md:h-[60dvh] ${
+          isExpand
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-full"
         } flex flex-col`}
       >
         <PlaybarExpandedImage
