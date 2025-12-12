@@ -1,4 +1,5 @@
 import { Pause, Play } from "lucide-react";
+import React from "react";
 
 const CollapsedPlaybar = ({
   src,
@@ -47,4 +48,5 @@ const CollapsedPlaybar = ({
   );
 };
 
-export default CollapsedPlaybar;
+export default React.memo(CollapsedPlaybar);
+

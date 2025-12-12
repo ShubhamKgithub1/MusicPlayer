@@ -6,8 +6,9 @@ import {
   Shuffle,
   Repeat,
 } from "lucide-react";
+import React from "react";
 
-export default function PlaybarControls({
+function PlaybarControls({
   isPlaying,
   togglePlay,
   playNext,
@@ -51,4 +52,7 @@ export default function PlaybarControls({
       </button>
     </div>
   );
-}
+};
+
+export default React.memo(PlaybarControls);
+

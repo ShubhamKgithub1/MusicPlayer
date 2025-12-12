@@ -1,6 +1,7 @@
+import React from "react";
 import QueueCard from "../QueueCard";
 
-export default function PlaybarQueue({ queue }) {
+function PlaybarQueue({ queue }) {
   return (
     <div className="flex-1 overflow-y-auto hide-scrollbar p-1">
       {queue.map(track => (
@@ -8,4 +9,7 @@ export default function PlaybarQueue({ queue }) {
       ))}
     </div>
   );
-}
+};
+
+export default React.memo(PlaybarQueue);
+

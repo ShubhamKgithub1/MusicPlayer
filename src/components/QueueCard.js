@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { setCurrentSongIndex, setCurrentSong,playPause } from "../reduxStore/playerSlice";
 import { useSelector } from "react-redux";
+import React from "react";
 
 const QueueCard = ({track})=>{
     const dispatch = useDispatch();
@@ -27,4 +28,4 @@ const handleTrackClick =(trackId) => {
     );
 };
 
-export default QueueCard;
+export default React.memo(QueueCard);

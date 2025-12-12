@@ -1,6 +1,7 @@
+import React from "react";
 import { ListXIcon, X } from "lucide-react";
 
-export default function PlaybarHeader({ onClose, onClearQueue }) {
+function PlaybarHeader({ onClose, onClearQueue }) {
   return (
     <div className="sticky top-0 flex w-full items-center justify-between p-3">
       <button onClick={onClearQueue} className="active:scale-90 transition">
@@ -15,3 +16,5 @@ export default function PlaybarHeader({ onClose, onClearQueue }) {
     </div>
   );
 }
+
+export default React.memo(PlaybarHeader);

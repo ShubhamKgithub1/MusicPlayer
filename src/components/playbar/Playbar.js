@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -7,8 +7,8 @@ import {
   playPause,
   playPrevious,
   resetPlayer,
-  setVolume,
   toggleShuffle,
+  toggleVolume,
 } from "../../reduxStore/playerSlice";
 import { addRecentlyPlayed } from "../../services/userService";
 import { getAuth } from "firebase/auth";
@@ -29,14 +29,17 @@ const Playbar = () => {
   const currentSongIndex = useSelector(
     (state) => state.player.currentSongIndex
   );
-  const currentSong = queue[currentSongIndex];
+  const currentSong = useMemo(() => {
+    return queue[currentSongIndex];
+  }, [queue, currentSongIndex]);
+
   const isPlaying = useSelector((state) => state.player.isPlaying);
   const isShuffle = useSelector((state) => state.player.isShuffle);
   const recentSongs = useSelector((state) => state.user.recentlyPlayed);
+  const volume = useSelector((state) => state.player.volume);
 
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const volume = useSelector((state) => state.player.volume);
   const [isExpand, setIsExpand] = useState(false);
 
   const audioRef = useRef(null);
@@ -44,38 +47,68 @@ const Playbar = () => {
   const lastAddedRef = useRef(null);
   const playbarRef = useRef(null);
 
-  const handleSeek = (e) => {
-    const seekBar = seekBarRef.current;
-    if (!seekBar || !audioRef.current || !duration) return;
+  const togglePlay = useCallback(
+    (e) => {
+      e.stopPropagation();
+      const audio = audioRef.current;
+      if (!audio) return;
 
-    const rect = seekBar.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const width = rect.width;
+      if (isPlaying) {
+        audio.pause();
+        dispatch(playPause(false));
+      } else {
+        audio.play();
+        dispatch(playPause(true));
+      }
+    },
+    [isPlaying, dispatch]
+  );
 
-    const newTime = (clickX / width) * duration;
-    audioRef.current.currentTime = newTime;
-    setCurrentTime(newTime);
-  };
+  const handleSeek = useCallback(
+    (e) => {
+      const seekBar = seekBarRef.current;
+      if (!seekBar || !audioRef.current || !duration) return;
 
-  const togglePlay = (e) => {
-    e.stopPropagation();
-    const audio = audioRef.current;
-    if (!audio) return;
+      const rect = seekBar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
 
-    if (isPlaying) {
-      audio.pause();
-      dispatch(playPause(false));
-    } else {
-      audio.play();
-      dispatch(playPause(true));
-    }
-  };
+      const newTime = (clickX / width) * duration;
+      audioRef.current.currentTime = newTime;
+      setCurrentTime(newTime);
+    },
+    [duration]
+  );
 
-  const handleClearQueue = () => {
+  const handleClearQueue = useCallback(() => {
     dispatch(resetPlayer());
     toast.success("Playing Queue cleared...");
     setIsExpand(false);
-  };
+  }, [dispatch]);
+
+  const handleShuffleToggle = useCallback(() => {
+    dispatch(toggleShuffle());
+  }, [dispatch]);
+
+  const handleVolumeToggle = useCallback(() => {
+  dispatch(toggleVolume());
+}, [dispatch]);
+
+  const handleCollapse = useCallback(() => {
+    setIsExpand(false);
+  }, []);
+
+  const handleExpand = useCallback(() => {
+    setIsExpand(true);
+  }, []);
+
+  const handleNext = useCallback(() => {
+    dispatch(playNext());
+  }, [dispatch]);
+
+  const handlePrev = useCallback(() => {
+    dispatch(playPrevious());
+  }, [dispatch]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -165,16 +198,10 @@ const Playbar = () => {
     }
   }, [volume]);
 
-  const getVolumeIcon = () => {
-    if (volume === false) {
-      return <VolumeX size={20} />;
-    }
+  const volumeIcon = useMemo(() => {
+    if (volume === false) return <VolumeX size={20} />;
     return <Volume2 size={20} />;
-  };
-
-  const handleShuffleToggle = () => {
-    dispatch(toggleShuffle());
-  };
+  }, [volume]);
 
   if (!currentSong) {
     return null;
@@ -185,9 +212,7 @@ const Playbar = () => {
       <audio ref={audioRef} preload="auto" />
       <div
         className={`fixed bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4 z-50 bg-slate-400 text-white md:rounded-lg overflow-hidden transition-[transform,opacity] duration-300 h-[100dvh] md:h-[60dvh] ${
-          isExpand
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-full"
+          isExpand ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"
         } flex flex-col`}
       >
         <PlaybarExpandedImage
@@ -201,7 +226,7 @@ const Playbar = () => {
           }`}
         >
           <PlaybarHeader
-            onClose={() => setIsExpand(false)}
+            onClose={handleCollapse}
             onClearQueue={handleClearQueue}
           />
           <div className=" h-[65%] w-[80%] mx-auto flex flex-col justify-end items-center gap-8">
@@ -227,14 +252,12 @@ const Playbar = () => {
               <PlaybarControls
                 isPlaying={isPlaying}
                 togglePlay={togglePlay}
-                playNext={() => dispatch(playNext())}
-                playPrev={() => dispatch(playPrevious())}
+                playNext={handleNext}
+                playPrev={handlePrev}
                 isShuffle={isShuffle}
                 toggleShuffle={handleShuffleToggle}
-                toggleVolume={() => {
-                  dispatch(setVolume());
-                }}
-                volumeIcon={getVolumeIcon()}
+                toggleVolume={handleVolumeToggle}
+                volumeIcon={volumeIcon}
               />
             </div>
           </div>
@@ -246,7 +269,7 @@ const Playbar = () => {
         src={currentSong?.album?.cover_small}
         title={currentSong?.title_short}
         artist={currentSong?.artist?.name}
-        onExpand={() => setIsExpand(true)}
+        onExpand={handleExpand}
         currentSong={currentSong}
         togglePlay={togglePlay}
         isPlaying={isPlaying}

@@ -1,4 +1,6 @@
-export default function PlaybarExpandedImage({ src, alt, isExpand }) {
+import React from "react";
+
+function PlaybarExpandedImage({ src, alt, isExpand }) {
   return (
     <div className="absolute inset-0 overflow-hidden md:rounded-lg">
       <img
@@ -10,4 +12,6 @@ export default function PlaybarExpandedImage({ src, alt, isExpand }) {
       />
     </div>
   );
-}
+};
+
+export default React.memo(PlaybarExpandedImage);

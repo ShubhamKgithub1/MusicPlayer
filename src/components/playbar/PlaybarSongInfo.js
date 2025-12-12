@@ -1,4 +1,6 @@
-export default function PlaybarSongInfo({ title, artist }) {
+import React from "react";
+
+function PlaybarSongInfo({ title, artist }) {
   return (
     <div className="flex flex-col w-full text-center gap-3 md:gap-2">
       <p className="text-4xl md:text-2xl font-bold truncate text-white drop-shadow">
@@ -9,4 +11,6 @@ export default function PlaybarSongInfo({ title, artist }) {
       </p>
     </div>
   );
-}
+};
+
+export default React.memo(PlaybarSongInfo);
