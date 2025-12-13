@@ -208,7 +208,7 @@ const Playbar = () => {
   }
 
   return (
-    <div ref={playbarRef} className={`relative text-gray-600 overflow-hidden`}>
+    <div ref={playbarRef} className={`absolute bottom-0 md:bottom-2 lg:bottom-4 text-gray-600 overflow-hidden`}>
       <audio ref={audioRef} preload="auto" />
       <div
         className={`fixed bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4 z-50 bg-slate-400 dark:bg-slate-600 text-white md:rounded-lg overflow-hidden transition-[transform,opacity] duration-300 h-[100dvh] md:h-[60dvh] ${

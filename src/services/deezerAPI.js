@@ -9,7 +9,6 @@ const options = {
   },
 };
 
-// Example: Get top tracks
 export const getPopular = async () => {
   try {
     const res = await fetch(
@@ -24,11 +23,10 @@ export const getPopular = async () => {
   }
 };
 
-
-export const getHits = async () => {
+export const getTrending = async () => {
   try {
     const res = await fetch(
-      "https://deezerdevs-deezer.p.rapidapi.com/search?q=shahrukh-khan-hits",
+      "https://deezerdevs-deezer.p.rapidapi.com/search?q=arijit-singh",
       options
     );
     const data = await res.json();

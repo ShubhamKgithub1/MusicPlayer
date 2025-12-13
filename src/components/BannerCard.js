@@ -1,14 +1,12 @@
 import { useDispatch } from "react-redux";
 import { playPause, setQueue } from "../reduxStore/playerSlice";
 import { Play } from "lucide-react";
-const BannerCard = ({ topTracks }) => {
+const BannerCard = ({ track }) => {
   const dispatch = useDispatch();
   const handlePlay = () => {
-    dispatch(setQueue(topTracks));
+    dispatch(setQueue(track));
     dispatch(playPause(true));
   };
-
-  const track = topTracks[0];
   if (!track) return null;
   return (
     <div className="w-full h-[240px] md:h-[40%] flex relative rounded-lg lg:rounded-xl overflow-hidden ">

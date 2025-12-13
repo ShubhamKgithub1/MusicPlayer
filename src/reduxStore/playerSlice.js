@@ -5,7 +5,7 @@ const initialState = {
   isPlaying: false,
   queue: [],
   currentSongIndex: 0,
-  isShuffle: true,
+  isShuffle: false,
   volume: true,
 };
 

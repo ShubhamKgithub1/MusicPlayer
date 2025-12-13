@@ -59,7 +59,7 @@ const Search = () => {
   },[]);
 
   return (
-    <div className="w-full h-full dark:bg-black/40 bg-white/5 lg:bg-white/20 backdrop-blur-lg lg:rounded-xl 2xl:rounded-2xl p-1 lg:p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">
+    <div className="w-full h-full md:dark:bg-black/30 bg-white/5 lg:bg-white/20 backdrop-blur-lg lg:rounded-xl 2xl:rounded-2xl p-1 lg:p-4 flex flex-col animate-fade-in lg:border lg:border-white/10 ">
       <div className="p-2">
         <div className="flex items-center gap-2 xl:gap-4">
           <input

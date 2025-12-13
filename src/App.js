@@ -13,7 +13,6 @@ import { lazy, Suspense, useEffect } from "react";
 import MobileNavbar from "./components/MobileNavbar";
 import SidebarDrawer from "./components/SidebarDrawer";
 import useIsSmallDevice from "./hooks/useIsSmallDevice";
-import EqualizerLoader from "./components/EqualizerLoader";
 const Playbar = lazy(() => import("./components/playbar/Playbar"));
 const AddToPlaylistModal = lazy(() =>
   import("./components/AddToPlaylistModal")
@@ -67,9 +66,7 @@ function App() {
         </div>
       </div>
       {queue.length > 0 && (
-          <Suspense fallback={<EqualizerLoader />}>
-            <Playbar />
-          </Suspense>
+            <Playbar/>
       )}
       <Suspense>
         <AddToPlaylistModal

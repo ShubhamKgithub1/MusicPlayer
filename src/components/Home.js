@@ -9,6 +9,7 @@ const Home = () => {
   const isLoaded = useSelector((state) => state.api.loaded);
   const popular = useSelector((state) => state.api.mostPopular);
   const hits = useSelector((state) => state.api.hits);
+  const topTracks = useSelector((state) => state.api.topTracks);
 
   if (!isLoaded) {
     return (
@@ -19,10 +20,10 @@ const Home = () => {
   return (
     <div className="flex flex-col md:flex-row md:h-full md:gap-3 xl:gap-4 w-full overflow-y-auto backdrop-blur-xl md:backdrop-blur-none md:p-1 lg:p-0 transition-all duration-200 text-white">
       <div className="flex flex-col md:w-[40%] p-2 md:p-3 xl:p-4 md:border md:border-white/10 md:bg-white/20 md:dark:bg-black/30 backdrop-blur-xl rounded-md md:rounded-xl animate-fade-in">
-        <BannerCard topTracks={hits}/>
+        <BannerCard track={hits[0]}/>
         <div className="flex-1 min-h-0 w-full flex flex-col">
           <h1 className="font-bold text-lg md:text-xl 2xl:text-2xl py-4 px-2 text-glow">
-            {hits[0]?.artist?.name} Songs
+            Trending Now
           </h1>
           <div className="flex flex-col gap-1 overflow-auto hide-scrollbar w-full relative z-0">
             {hits.map((track) => (
@@ -36,10 +37,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="md:flex-1 md:overflow-hidden md:gap-4 h-full w-full flex flex-col transition-all duration-200">
-        <div className="px-2 md:px-0"><HorizontalScroller data={popular} favorites={favorites}/></div>
-        <div className="md:overflow-hidden flex flex-col md:flex-row md:gap-3 xl:gap-4 flex-1">
-          <div className="md:w-1/2 flex flex-col backdrop-blur-xl md:dark:bg-black/30 md:border md:border-white/10 p-2 md:bg-white/20 md:rounded-xl hide-scrollbar animate-fade-in">
+      <div className="md:flex-1 md:overflow-hidden backdrop-blur-xl md:dark:bg-black/30 md:border md:border-white/10 p-2 md:bg-white/20 md:rounded-xl h-full w-full flex flex-col transition-all duration-200">
+        <div className=""><HorizontalScroller data={topTracks} favorites={favorites} cardSize={"flex-[0_0_25%] md:flex-[0_0_20%]"}/></div>
+        <div className="md:overflow-hidden flex flex-col md:flex-row gap-2 flex-1">
+          <div className="md:w-1/2 flex flex-col overflow-scroll hide-scrollbar animate-fade-in">
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">Most Popular</h1>
             <div className="flex flex-col md:h-auto w-full gap-1 overflow-auto hide-scrollbar relative z-0">
               {popular.map((track) => (
@@ -52,7 +53,7 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <div className="md:flex-1 md:min-w-0 flex flex-col md:dark:bg-black/30 backdrop-blur-xl p-2 md:bg-white/20 md:rounded-xl animate-fade-in overflow-hidden md:border md:border-white/10">
+           <div className="md:flex-1 md:min-w-0 flex flex-col animate-fade-in overflow-hidden">
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">Weekly Hits</h1>
             <div className="flex flex-col w-full gap-1 md:h-auto overflow-auto hide-scrollbar relative z-0">
               {hits.map((track) => (

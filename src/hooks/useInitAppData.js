@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getHits, getPopular, getSearch } from "../services/deezerAPI";
+import { getTrending, getPopular, getSearch } from "../services/deezerAPI";
 import { setData } from "../reduxStore/apiSlice";
 
 const useInitAppData = () => {
@@ -8,16 +8,16 @@ const useInitAppData = () => {
   const loaded = useSelector((state) => state.api.loaded);
 
   useEffect(() => {
-    if (loaded) return; // Already fetched
+    if (loaded) return;
 
     const FetchData = async () => {
       try {
         const [topTracks, trendingTracks, newReleases, mostPopular, hits] = await Promise.all([
-          getSearch("Top Genres").catch(() => []),
-          getSearch("Trending Now").catch(() => []),
-          getSearch("New Releases").catch(() => []),
+          getSearch("Atif Aslam Sad").catch(() => []),
+          getSearch("Vishal Mishra").catch(() => []),
+          getSearch("Bollywood Lo-Fi").catch(() => []),
           getPopular().catch(() => []),
-          getHits().catch(() => []),
+          getTrending().catch(() => []),
         ]);
 
         dispatch(setData({ topTracks, trendingTracks, newReleases, mostPopular, hits }));

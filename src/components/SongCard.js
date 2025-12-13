@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { openAddToPlaylistModal } from "../reduxStore/modalSlice";
 
-const SongCard = ({ track, onPlay, isFavorite }) => {
+const SongCard = ({ track, onPlay, isFavorite, flex }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const user = useSelector((state) => state.user.userInfo);
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const SongCard = ({ track, onPlay, isFavorite }) => {
   return (
     <div
       key={track?.id}
-      className="flex-[0_0_35%] sm:flex-[0_0_25%] md:flex-[0_0_20%] xl:flex-[0_0_14%] relative group snap-start rounded-lg shadow-md cursor-pointer animate-fade-in aspect-square"
+      className={`${flex || " flex-[0_0_35%] sm:flex-[0_0_25%] md:flex-[0_0_20%] xl:flex-[0_0_14%] "} relative group snap-start rounded-lg shadow-md cursor-pointer animate-fade-in aspect-square`}
       onClick={() => onPlay(track)}
     >
       <div className="relative w-full h-full rounded-lg overflow-hidden">

@@ -8,7 +8,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import SongCard from "./SongCard";
 
-const HorizontalScroller = ({ data, favorites }) => {
+const HorizontalScroller = ({ data, favorites, cardSize }) => {
   const scrollContainerRef = useRef(null);
   const dispatch = useDispatch();
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -77,7 +77,7 @@ const HorizontalScroller = ({ data, favorites }) => {
         className="w-full py-2 lg:py-4 flex overflow-x-scroll flex-shrink-0 gap-3 lg:gap-4 hide-scrollbar snap-x snap-mandatory scroll-smooth"
       >
         {data.map((track) => (
-          <SongCard key={track?.id} track={track} onPlay={handlePlay} isFavorite={favorites?.some((fav)=> fav.id === track.id)}/>
+          <SongCard key={track?.id} track={track} onPlay={handlePlay} isFavorite={favorites?.some((fav)=> fav.id === track.id)} flex={cardSize}/>
         ))}
       </div>
     </div>
