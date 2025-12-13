@@ -13,7 +13,7 @@ const useInitAppData = () => {
     const FetchData = async () => {
       try {
         const [topTracks, trendingTracks, newReleases, mostPopular, hits] = await Promise.all([
-          getSearch("Atif Aslam Sad").catch(() => []),
+          getSearch("Atif Aslam").catch(() => []),
           getSearch("Vishal Mishra").catch(() => []),
           getSearch("Bollywood Lo-Fi").catch(() => []),
           getPopular().catch(() => []),

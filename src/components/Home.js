@@ -38,7 +38,7 @@ const Home = () => {
         </div>
       </div>
       <div className="md:flex-1 md:overflow-hidden backdrop-blur-xl md:dark:bg-black/30 md:border md:border-white/10 p-2 md:bg-white/20 md:rounded-xl h-full w-full flex flex-col transition-all duration-200">
-        <div className=""><HorizontalScroller data={topTracks} favorites={favorites} cardSize={"flex-[0_0_25%] md:flex-[0_0_20%]"}/></div>
+        <div className=""><HorizontalScroller data={topTracks} favorites={favorites} cardSize={"flex-[0_0_35%] md:flex-[0_0_20%]"}/></div>
         <div className="md:overflow-hidden flex flex-col md:flex-row gap-2 flex-1">
           <div className="md:w-1/2 flex flex-col overflow-scroll hide-scrollbar animate-fade-in">
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">Most Popular</h1>
