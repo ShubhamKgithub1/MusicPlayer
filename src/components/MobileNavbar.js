@@ -2,6 +2,7 @@ import { Menu, MoonIcon, SunDim } from "lucide-react";
 import { openDrawer } from "../reduxStore/uiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../reduxStore/themeSlice";
+import React from "react";
 
 const MobileNavbar = () => {
   const dispatch = useDispatch();
@@ -26,4 +27,4 @@ const MobileNavbar = () => {
   );
 };
 
-export default MobileNavbar;
+export default React.memo(MobileNavbar);

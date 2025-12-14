@@ -43,7 +43,7 @@ function App() {
   return (
     <div
       className={`h-[100dvh] flex flex-col md:flex-row relative lg:p-4 md:gap-4 select-none bg-cover bg-center bg-no-repeat md:overflow-hidden transition-all duration-300`}
-       style={{
+      style={{
         backgroundImage: `url(${themeMode === "dark" ? bgDark : bgLight})`,
       }}
     >
@@ -54,20 +54,14 @@ function App() {
           queue.length > 0 ? " h-[92dvh] " : " h-[100dvh] "
         }  md:h-auto md:flex-1 flex flex-col md:min-h-0 md:min-w-0`}
       >
-        {isSmallDevice ? (
-          <MobileNavbar />
-        ) : (
-            <Navbar />
-        )}
+        {isSmallDevice ? <MobileNavbar /> : <Navbar />}
         <div
           className={`flex-1 lg:pt-3 xl:pt-4 min-h-0 overflow-auto hide-scrollbar`}
         >
           <Outlet />
         </div>
       </div>
-      {queue.length > 0 && (
-            <Playbar/>
-      )}
+      {queue.length > 0 && <Playbar />}
       <Suspense>
         <AddToPlaylistModal
           isOpen={isAddToPlaylistOpen}
@@ -77,7 +71,7 @@ function App() {
         />
       </Suspense>
       <Suspense>
-         <CreatePlaylistModal userId={userId} />
+        <CreatePlaylistModal userId={userId} />
       </Suspense>
     </div>
   );

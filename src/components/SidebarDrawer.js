@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeDrawer } from "../reduxStore/uiSlice";
 import { NavLink } from "react-router-dom";
 import RecentlyPlayed from "./RecentlyPlayed";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 const SidebarDrawer = ({ user }) => {
   const { login, logout } = useAuth();
@@ -147,4 +147,4 @@ const SidebarDrawer = ({ user }) => {
   );
 };
 
-export default SidebarDrawer;
+export default React.memo(SidebarDrawer);

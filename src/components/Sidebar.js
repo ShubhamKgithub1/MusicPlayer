@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import RecentlyPlayed from "./RecentlyPlayed";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import React from "react";
 
 const Sidebar = () => {
   const { login, logout } = useAuth();
@@ -79,4 +80,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default React.memo(Sidebar);

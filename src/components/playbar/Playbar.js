@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useCallback, useMemo } from "react";
+import React, { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -283,4 +283,4 @@ const Playbar = () => {
   );
 };
 
-export default Playbar;
+export default React.memo(Playbar);
