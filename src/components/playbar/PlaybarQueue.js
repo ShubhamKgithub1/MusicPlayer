@@ -17,7 +17,7 @@ function PlaybarQueue({ queue }) {
     [queue, dispatch]
   );
   return (
-    <div className="flex-1 overflow-y-auto hide-scrollbar p-1">
+    <div className="flex-1 overflow-y-scroll hide-scrollbar p-1">
       {queue.map((track) => (
         <QueueCard key={track.id} track={track} onSelect={handleTrackClick} />
       ))}

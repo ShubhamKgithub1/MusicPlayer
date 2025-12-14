@@ -91,8 +91,8 @@ const Playbar = () => {
   }, [dispatch]);
 
   const handleVolumeToggle = useCallback(() => {
-  dispatch(toggleVolume());
-}, [dispatch]);
+    dispatch(toggleVolume());
+  }, [dispatch]);
 
   const handleCollapse = useCallback(() => {
     setIsExpand(false);
@@ -208,7 +208,10 @@ const Playbar = () => {
   }
 
   return (
-    <div ref={playbarRef} className={`absolute bottom-0 md:bottom-2 lg:bottom-4 text-gray-600 overflow-hidden`}>
+    <div
+      ref={playbarRef}
+      className={`absolute bottom-0 md:bottom-2 lg:bottom-4 text-gray-600 overflow-hidden`}
+    >
       <audio ref={audioRef} preload="auto" />
       <div
         className={`fixed bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4 z-50 bg-slate-400 dark:bg-slate-600 text-white md:rounded-lg overflow-hidden transition-[transform,opacity] duration-300 h-[100dvh] md:h-[60dvh] ${
@@ -221,7 +224,7 @@ const Playbar = () => {
           isExpand={isExpand}
         />
         <div
-          className={`relative z-50 flex flex-col h-full bg-gradient-to-br from-black/60 via-black/40 to-black/10 transition-opacity duration-300 ${
+          className={`relative z-50 flex flex-col h-full transition-opacity duration-300 ${
             isExpand ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -229,39 +232,41 @@ const Playbar = () => {
             onClose={handleCollapse}
             onClearQueue={handleClearQueue}
           />
-          <div className=" h-[65%] w-[80%] mx-auto flex flex-col justify-end items-center gap-8">
-            {/*Current Song info*/}
-            <PlaybarSongInfo
-              title={currentSong?.title_short}
-              artist={currentSong?.artist?.name}
-            />
-            <div className="flex flex-col items-center">
-              {/*Seekbar*/}
-              <div
-                className={`relative w-full cursor-pointer h-[2.5px] bg-white`}
-                onClick={handleSeek}
-                ref={seekBarRef}
-              >
+          <div className="flex flex-col h-full  bg-gradient-to-t from-black via-black/60 to-black/20">
+            <div className=" h-[70%] flex flex-col justify-end items-center gap-6">
+              {/*Current Song info*/}
+              <PlaybarSongInfo
+                title={currentSong?.title_short}
+                artist={currentSong?.artist?.name}
+              />
+              <div className="flex flex-col items-center">
+                {/*Seekbar*/}
                 <div
-                  className={`absolute top-1/2 -translate-y-1/2 h-3 w-3 transition-all duration-300 bg-white rounded-full`}
-                  style={{
-                    left: `${(currentTime / duration) * 100}%`,
-                  }}
+                  className={`relative w-full cursor-pointer h-[2.5px] bg-white`}
+                  onClick={handleSeek}
+                  ref={seekBarRef}
+                >
+                  <div
+                    className={`absolute top-1/2 -translate-y-1/2 h-3 w-3 transition-all duration-300 bg-white rounded-full`}
+                    style={{
+                      left: `${(currentTime / duration) * 100}%`,
+                    }}
+                  />
+                </div>
+                <PlaybarControls
+                  isPlaying={isPlaying}
+                  togglePlay={togglePlay}
+                  playNext={handleNext}
+                  playPrev={handlePrev}
+                  isShuffle={isShuffle}
+                  toggleShuffle={handleShuffleToggle}
+                  toggleVolume={handleVolumeToggle}
+                  volumeIcon={volumeIcon}
                 />
               </div>
-              <PlaybarControls
-                isPlaying={isPlaying}
-                togglePlay={togglePlay}
-                playNext={handleNext}
-                playPrev={handlePrev}
-                isShuffle={isShuffle}
-                toggleShuffle={handleShuffleToggle}
-                toggleVolume={handleVolumeToggle}
-                volumeIcon={volumeIcon}
-              />
             </div>
+            <PlaybarQueue queue={queue} />
           </div>
-          <PlaybarQueue queue={queue} />
         </div>
       </div>
       <CollapsedPlaybar

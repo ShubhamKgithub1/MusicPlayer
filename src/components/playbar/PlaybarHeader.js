@@ -3,7 +3,7 @@ import { ListXIcon, X } from "lucide-react";
 
 function PlaybarHeader({ onClose, onClearQueue }) {
   return (
-    <div className="sticky top-0 flex w-full items-center justify-between p-3">
+    <div className="absolute top-0 flex w-full items-center justify-between p-3">
       <button onClick={onClearQueue} className="active:scale-90 transition">
         <ListXIcon size={22} />
       </button>

@@ -23,10 +23,10 @@ export const getPopular = async () => {
   }
 };
 
-export const getTrending = async () => {
+export const getHits = async () => {
   try {
     const res = await fetch(
-      "https://deezerdevs-deezer.p.rapidapi.com/search?q=arijit-singh",
+      "https://deezerdevs-deezer.p.rapidapi.com/search?q=vishal-mishra",
       options
     );
     const data = await res.json();

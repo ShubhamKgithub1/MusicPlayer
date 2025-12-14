@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrending, getPopular, getSearch } from "../services/deezerAPI";
+import { getHits, getPopular, getSearch } from "../services/deezerAPI";
 import { setData } from "../reduxStore/apiSlice";
 
 const useInitAppData = () => {
@@ -14,10 +14,10 @@ const useInitAppData = () => {
       try {
         const [topTracks, trendingTracks, newReleases, mostPopular, hits] = await Promise.all([
           getSearch("Atif Aslam").catch(() => []),
-          getSearch("Vishal Mishra").catch(() => []),
+          getSearch("Arijit Singh").catch(() => []),
           getSearch("Bollywood Lo-Fi").catch(() => []),
           getPopular().catch(() => []),
-          getTrending().catch(() => []),
+          getHits().catch(() => []),
         ]);
 
         dispatch(setData({ topTracks, trendingTracks, newReleases, mostPopular, hits }));

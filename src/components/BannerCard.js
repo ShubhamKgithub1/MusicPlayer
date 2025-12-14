@@ -1,12 +1,6 @@
-import { useDispatch } from "react-redux";
-import { playPause, setQueue } from "../reduxStore/playerSlice";
 import { Play } from "lucide-react";
-const BannerCard = ({ track }) => {
-  const dispatch = useDispatch();
-  const handlePlay = () => {
-    dispatch(setQueue(track));
-    dispatch(playPause(true));
-  };
+import React from "react";
+const BannerCard = ({ track, handleClick }) => {
   if (!track) return null;
   return (
     <div className="w-full h-[240px] md:h-[40%] flex relative rounded-lg lg:rounded-xl overflow-hidden ">
@@ -24,7 +18,7 @@ const BannerCard = ({ track }) => {
         </div>
         <button
           className="p-3 lg:p-4 bg-white rounded-full hover:bg-white/80 text-black transition-all duration-200 active:scale-90"
-          onClick={() => handlePlay()}
+          onClick={handleClick}
         >
           <Play size={20} />
         </button>
@@ -33,4 +27,4 @@ const BannerCard = ({ track }) => {
   );
 };
 
-export default BannerCard;
+export default React.memo(BannerCard);

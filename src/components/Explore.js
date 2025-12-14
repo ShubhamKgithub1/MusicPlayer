@@ -5,14 +5,18 @@ import FallbackLoader from "./FallbackLoader";
 const Explore = () => {
   const topTracks = useSelector((state) => state.api.topTracks);
   const trendingTracks = useSelector((state) => state.api.trendingTracks);
+  const hits = useSelector((state) => state.api.hits);
   const newReleases = useSelector((state) => state.api.newReleases);
   const isLoaded = useSelector((state) => state.api.loaded);
   const favorites = useSelector((state) => state.user.favorites);
+  const popular = useSelector((state) => state.api.mostPopular);
 
   const sections = [
     { title: "Trending Now", data: trendingTracks },
     { title: "Top Tracks", data: topTracks },
+    { title: "Hits", data: hits },
     { title: "Lo-Fi", data: newReleases },
+    { title: "Poplar", data: popular },
   ];
 
   if (!isLoaded) {
