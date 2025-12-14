@@ -17,7 +17,7 @@ const QueueCard = ({ track, onSelect }) => {
         alt={track?.title}
         className="w-12 h-12 rounded-full"
       />
-      <div className="flex flex-col truncate relative z-20">
+      <div className="flex flex-col truncate">
         <span className="text-sm font-bold dark:text-white truncate">
           {track?.title_short}
         </span>

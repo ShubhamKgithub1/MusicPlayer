@@ -203,7 +203,7 @@ const Playbar = () => {
     return <Volume2 size={20} />;
   }, [volume]);
 
-  if (!currentSong) {
+  if (queue.length === 0) {
     return null;
   }
 
@@ -214,7 +214,7 @@ const Playbar = () => {
     >
       <audio ref={audioRef} preload="auto" />
       <div
-        className={`fixed bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4 z-50 bg-slate-400 dark:bg-slate-600 text-white md:rounded-lg overflow-hidden transition-[transform,opacity] duration-300 h-[100dvh] md:h-[60dvh] ${
+        className={`fixed bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4 z-50 bg-slate-400 dark:bg-slate-600 text-white md:rounded-lg overflow-hidden transition-[transform,opacity] duration-200 h-[100dvh] md:h-[60dvh] ${
           isExpand ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"
         } flex flex-col`}
       >
@@ -224,7 +224,7 @@ const Playbar = () => {
           isExpand={isExpand}
         />
         <div
-          className={`relative z-50 flex flex-col h-full transition-opacity duration-300 ${
+          className={`relative z-50 flex flex-col h-full transition-opacity duration-200 ${
             isExpand ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -232,7 +232,7 @@ const Playbar = () => {
             onClose={handleCollapse}
             onClearQueue={handleClearQueue}
           />
-          <div className="flex flex-col h-full  bg-gradient-to-t from-black via-black/60 to-black/20">
+          <div className="flex flex-col h-full  bg-gradient-to-t from-black via-black/80 to-black/20">
             <div className=" h-[70%] flex flex-col justify-end items-center gap-6">
               {/*Current Song info*/}
               <PlaybarSongInfo
@@ -247,7 +247,7 @@ const Playbar = () => {
                   ref={seekBarRef}
                 >
                   <div
-                    className={`absolute top-1/2 -translate-y-1/2 h-3 w-3 transition-all duration-300 bg-white rounded-full`}
+                    className={`absolute top-1/2 -translate-y-1/2 h-3 w-3 transition-all duration-200 bg-white rounded-full`}
                     style={{
                       left: `${(currentTime / duration) * 100}%`,
                     }}
