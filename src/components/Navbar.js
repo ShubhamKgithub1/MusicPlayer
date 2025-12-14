@@ -13,7 +13,7 @@ const Navbar = () => {
         <NavLink
           to="/search"
           className={({ isActive }) =>
-            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-all duration-200 cursor-pointer hover:bg-white/15 ${
+            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-colors duration-200 cursor-pointer hover:bg-white/15 ${
               isActive && "bg-white/20"
             }`
           }
@@ -31,7 +31,7 @@ const Navbar = () => {
         <NavLink
           to="/home"
           className={({ isActive }) =>
-            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-all duration-200 cursor-pointer hover:bg-white/15 ${
+            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-colors duration-200 cursor-pointer hover:bg-white/15 ${
               isActive && "bg-white/20"
             }`
           }
@@ -42,7 +42,7 @@ const Navbar = () => {
         <NavLink
           to="/explore"
           className={({ isActive }) =>
-            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-all duration-200 cursor-pointer hover:bg-white/15 ${
+            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-colors duration-200 cursor-pointer hover:bg-white/15 ${
               isActive && "bg-white/20"
             }`
           }
