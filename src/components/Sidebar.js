@@ -11,10 +11,10 @@ const Sidebar = () => {
   const recentSongs = useSelector((state) => state.user.recentlyPlayed);
 
   return (
-    <div className="w-[18dvw] h-full flex flex-col gap-3 dark:text-white relative">
+    <div className="w-[18dvw] h-full flex flex-col gap-3 dark:text-white">
       {user ? (
         <div className="flex flex-col items-center gap-4 justify-center w-full">
-          <div className="dark:bg-black/40 shadow-lg dark:shadow-none bg-white/30 backdrop-blur-lg border border-white/10 rounded-2xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
+          <div className="dark:bg-black/30 shadow bg-white/20 backdrop-blur-lg border border-white/10 rounded-2xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
             <div className="flex items-center justify-start w-full gap-2 p-2 2xl:p-4 animate-fade-in flex-wrap">
               <img
                 src={user.photoURL}
@@ -23,7 +23,7 @@ const Sidebar = () => {
                 referrerPolicy="no-referrer"
               />
               <div>
-                <h1 className="text-sm 2xl:text-lg font-medium text-glow">
+                <h1 className="text-sm 2xl:text-lg font-medium">
                   {user.displayName}
                 </h1>
                 <h1 className="text-xs text-gray-600 dark:text-gray-300">
@@ -51,7 +51,7 @@ const Sidebar = () => {
             </NavLink>
           </div>
           {recentSongs?.length > 0 && (
-            <div className="w-full dark:bg-black/40 shadow-lg border border-white/10 dark:shadow-none bg-white/30 backdrop-blur-lg rounded-2xl animate-fade-in">
+            <div className="w-full dark:bg-black/30 shadow border border-white/10 bg-white/20 backdrop-blur-lg rounded-2xl animate-fade-in">
               {Array.isArray(recentSongs) && recentSongs.length > 0 && (
                 <RecentlyPlayed isFullTab={false} recentSongs={recentSongs} />
               )}

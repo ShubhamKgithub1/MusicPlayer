@@ -8,7 +8,7 @@ const QueueCard = ({ track, onSelect }) => {
   if (!queue) return null;
   return (
     <div
-      className="relative group flex items-center rounded-lg gap-3 p-2 cursor-pointer"
+      className="relative group flex items-center rounded-lg gap-3 p-1.5 cursor-pointer"
       onClick={() => onSelect(track?.id)}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"></div>

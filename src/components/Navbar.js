@@ -13,7 +13,7 @@ const Navbar = () => {
         <NavLink
           to="/search"
           className={({ isActive }) =>
-            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-colors duration-200 cursor-pointer hover:bg-white/15 ${
+            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-colors duration-200 cursor-pointer hover:bg-white/20 ${
               isActive && "bg-white/20"
             }`
           }
@@ -22,7 +22,7 @@ const Navbar = () => {
         </NavLink>
         <button
           onClick={() => dispatch(toggleTheme())}
-          className="p-2 text-sm rounded-full bg-black text-white dark:bg-white dark:text-black"
+          className="p-2 text-sm rounded-full text-white bg-white/20 hover:scale-[1.06] active:scale-[0.90] transition-transform duration-300"
         >
           {mode === "light" ? <MoonIcon /> : <SunDim />}
         </button>
@@ -31,7 +31,7 @@ const Navbar = () => {
         <NavLink
           to="/home"
           className={({ isActive }) =>
-            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-colors duration-200 cursor-pointer hover:bg-white/15 ${
+            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-colors duration-200 cursor-pointer hover:bg-white/20 ${
               isActive && "bg-white/20"
             }`
           }
@@ -42,7 +42,7 @@ const Navbar = () => {
         <NavLink
           to="/explore"
           className={({ isActive }) =>
-            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-colors duration-200 cursor-pointer hover:bg-white/15 ${
+            `flex items-center gap-2 text-white font-semibold p-2 rounded-full transition-colors duration-200 cursor-pointer hover:bg-white/20 ${
               isActive && "bg-white/20"
             }`
           }

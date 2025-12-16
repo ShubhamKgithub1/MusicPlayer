@@ -55,7 +55,7 @@ const HorizontalScroller = ({ data, favorites, cardSize }) => {
   if (!data) return null;
 
   return (
-    <div className={`relative p-2 lg:px-4 lg:py-0 rounded-lg`}>
+    <div className={`relative rounded-lg`}>
       {canScrollLeft && (
         <div
           onClick={scrollLeft}
@@ -74,7 +74,7 @@ const HorizontalScroller = ({ data, favorites, cardSize }) => {
       )}
       <div
         ref={scrollContainerRef}
-        className="w-full py-2 lg:py-4 flex overflow-x-scroll flex-shrink-0 gap-3 lg:gap-4 hide-scrollbar snap-x snap-mandatory scroll-smooth"
+        className="w-full flex overflow-x-scroll flex-shrink-0 gap-3 lg:gap-4 hide-scrollbar snap-x snap-mandatory scroll-smooth"
       >
         {data.map((track) => (
           <SongCard key={track?.id} track={track} onPlay={handlePlay} isFavorite={favorites?.some((fav)=> fav.id === track.id)} flex={cardSize}/>

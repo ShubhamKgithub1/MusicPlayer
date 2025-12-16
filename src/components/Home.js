@@ -25,8 +25,8 @@ const Home = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row md:h-full md:gap-3 xl:gap-4 w-full overflow-y-auto backdrop-blur-lg md:backdrop-blur-none md:p-1 lg:p-0 transition-all duration-200 text-white">
-      <div className="flex flex-col md:w-[40%] p-2 md:p-3 xl:p-4 md:border md:border-white/10 md:bg-white/20 md:dark:bg-black/30 md:backdrop-blur-xl md:rounded-xl animate-fade-in">
+    <div className="flex flex-col  md:flex-row md:h-full w-full overflow-y-auto backdrop-blur-lg bg-white/20 dark:bg-black/5 lg:dark:bg-black/30 gap-3 xl:gap-4 p-2 md:p-3 xl:p-4 lg:rounded-xl 2xl:rounded-2xl lg:border lg:border-white/10 transition-all duration-200 text-white">
+      <div className="flex flex-col md:w-[40%] animate-fade-in">
         <BannerCard track={trendingTracks[0]} handleClick={handlePlay} />
         <div className="flex-1 min-h-0 w-full flex flex-col">
           <h1 className="font-bold text-lg md:text-xl 2xl:text-2xl py-4 p-2 text-glow">
@@ -44,7 +44,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="md:flex-1 md:overflow-hidden md:backdrop-blur-xl md:dark:bg-black/30 md:border md:border-white/10 p-2 md:bg-white/20 md:rounded-xl h-full w-full flex flex-col transition-all duration-200">
+      <div className="md:flex-1 md:overflow-hidden h-full w-full flex flex-col gap-3 transition-all duration-200">
         <HorizontalScroller
           data={topTracks}
           favorites={favorites}

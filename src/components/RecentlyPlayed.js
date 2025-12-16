@@ -8,17 +8,17 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
 
   return (
     <div
-      className={`flex flex-col relative lg:border-none p-3 pt-0 rounded-lg border border-white/10 lg:bg-transparent ${
+      className={`flex flex-col relative lg:border-none rounded-lg border border-white/10 lg:bg-transparent ${
         isFullTab
-          ? "h-full overflow-auto rounded-tl-none border-t-0 bg-white/20 dark:bg-black/60 lg:dark:bg-transparent"
+          ? "h-full overflow-auto rounded-tl-none border-t-0 bg-white/20 dark:bg-black/60 lg:dark:bg-transparent p-3 pt-0"
           : "h-auto overflow-auto px-2 lg:px-0"
       }`}
     >
       <div className={`flex justify-between items-center ${isFullTab?"py-4 pt-3 lg:pt-4":"lg:px-3 py-2 lg:py-3"} `}>
         <h2
           className={`${
-            isFullTab ? "text-lg 2xl:text-xl font-semibold 2xl:font-bold" : "text-base font-semibold"
-          } dark:text-white text-glow`}
+            isFullTab ? "text-lg 2xl:text-xl font-semibold 2xl:font-bold text-glow" : "text-base font-semibold"
+          } dark:text-white`}
         >
           Recently Played
         </h2>
@@ -29,7 +29,7 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
               `${isActive ? "dark:text-white text-gray-600" : "dark:text-gray-300 text-gray-500"} hidden lg:block`
             }
           >
-            <button className="text-sm cursor-pointer transition-colors duration-200 dark:hover:text-white">
+            <button className="text-sm cursor-pointer transition-colors duration-200">
               View all
             </button>
           </NavLink>
@@ -38,7 +38,7 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
       {recentSongs?.length > 0 ? (
         <div
           className={`flex flex-col ${
-            isFullTab ? "overflow-auto hide-scrollbar gap-1 lg:bg-transparent dark:bg-transparent lg:dark:bg-black/40 rounded-lg lg:dark:p-3" : "overflow-auto hide-scrollbar gap-1 lg:dark:px-3"
+            isFullTab ? "overflow-auto hide-scrollbar gap-1 lg:dark:bg-black/40 rounded-lg lg:dark:p-3" : "overflow-auto hide-scrollbar gap-1"
           }  relative animate-fade-in`}
         >
           {(isFullTab ? recentSongs : recentSongs?.slice(0, 5))?.map((song) => (

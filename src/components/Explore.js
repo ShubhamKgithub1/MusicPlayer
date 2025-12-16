@@ -24,11 +24,11 @@ const Explore = () => {
   }
 
   return (
-    <div className="flex md:dark:bg-black/30 backdrop-blur-lg md:bg-white/20 h-full lg:max-h-full lg:h-max w-full p-3 lg:p-4 lg:rounded-xl 2xl:rounded-2xl lg:border lg:border-white/10 animate-fade-in shadow-md">
-      <div className="flex-1 overflow-auto hide-scrollbar flex flex-col lg:gap-3">
+    <div className="flex backdrop-blur-lg bg-white/20 dark:bg-black/5 lg:dark:bg-black/30 h-full lg:max-h-full lg:h-max w-full p-3 xl:p-4 lg:rounded-xl 2xl:rounded-2xl lg:border lg:border-white/10">
+      <div className="flex-1 overflow-auto hide-scrollbar flex flex-col gap-3 lg:gap-4 animate-fade-in">
         {sections.map(({ title, data }, index) => (
-          <div key={index} className="flex flex-col lg:gap-3">
-            <h1 className="pl-2 text-lg xl:text-xl font-bold text-white text-glow">
+          <div key={index} className="flex flex-col gap-3 lg:gap-4">
+            <h1 className="text-lg xl:text-xl font-bold text-white text-glow">
               {title}
             </h1>
             <HorizontalScroller data={data} favorites={favorites} />

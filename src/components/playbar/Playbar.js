@@ -219,7 +219,7 @@ const Playbar = () => {
         } flex flex-col`}
       >
         <PlaybarExpandedImage
-          src={currentSong?.album?.cover_big}
+          src={currentSong?.album?.cover_xl}
           alt={""}
           isExpand={isExpand}
         />
@@ -232,8 +232,8 @@ const Playbar = () => {
             onClose={handleCollapse}
             onClearQueue={handleClearQueue}
           />
-          <div className="flex flex-col h-full  bg-gradient-to-t from-black via-black/80 to-black/20">
-            <div className=" h-[70%] flex flex-col justify-end items-center gap-6">
+          <div className="flex flex-col h-full  bg-gradient-to-t from-black via-black/75 to-black/20">
+            <div className=" h-[75%] flex flex-col justify-end items-center gap-6">
               {/*Current Song info*/}
               <PlaybarSongInfo
                 title={currentSong?.title_short}
