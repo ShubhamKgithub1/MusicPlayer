@@ -214,7 +214,7 @@ const Playbar = () => {
     >
       <audio ref={audioRef} preload="auto" />
       <div
-        className={`fixed bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4 z-50 bg-slate-400 dark:bg-slate-600 text-white md:rounded-lg overflow-hidden transition-[transform,opacity] duration-200 h-[100dvh] md:h-[60dvh] ${
+        className={`fixed bottom-0 md:bottom-2 lg:bottom-4 w-full md:w-[40dvw] lg:w-[30dvw] xl:w-[18dvw] md:left-2 lg:left-4 z-50 bg-slate-500 dark:bg-slate-600 text-white md:rounded-lg overflow-hidden transition-[transform,opacity] duration-200 h-[100dvh] md:h-[60dvh] ${
           isExpand ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"
         } flex flex-col`}
       >
@@ -232,7 +232,7 @@ const Playbar = () => {
             onClose={handleCollapse}
             onClearQueue={handleClearQueue}
           />
-          <div className="flex flex-col h-full  bg-gradient-to-t from-black via-black/25 to-transparent">
+          <div className="flex flex-col h-full  bg-gradient-to-t from-black via-black/40 to-transparent">
             <div className=" h-[75%] flex flex-col justify-end items-center gap-6">
               {/*Current Song info*/}
               <PlaybarSongInfo
