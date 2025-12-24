@@ -34,14 +34,14 @@ const Home = () => {
             Trending Now
           </h1>
           <div className="flex flex-col gap-1 overflow-auto hide-scrollbar w-full">
-            {trendingTracks?.map((track) => (
+            {/* {trendingTracks?.map((track) => (
               <SongTile
                 key={track?.id}
                 track={track}
                 trackList={trendingTracks}
-                // isFavorite={favorites?.some((fav) => fav.id === track.id)}
+                isFavorite={favorites?.some((fav) => fav.id === track.id)}
               />
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@ const Home = () => {
                   key={track?.id}
                   trackList={popular}
                   track={track}
-                  // isFavorite={favorites?.some((fav) => fav.id === track.id)}
+                  isFavorite={favorites?.some((fav) => fav.id === track.id)}
                 />
               ))}
             </div>
@@ -77,7 +77,7 @@ const Home = () => {
                   key={track?.id}
                   track={track}
                   trackList={hits}
-                  // isFavorite={favorites?.some((fav) => fav.id === track.id)}
+                  isFavorite={favorites?.some((fav) => fav.id === track.id)}
                 />
               ))}
             </div>
