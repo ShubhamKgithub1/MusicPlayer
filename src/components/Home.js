@@ -34,7 +34,7 @@ const Home = () => {
             Trending Now
           </h1>
           <div className="flex flex-col gap-1 overflow-auto hide-scrollbar w-full">
-            {trendingTracks?.slice(0,5).map((track) => (
+            {trendingTracks?.slice(0,10).map((track) => (
               <SongTile
                 key={track?.id}
                 track={track}
@@ -57,7 +57,7 @@ const Home = () => {
               Most Popular
             </h1>
             <div className="flex flex-col md:h-auto w-full gap-1 overflow-auto hide-scrollbar">
-              {popular?.slice(0,5).map((track) => (
+              {popular?.slice(0,10).map((track) => (
                 <SongTile
                   key={track?.id}
                   trackList={popular}
@@ -72,7 +72,7 @@ const Home = () => {
               Weekly Hits
             </h1>
             <div className="flex flex-col w-full gap-1 md:h-auto overflow-auto hide-scrollbar">
-              {hits?.slice(0,5).map((track) => (
+              {hits?.slice(0,10).map((track) => (
                 <SongTile
                   key={track?.id}
                   track={track}
