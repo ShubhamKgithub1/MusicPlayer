@@ -3,7 +3,7 @@ import SongTile from "./SongTile";
 import { useDispatch, useSelector } from "react-redux";
 import { playPause, setQueue } from "../reduxStore/playerSlice";
 import FallbackLoader from "./FallbackLoader";
-// import HorizontalScroller from "./HorizontalScroller";
+import HorizontalScroller from "./HorizontalScroller";
 import { useCallback } from "react";
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
   const popular = useSelector((state) => state.api.mostPopular);
   const hits = useSelector((state) => state.api.hits);
   const trendingTracks = useSelector((state) => state.api.trendingTracks);
-  // const topTracks = useSelector((state) => state.api.topTracks);
+  const topTracks = useSelector((state) => state.api.topTracks);
   const bannerData = trendingTracks[0] ?? null;
 
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const Home = () => {
           <h1 className="font-bold text-lg md:text-xl 2xl:text-2xl py-4 p-2 text-glow">
             Trending Now
           </h1>
-          <div className="flex flex-col gap-1 overflow-auto hide-scrollbar w-full">
+          {/* <div className="flex flex-col gap-1 overflow-auto hide-scrollbar w-full">
             {trendingTracks?.map((track) => (
               <SongTile
                 key={track?.id}
@@ -42,21 +42,21 @@ const Home = () => {
                 isFavorite={favorites?.some((fav) => fav.id === track.id)}
               />
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="md:flex-1 md:overflow-hidden h-full w-full flex flex-col gap-3 transition-all duration-200">
-        {/* {topTracks && <HorizontalScroller
+        {topTracks && <HorizontalScroller
           data={topTracks}
           favorites={favorites}
           cardSize={"flex-[0_0_35%] md:flex-[0_0_20%]"}
-        />} */}
+        />}
         <div className="md:overflow-hidden flex flex-col md:flex-row gap-2 flex-1">
           <div className="md:w-1/2 flex flex-col animate-fade-in">
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">
               Most Popular
             </h1>
-            <div className="flex flex-col md:h-auto w-full gap-1 overflow-auto hide-scrollbar">
+            {/* <div className="flex flex-col md:h-auto w-full gap-1 overflow-auto hide-scrollbar">
               {popular?.map((track) => (
                 <SongTile
                   key={track?.id}
@@ -65,13 +65,13 @@ const Home = () => {
                   isFavorite={favorites?.some((fav) => fav.id === track.id)}
                 />
               ))}
-            </div>
+            </div> */}
           </div>
           <div className="md:flex-1 flex flex-col animate-fade-in">
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">
               Weekly Hits
             </h1>
-            <div className="flex flex-col w-full gap-1 md:h-auto overflow-auto hide-scrollbar">
+            {/* <div className="flex flex-col w-full gap-1 md:h-auto overflow-auto hide-scrollbar">
               {hits?.map((track) => (
                 <SongTile
                   key={track?.id}
@@ -80,7 +80,7 @@ const Home = () => {
                   isFavorite={favorites?.some((fav) => fav.id === track.id)}
                 />
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
