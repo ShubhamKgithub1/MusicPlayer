@@ -57,14 +57,14 @@ const Home = () => {
               Most Popular
             </h1>
             <div className="flex flex-col md:h-auto w-full gap-1 overflow-auto hide-scrollbar">
-              {/* {popular?.map((track) => (
+              {popular?.map((track) => (
                 <SongTile
                   key={track?.id}
                   trackList={popular}
                   track={track}
                   isFavorite={favorites?.some((fav) => fav.id === track.id)}
                 />
-              ))} */}
+              ))}
             </div>
           </div>
           <div className="md:flex-1 flex flex-col animate-fade-in">
@@ -72,14 +72,14 @@ const Home = () => {
               Weekly Hits
             </h1>
             <div className="flex flex-col w-full gap-1 md:h-auto overflow-auto hide-scrollbar">
-              {hits?.map((track) => (
+              {/* {hits?.map((track) => (
                 <SongTile
                   key={track?.id}
                   track={track}
                   trackList={hits}
                   isFavorite={favorites?.some((fav) => fav.id === track.id)}
                 />
-              ))}
+              ))} */}
             </div>
           </div>
         </div>
