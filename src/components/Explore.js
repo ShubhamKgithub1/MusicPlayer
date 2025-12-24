@@ -21,7 +21,7 @@ const Explore = () => {
 
   if (!isLoaded) {
     return <FallbackLoader />;
-  }
+  };
 
   return (
     <div className="flex backdrop-blur-lg bg-white/20 dark:bg-black/5 lg:dark:bg-black/30 h-full lg:max-h-full lg:h-max w-full p-3 xl:p-4 lg:rounded-xl 2xl:rounded-2xl lg:border lg:border-white/10">
