@@ -39,7 +39,7 @@ const Home = () => {
                 key={track?.id}
                 track={track}
                 trackList={trendingTracks}
-                isFavorite={favorites?.some((fav) => fav.id === track.id)}
+                // isFavorite={favorites?.some((fav) => fav.id === track.id)}
               />
             ))}
           </div>
@@ -62,7 +62,7 @@ const Home = () => {
                   key={track?.id}
                   trackList={popular}
                   track={track}
-                  isFavorite={favorites?.some((fav) => fav.id === track.id)}
+                  // isFavorite={favorites?.some((fav) => fav.id === track.id)}
                 />
               ))}
             </div>
@@ -77,7 +77,7 @@ const Home = () => {
                   key={track?.id}
                   track={track}
                   trackList={hits}
-                  isFavorite={favorites?.some((fav) => fav.id === track.id)}
+                  // isFavorite={favorites?.some((fav) => fav.id === track.id)}
                 />
               ))}
             </div>
