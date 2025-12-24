@@ -57,45 +57,57 @@ const SongTile = ({ trackList, track, isFavorite }) => {
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none transition-opacity duration-300"></div>
       <div className="flex justify-start overflow-hidden gap-3 items-center flex-1">
-        <img
+        {/* <img
           src={track?.album?.cover_small}
           alt={track?.title}
           className="w-12 h-12 md:h-10 md:w-10 xl:h-12 xl:w-12 object-cover rounded-full"
-        />
+        /> */}
+        {track?.album?.cover_small ? (
+          <img
+            src={track.album.cover_small}
+            alt={track?.title ?? ""}
+            className="w-12 h-12 md:h-10 md:w-10 xl:h-12 xl:w-12 object-cover rounded-full"
+          />
+        ) : (
+          <div className="w-12 h-12 bg-gray-300 rounded-full" />
+        )}
+
         <div className="truncate">
           <h2 className="text-sm font-medium truncate text-glow">
             {track?.title_short}
           </h2>
-          <p className="text-xs dark:text-gray-400 text-gray-600">
+          {/* <p className="text-xs dark:text-gray-400 text-gray-600">
             {track?.artist?.name}
-          </p>
+          </p> */}
+          <p className="text-xs dark:text-gray-400 text-gray-600">{track?.artist?.name ?? "Unknown Artist"}</p>
+
         </div>
       </div>
-        <div>
-          <KebabMenu
-            actions={[
-              {
-                label: "Add to queue",
-                icon: ListPlus,
-                onClick: () => handleAddToQueue(track),
-              },
-              {
-                label: "Add to playlist",
-                icon: FolderPlus,
-                onClick: () => dispatch(openAddToPlaylistModal(track)),
-              },
-              {
-                label: isFavorite
-                  ? "Remove from Favorites"
-                  : "Add to Favorites",
-                icon: isFavorite ? Trash2 : Heart,
-                className: isFavorite ? "text-red-600" : "",
-                onClick: () => handleAddToFavorites(track),
-              },
-            ]}
-            user={user}
-          />
-        </div>
+      <div>
+        <KebabMenu
+          actions={[
+            {
+              label: "Add to queue",
+              icon: ListPlus,
+              onClick: () => handleAddToQueue(track),
+            },
+            {
+              label: "Add to playlist",
+              icon: FolderPlus,
+              onClick: () => dispatch(openAddToPlaylistModal(track)),
+            },
+            {
+              label: isFavorite
+                ? "Remove from Favorites"
+                : "Add to Favorites",
+              icon: isFavorite ? Trash2 : Heart,
+              className: isFavorite ? "text-red-600" : "",
+              onClick: () => handleAddToFavorites(track),
+            },
+          ]}
+          user={user}
+        />
+      </div>
     </div>
   );
 };
