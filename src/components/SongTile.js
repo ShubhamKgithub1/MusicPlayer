@@ -51,23 +51,23 @@ const SongTile = ({ trackList, track, isFavorite }) => {
 
   return (
     <div
-      key={track.id}
+      key={track?.id}
       className="relative z-10 group flex gap-2 items-center justify-between rounded-lg px-2 py-1.5 lg:px-4 lg:py-2 cursor-pointer text-white"
       onClick={() => handlePlay(track)}
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none transition-opacity duration-300"></div>
       <div className="flex justify-start overflow-hidden gap-3 items-center flex-1">
         <img
-          src={track.album.cover_small}
-          alt={track.title}
+          src={track?.album?.cover_small}
+          alt={track?.title}
           className="w-12 h-12 md:h-10 md:w-10 xl:h-12 xl:w-12 object-cover rounded-full"
         />
         <div className="truncate">
           <h2 className="text-sm font-medium truncate text-glow">
-            {track.title_short}
+            {track?.title_short}
           </h2>
           <p className="text-xs dark:text-gray-400 text-gray-600">
-            {track.artist.name}
+            {track?.artist?.name}
           </p>
         </div>
       </div>
