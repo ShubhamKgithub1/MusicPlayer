@@ -39,8 +39,8 @@ const CreatePlaylistModal = ({ userId }) => {
 
   if (!isOpen) return;
   return (
-    <div className="fixed text-white inset-0 backdrop-blur-xl flex items-center justify-center z-[99] animate-opacity">
-      <div className="bg-white/30 dark:bg-black/40 shadow-2xl rounded-lg p-6 w-96 flex flex-col gap-4 border border-white/10 animate-fade-in" ref={menuRef}>
+    <div className="fixed inset-0 backdrop-blur-xl flex items-center justify-center z-[99] animate-opacity">
+      <div className="flex flex-col gap-4 bg-white/30 dark:bg-black/40 shadow-2xl text-white rounded-lg p-6 w-[90%] max-w-md animate-fade-in" ref={menuRef}>
         <h2 className="text-lg font-semibold mb-2 text-center">
           Create New Playlist
         </h2>

@@ -24,19 +24,19 @@ const MyLibrary = () => {
         </h1>
         <button
           onClick={handleDeleteAccount}
-          className="px-3 xl:px-4 py-1.5 xl:py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+          className="px-2 xl:px-4 py-1 xl:py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
         >
           Delete Account
         </button>
       </div>
-      <div className="flex lg:border-b lg:dark:border-b-black mt-4">
+      <div className="flex mt-3 lg:mt-4">
         <button
           onClick={() => setActiveTab("recent")}
           className={`${
             activeTab === "recent"
               ? "bg-white dark:bg-black text-emerald-500 "
               : "bg-transparent text-glow"
-          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold transition-colors duration-200 rounded-t-2xl`}
+          } px-4 py-1.5 lg:px-6 lg:py-2 whitespace-nowrap text-sm lg:text-base font-semibold transition-colors duration-200 rounded-t-lg lg:rounded-t-2xl`}
         >
           Recently Played
         </button>
@@ -46,7 +46,7 @@ const MyLibrary = () => {
             activeTab === "favorites"
               ? "bg-white dark:bg-black text-emerald-500 "
               : "bg-transparent text-glow"
-          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold transition-colors duration-200 rounded-t-2xl`}
+          } px-4 py-1.5 lg:px-6 lg:py-2 text-sm lg:text-base font-semibold transition-colors duration-200 rounded-t-lg lg:rounded-t-2xl`}
         >
           Favorites
         </button>
@@ -56,7 +56,7 @@ const MyLibrary = () => {
             activeTab === "playlists"
               ? "bg-white dark:bg-black text-emerald-500 "
               : "bg-transparent text-glow"
-          } px-4 py-1.5 lg:px-6 lg:py-2 font-semibold  transition-colors duration-200 rounded-t-2xl`}
+          } px-4 py-1.5 lg:px-6 lg:py-2 text-sm lg:text-base font-semibold transition-colors duration-200 rounded-t-lg lg:rounded-t-2xl`}
         >
           Playlists
         </button>

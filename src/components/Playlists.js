@@ -22,9 +22,6 @@ const Playlists = () => {
 
   return (
     <div className="flex flex-col w-full h-full overflow-hidden bg-white/20 border border-white/10 border-t-0 md:border-0 dark:bg-black/60 lg:bg-transparent lg:dark:bg-transparent backdrop-blur-lg lg:backdrop-blur-none p-3 rounded-lg">
-      <h1 className="text-lg 2xl:text-xl font-semibold 2xl:font-bold pb-3 text-glow">
-        Playlists
-      </h1>
       {playlists.length > 0 ? (
         <div className="flex flex-col flex-1 gap-2 lg:gap-3 overflow-hidden animate-fade-in">
           <div className="w-[100%] flex gap-2 overflow-x-scroll hide-scrollbar">

@@ -10,15 +10,13 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
     <div
       className={`flex flex-col relative lg:border-none rounded-lg border border-white/10 lg:bg-transparent ${
         isFullTab
-          ? "h-full overflow-auto rounded-tl-none border-t-0 bg-white/20 dark:bg-black/60 lg:dark:bg-transparent p-3 pt-0"
+          ? "h-full overflow-auto rounded-tl-none border-t-0 bg-white/20 dark:bg-black/60 lg:dark:bg-transparent"
           : "h-auto overflow-auto px-2 lg:px-0"
       }`}
     >
-      <div className={`flex justify-between items-center ${isFullTab?"py-4 pt-3 lg:pt-4":"lg:px-3 py-2 lg:py-3"} `}>
+      {!isFullTab && <div className={`flex justify-between items-center lg:px-3 py-2 lg:py-3`}>
         <h2
-          className={`${
-            isFullTab ? "text-lg 2xl:text-xl font-semibold 2xl:font-bold text-glow" : "text-base font-semibold"
-          } dark:text-white`}
+          className={`text-base font-semibold dark:text-white`}
         >
           Recently Played
         </h2>
@@ -34,12 +32,10 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
             </button>
           </NavLink>
         )}
-      </div>
+      </div>}
       {recentSongs?.length > 0 ? (
         <div
-          className={`flex flex-col ${
-            isFullTab ? "overflow-auto hide-scrollbar gap-1 lg:dark:bg-black/40 rounded-lg lg:dark:p-3" : "overflow-auto hide-scrollbar gap-1"
-          }  relative animate-fade-in`}
+          className={`flex flex-col overflow-auto hide-scrollbar relative ${isFullTab && "px-2 py-2 lg:px-0 lg:py-3"} animate-fade-in`}
         >
           {(isFullTab ? recentSongs : recentSongs?.slice(0, 5))?.map((song) => (
             <SongTile
