@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { playPause, setQueue } from "../reduxStore/playerSlice";
 import FallbackLoader from "./FallbackLoader";
 import HorizontalScroller from "./HorizontalScroller";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const Home = () => {
   const favorites = useSelector((state) => state.user.favorites);
@@ -15,11 +15,19 @@ const Home = () => {
   const topTracks = useSelector((state) => state.api.topTracks);
   const bannerData = trendingTracks[0] ?? null;
 
+  const [showWeeklyHits, setShowWeeklyHits] = useState(false);
+  const [showMostPopular, setShowMostPopular] = useState(false);
+
   const dispatch = useDispatch();
   const handlePlay = useCallback(() => {
     dispatch(setQueue(trendingTracks));
     dispatch(playPause(true));
   }, [dispatch, trendingTracks]);
+
+  useEffect(() => {
+    setTimeout(() => setShowWeeklyHits(true), 50);
+    setTimeout(() => setShowMostPopular(true), 80);
+  }, []);
 
   if (!isLoaded) {
     return <FallbackLoader />;
@@ -34,7 +42,7 @@ const Home = () => {
             Trending Now
           </h1>
           <div className="flex flex-col gap-1 overflow-auto hide-scrollbar w-full">
-            {trendingTracks?.slice(0,15).map((track) => (
+            {trendingTracks?.map((track) => (
               <SongTile
                 key={track?.id}
                 track={track}
@@ -56,8 +64,8 @@ const Home = () => {
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">
               Most Popular
             </h1>
-            <div className="flex flex-col md:h-auto w-full gap-1 overflow-auto hide-scrollbar">
-              {popular?.slice(0,15).map((track) => (
+            {showMostPopular && <div className="flex flex-col md:h-auto w-full gap-1 overflow-auto hide-scrollbar">
+              {popular?.map((track) => (
                 <SongTile
                   key={track?.id}
                   trackList={popular}
@@ -65,14 +73,14 @@ const Home = () => {
                   isFavorite={favorites?.some((fav) => fav?.id === track?.id)}
                 />
               ))}
-            </div>
+            </div>}
           </div>
           <div className="md:flex-1 flex flex-col animate-fade-in">
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">
               Weekly Hits
             </h1>
-            <div className="flex flex-col w-full gap-1 md:h-auto overflow-auto hide-scrollbar">
-              {hits?.slice(0,15).map((track) => (
+            {showWeeklyHits && <div className="flex flex-col w-full gap-1 md:h-auto overflow-auto hide-scrollbar">
+              {hits?.map((track) => (
                 <SongTile
                   key={track?.id}
                   track={track}
@@ -80,7 +88,7 @@ const Home = () => {
                   isFavorite={favorites?.some((fav) => fav?.id === track?.id)}
                 />
               ))}
-            </div>
+            </div>}
           </div>
         </div>
       </div>
