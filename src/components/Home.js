@@ -1,10 +1,10 @@
 import BannerCard from "./BannerCard";
-import SongTile from "./SongTile";
 import { useDispatch, useSelector } from "react-redux";
 import { playPause, setQueue } from "../reduxStore/playerSlice";
 import FallbackLoader from "./FallbackLoader";
 import HorizontalScroller from "./HorizontalScroller";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
+import VirtualSongList from "./VirtualSongList";
 
 const Home = () => {
   const favorites = useSelector((state) => state.user.favorites);
@@ -15,19 +15,11 @@ const Home = () => {
   const topTracks = useSelector((state) => state.api.topTracks);
   const bannerData = trendingTracks[0] ?? null;
 
-  const [showWeeklyHits, setShowWeeklyHits] = useState(false);
-  const [showMostPopular, setShowMostPopular] = useState(false);
-
   const dispatch = useDispatch();
   const handlePlay = useCallback(() => {
     dispatch(setQueue(trendingTracks));
     dispatch(playPause(true));
   }, [dispatch, trendingTracks]);
-
-  useEffect(() => {
-    setTimeout(() => setShowWeeklyHits(true), 80);
-    setTimeout(() => setShowMostPopular(true), 180);
-  }, []);
 
   if (!isLoaded) {
     return <FallbackLoader />;
@@ -41,15 +33,11 @@ const Home = () => {
           <h1 className="font-bold text-lg md:text-xl 2xl:text-2xl py-4 p-2 text-glow">
             Trending Now
           </h1>
-          <div className="flex flex-col gap-1 overflow-auto hide-scrollbar w-full">
-            {trendingTracks?.map((track) => (
-              <SongTile
-                key={track?.id}
-                track={track}
-                trackList={trendingTracks}
-                isFavorite={favorites?.some((fav) => fav?.id === track?.id)}
-              />
-            ))}
+          <div className="flex flex-col overflow-auto hide-scrollbar w-full h-[70dvh] md:h-auto">
+            <VirtualSongList
+              data={trendingTracks}
+              favorites={favorites}
+            />
           </div>
         </div>
       </div>
@@ -60,35 +48,27 @@ const Home = () => {
           cardSize={"flex-[0_0_35%] md:flex-[0_0_20%]"}
         />}
         <div className="md:overflow-hidden flex flex-col md:flex-row gap-2 flex-1">
-          <div className="md:w-1/2 flex flex-col">
+          <div className="md:w-1/2 flex flex-col animate-fade-in">
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">
               Most Popular
             </h1>
-            {showMostPopular && <div className="flex flex-col md:h-auto w-full gap-1 overflow-auto hide-scrollbar animate-fade-in">
-              {popular?.map((track) => (
-                <SongTile
-                  key={track?.id}
-                  trackList={popular}
-                  track={track}
-                  isFavorite={favorites?.some((fav) => fav?.id === track?.id)}
-                />
-              ))}
-            </div>}
+            <div className="flex flex-col h-[80dvh] md:h-auto w-full gap-1 overflow-auto hide-scrollbar">
+              <VirtualSongList
+              data={popular}
+              favorites={favorites}
+            />
+            </div>
           </div>
-          <div className="md:flex-1 flex flex-col">
+          <div className="md:flex-1 flex flex-col animate-fade-in">
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">
               Weekly Hits
             </h1>
-            {showWeeklyHits && <div className="flex flex-col w-full gap-1 md:h-auto overflow-auto hide-scrollbar animate-fade-in">
-              {hits?.map((track) => (
-                <SongTile
-                  key={track?.id}
-                  track={track}
-                  trackList={hits}
-                  isFavorite={favorites?.some((fav) => fav?.id === track?.id)}
-                />
-              ))}
-            </div>}
+            <div className="flex flex-col w-full h-[80dvh] md:h-auto overflow-auto hide-scrollbar">
+              <VirtualSongList
+              data={hits}
+              favorites={favorites}
+            />
+            </div>
           </div>
         </div>
       </div>

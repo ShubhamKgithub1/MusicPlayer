@@ -105,7 +105,7 @@ const Search = () => {
           <EqualizerLoader/>
         ) : (
           result.length > 0 && (
-            <div className="w-full flex flex-col gap-1 lg:gap-1.5 animate-fade-in rounded-md">
+            <div className="w-full flex flex-col gap-1 animate-fade-in">
               {result.map((res) => (
                 <SongTile
                   key={res?.id}
