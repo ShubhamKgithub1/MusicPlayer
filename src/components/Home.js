@@ -25,8 +25,8 @@ const Home = () => {
   }, [dispatch, trendingTracks]);
 
   useEffect(() => {
-    setTimeout(() => setShowWeeklyHits(true), 50);
-    setTimeout(() => setShowMostPopular(true), 80);
+    setTimeout(() => setShowWeeklyHits(true), 80);
+    setTimeout(() => setShowMostPopular(true), 180);
   }, []);
 
   if (!isLoaded) {
@@ -60,11 +60,11 @@ const Home = () => {
           cardSize={"flex-[0_0_35%] md:flex-[0_0_20%]"}
         />}
         <div className="md:overflow-hidden flex flex-col md:flex-row gap-2 flex-1">
-          <div className="md:w-1/2 flex flex-col animate-fade-in">
+          <div className="md:w-1/2 flex flex-col">
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">
               Most Popular
             </h1>
-            {showMostPopular && <div className="flex flex-col md:h-auto w-full gap-1 overflow-auto hide-scrollbar">
+            {showMostPopular && <div className="flex flex-col md:h-auto w-full gap-1 overflow-auto hide-scrollbar animate-fade-in">
               {popular?.map((track) => (
                 <SongTile
                   key={track?.id}
@@ -75,11 +75,11 @@ const Home = () => {
               ))}
             </div>}
           </div>
-          <div className="md:flex-1 flex flex-col animate-fade-in">
+          <div className="md:flex-1 flex flex-col">
             <h1 className="text-lg font-bold p-[0_0_8px_8px] lg:p-2 text-glow">
               Weekly Hits
             </h1>
-            {showWeeklyHits && <div className="flex flex-col w-full gap-1 md:h-auto overflow-auto hide-scrollbar">
+            {showWeeklyHits && <div className="flex flex-col w-full gap-1 md:h-auto overflow-auto hide-scrollbar animate-fade-in">
               {hits?.map((track) => (
                 <SongTile
                   key={track?.id}
