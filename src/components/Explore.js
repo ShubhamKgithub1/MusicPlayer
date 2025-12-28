@@ -24,7 +24,7 @@ const Explore = () => {
   };
 
   return (
-    <div className="flex backdrop-blur-lg bg-white/20 dark:bg-black/5 lg:dark:bg-black/30 h-full lg:max-h-full lg:h-max w-full p-3 xl:p-4 lg:rounded-xl 2xl:rounded-2xl lg:border lg:border-white/10">
+    <div className="flex backdrop-blur-lg bg-white/20 dark:bg-black/5 lg:dark:bg-black/35 h-full lg:max-h-full lg:h-max w-full p-3 xl:p-4 lg:rounded-xl 2xl:rounded-2xl lg:border lg:border-white/5">
       <div className="flex-1 overflow-auto hide-scrollbar flex flex-col gap-3 lg:gap-4 animate-fade-in">
         {sections.map(({ title, data }, index) => (
           <div key={index} className="flex flex-col gap-3 lg:gap-4">

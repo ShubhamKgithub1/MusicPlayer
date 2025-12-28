@@ -36,23 +36,23 @@ const Welcome = () => {
 
   return (
     <div
-      className={`h-full absolute w-[100dvw] top-0 left-0 z-50 flex flex-col items-center justify-center text-white overflow-hidden`}
+      className={`h-[100dvh] w-[100dvw] flex flex-col items-center justify-center text-white overflow-hidden bg-cover bg-center bg-no-repeat`}
       style={{
         backgroundImage: `url(${themeMode === "dark" ? bgDark : bgLight})`,
       }}
     >
-      <div className="flex flex-col items-center justify-center gap-3 z-10 bg-white/20 dark:bg-black/40 backdrop-blur-lg rounded-xl md:rounded-2xl border border-white/10 overflow-hidden h-60 md:h-80 w-2/4 xl:w-1/3 animate-fade-in">
-        <h1 className="text-3xl xl:text-4xl font-bold text-white text-shadow2 dark:text-cyan-300">
+      <div className="flex flex-col items-center justify-center gap-3 z-10 bg-white/20 dark:bg-black/40 backdrop-blur-lg rounded-xl md:rounded-2xl border border-white/5 overflow-hidden h-60 md:h-80 w-3/4 xl:w-1/3 animate-fade-in">
+        <h1 className="text-3xl xl:text-4xl font-bold text-white dark:text-cyan-300">
           Welcome!
         </h1>
-        <p className="text-base md:text-lg dark:text-gray-300 text-black text-glow">
+        <p className="text-base md:text-lg dark:text-gray-300 text-gray-900">
           Let the music flow 🎵
         </p>
         <p className="text-sm font-semibold text-gray-100 dark:text-gray-300">
           Redirecting in {secondsLeft} second{secondsLeft !== 1 && "s"}...
         </p>
         <button
-          className="bg-white w-[80%] text-sm py-2 sm:w-60 dark:text-white hover:shadow-inner hover:shadow-black dark:hover:bg-white dark:hover:text-purple-500 dark:bg-purple-500 text-black rounded-3xl hover:bg-transparent hover:text-white transition-all duration-200 lg:text-lg font-semibold active:scale-[0.94]"
+          className="w-[80%] text-sm py-2 sm:w-60 text-white hover:bg-white hover:text-purple-600 bg-purple-500 rounded-3xl transition-all duration-200 lg:text-lg font-semibold active:scale-[0.94]"
           onClick={() => handleContinue()}
         >
           Continue..

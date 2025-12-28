@@ -14,7 +14,7 @@ const Sidebar = () => {
     <div className="w-[18dvw] h-full flex flex-col gap-3 dark:text-white">
       {user ? (
         <div className="flex flex-col items-center gap-4 justify-center w-full">
-          <div className="dark:bg-black/30 shadow bg-white/20 backdrop-blur-lg border border-white/10 rounded-2xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
+          <div className="dark:bg-black/35 shadow bg-white/20 backdrop-blur-lg border border-white/5 rounded-2xl w-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
             <div className="flex items-center justify-start w-full gap-2 p-2 2xl:p-4 animate-fade-in flex-wrap">
               <img
                 src={user.photoURL}
@@ -32,7 +32,7 @@ const Sidebar = () => {
               </div>
               <button
                 onClick={logout}
-                className="flex items-center gap-2 p-2 xl:px-4 xl:py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white active:scale-95 transition-all duration-300"
+                className="flex items-center gap-2 p-2 xl:px-4 xl:py-2 rounded-md bg-red-600 hover:bg-red-700 text-white active:scale-95 transition-all duration-300"
               >
                 <LogOut size={16} />
                 <span className="font-semibold text-sm">Logout</span>
@@ -44,14 +44,31 @@ const Sidebar = () => {
                 `${isActive ? "text-emerald-500" : ""} w-full`
               }
             >
-                <button className="flex items-center w-full p-2 xl:p-4 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30">
-                  <Library />
-                  <span className="font-semibold">My Library</span>
-                </button>
+              <button className="flex items-center w-full p-2 xl:p-4 cursor-pointer hover:bg-gradient-to-r from-transparent to-white/30">
+                <Library />
+                <span className="font-semibold">My Library</span>
+              </button>
             </NavLink>
           </div>
           {recentSongs?.length > 0 && (
-            <div className="w-full dark:bg-black/30 shadow border border-white/10 bg-white/20 backdrop-blur-lg rounded-2xl animate-fade-in">
+            <div className="w-full dark:bg-black/35 shadow border border-white/5 bg-white/20 backdrop-blur-lg rounded-2xl animate-fade-in">
+              <div className={`flex justify-between items-center px-3 pt-2.5`}>
+                <h2
+                  className={`text-base font-semibold text-gray-800 dark:text-white`}
+                >
+                  Recently Played
+                </h2>
+                <NavLink
+                  to="library"
+                  className={({ isActive }) =>
+                    `${isActive ? "dark:text-white text-gray-600" : "dark:text-gray-300 text-gray-500"}`
+                  }
+                >
+                  <button className="text-sm cursor-pointer">
+                    View all
+                  </button>
+                </NavLink>
+              </div>
               {Array.isArray(recentSongs) && recentSongs.length > 0 && (
                 <RecentlyPlayed isFullTab={false} recentSongs={recentSongs} />
               )}
@@ -59,17 +76,17 @@ const Sidebar = () => {
           )}
         </div>
       ) : (
-        <div className="bg-white/30 shadow-md dark:bg-black/40 border border-white/10 backdrop-blur-lg rounded-xl p-4 flex flex-col items-start gap-2 text-sm animate-fade-in">
-          <h2 className=" text-base xl:text-lg text-gray-600 dark:text-white font-bold">
+        <div className="bg-gradient-to-br from-purple-600 to-yellow-400 rounded-xl p-4 flex flex-col items-start gap-2 text-sm animate-fade-in">
+          <h2 className="text-base xl:text-lg text-white font-bold">
             You're not logged in
           </h2>
-          <p className="text-xs xl:text-sm font-semibold dark:text-gray-400 text-gray-500">
+          <p className="text-xs xl:text-sm font-semibold text-gray-200">
             Login to save your favorite songs and access your playlist across
             devices.
           </p>
 
           <button
-            className="mt-2 px-2 text-xs xl:text-sm xl:px-4 py-2 text-green-500 font-semibold rounded-full bg-white active:scale-95 shadow hover:shadow-lg transition duration-200"
+            className="mt-2 px-2 text-xs xl:text-sm xl:px-4 py-2 bg-purple-500 font-semibold rounded-full text-white active:scale-95 shadow hover:shadow-lg transition duration-200"
             onClick={login}
           >
             Continue With Google
