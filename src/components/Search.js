@@ -67,7 +67,7 @@ const Search = () => {
             placeholder="Search songs..."
             ref={inputRef}
             value={tag}
-            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1.5 lg:py-2 rounded-full bg-white/15 hover:bg-white/10 focus:bg-white/10 text-black/70 dark:text-white dark:placeholder-white/70 placeholder-black/60 shadow-inner focus:shadow-shadowInner dark:focus:shadow-inner dark:focus:shadow-black font-medium backdrop-blur outline-none transition-all duration-200"
+            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1.5 lg:py-2 rounded-full bg-white hover:bg-white/80 focus:bg-white/80 text-black/70 placeholder-black/70 shadow-inner focus:shadow-shadowInner dark:focus:shadow-inner dark:focus:shadow-black font-medium backdrop-blur outline-none transition-all duration-200"
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") onSearch(tag);
@@ -89,7 +89,7 @@ const Search = () => {
           {quickSearchTags.map((c, index) => (
             <div
               key={index}
-              className="snap-start shrink-0 whitespace-nowrap text-sm xl:text-base cursor-pointer active:scale-90 bg-white hover:bg-white/80 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-white/90 text-gray-600 font-medium py-1 px-2 xl:px-3 lg:py-1 rounded-full transition-all duration-200"
+              className="snap-start shrink-0 whitespace-nowrap text-sm xl:text-base cursor-pointer active:scale-90 hover:bg-yellow-400 bg-slate-800 text-white font-medium py-1 px-2 xl:px-3 lg:py-1 rounded-lg transition-all duration-200"
               onClick={() => {
                 setTag(c);
                 onSearch(c);
