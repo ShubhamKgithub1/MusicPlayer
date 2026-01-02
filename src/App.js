@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div
-      className={`h-[100dvh] flex flex-col md:flex-row relative lg:p-4 md:gap-4 select-none bg-cover bg-center bg-no-repeat md:overflow-hidden transition-all duration-300`}
+      className={`h-[100dvh] flex flex-col dark:bg-black bg-white md:flex-row relative lg:p-4 md:gap-4 select-none bg-cover bg-center bg-no-repeat md:overflow-hidden transition-all duration-300`}
       style={{
         backgroundImage: `url(${themeMode === "dark" ? bgDark : bgLight})`,
       }}
