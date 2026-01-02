@@ -40,7 +40,7 @@ const CreatePlaylistModal = ({ userId }) => {
   if (!isOpen) return;
   return (
     <div className="fixed inset-0 backdrop-blur-xl flex items-center justify-center z-[99] animate-opacity">
-      <div className="flex flex-col gap-4 bg-white/30 dark:bg-black/40 shadow-2xl text-white rounded-lg p-6 w-[90%] max-w-md animate-fade-in" ref={menuRef}>
+      <div className="flex flex-col gap-4 bg-white/30 dark:bg-black/40 dark:border dark:border-white/10 shadow-2xl text-white rounded-lg p-6 w-[90%] max-w-md animate-fade-in" ref={menuRef}>
         <h2 className="text-lg font-semibold mb-2 text-center">
           Create New Playlist
         </h2>
@@ -52,7 +52,7 @@ const CreatePlaylistModal = ({ userId }) => {
             onKeyDown={(e) => {
               if (e.key === "Enter") handleSubmit();
             }}
-            className="w-full px-3 py-2 hover:bg-white/10 rounded-full bg-white text-black/70 dark:text-white dark:placeholder-white dark:bg-white/25 dark:focus:bg-white/20 placeholder-gray-600 hover:shadow-black/20 hover:shadow-inner focus:bg-white/20 focus:shadow-inner focus:shadow-black font-medium backdrop-blur-md outline-none transition-all duration-200"
+            className="w-full px-3 py-2 rounded-full bg-white text-black/70 placeholder-gray-600 hover:shadow-black/20 hover:shadow-inner focus:bg-white/90 focus:shadow-inner focus:shadow-black font-medium outline-none transition-all duration-200"
             placeholder="Enter playlist name"
           />
           <div className="flex justify-end gap-4">

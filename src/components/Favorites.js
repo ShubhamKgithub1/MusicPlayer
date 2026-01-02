@@ -7,7 +7,7 @@ const Favorites = () => {
   return (
     <div className="flex flex-col h-full text-white overflow-auto bg-white/20 dark:bg-black/60 lg:dark:bg-transparent rounded-lg lg:bg-transparent">
       {favorites.length > 0 ? (
-        <div className="overflow-auto hide-scrollbar flex flex-col gap-1 px-2 py-2 lg:px-0 lg:py-3 lg:bg-transparent rounded-md animate-fade-in">
+        <div className="overflow-auto hide-scrollbar flex flex-col gap-1 px-2 py-2 lg:px-0 lg:py-3 lg:bg-transparent rounded-md animate-fade-in snap-mandatory snap-y scroll-smooth">
           {favorites.map((song) => (
             <SongTile
               key={song?.id}

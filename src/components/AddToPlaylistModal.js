@@ -58,7 +58,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId }) => {
 
   return (
     <div className="fixed inset-0 backdrop-blur-xl flex items-center justify-center z-[99] animate-opacity">
-      <div className="flex flex-col gap-4 bg-white/30 dark:bg-black/40 shadow-2xl text-white p-6 rounded-2xl w-[90%] max-w-md animate-fade-in" ref={menuRef}>
+      <div className="flex flex-col gap-4 bg-white/30 dark:bg-black/40 dark:border dark:border-white/10 shadow-2xl text-white p-6 rounded-2xl w-[90%] max-w-md animate-fade-in" ref={menuRef}>
         <h2 className="text-lg font-semibold text-center">Add to Playlist</h2>
         <div className="flex gap-2 lg:gap-4 max-h-60 overflow-y-scroll hide-scrollbar pt-0 p-3">
           {playlists.length > 0 ? (
@@ -87,7 +87,7 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId }) => {
             onKeyDown={(e) => {
               if (e.key === "Enter") handleCreateAndAdd();
             }}
-            className="w-full px-3 py-2 rounded-full text-black/70 placeholder-gray-600 bg-white focus:bg-white/20 hover:shadow-inner hover:shadow-black/20 focus:shadow-inner focus:shadow-black dark:text-white dark:placeholder-white dark:bg-white/25 dark:focus:bg-white/20 font-medium backdrop-blur-md outline-none transition-all duration-200"
+            className="w-full px-3 py-2 rounded-full text-black/70 placeholder-gray-600 bg-white focus:bg-white/90 hover:shadow-inner hover:shadow-black/20 focus:shadow-inner focus:shadow-black font-medium outline-none transition-all duration-200"
             disabled={loading}
           />
           <button

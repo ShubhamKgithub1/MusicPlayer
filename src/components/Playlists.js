@@ -88,11 +88,11 @@ const Playlists = () => {
             )}
         </div>
       ) : (
-        <div className="flex flex-col gap-4 bg-violet-500 rounded-md lg:rounded-xl max-w-md p-3 lg:p-4 animate-fade-in shadow-md">
-          <p className="text-white font-medium lg:font-semibold">
+        <div className="flex flex-col gap-4 bg-white text-gray-600 rounded-md lg:rounded-lg max-w-md p-3 lg:p-4 animate-fade-in shadow-md">
+          <p className="font-medium lg:font-semibold">
             Create your ultimate playlist with your top tracks!
           </p>
-          <button className="text-violet-500 bg-white py-1 px-1.5 rounded-md ml-auto font-semibold shadow active:scale-95 transition-all duration-200" onClick={() => dispatch(openCreatePlaylistModal())}>Create Now</button>
+          <button className="bg-gray-600 text-white py-1 px-1.5 rounded-md ml-auto font-medium shadow active:scale-95 transition-all duration-200" onClick={() => dispatch(openCreatePlaylistModal())}>Create Now</button>
         </div>
       )}
     </div>

@@ -34,7 +34,7 @@ const MyLibrary = () => {
           onClick={() => setActiveTab("recent")}
           className={`${
             activeTab === "recent"
-              ? "bg-white dark:bg-black text-emerald-500 "
+              ? "bg-white text-gray-600 "
               : "bg-transparent text-glow"
           } px-4 py-1.5 lg:px-6 lg:py-2 whitespace-nowrap text-sm lg:text-base font-semibold transition-colors duration-200 rounded-t-lg lg:rounded-t-2xl`}
         >
@@ -44,7 +44,7 @@ const MyLibrary = () => {
           onClick={() => setActiveTab("favorites")}
           className={`${
             activeTab === "favorites"
-              ? "bg-white dark:bg-black text-emerald-500 "
+              ? "bg-white text-gray-600 "
               : "bg-transparent text-glow"
           } px-4 py-1.5 lg:px-6 lg:py-2 text-sm lg:text-base font-semibold transition-colors duration-200 rounded-t-lg lg:rounded-t-2xl`}
         >
@@ -54,7 +54,7 @@ const MyLibrary = () => {
           onClick={() => setActiveTab("playlists")}
           className={`${
             activeTab === "playlists"
-              ? "bg-white dark:bg-black text-emerald-500 "
+              ? "bg-white text-gray-600 "
               : "bg-transparent text-glow"
           } px-4 py-1.5 lg:px-6 lg:py-2 text-sm lg:text-base font-semibold transition-colors duration-200 rounded-t-lg lg:rounded-t-2xl`}
         >

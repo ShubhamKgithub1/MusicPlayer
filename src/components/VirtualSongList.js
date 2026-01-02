@@ -17,7 +17,7 @@ const VirtualSongList = ({ data, favorites }) => {
   return (
     <div
       ref={parentRef}
-      className="overflow-y-auto hide-scrollbar h-full"
+      className="overflow-y-auto hide-scrollbar h-full snap-mandatory snap-y scroll-smooth"
     >
       <div
         style={{
