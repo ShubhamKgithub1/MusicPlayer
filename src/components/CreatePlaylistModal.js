@@ -19,11 +19,13 @@ const CreatePlaylistModal = ({ userId }) => {
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key === "Escape") {
+        setPlaylistName("");
         dispatch(closeCreatePlaylistModal());
       }
     };
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setPlaylistName("");
         dispatch(closeCreatePlaylistModal());
       }
     };

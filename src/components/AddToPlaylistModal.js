@@ -35,11 +35,13 @@ const AddToPlaylistModal = ({ isOpen, onClose, track, userId }) => {
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key === "Escape") {
+        setNewPlaylistName("");
         onClose();
       }
     };
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setNewPlaylistName("");
         onClose();
       };
     };
