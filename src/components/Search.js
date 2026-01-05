@@ -67,7 +67,7 @@ const Search = () => {
             placeholder="Search songs..."
             ref={inputRef}
             value={tag}
-            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1.5 lg:py-2 rounded-full bg-white hover:bg-white/80 focus:bg-white/80 text-black/70 placeholder-black/70 shadow-inner focus:shadow-shadowInner dark:focus:shadow-inner dark:focus:shadow-black font-medium backdrop-blur outline-none transition-all duration-200"
+            className="w-full md:w-[80%] lg:w-[75%] xl:w-[50%] px-3 py-1.5 lg:py-2 rounded-full bg-white hover:bg-white/90 focus:bg-white/90 text-black/70 placeholder-black/70 shadow-inner focus:shadow-shadowInner dark:focus:shadow-inner dark:focus:shadow-black font-medium backdrop-blur outline-none transition-all duration-200"
             onChange={(e) => setTag(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") onSearch(tag);
