@@ -6,15 +6,15 @@ const RecentlyPlayed = ({ isFullTab, recentSongs }) => {
 
   return (
     <div
-      className={`flex flex-col relative rounded-lg lg:bg-transparent ${
+      className={`flex flex-col relative overflow-auto rounded-lg lg:bg-transparent ${
         isFullTab
-          ? "h-full overflow-auto rounded-tl-none bg-white/20 dark:bg-black/60 lg:dark:bg-transparent"
-          : "h-auto overflow-auto px-2 lg:px-0"
+          ? "h-full"
+          : "h-auto px-2 lg:px-0"
       }`}
     >
       {recentSongs?.length > 0 ? (
         <div
-          className={`flex flex-col overflow-auto hide-scrollbar relative px-2 py-2 lg:px-0 lg:py-3 animate-fade-in snap-mandatory snap-y scroll-smooth`}
+          className={`flex flex-col overflow-auto hide-scrollbar relative animate-fade-in snap-mandatory snap-y scroll-smooth`}
         >
           {(isFullTab ? recentSongs : recentSongs?.slice(0, 5))?.map((song) => (
             <SongTile

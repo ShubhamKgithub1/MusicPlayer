@@ -3,24 +3,9 @@ import { getSearch } from "../services/deezerAPI";
 import SongTile from "./SongTile";
 import { useSelector } from "react-redux";
 import EqualizerLoader from "./EqualizerLoader";
+import { quickSearchTags } from "../constants/constants";
 const Search = () => {
-  const quickSearchTags = [
-    "Pop",
-    "Hip-Hop",
-    "Chill",
-    "Workout",
-    "Romantic",
-    "Classical",
-    "Indie",
-    "Jazz",
-    "Electronic",
-    "Trending",
-    "Throwback",
-    "Party",
-    "Lo-Fi",
-    "Instrumental",
-    "Mood Boosters",
-  ];
+  
 
   const [tag, setTag] = useState("");
   const [result, setResult] = useState([]);
